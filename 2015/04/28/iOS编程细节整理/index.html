@@ -1,0 +1,1030 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+    
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.4"/>
+
+
+
+
+  <meta name="keywords" content="Hexo,next" />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.4" />
+
+
+<meta name="description" content="关于iOS开发中遇到的一些小问题及其解决方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS编程细节整理">
+<meta property="og:url" content="http://yoursite.com/2015/04/28/iOS编程细节整理/index.html">
+<meta property="og:site_name" content="刘 爽">
+<meta property="og:description" content="关于iOS开发中遇到的一些小问题及其解决方法">
+<meta property="og:updated_time" content="2016-01-20T15:52:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS编程细节整理">
+<meta name="twitter:description" content="关于iOS开发中遇到的一些小问题及其解决方法">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'hide'
+  };
+</script>
+
+    <title> iOS编程细节整理 // 刘 爽 </title>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+
+
+
+<div class="container one-column page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+        <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">刘 爽</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+<form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'fdvvyy7PB-9jT2KHeYD_','2.0.0');
+</script>
+
+<div class="site-search-toggle"></div>
+    </div>
+  
+</nav>
+
+
+        </div>
+    </header>
+
+    <main id="main" class="main">
+        <div class="main-inner">
+            <div id="content" class="content">
+                
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              iOS编程细节整理
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-04-28T11:07:47+08:00" content="2015-04-28">
+            2015-04-28
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a></span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h4 id="关于iOS开发中遇到的一些小问题及其解决方法">关于iOS开发中遇到的一些小问题及其解决方法</h4><a id="more"></a>
+<h4 id="自定义调试">自定义调试</h4><pre><code><span class="comment">// ...表示宏定义的可变参数</span>
+<span class="comment">// __VA_ARGS__:表示函数里面的可变参数</span>
+<span class="id">#ifdef</span> DEBUG <span class="comment">// 调试</span>
+
+<span class="hexcolor">#def</span>ine <span class="function"><span class="title">LSLog</span><span class="params">(...)</span></span> <span class="function"><span class="title">NSLog</span><span class="params">(__VA_ARGS__)</span></span>
+
+<span class="id">#else</span> <span class="comment">// 发布</span>
+
+<span class="hexcolor">#def</span>ine <span class="function"><span class="title">LSLog</span><span class="params">(...)</span></span>
+
+<span class="id">#endif</span>
+
+#endif
+</code></pre><h4 id="解决有的图片被渲染，显示不正常的问题">解决有的图片被渲染，显示不正常的问题</h4><pre><code><span class="comment">//渲染</span>
+<span class="built_in">UIImage</span> *image = [<span class="built_in">UIImage</span> imageNamed:<span class="string">@"imageName"</span>];
+image = [image imageWithRenderingMode:<span class="built_in">UIImageRenderingModeAlwaysOriginal</span>];
+</code></pre><h4 id="毛玻璃效果">毛玻璃效果</h4><pre><code> <span class="built_in">UIImageView</span> *imageView = [[<span class="built_in">UIImageView</span>     alloc]initWithImage:[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"xiaoxin3"</span>]];
+<span class="comment">//毛玻璃效果</span>
+<span class="built_in">UIVisualEffectView</span> *visualView = [[<span class="built_in">UIVisualEffectView</span> alloc]initWithEffect:[<span class="built_in">UIBlurEffect</span> effectWithStyle:(<span class="built_in">UIBlurEffectStyleLight</span>)]];
+visualView<span class="variable">.frame</span> = <span class="keyword">self</span><span class="variable">.tableView</span><span class="variable">.bounds</span>;
+visualView<span class="variable">.alpha</span> = <span class="number">0.8</span>;
+[imageView addSubview:visualView];
+
+<span class="keyword">self</span><span class="variable">.tableView</span><span class="variable">.backgroundView</span> = imageView;
+</code></pre><h4 id="视图截圆角">视图截圆角</h4><pre><code>_customView.layer.masksToBounds = YES<span class="comment">;</span>
+_customView.layer.cornerRadius =     self.customView.bounds.size.width/2<span class="comment">;   </span>
+</code></pre><h4 id="使用NSURLSession请求网络数据">使用NSURLSession请求网络数据</h4><pre><code> <span class="comment">//通过单例创建Session对象</span>
+<span class="comment">//步骤1.NSURLSession 服务器数据异步加载,作用和NSURLConnection的作用相同</span>
+<span class="built_in">NSURLSession</span> *session = [<span class="built_in">NSURLSession</span> sharedSession];
+<span class="comment">//步骤2.封装网络请求</span>
+<span class="built_in">NSURLRequest</span> *request = [[<span class="built_in">NSURLRequest</span> alloc] initWithURL:[<span class="built_in">NSURL</span> URLWithString:<span class="string">@"baidu.com"</span>]];
+<span class="comment">//步骤3.准备加载数据,创建这个任务的task</span>
+<span class="built_in">NSURLSessionTask</span> *task = [session dataTaskWithRequest:request completionHandler:^(<span class="built_in">NSData</span> * _Nullable data, <span class="built_in">NSURLResponse</span> * _Nullable response, <span class="built_in">NSError</span> * _Nullable error) {
+    <span class="comment">//当加载数据完成时,调用该block</span>
+    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,data);
+
+    <span class="comment">//手动解析网络数据</span>
+    <span class="built_in">NSDictionary</span> *dict = [<span class="built_in">NSJSONSerialization</span> JSONObjectWithData:data options:<span class="built_in">NSJSONReadingMutableContainers</span> error:<span class="literal">nil</span>];
+
+    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,data);
+}];
+
+<span class="comment">//调用此方法开始加载数据</span>
+[task resume];
+</code></pre><h4 id="播放语音">播放语音</h4><pre><code><span class="comment">//导入包</span>
+import &lt;<span class="built_in">AVFoundation</span>/<span class="built_in">AVSpeechSynthesis</span><span class="variable">.h</span>&gt;
+<span class="comment">//声音集成器</span>
+<span class="built_in">AVSpeechSynthesizer</span> *speechSy = [[<span class="built_in">AVSpeechSynthesizer</span> alloc] init];
+<span class="comment">//发声器</span>
+<span class="built_in">AVSpeechUtterance</span> *utterance = [[<span class="built_in">AVSpeechUtterance</span> alloc] initWithString:<span class="string">@"i am very happy"</span>];
+
+<span class="built_in">AVSpeechUtterance</span> *utterance2 = [[<span class="built_in">AVSpeechUtterance</span> alloc] initWithString:<span class="string">@"ha ha ha"</span>];
+<span class="built_in">AVSpeechUtterance</span> *utterance3 = [[<span class="built_in">AVSpeechUtterance</span> alloc] initWithString:_textFeild<span class="variable">.text</span>];
+
+<span class="comment">//给合成器添加发生器，让其发音</span>
+[speechSy speakUtterance:utterance];
+[speechSy speakUtterance:utterance2];
+[speechSy speakUtterance:utterance3];
+
+<span class="comment">//哪国语言</span>
+utterance<span class="variable">.voice</span> = [<span class="built_in">AVSpeechSynthesisVoice</span> voiceWithLanguage:<span class="string">@"en-US"</span>];
+<span class="comment">//语速</span>
+utterance<span class="variable">.rate</span> = <span class="number">0.5</span>;
+<span class="comment">//音高</span>
+utterance<span class="variable">.pitchMultiplier</span> = <span class="number">1.0</span>;
+</code></pre><h4 id="webView">webView</h4><pre><code> <span class="built_in">UIWebView</span> *webView = [[<span class="built_in">UIWebView</span> alloc]  initWithFrame:<span class="keyword">self</span><span class="variable">.view</span><span class="variable">.frame</span>];
+[webView loadRequest:[<span class="built_in">NSURLRequest</span> requestWithURL:[<span class="built_in">NSURL</span> URLWithString:myurl]]];
+<span class="keyword">self</span><span class="variable">.view</span> = webView; 
+</code></pre><h4 id="使用第三方SDWevImage解析图片">使用第三方SDWevImage解析图片</h4><pre><code>[cell.imgView <span class="string">sd_setImageWithURL:</span>[NSURL <span class="string">URLWithString:</span>news.picUrl] <span class="string">placeholderImage:</span>[UIImage <span class="string">imageNamed:</span>@<span class="string">"image"</span>]];
+</code></pre><h4 id="设置cell的自适应高度">设置cell的自适应高度</h4><h4 id="使用此方法必须要设置cell中的最后一个控件与cell的距离">使用此方法必须要设置cell中的最后一个控件与cell的距离</h4><pre><code><span class="keyword">self</span><span class="variable">.myTableView</span><span class="variable">.rowHeight</span> =   <span class="built_in">UITableViewAutomaticDimension</span>;
+<span class="keyword">self</span><span class="variable">.myTableView</span><span class="variable">.estimatedRowHeight</span> = <span class="number">100</span>;
+</code></pre><h4 id="让音乐在后台播放">让音乐在后台播放</h4><pre><code><span class="attr_selector">[AVAudioSession sharedInstance]</span><span class="tag">setCategory</span><span class="pseudo">:AVAudioSessionCategoryPlayback</span> <span class="tag">error</span><span class="pseudo">:nil</span>];     
+</code></pre><h4 id="将URL中的汉字转换成utf-8格式，拼接到URL字符串中">将URL中的汉字转换成utf-8格式，拼接到URL字符串中</h4><pre><code><span class="built_in">NSString</span> *typeString = (__bridge <span class="built_in">NSString</span> *)<span class="built_in">CFURLCreateStringByAddingPercentEscapes</span>(<span class="literal">NULL</span>,(__bridge <span class="built_in">CFStringRef</span>)<span class="string">@"健康"</span>,<span class="literal">NULL</span>,(<span class="built_in">CFStringRef</span>)<span class="string">@"!*'();:@&amp;=+$,/?%#[]"</span>,k<span class="built_in">CFStringEncodingUTF8</span>);    
+</code></pre><h4 id="去除解析出来的数据带的_HTML_标记">去除解析出来的数据带的 HTML 标记</h4><pre><code>- (NSString *)<span class="string">filterHTML:</span>(NSString *)html{
+NSScanner * scanner = [NSScanner <span class="string">scannerWithString:</span>html];
+NSString * text = nil;
+<span class="keyword">while</span>([scanner isAtEnd]==NO)
+{
+    <span class="comment">//找到标签的起始位置</span>
+    [scanner <span class="string">scanUpToString:</span>@<span class="string">"&lt;"</span> <span class="string">intoString:</span>nil];
+    <span class="comment">//找到标签的结束位置</span>
+    [scanner <span class="string">scanUpToString:</span>@<span class="string">"&gt;"</span> <span class="string">intoString:</span>&amp;text];
+    <span class="comment">//替换字符</span>
+    html = [html <span class="string">stringByReplacingOccurrencesOfString:</span>[NSString <span class="string">stringWithFormat:</span>@<span class="string">"%@&gt;"</span>,text] <span class="string">withString:</span>@<span class="string">""</span>];
+}
+
+<span class="keyword">return</span> html;
+}    
+</code></pre><h4 id="去广告">去广告</h4><h5 id="先到网页，找到开发者平台，依次输入并提交">先到网页，找到开发者平台，依次输入并提交</h5><p>document.getElementsByClassName(‘index_mask’) -&gt;<br>    document.getElementsByClassName(‘index_mask’)[0] -&gt;<br>    document.getElementsByClassName(‘index_mask’[0].style.display = ‘none’ </p>
+<p>若在网页上显示的对应的广告没了，就可以将最后一句写到下面的程序中</p>
+<pre><code>-(<span class="typename">void</span>)<span class="string">webViewDidFinishLoad:</span>(UIWebView *)webView{
+[webView <span class="string">stringByEvaluatingJavaScriptFromString:</span>@<span class="string">"document.getElementsByClassName('index_mask')[0].style.display = 'none'"</span>];
+}
+</code></pre><h4 id="图片自适应">图片自适应</h4><pre><code>imgView.contentMode = UIViewContentModeScaleAspectFit<span class="comment">;</span>
+</code></pre><h4 id="解决tableView的head不会和cell一起滚动的问题">解决tableView的head不会和cell一起滚动的问题</h4><pre><code><span class="keyword">self</span><span class="variable">.tableView</span> = [[<span class="built_in">UITableView</span> alloc] initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>,<span class="keyword">self</span><span class="variable">.view</span><span class="variable">.frame</span><span class="variable">.size</span><span class="variable">.width</span>, <span class="keyword">self</span><span class="variable">.view</span><span class="variable">.frame</span><span class="variable">.size</span><span class="variable">.height</span>) style: <span class="built_in">UITableViewStyleGrouped</span>];
+</code></pre><h4 id="解决有navigationbar的情况下，下面的tableView与navigationbar有一段距离的问题">解决有navigationbar的情况下，下面的tableView与navigationbar有一段距离的问题</h4><pre><code><span class="keyword">self</span><span class="variable">.automaticallyAdjustsScrollViewInsets</span> = <span class="literal">NO</span>;
+</code></pre><h4 id="数据再cell中解析，给cell做自适应高度时，无法实现">数据再cell中解析，给cell做自适应高度时，无法实现</h4><p>可能是因为cell出现时，自适应高度已经实现了，但是还没有内容，所以想办法先刷新一下数据（使用block块可以在cellForRow……方法中实现）</p>
+<h4 id="如何获取UIWebView中Button事件">如何获取UIWebView中Button事件</h4><pre><code><span class="comment">//通过在网页中添加js脚本函数，当button单击时触发该函数</span>
+<span class="comment">//在UIWebView中会自动回调代理方法</span>
+<span class="comment">//shouldStartLoadWithRequest:navigationType</span>
+</code></pre><h4 id="批量上传和下载实现">批量上传和下载实现</h4><pre><code><span class="comment">//网页的实现方式</span>
+<span class="comment">//mutipart-formdata post表单</span>
+<span class="comment">//iOS的实现方式</span>
+<span class="comment">//通过在线程技术中完成批量上传的功能</span>
+</code></pre><h4 id="如何使用SDWebImage中的方法实现实时个人头像更新">如何使用SDWebImage中的方法实现实时个人头像更新</h4><pre><code><span class="comment">//通过修改个人信息Model类中的个人头像字符串</span>
+<span class="comment">//因为SDWebImage中存储图片时的原理，是将url字符串进行md5加密后作为iOS本地缓存文件的文件名存储的</span>
+<span class="comment">//所以当，个人头像没有发生改变时，即个人头像的url字符串没有发生改变，当个人头像发生改变时，个人信息Model类中的url同时也发生变化，就好了</span>
+</code></pre><h4 id="极光推送的思路">极光推送的思路</h4><p><a href="http://docs.jpush.io/guideline/ios_guide/" target="_blank" rel="external">http://docs.jpush.io/guideline/ios_guide/</a></p>
+<h4 id="股票K线图?画线?">股票K线图?画线?</h4><p><a href="https://github.com/zhiyu/chartee" target="_blank" rel="external">https://github.com/zhiyu/chartee</a></p>
+<h4 id="给一个NSDate对象，获取到一年中的第几个月中的第几天">给一个NSDate对象，获取到一年中的第几个月中的第几天</h4><pre><code>NSDate *<span class="operator">date</span> = [NSDate <span class="operator">date</span>];
+//获取对应属性
+NSDateComponents *comp = [[NSCalendar currentCalendar] componentsInTimeZone:[NSTimeZone defaultTimeZone] fromDate:<span class="operator">date</span>];
+/*
+ @interface NSDateComponents : NSObject <span class="tag">&lt;NSCopying, NSSecureCoding&gt;</span>
+ @<span class="keyword">property</span><span class="title"> </span>(nullable, copy) NSCalendar *calendar NS_AVAILABLE(<span class="number">10</span>_7, <span class="number">4</span>_0);
+ @<span class="keyword">property</span><span class="title"> </span>(nullable, copy) NSTimeZone *timeZone NS_AVAILABLE(<span class="number">10</span>_7, <span class="number">4</span>_0);
+ @<span class="keyword">property</span><span class="title"> </span>NSInteger era;
+ @<span class="keyword">property</span><span class="title"> </span>NSInteger year;
+ @<span class="keyword">property</span><span class="title"> </span>NSInteger month;
+ @<span class="keyword">property</span><span class="title"> </span>NSInteger day;
+ @<span class="keyword">property</span><span class="title"> </span>NSInteger hour;
+ @<span class="keyword">property</span><span class="title"> </span>NSInteger minute;
+ @<span class="keyword">property</span><span class="title"> </span>NSInteger second;
+ @<span class="keyword">property</span><span class="title"> </span>NSInteger nanosecond NS_AVAILABLE(<span class="number">10</span>_7, <span class="number">5</span>_0);
+ @<span class="keyword">property</span><span class="title"> </span>NSInteger weekday;
+ @<span class="keyword">property</span><span class="title"> </span>NSInteger weekdayOrdinal;
+ @<span class="keyword">property</span><span class="title"> </span>NSInteger quarter NS_AVAILABLE(<span class="number">10</span>_6, <span class="number">4</span>_0);
+ @<span class="keyword">property</span><span class="title"> </span>NSInteger weekOfMonth NS_AVAILABLE(<span class="number">10</span>_7, <span class="number">5</span>_0);
+ @<span class="keyword">property</span><span class="title"> </span>NSInteger weekOfYear NS_AVAILABLE(<span class="number">10</span>_7, <span class="number">5</span>_0);
+ @<span class="keyword">property</span><span class="title"> </span>NSInteger yearForWeekOfYear NS_AVAILABLE(<span class="number">10</span>_7, <span class="number">5</span>_0);
+ @<span class="keyword">property</span><span class="title"> </span>(<span class="variable">getter=</span>isLeapMonth) BOOL leapMonth NS_AVAILABLE(<span class="number">10</span>_8, <span class="number">6</span>_0);
+ @<span class="keyword">property</span><span class="title"> </span>(nullable, readonly, copy) NSDate *<span class="operator">date</span> NS_AVAILABLE(<span class="number">10</span>_7, <span class="number">4</span>_0);
+ */
+//获取一年中的第几天
+//小范围参数:NSCalendarUnitDay
+//大范围参数:NSCalendarUnitYear
+/*
+ NSCalendarUnitEra = kCFCalendarUnitEra,
+ NSCalendarUnitYear = kCFCalendarUnitYear,
+ NSCalendarUnitMonth = kCFCalendarUnitMonth,
+ NSCalendarUnitDay = kCFCalendarUnitDay,
+ NSCalendarUnitHour = kCFCalendarUnitHour,
+ NSCalendarUnitMinute = kCFCalendarUnitMinute,
+ NSCalendarUnitSecond = kCFCalendarUnitSecond,
+ NSCalendarUnitWeekday = kCFCalendarUnitWeekday,
+ NSCalendarUnitWeekdayOrdinal = kCFCalendarUnitWeekdayOrdinal,
+ */
+NSInteger day = [[NSCalendar currentCalendar] ordinalityOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitYear forDate:<span class="operator">date</span>];
+NSLog(@<span class="string">"%ld"</span>,day);
+</code></pre><h4 id="runtime的实现原理">runtime的实现原理</h4><pre><code>链接: <span class="string">http:</span><span class="comment">//pan.baidu.com/s/1i4ijIsP 密码: k661</span>
+</code></pre><h4 id="tableView滑动时卡顿的处理办法">tableView滑动时卡顿的处理办法</h4><p>//一般遇到卡顿时候，会出现的原因<br>//1、在单元格中使用了同步下载图片，解决方法是使用多线程技术<br>//2、在单元格中自定义高度布局时，进行了大量的计算，解决方法是使用缓存技术，在下载完数据后，自动生成一个对象应该所占的高度</p>
+<h4 id="一-内存管理情况">一.内存管理情况</h4><ul>
+<li>1- autorelease，当用户的代码在持续运行时，自动释放池是不会被销毁的，这段时间内用户可以安全地使用自动释放的对象。当用户的代码运行告一段 落，开始等待用户的操作，自动释放池就会被释放掉（调用dealloc），池中的对象都会收到一个release，有可能会因此被销毁。</li>
+<li>2-成员属性：<br>readonly：不指定readonly，默认合成getter和setter方法。外界毫不关心的成员，则不要设置任何属性，这样封装能增加代码的独立性和安全性。相当于私有成员？<br>assign：表示只进行简单的赋值，不会发送retain消息。<br>retain：会向旧值发送release消息，向新值发送retain消息。<br>copy：向旧值发release消息，向新值发送copy消息。<br>3-引用计数特殊情况：<br>NSArray：当把一个对象添加到NSArray时，对象的引用计数会加1，移除时会减1。<br>UIView：addGestureRecognizer会对手势识别器的引用计数加1，removeGestureRecognizer会减1。</li>
+</ul>
+<h4 id="二_-图形API">二 .图形API</h4><p>这个讲的好，清晰明确：<a href="http://www.cocoachina.com/bbs/read.php?tid=77731&amp;page=1" target="_blank" rel="external">图形API</a></p>
+<ul>
+<li><p>1-Quartz2D，的绘图总是发生在图形环境（Graphics Context）中。视图会在调用drawRect:方法进行绘图之前，创建好图形环境，<br>通过UIGraphicsGetCurrentContext函数来获得这个图形环境。<br>如果直接在图像或者PDF上绘图，需要调用CGBitmapContextCreate或者CGPDFContextCreate函数来创建图形环境。<br>Quartz2D绘图的基础元素是路径。路径可以是一些基础几何形状，也可以是这些几何形状的组合。<br>当需要创建一条路径时，应当调用CGContextBeginPath函数；<br>当需要将路径绘制的起点移动到一个位置时，应当调用CGContextMoveToPoint函数；<br>当想绘制一条线段时，应当调用CGContextAddLineToPoint。 CTM（当前变换矩阵）将绘图从用户空间映射到设备控件。<br>当图形环境刚刚创建时，CTM初始化为一个单位矩阵。<br>对CTM进行平移变换应当调用CGContextTranslateCTM函数，进行旋转变换应当调用CGContextRotateCTM函数，进行缩放变换应当调用CGContextScaleCTM函数。</p>
+</li>
+<li><p>2-UIBezierPath<br>使用UIBezierPath绘图的好处：</p>
+<ul>
+<li>采用系统坐标系</li>
+<li><p>在Core Graphics的基础上封装，具有Core Graphics的主要功能，无需考虑图形环境。</p>
+<p>   UIBezierPath* pathLines = [UIBezierPath bezierPath];<br>   [pathLines moveToPoint:point1]; // 移动到point1位置<br>   [pathLines addLineToPoint:point2]; // 画一条从point1到point2的线<br>   pathLines.lineWidth = 5.0; // 线宽<br>   ［UIColor redColor] set]; // 颜色设置<br>   [pathLines stroke]; // 开始描绘<br>在同一UIBazierPath中，只能采用相同的颜色和线宽。<br>可以调用closePath，从当前点画一条直线到当前子路径的初始点。如果要填充路径，应当使用fill方法，此方法会填充路径中得所有封闭子路径。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="三-容器">三.容器</h4><pre><code>-<span class="ruby"><span class="constant">NSArray</span>和<span class="constant">NSMutableArray</span>
+</span>+array：创建一个空数组
++arrayWithArray：从另一个数组创建新的数组
++arrayWithContentsOfFile：读文件创建数组
++arrayWithObject：创建一个数组，其中包含一个给定对象
++arrayWithObjects
++arrayWithObjects:count: 从C数组创建
+-<span class="ruby">containsObject：是否包含一个元素
+</span>-<span class="ruby">count：数量
+</span>-<span class="ruby">lastObject：返回最后一个
+</span>-<span class="ruby">objectAtIndex：返回某一个
+</span>-<span class="ruby">objectsAtIndexes：返回一组，类型为<span class="constant">NSArray</span>
+</span>-<span class="ruby">indexOfObject：返回对象索引
+</span>-<span class="ruby">arrayByAddingObject：原数组最后加一个对象，产生一个新的数组
+</span>-<span class="ruby">arrayByAddingObjectsFromArray：在原数组的最后添加另一个数组中的所有对象，产生一个新数组
+</span>-<span class="ruby">subarrayWithRange：抽取原数组中得一部分，产生一个新的数组
+</span>-<span class="ruby">isEqualToArray：比较两个数组是否相同
+</span>-<span class="ruby"><span class="symbol">writeToFile:</span>atomically：保存数组至一个文件
+</span>-<span class="ruby"><span class="symbol">writeToURL:</span>atomically：保存数组至一个<span class="constant">URL</span>
+</span>-<span class="ruby">addObject：在数组最后添加一个对象
+</span>-<span class="ruby">addObjectsFromArray：在原数组最后添加另一个数组的全部对象
+</span>-<span class="ruby"><span class="symbol">insertObject:</span>atIndex：向原数组制定位置添加一个对象
+</span>-<span class="ruby"><span class="symbol">insertObjects:</span>atIndexes：向原数组中一系列位置添加一系列对象
+</span>-<span class="ruby">removeAllObjects：移除数组中的全部对象
+</span>-<span class="ruby">removeLastObject：移除数组中最后一个对象
+</span>-<span class="ruby">removeObject：移除一个对象
+</span>-<span class="ruby">removeObjectAtIndex：移除位于指定位置的对象
+</span>-<span class="ruby">removeObjectsAtIndexes：移除位于一系列位置的对象
+</span>-<span class="ruby"><span class="symbol">replaceObjectAtIndex:</span>withObject用给定对象替换位于指定位置的对象
+</span>-<span class="ruby"><span class="symbol">replaceObjectsAtIndexes:</span>withObjects：多对象，多位置版本
+</span>-<span class="ruby">setArray：用另一个数组中的所有对象来替换当前数组中的所有对象
+</span>-<span class="ruby"><span class="constant">NSDictionary</span>与<span class="constant">NSMutableDictionary</span>
+</span>+dictionary
++dictionaryWithContentsOfFile
++dictionaryWithContentsOfURL
++dictionaryWithDictionary
++dictionaryWithObject:forKey
++dictionaryWithObjects:forKeys
++dictionaryWithObjectsAndKeys
+-<span class="ruby">count：数量
+</span>-<span class="ruby">allKeys：返回一个数组，包含字典中的所有关键字。
+</span>-<span class="ruby">allKeysForObject：返回一个数组，包含所有对应到给定对象的关键字。
+</span>-<span class="ruby">valueForKey：通过字符串查找数值。
+</span>-<span class="ruby"><span class="symbol">writeToFile:</span>atomically
+</span>-<span class="ruby"><span class="symbol">writeToURL:</span>atomically
+</span>-<span class="ruby"><span class="symbol">setValue:</span>forKey： 加键-值对
+</span>-<span class="ruby">addEntriesFromDictionary： 添加另一个字典中得所有条目
+</span>-<span class="ruby">setDictionary：将原字典中条目设置为另一个字典中得所有条目
+</span>-<span class="ruby">removeObjectForKey：移除一个关键字的对应条目
+</span>-<span class="ruby">removeAllObjects：移除所有条目
+</span>-<span class="ruby">removeObjectsForKeys：移除一系列关键字的对应条目</span>
+</code></pre><h4 id="四-文件系统">四.文件系统</h4><ul>
+<li>1- 概述<br>bundle（沙盒）：一个应用只能在自己的沙盒中读取或存储文件，而不能操作其他沙盒中的文件。好处：保护应用的隐私不受侵犯，保护系统文件的安排，应用删除后相关文件也能被全部清除。<br>每个应用都有自己的沙盒，沙盒的根目录的获取方法是NSHomeDirectory()。<br>根目录下的内容：<br>-.app文件，实际上是一个文件夹，包含了可执行文件、Nib文件、图片资源、plist等。XCode中能看到的资源，及编译后的可执行文件，都封装在app中。<br>-<code>Documents</code>文件夹，用于存放你的应用所产生的数据，该文件夹可通过iTunes备份，可以存储游戏进度等。<br>-<code>Library</code>文件夹，用于存放用户偏好和临时文件。<br>-<code>tmp</code>文件夹是系统的中转站。</li>
+<li>2-文件管理器<br><code>NSFileManager</code>，<code>defaultManager()</code>返回一个文件管理器的单例（多线程下不安全）。init()，在多线程编程中应尽量使用init()。</li>
+</ul>
+<p>代理方法：<code>-fileManager:shouldRemoveItemAtPath</code>和-<code>fileManager:shouldRemoveItemAtURL</code>在移除操作之前被调用。</p>
+<p><code>-removeItemAtPath:error：</code>删除位于指定路径的文件、连接、目录（及其所有子目录、文件）。<br><code>-removeItemAtURL:error：</code>同上。</p>
+<p><code>-contentOfDirectoryAtPath：</code>查找所有位于给定路径的子路径和文件。返回值为一个数组，其中包含了NSString对象。查找只在当前目录进行，不会进入下一层目录。</p>
+<p><code>-subpathsAtPath：</code>查找给定路径下的所有子路径。深度查找，不限于当前层，也会查找package的内容。</p>
+<p><code>-fileExistsAtPath：</code>判断文件是否位于一个路径下面。</p>
+<p><code>-isReadableFileAtPath：</code>查询文件的可读性</p>
+<p><code>-isWritableFileAtPath：</code>可写性</p>
+<p><code>-isExecutableFileAtPath：</code>查询文件的可执行性</p>
+<p><code>-isDeletableFileAtPath：</code>可删除性</p>
+<ul>
+<li><p>3-NSString的路径功能</p>
+<pre><code>-<span class="ruby">pathWithComponent：参数是一堆components构成的数组，返回的路径是由这些components连接而成的路径字符串，相邻components之间用/隔开。
+</span>-<span class="ruby">pathComponents：返回一个数组，包含路径中的components。
+</span>-<span class="ruby">fileSystemRepresentation：返回<span class="constant">C</span>字符串
+</span>-<span class="ruby">isAbsolutePath：判断是否为绝对路径
+</span>-<span class="ruby">pathExtension：返回文件的扩展名，没有的就返回空字符串
+</span>-<span class="ruby">stringByAppendingPathComponents ：向现有路径添加一个component。斜杠/会被自动加上
+</span>-<span class="ruby">stringByAppendingPathExtension：向现有路径加上文件的扩展名
+</span>-<span class="ruby">stringByDeletingLastPathComponent：移除最后一个路径component
+</span>-<span class="ruby">stringByDeletingPathExtension：删除路径扩展名
+</span>-<span class="ruby">stringByAppendingPaths：参数为一个数组，此方法将数组中的字符串对象作为路径一次添加到源字符串后面。</span>
+</code></pre><p>例子：</p>
+<pre><code><span class="built_in">NSString</span> homePath = <span class="built_in">NSHomeDirectory</span>();
+<span class="built_in">NSString</span> docPath = [homePath stringByAppendingFormat:<span class="string">@"/Documents"</span>];
+</code></pre></li>
+</ul>
+<h4 id="五-UIAlertController">五.UIAlertController</h4><pre><code><span class="built_in">UIAlertController</span> * alterVC = [<span class="built_in">UIAlertController</span> alertControllerWithTitle:<span class="string">@"标题"</span> message:alter preferredStyle:<span class="built_in">UIAlertControllerStyleAlert</span>];
+<span class="built_in">UIAlertAction</span> * veryfiAction  = [<span class="built_in">UIAlertAction</span> actionWithTitle:<span class="string">@"确认"</span> style:<span class="built_in">UIAlertActionStyleDefault</span> handler:^(<span class="built_in">UIAlertAction</span> * action) {      
+    <span class="built_in">NSLog</span>(<span class="string">@"确认"</span>);
+}]; 
+[alterVC addAction:veryfiAction];
+[<span class="keyword">self</span><span class="variable">.window</span><span class="variable">.rootViewController</span> presentViewController:alterVC animated:<span class="literal">YES</span> completion:<span class="literal">nil</span>];
+</code></pre><h4 id="六-旋转">六.旋转</h4><ul>
+<li>1- interfaceOrientation属性查询当前的界面方向。</li>
+<li>2- rotatingHeaderView方法来查询当前导航视图。</li>
+<li>3- rotatingFooterView来查询当前的标签条。<h4 id="七-快速拨打电话接口">七.快速拨打电话接口</h4>openURL能帮助你运行Maps，SMS，Browser,Phone甚至其他的应用程 序。这是Iphone开发中我经常需要用到的一段代码，它仅仅只有一行而已。</li>
+</ul>
+<pre><code>［UIApplication sharedApplication] <span class="string">openURL:</span>[NSURL <span class="string">URLWithString:</span>@<span class="string">"tel://8004664411"</span>］; 
+</code></pre><p>这个程序通过基础的协议支持拨打电话的功能。</p>
+<h4 id="八-区分设备类型的方法">八.区分设备类型的方法</h4><p>打电话功能只有iPhone支持，对于其他设备对应按钮应该禁用。</p>
+<p>用[UIDevice currentDevice].model，这个返回的是一个NSString，你可以做如下判断就能知道设备是iPad还是iPhone.</p>
+<pre><code><span class="keyword">if</span> (［<span class="built_in">UIDevice</span> currentDevice]<span class="variable">.model</span>            
+ rangeOfString:<span class="string">@"iPad"</span>]<span class="variable">.location</span> != <span class="built_in">NSNotFound</span>) { 
+  <span class="built_in">NSLog</span>(<span class="string">@"This is an iPad!"</span>); 
+</code></pre><p>}<br>用UI_USER_INTERFACE_IDIOM()方法，这是系统定义的一条宏。使用方法也很简单。</p>
+<pre><code> <span class="keyword">if</span> (<span class="built_in">UI_USER_INTERFACE_IDIOM</span>() ＝＝ <span class="built_in">UIUserInterfaceIdiomPad</span>)      
+{ 
+ <span class="built_in">NSLog</span>(<span class="string">@"This is an iPad!"</span>); 
+ }
+</code></pre><h4 id="九-并发编程">九.并发编程</h4><ul>
+<li>1-GCD-Grand Central Dispatch，GCD使用队列来管理多个任务，而每个任务是以块（其定义类似于函数）来描述的。GCD从队列中读取这些要完成的任务，然后其多核执行 引擎负责将这些任务分配给它所管理的线程。和手动线程管理相比，GCD能极大地优化线程管理，并极大地减少创建和销毁线程所带来的额外开销。除了在多核系 统上得性能改进之外，GCD还能帮助提高应用的响应速度，并让代码更为干净，易于维护。</li>
+<li>2-NSOperationQueue-操作队列，可以极大地减少开发者在并发编程中的负担，并且操作队列有一套Objective-C的API，使用起来方便。<br>基本操作单位-NSOperation，操作。<br>操作是封装了一个与任务有关的代码与数据的抽象类，需要继承NSOperation，并且描述相关的任务。操作对象是一次性的，它只能执行一次，下一次，需要创建一个新的实例。<br>可以通过addDependency:方法为操作添加相互依赖性。假设操作A依赖于操作B，如果操作B没有结束，操作A就不会开始执行。完成是指 执行完，或者取消了操作。有时需要对操作是否成功作出判断。通过removeDependency:方法来移除操作的相互依赖性。<br>操作的一个属性是isConcurrent。当使用操作队列来管理这些操作时，isConcurrent应当设置为NO，这时应当重载 NSOperation的main函数（在类中保存controller对象-weak，并在main中调用controller的方法）。 isReady属性用于描述操作是否已经可以开始执行，isExecuting属性表示操作是否正在执行当中，isFinished属性表示操作是否顺利 完成，isCancelled属性则表示操作已经取消。<br>可以在操作运行中取消它的运行，只需要给它发送cancel消息即可。在继承NSOperation类时，也需要支持cancel方法。<br>如果只需要简单的操作，不想继承NSOperation类，可以使用<code>NSInvocationOperation</code>类，这个类中的-<code>initWithTarget:selector:object:</code>方法能帮助你方便地选择人物的对象和相应的功能。<br>操作的执行顺序取决于各自的优先级和相互之间的依赖性。<br>操作队列有两种方式来执行其中的操作。第一种是开辟新线程来运行这些操作，第二种则是通过GCD来运行这些操作。但是无论如何，都不需要手动管理 线程。尽量使用操作队列，只有在操作队列的效率明显不足时才转向GCD。因为操作队列是封装在GCD的基础之上的，虽然增加了一些额外开销，但是也具有更 加完善的功能。例子是<code>TestNSOperation</code>。</li>
+</ul>
+<h4 id="十-忙碌指示器">十.忙碌指示器</h4><pre><code>UIActivityIndicator。
+UIActivityIndicatorView *activityIndicatior = ［UIActivityIndicatorView alloc] initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleWhiteLarge]<span class="comment">; </span>
+activityIndicator.center = CGPointMake(512, 384)<span class="comment">; </span>
+[self.view addSubview: activityIndicator]<span class="comment">; </span>
+[activityIndicator startAnimating]<span class="comment">;  </span>
+[activityIndicator stopAnimating]<span class="comment">; </span>
+[activityIndicator removeFromSuperView]<span class="comment">;</span>
+</code></pre><h4 id="十一-媒体播放">十一.媒体播放</h4><ul>
+<li>1- 音频<br>[1] 音乐往往是存储在iPod曲库（注意位置）中的，可以通过媒体选择器<code>media picker</code>或者媒体查询<code>media query</code>读取，然后用音乐播放器<code>MPMusicPlayerController</code>播放。</li>
+</ul>
+<pre><code>MPMusicPlayerController *musicPlayer = [MPMusicPlayerController applicationMusicPlayer]<span class="comment">; </span>
+[musicPlayer setShufleMode: MPMusicShuffleModeSongs]<span class="comment">; </span>
+[musicPlayer setRepeatMode: MPMusicRepeatModeAll]<span class="comment">; </span>
+[musicPlayer setQueueWithQuery: [MPMediaQuery songsQuery］<span class="comment">; </span>
+[musicPlayer play]<span class="comment">;</span>
+</code></pre><p>applicationMusicPlayer返回的播放器，在你的应用中播放音乐。它不会影响到iPod播放器，也不能从iPod播放器重获取信息。<br>iPodMusicPlayer返回的是iPod播放器，在你推出应用后，所有的设置都会影响到之后设备上的iPod播放器。<br>获得音乐播放器后，需要为它设置一个播放队列。可以用setQueueWithQuery:放方法，通过媒体查询MPMediaQuery来设置 播放队列，也可以用setQueueWithItemCollection:方法，通过MPMdiaItemCollection来设置播放队列。<br>重复模式repeatMode可以设置为不重复、重复当前曲目、或整个播放列表；乱序播放shuffleMode可以设置为不乱序、乱序播放曲目或乱序播放专辑；音量volume的设置与音频播放器一样。<br>skipToNextItem跳到下一首，skipToPreviousItem跳到上一首，skipToBegin跳到第一首。<br>对应的宏都是以MPMusic开头。</p>
+<p>   [2] 利用系统声音服务来播放短暂音效（时长30秒以内），并震动：   </p>
+<pre><code>AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);  
+播放指定音效：
+<span class="built_in">NSURL</span> *fileURL = [<span class="built_in">NSURL</span> fileURLWithPath: path isDirectory: <span class="literal">NO</span>];  
+<span class="comment">// 创建音效ID </span>
+SystemSoundID soundID; 
+AudioServiceCreateSystemSoundID((<span class="built_in">CFURLRef</span>) fileURL, &amp;soundID); 
+<span class="comment">// 播放声音 </span>
+AudioServicesPlaySystemSound(soundID);
+</code></pre><p>[3] 音频播放器</p>
+<p>   没有时长限制</p>
+<pre><code><span class="built_in">NSURL</span> *fileURL = [<span class="built_in">NSURL</span> fileURLWithPath: path isDirectory: <span class="literal">NO</span>]; 
+<span class="comment">// 用URL来初始化音频播放器-播放的不是iPod曲库中的音乐 </span>
+<span class="built_in">AVAudioPlayer</span>* player = ［<span class="built_in">AVAudioPlayer</span> alloc] initWithContentsOfURL: fileURL error: <span class="literal">NO</span>]; 
+<span class="comment">// 准备播放 </span>
+[player prepareToPlay]; 
+<span class="comment">// 设置代理 </span>
+[player setDelegate: <span class="keyword">self</span>]; 
+方法：play、pause、stop。可以通过playing属性查询播放器是否正在播放当中，可以通过volume属性来修改和查询播放器的播放增益（从<span class="number">0.0</span>到<span class="number">1.0</span>），可通过setting属性查询播放器其他设置。
+
+duration表示音频的时间长度， currentTime表示当前播放到的时间。播放结束后可以通过代理方法audioPlayerDidFinishPlaying:来处理播放后设置。
+</code></pre><ul>
+<li>2- 视频<br>视频播放可以采用网页视图<code>UIWebView</code>进行嵌入式播放（能播放YouTube视频），或者采用电影播放器<code>MPMoviePlayerController</code>进行播放。<br>[1] 电影播放器</li>
+</ul>
+<pre><code>MPMoviePlayerController *player =     ［MPMoviePlayerController alloc]<span class="string">initWithContentURL:</span> url]; 
+<span class="comment">// 设置播放器的大小，并将其加入视图中 </span>
+[player.view <span class="string">setFrame:</span> rectFrame]; 
+[self.view <span class="string">addSubView:</span> player.view]; 
+播放器的背景视图backgroundView。 
+全屏[player <span class="string">setFullscreen:</span> YES <span class="string">animated:</span> YES]; 
+播放另一个影片[player <span class="string">setContentURL:</span> newURL]; 
+[player <span class="string">requestThumbnailImagesAtTimes:</span>arrayTimes <span class="string">timeOption:</span>MPMovieTimeOptionNearestKeyFrame]; <span class="comment">// 表示播放器不会在你所指定的时间去截取预览，而是在绝对时间的附近几帧中寻找效果最好的帧做为预览。 </span>
+</code></pre><p><code>scalingMode</code>规定了影片的缩放模式。<br><code>initialPlaybackTime</code>用来控制视频开始播放的时间，单位是秒。<br>如果视频源在网络上，那么需要正确设置服务器端的<code>mimeType</code>。</p>
+<h4 id="十二-运行环-runloop">十二.运行环-runloop</h4><p>运行环作用于一个iOS应用的整个生命周期。它负责监视各种输入事件，并且在合适的时候对这些输入进行分配。应用的每一个线程都有且仅有一个运行环。你自己不需要创建也不需要销毁运行环，但是可以通过<code>currentRunLoop</code>方法来获取当前的运行环。</p>
+<h4 id="十三-定时器">十三.定时器</h4><p>由于运行环机制，定时器的精度不高，只能用于一般性延时。<br>例子：拼图游戏，DeskViewController.m。<br>NSObject类的定时方法。</p>
+<pre><code><span class="string">performSelector:</span> <span class="string">withObject:</span> <span class="string">afterDelay:</span> 运行方法，参数，时间（秒）。
+<span class="string">performSelectorOnMainThread:</span> <span class="string">withObject:</span> <span class="string">waitUntilDone:</span> 在主线程中，运行参数selector所指定的方法，如果waitUntilDone参数为YES，那么当前线程会被阻拦，直到selector运行完。
+<span class="string">performSelector:</span> <span class="string">onThread:</span> <span class="string">withObject:</span> <span class="string">waitUntilDone:</span>同上，但不一定在主线程中运行。
+<span class="string">performSelectorInBackground:</span> <span class="string">withObject:</span> 开启一个新线程，用于运行selector方法，selector方法应负责线程的初始化。
+<span class="string">cancelPreviousPerformRequestsWithTarget:</span>取消与一个目标相关的所有计划好的动作。
+<span class="string">cancelPreviousPerformRequestsWithTraget:</span> <span class="string">selector:</span> object只取消特定的计划动作。
+</code></pre><h4 id="十四-随机数">十四.随机数</h4><p>0~1之间随机数</p>
+<pre><code>CG_INLINE <span class="function"><span class="keyword">float</span> <span class="title">genRandomNum</span><span class="params">()</span> 
+</span>{ 
+<span class="keyword">return</span> (<span class="keyword">float</span>)arc4random/ARCRANDOM_MAX; 
+}
+</code></pre><h4 id="十五-地图与连接服务器">十五.地图与连接服务器</h4><p>[1] 添加框架MapKit.framework。使用MKMapView来呈现地图。注意应当直接使用此类，而不是继承之。如果希望在MKMapView类之上添加功能，可以使用MKMapViewDelegate协议。</p>
+<p>初始化：</p>
+<pre><code><span class="built_in">MKMapView</span> *mapView = ［<span class="built_in">MKMapView</span> alloc] initWithFrame: rect]; 
+初始化之后并不直接显示，还需要指定显示的地图区域：
+CLLocationCoordinate2D coordinate; 
+coordinate<span class="variable">.latitude</span> = latitudeValue; <span class="comment">// 纬度 </span>
+coordinate<span class="variable">.longtitude</span> = longtitudeValue; <span class="comment">// 精度 </span>
+<span class="comment">// 指定显示区域，width和height单位都是米 </span>
+mapView<span class="variable">.region</span> = <span class="built_in">MKCoordinateRegionMakeWithDistance</span>(coordinate, width, height); 
+之后可以通过addSubview添加地图。
+</code></pre><p> 属性：<code>showsUserLocation</code>-为YES，系统会持续跟踪用户的位置<br>          <code>userLocationVisible</code>-为YES，将显示用户所在位置<br>显示地图之后，常常希望在地图上添加标注，这需要创建一个类，并实现MKAnnotation协议，这个类叫做标注对象。标注对象往往实现 setCoordinate:方法来设置其坐标。在地图视图上，可以设置标注对象的坐标，然后添加进去，这样地图上就会出现一个标注。代理方法title 和subtitle能够在标注上显示标题和副标题。</p>
+<pre><code><span class="comment">// 初始化 </span>
+   mapView = ［MKMapView alloc] initWithFrame: CGRectMake(<span class="number">100</span>, <span class="number">100</span>, <span class="number">550</span>, <span class="number">700</span>)]; 
+   mapView.showsUserLocation = TRUE; 
+   mapView.mapType = MKMapTypeStandard; 
+   mapView.delegate = self; 
+   <span class="comment">// 设置坐标 </span>
+   CLLocationCoordinate2D coordinate; 
+   coordinate.latitude = <span class="number">37.31</span>; 
+   coordinate.longtitude = -<span class="number">122.03</span>; 
+   mapView.region = MKCoordinateRegionMakeWithDistance(coordinate, <span class="number">4000</span>, <span class="number">6000</span>); <span class="comment">// 4000米宽，6000米高的区域 </span>
+   [self.view insertSubview: mapView atIndex: <span class="number">0</span>];
+</code></pre><h4 id="十六-通过storyboard来初始化一个controller">十六.通过storyboard来初始化一个controller</h4><pre><code><span class="constant">CBigDesignImageViewController </span>*imageViewController = [<span class="keyword">self</span>.storyboard <span class="symbol">instantiateViewControllerWithIdentifier:</span>@<span class="string">"BigImageController"</span>];  
+   <span class="constant">BigImageController是</span>要在storyboard中设置的<span class="constant">Identifier属</span>性。
+</code></pre><h4 id="十七-给UIView子类设置阴影，包括各种控件">十七.给UIView子类设置阴影，包括各种控件</h4><ul>
+<li>1 导入QuartzCore framework</li>
+<li>2 #import</li>
+<li><p>3 编码：</p>
+<pre><code>［imgView layer] setShadowOffset<span class="value">:<span class="function">CGSizeMake</span>(<span class="number">5</span>, <span class="number">5</span>)];</span> <span class="comment">// 阴影的范围  </span>
+［imgView layer] setShadowRadius<span class="value">:<span class="number">2</span>];</span> <span class="comment">// 阴影扩散的范围控制  </span>
+［imgView layer] setShadowOpacity<span class="value">:<span class="number">1</span>];</span> <span class="comment">// 阴影透明度  </span>
+<span class="comment">// 阴影的颜色     </span>
+［imgView layer] setShadowColor<span class="value">:[UIColor brownColor].CGColor];</span>
+</code></pre><h4 id="十八-设置UIScrollView滚动速度">十八.设置UIScrollView滚动速度</h4></li>
+</ul>
+<pre><code><span class="comment">// 自动滚动太快，效果不好，这里把动画设置慢点，注意下面要直接赋值contentOffset，不要用带animated参数的函数，否则动画会出问题，因为两处都是动画效果。   </span>
+  [UIScrollView animateWithDuration:<span class="number">1.0f</span>  
+                       delay:<span class="number">0</span>  
+                       options:UIViewAnimationCurveLinear 
+                       animations:^{ 
+                           scrollView.contentOffset = CGPointMake(<span class="number">0</span>, <span class="number">0</span>);  
+                       } 
+                       completion:^(BOOL finished){} 
+                       ];  
+<span class="comment">// 如果在减速滚动过程中，按了刷新按钮，执行上面的动画，会出现重置的位置，y不是0的情况，这里再调用一次，滚动到0。 </span>
+[scrollView setContentOffset:CGPointMake(<span class="number">0</span>, <span class="number">0</span>) animated:YES];
+</code></pre><h4 id="十九-EXC_BAD_ACCESS">十九.EXC_BAD_ACCESS</h4><pre><code>Here’s <span class="operator">the</span> advice I generally give <span class="built_in">to</span> developers when you hit <span class="operator">an</span> EXC_BAD_ACCESS error:
+</code></pre><ul>
+<li>Set the NSZombieEnabled argument in your executable options, which sometimes helps narrow down the cause</li>
+<li>Run with Apple Instruments such as Leaks to look for memory issues</li>
+<li>Set a breakpoint in your code and step through until you narrow down where it’s crashing<br>Tried and true “comment out code till it works” then backtrack from there :]<br>设置 NSZombieEnabled 的方法：<br>你可以点击 Xcode 菜单 Product -&gt; Edit Scheme -&gt; Arguments, 然后将点击”加号”, 将 NSZombieEnabled 参数加到 Environment Variables 窗口中, 后面的数值写上 ”YES”.<br>或者在 Xcode4 菜单 Product -&gt; Edit Scheme -&gt; Diagnostics 设置窗口中直接勾上 Enable Zombie Objects 即可，Xcode 可用 cmd＋shift＋&lt; 进到这个窗口。</li>
+</ul>
+<h4 id="二十_iOS_8_及_iOS_9">二十 iOS 8 及 iOS 9</h4><p>定位<br>在IOS8中定位功能新增了两个方法：</p>
+<pre><code>- <span class="list">(<span class="keyword">void</span>)</span>requestWhenInUseAuthorization __OSX_AVAILABLE_STARTING<span class="list">(<span class="keyword">__MAC_NA</span>, __IPHONE_8_0)</span><span class="comment">;</span>
+
+- <span class="list">(<span class="keyword">void</span>)</span>requestAlwaysAuthorization __OSX_AVAILABLE_STARTING<span class="list">(<span class="keyword">__MAC_NA</span>, __IPHONE_8_0)</span><span class="comment">;</span>
+</code></pre><p>这两个新增的方法导致，之前写的程序在iOS8运行会出现，定位功能无法正常使用<br>这样让iOS8正常使用定位功能呢？</p>
+<p><1>你需要在info.plist表里面添加两条变量<br>在Info.plist中加入两个缺省没有的字段</1></p>
+<pre><code><span class="built_in">NSLocationAlwaysUsageDescription</span><span class="comment">//一直允许</span>
+<span class="built_in">NSLocationWhenInUseUsageDescription</span><span class="comment">//使用时允许</span>
+</code></pre><h4 id="iOS_9_网络请求">iOS 9 网络请求</h4><p>iOS9把所有的http请求都改为https了：iOS9系统发送的网络请求将统一使用TLS 1.2 SSL。采用TLS 1.2 协议，目的是 强制增强数据访问安全，而且 系统 Foundation 框架下的相关网络请求，将不再默认使用 Http 等不安全的网络协议，而默认采用 TLS 1.2。服务器因此需要更新，以解析相关数据。如不更新，可通过在 Info.plist 中声明，倒退回不安全的网络请求。</p>
+<ul>
+<li>1.在Info.plist中添加NSAppTransportSecurity类型Dictionary。</li>
+<li>2.在NSAppTransportSecurity下添加NSAllowsArbitraryLoads类型Boolean,值设为YES。</li>
+</ul>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/05/03/cocoaPods的安装和使用/" rel="prev">CocoaPods的安装和使用</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/04/25/iOS正则表达式判断邮箱、手机号等/" rel="next">iOS正则表达式判断邮箱、手机号等</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+            </div>
+
+            
+
+            
+              <div class="comments" id="comments">
+                
+              </div>
+            
+        </div>
+
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/avatar.jpg" alt="刘爽" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">刘爽</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">Links</p>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.baidu.com/" target="_blank">百度</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.zhihu.com/" target="_blank">知乎</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.github.com/" target="_blank">Github</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.cocoachina.com" target="_blank">CocoaChina</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank">Git教程</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://blog.callmewhy.com" target="_blank">Why</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#关于iOS开发中遇到的一些小问题及其解决方法"><span class="nav-number">1.</span> <span class="nav-text">关于iOS开发中遇到的一些小问题及其解决方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义调试"><span class="nav-number">2.</span> <span class="nav-text">自定义调试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决有的图片被渲染，显示不正常的问题"><span class="nav-number">3.</span> <span class="nav-text">解决有的图片被渲染，显示不正常的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#毛玻璃效果"><span class="nav-number">4.</span> <span class="nav-text">毛玻璃效果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#视图截圆角"><span class="nav-number">5.</span> <span class="nav-text">视图截圆角</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用NSURLSession请求网络数据"><span class="nav-number">6.</span> <span class="nav-text">使用NSURLSession请求网络数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#播放语音"><span class="nav-number">7.</span> <span class="nav-text">播放语音</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#webView"><span class="nav-number">8.</span> <span class="nav-text">webView</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用第三方SDWevImage解析图片"><span class="nav-number">9.</span> <span class="nav-text">使用第三方SDWevImage解析图片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置cell的自适应高度"><span class="nav-number">10.</span> <span class="nav-text">设置cell的自适应高度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用此方法必须要设置cell中的最后一个控件与cell的距离"><span class="nav-number">11.</span> <span class="nav-text">使用此方法必须要设置cell中的最后一个控件与cell的距离</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#让音乐在后台播放"><span class="nav-number">12.</span> <span class="nav-text">让音乐在后台播放</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#将URL中的汉字转换成utf-8格式，拼接到URL字符串中"><span class="nav-number">13.</span> <span class="nav-text">将URL中的汉字转换成utf-8格式，拼接到URL字符串中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#去除解析出来的数据带的_HTML_标记"><span class="nav-number">14.</span> <span class="nav-text">去除解析出来的数据带的 HTML 标记</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#去广告"><span class="nav-number">15.</span> <span class="nav-text">去广告</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#先到网页，找到开发者平台，依次输入并提交"><span class="nav-number">15.1.</span> <span class="nav-text">先到网页，找到开发者平台，依次输入并提交</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图片自适应"><span class="nav-number">16.</span> <span class="nav-text">图片自适应</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决tableView的head不会和cell一起滚动的问题"><span class="nav-number">17.</span> <span class="nav-text">解决tableView的head不会和cell一起滚动的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决有navigationbar的情况下，下面的tableView与navigationbar有一段距离的问题"><span class="nav-number">18.</span> <span class="nav-text">解决有navigationbar的情况下，下面的tableView与navigationbar有一段距离的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据再cell中解析，给cell做自适应高度时，无法实现"><span class="nav-number">19.</span> <span class="nav-text">数据再cell中解析，给cell做自适应高度时，无法实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何获取UIWebView中Button事件"><span class="nav-number">20.</span> <span class="nav-text">如何获取UIWebView中Button事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#批量上传和下载实现"><span class="nav-number">21.</span> <span class="nav-text">批量上传和下载实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何使用SDWebImage中的方法实现实时个人头像更新"><span class="nav-number">22.</span> <span class="nav-text">如何使用SDWebImage中的方法实现实时个人头像更新</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#极光推送的思路"><span class="nav-number">23.</span> <span class="nav-text">极光推送的思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#股票K线图?画线?"><span class="nav-number">24.</span> <span class="nav-text">股票K线图?画线?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#给一个NSDate对象，获取到一年中的第几个月中的第几天"><span class="nav-number">25.</span> <span class="nav-text">给一个NSDate对象，获取到一年中的第几个月中的第几天</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#runtime的实现原理"><span class="nav-number">26.</span> <span class="nav-text">runtime的实现原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tableView滑动时卡顿的处理办法"><span class="nav-number">27.</span> <span class="nav-text">tableView滑动时卡顿的处理办法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一-内存管理情况"><span class="nav-number">28.</span> <span class="nav-text">一.内存管理情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二_-图形API"><span class="nav-number">29.</span> <span class="nav-text">二 .图形API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三-容器"><span class="nav-number">30.</span> <span class="nav-text">三.容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四-文件系统"><span class="nav-number">31.</span> <span class="nav-text">四.文件系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五-UIAlertController"><span class="nav-number">32.</span> <span class="nav-text">五.UIAlertController</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#六-旋转"><span class="nav-number">33.</span> <span class="nav-text">六.旋转</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#七-快速拨打电话接口"><span class="nav-number">34.</span> <span class="nav-text">七.快速拨打电话接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#八-区分设备类型的方法"><span class="nav-number">35.</span> <span class="nav-text">八.区分设备类型的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#九-并发编程"><span class="nav-number">36.</span> <span class="nav-text">九.并发编程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#十-忙碌指示器"><span class="nav-number">37.</span> <span class="nav-text">十.忙碌指示器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#十一-媒体播放"><span class="nav-number">38.</span> <span class="nav-text">十一.媒体播放</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#十二-运行环-runloop"><span class="nav-number">39.</span> <span class="nav-text">十二.运行环-runloop</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#十三-定时器"><span class="nav-number">40.</span> <span class="nav-text">十三.定时器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#十四-随机数"><span class="nav-number">41.</span> <span class="nav-text">十四.随机数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#十五-地图与连接服务器"><span class="nav-number">42.</span> <span class="nav-text">十五.地图与连接服务器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#十六-通过storyboard来初始化一个controller"><span class="nav-number">43.</span> <span class="nav-text">十六.通过storyboard来初始化一个controller</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#十七-给UIView子类设置阴影，包括各种控件"><span class="nav-number">44.</span> <span class="nav-text">十七.给UIView子类设置阴影，包括各种控件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#十八-设置UIScrollView滚动速度"><span class="nav-number">45.</span> <span class="nav-text">十八.设置UIScrollView滚动速度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#十九-EXC_BAD_ACCESS"><span class="nav-number">46.</span> <span class="nav-text">十九.EXC_BAD_ACCESS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二十_iOS_8_及_iOS_9"><span class="nav-number">47.</span> <span class="nav-text">二十 iOS 8 及 iOS 9</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#iOS_9_网络请求"><span class="nav-number">48.</span> <span class="nav-text">iOS 9 网络请求</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+        <div class="footer-inner">
+            <div class="copyright" >
+  
+  &copy; &nbsp;  2014 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘爽</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+        </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+</div>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.4"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.4"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.4" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.4" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        if (CONFIG.sidebar === 'always') {
+            displaySidebar();
+        }
+    });
+</script>
+
+
+
+
+
+
+
+
+<!-- lazyload -->
+<script type="text/javascript" src="/js/lazyload.js"></script>
+<script type="text/javascript">
+    jQuery(function () {
+        jQuery("#posts img").lazyload({
+            placeholder: "/images/loading.gif",
+            effect: "fadeIn"
+        });
+    });
+</script>
+</body>
+</html>
