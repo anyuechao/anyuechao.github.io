@@ -403,16 +403,6 @@ var duoshuoQuery = {short_name:"995684946"};
 <!-- 多说公共JS代码 end -->
 </div>
 
-    <% } else if (theme.youyan.on) { %>
-        <%- partial('comments/youyan') %>
-    <% } else if (theme.disqus.on) { %>
-        <%- partial('comments/disqus', {
-            shortname: theme.disqus.shortname
-          }) %>
-    <% } else if (config.disqus_shortname) { %>
-        <%- partial('comments/disqus', {
-            shortname: config.disqus_shortname
-          }) %>
     <% } %>
 <% } %>
         </div>
