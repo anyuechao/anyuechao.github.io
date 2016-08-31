@@ -1,0 +1,883 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="[转]关于制作一个像淘宝那样复制链接就可以生成一条链接">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于iOS的剪贴板基本知识">
+<meta property="og:url" content="http://yoursite.com/2015/10/30/如何制作想淘宝口令一样的链接/index.html">
+<meta property="og:site_name" content="安跃超">
+<meta property="og:description" content="[转]关于制作一个像淘宝那样复制链接就可以生成一条链接">
+<meta property="og:updated_time" content="2015-12-04T03:00:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于iOS的剪贴板基本知识">
+<meta name="twitter:description" content="[转]关于制作一个像淘宝那样复制链接就可以生成一条链接">
+<meta name="twitter:creator" content="@[object Object]">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6318926023282918000,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/10/30/如何制作想淘宝口令一样的链接/"/>
+
+  <title> 关于iOS的剪贴板基本知识 | 安跃超 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">安跃超</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">安跃超的博客</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                关于iOS的剪贴板基本知识
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-10-30T09:18:10+08:00" content="2015-10-30">
+              2015-10-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="转-关于制作一个像淘宝那样复制链接就可以生成一条链接"><a href="#转-关于制作一个像淘宝那样复制链接就可以生成一条链接" class="headerlink" title="[转]关于制作一个像淘宝那样复制链接就可以生成一条链接"></a>[转]关于制作一个像淘宝那样复制链接就可以生成一条链接</h3><a id="more"></a>
+<h4 id="在iOS中下面三个控件，自身就有复制-粘贴的功能："><a href="#在iOS中下面三个控件，自身就有复制-粘贴的功能：" class="headerlink" title="在iOS中下面三个控件，自身就有复制-粘贴的功能："></a>在iOS中下面三个控件，自身就有复制-粘贴的功能：</h4><ul>
+<li>1、UITextView</li>
+<li>2、UITextField</li>
+<li>3、UIWebView</li>
+</ul>
+<h4 id="UIKit-framework提供了几个类和协议方便我们在自己的应用程序中实现剪贴板的功能。"><a href="#UIKit-framework提供了几个类和协议方便我们在自己的应用程序中实现剪贴板的功能。" class="headerlink" title="UIKit framework提供了几个类和协议方便我们在自己的应用程序中实现剪贴板的功能。"></a>UIKit framework提供了几个类和协议方便我们在自己的应用程序中实现剪贴板的功能。</h4><ul>
+<li>1、UIPasteboard：我们可以向其中写入数据，也可以读取数据<ul>
+<li>2、UIMenuController：显示一个快捷菜单，用来展示复制、剪贴、粘贴等选择的项。</li>
+<li>3、UIResponder中的 canPerformAction:withSender:用于控制哪些命令显示在快捷菜单中。</li>
+<li>4、当快捷菜单上的命令点击的时候，UIResponderStandardEditActions将会被调用。</li>
+</ul>
+</li>
+</ul>
+<h4 id="下面这些项能被放置到剪贴板中"><a href="#下面这些项能被放置到剪贴板中" class="headerlink" title="下面这些项能被放置到剪贴板中"></a>下面这些项能被放置到剪贴板中</h4><ul>
+<li>1、UIPasteboardTypeListString —   字符串数组, 包含kUTTypeUTF8PlainText</li>
+<li>2、UIPasteboardTypeListURL —   URL数组，包含kUTTypeURL</li>
+<li>3、UIPasteboardTypeListImage —   图形数组, 包含kUTTypePNG 和kUTTypeJPEG</li>
+<li><p>4、UIPasteboardTypeListColor —   颜色数组</p>
+<p>剪贴板的类型分为两种：<br>系统级：使用UIPasteboardNameGeneral和UIPasteboardNameFind，系统级应用程序关闭，或者卸载的数据不会丢失。<br>应用程序级：通过设置，可以让数据在应用程序关闭之后仍然保存在剪贴板中，但是应用程序卸载之后数据就会失去。我们可用通过pasteboardWithName:create：来创建。</p>
+</li>
+</ul>
+<p>例子如下：<br>有时候我们可能需要复制UILabel上的文本，或者UIImageView的图片，而UILabel和UIImageView默认是不响应Touch事件的，也无法复制，那么我们就需要自己实现一个可复制的UILabel。新添加一个类继承自UILabel：<br>[cpp] view plaincopy<br>@interface UICopyLabel : UILabel<br>@end    </p>
+<pre><code>#import &quot;UICopyLabel.h&quot;    
+@implementation UICopyLabel    
+@end    
+</code></pre><p>为了能接收到事件（能成为第一响应者），我们需要覆盖一个方法：</p>
+<pre><code>-(BOOL)canBecomeFirstResponder  
+{    
+return YES;    
+}    
+</code></pre><p> 还需要针对复制的操作覆盖两个方法： </p>
+<pre><code>// 可以响应的方法  
+-(BOOL)canPerformAction:(SEL)action withSender:(id)sender  
+{    
+return (action == @selector(copy:));    
+}    
+
+//针对于响应方法的实现    
+    -(void)copy:(id)sender  
+{    
+UIPasteboard *pboard = [UIPasteboard generalPasteboard];    
+pboard.string = self.text;    
+}    
+</code></pre><p>有了以上三个方法，我们就能处理copy了，当然，在能接收到事件的情况下：</p>
+<pre><code>//UILabel默认是不接收事件的，我们需要自己添加touch事件    
+-(void)attachTapHandler  
+{    
+self.userInteractionEnabled = YES;  //用户交互的总开关    
+UITapGestureRecognizer *touch = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];    
+touch.numberOfTapsRequired = 2;    
+[self addGestureRecognizer:touch];    
+[touch release];    
+}    
+//绑定事件    
+- (id)initWithFrame:(CGRect)frame    
+{    
+self = [super initWithFrame:frame];    
+if (self)  
+   {    
+    [self attachTapHandler];    
+}    
+return self;    
+}    
+//同上    
+-(void)awakeFromNib  
+{    
+[super awakeFromNib];    
+[self attachTapHandler];    
+}    
+</code></pre><p>我们已经可以接收到事件了！由于我在上方将tap数设为2，所以需要双击才能捕获，接下来，我们需要处理这个tap，以便让菜单栏弹出来：</p>
+<pre><code>-(void)handleTap:(UIGestureRecognizer*) recognizer  
+{    
+ [self becomeFirstResponder];  
+ UIMenuItem *copyLink = [[[UIMenuItemalloc] initWithTitle:@&quot;复制&quot;  
+                                                      action:@selector(copy:)]autorelease];  
+ [[UIMenuControllersharedMenuController] setMenuItems:[NSArrayarrayWithObjects:copyLink, nil]];  
+ [[UIMenuControllersharedMenuController] setTargetRect:self.frameinView:self.superview];  
+ [[UIMenuControllersharedMenuController] setMenuVisible:YESanimated: YES];  
+}    
+</code></pre><p> 这样一来，一个可复制的UILabel就诞生了！它能处理接收点击、弹出菜单栏、处理copy，这是一个很普通的可复制控件。</p>
+<p>接下来我们做一个可复制的UIImageView，创建一个新的viewController，放两个imageView，默认显示不同的图：<br>然后把上面的代码直接拷过来，改三个地方：</p>
+<pre><code>-(BOOL)canPerformAction:(SEL)action withSender:(id)sender  
+{    
+return (action == @selector(copy:) || action == @selector(paste:));    
+}    
+
+-(void)copy:(id)sender  
+{    
+UIPasteboard *pboard = [UIPasteboard generalPasteboard];   
+NSData *imgData = UIImagePNGRepresentation(self.image);
+pboard.image = [UIImage imageWithData:imgData];   
+}    
+
+-(void)paste:(id)sender  
+{    
+UIPasteboard *pboard = [UIPasteboard generalPasteboard];    
+self.image = pboard.image;    
+}    
+</code></pre><p> UIPasteboard有系统级别和应用级别两种类型，所以不仅可以在应用程序内通信，还能在应用程序间通信，比如我复制一个url，然后打开safari，粘贴到地址栏去，而我们可以在应用程序间通信、共享数据。</p>
+<p>在PasteBoardWrite里面点“写入”后把textField中的文本写入粘贴板，然后切换到PasteBoardRead的时候显示出来。如果我们的粘贴板只想给“自己人”用的话，就不能用系统的通用粘贴板，需要我们自己创建一个：</p>
+<pre><code>//需要提供一个唯一的名字，一般使用倒写的域名：com.mycompany.myapp.pboard    
+//后面的参数表示，如果不存在，是否创建一个    
+UIPasteboard *pb = [UIPasteboard     pasteboardWithName:@&quot;testBoard&quot; create:YES];    
+</code></pre><p>使用这个粘贴板，我们可以把文本存进去，然后在另一个app里面读出来，一些常用的类型已经被设置为属性了： </p>
+<p>除此之外，如果是能够转换成plist的数据类型（NSString, NSArray, NSDictionary, NSDate, NSNumber 和 NSURL），我们可以调用setValue:forPasteboardType:方法去存储数据，其他类型只能调用setData:forPasteboardType:方法（plist数据类型也可使用），类似于这样：</p>
+<pre><code>//存储数据  
+NSDictionary *dict = [NSDictionary dictionaryWithObject:textField.text forKey:@&quot;content&quot;];    
+NSData *dictData = [NSKeyedArchiver archivedDataWithRootObject:dict];    
+[pb setData:dictData forPasteboardType:@&quot;myType&quot;];    
+
+//获取就类似于这样：   
+UIPasteboard *pb = [UIPasteboard pasteboardWithName:@&quot;testBoard&quot; create:YES];    
+NSDictionary *dict = [NSKeyedUnarchiver unarchiveObjectWithData:[pb dataForPasteboardType:@&quot;myType&quot;]];    
+caption.text = [dict objectForKey:@&quot;content&quot;];    
+</code></pre><p>上面提到了一个PasteboardType，这是一个统一类型标识符（Uniform Type Identifier  UTI）,能帮助app获取自己能处理的数据。比如你只能处理文本的粘贴，那给你一个UIImage显然是无用的。你可以使用公用的UTI，也可以使用任意字符，苹果建议使用倒写的域名加上类型名：com.myCompany.myApp.myType</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/path/to/wechat-reward-image.png" alt="YueChao An WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/path/to/alipay-reward-image.png" alt="YueChao An Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/09/10/NSURLSession下载与缓存/" rel="next" title="NSURLSession下载与缓存">
+                <i class="fa fa-chevron-left"></i> NSURLSession下载与缓存
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/10/3DTouch、ShortcutItem、Peek-And-Pop/" rel="prev" title="3DTouch、ShortcutItem、Peek And Pop">
+                3DTouch、ShortcutItem、Peek And Pop <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<div class="duoshuo" id="comments">     
+       <!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="<%=key%>" data-title="<%=title%>" data-url="<%=url%>"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"995684946"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="YueChao An" />
+          <p class="site-author-name" itemprop="name">YueChao An</p>
+          <p class="site-description motion-element" itemprop="description">你那么优秀，我有什么理由不努力</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/995684946" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/61821afa755b/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-jianshu"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhangtianqi.net/" target="_blank" title="zhangtianqi">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  zhangtianqi
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.ilakeyc.gift/" target="_blank" title="ilakeyc">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ilakeyc
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wangshiyu13" target="_blank" title="shiyu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  shiyu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.lidaze.com/" target="_blank" title="lidaze">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  lidaze
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://liushuang.win/" target="_blank" title="feelShuang">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  feelShuang
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/EmyWong" target="_blank" title="装逼王">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  装逼王
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://jenko.cc/" target="_blank" title="jenko">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  jenko
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://liuyanwei.jumppo.com/" target="_blank" title="ali大神">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ali大神
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#转-关于制作一个像淘宝那样复制链接就可以生成一条链接"><span class="nav-number">1.</span> <span class="nav-text">[转]关于制作一个像淘宝那样复制链接就可以生成一条链接</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在iOS中下面三个控件，自身就有复制-粘贴的功能："><span class="nav-number">1.1.</span> <span class="nav-text">在iOS中下面三个控件，自身就有复制-粘贴的功能：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UIKit-framework提供了几个类和协议方便我们在自己的应用程序中实现剪贴板的功能。"><span class="nav-number">1.2.</span> <span class="nav-text">UIKit framework提供了几个类和协议方便我们在自己的应用程序中实现剪贴板的功能。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#下面这些项能被放置到剪贴板中"><span class="nav-number">1.3.</span> <span class="nav-text">下面这些项能被放置到剪贴板中</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YueChao An</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

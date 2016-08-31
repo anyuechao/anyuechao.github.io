@@ -1,0 +1,1393 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="核心动画框架 QuartzCoreCALayer就是UIView上的图层，很多的CALayer组成了UIView。CALayer与UIView是两个完全不同的类UIView动画就是简单动画，可以实现改变，偏移，形变，翻转，旋转，翻页">
+<meta property="og:type" content="article">
+<meta property="og:title" content="QuartzCore核心动画框架">
+<meta property="og:url" content="http://yoursite.com/2015/12/07/QuartzCore核心动画框架/index.html">
+<meta property="og:site_name" content="安跃超">
+<meta property="og:description" content="核心动画框架 QuartzCoreCALayer就是UIView上的图层，很多的CALayer组成了UIView。CALayer与UIView是两个完全不同的类UIView动画就是简单动画，可以实现改变，偏移，形变，翻转，旋转，翻页">
+<meta property="og:image" content="http://7xrz94.com1.z0.glb.clouddn.com/q1.png">
+<meta property="og:image" content="http://7xrz94.com1.z0.glb.clouddn.com/q2.gif">
+<meta property="og:image" content="http://7xrz94.com1.z0.glb.clouddn.com/q3.gif">
+<meta property="og:image" content="http://7xrz94.com1.z0.glb.clouddn.com/q4.png">
+<meta property="og:image" content="http://7xrz94.com1.z0.glb.clouddn.com/q5.png">
+<meta property="og:image" content="http://7xrz94.com1.z0.glb.clouddn.com/q6.gif">
+<meta property="og:image" content="http://i12.tietuku.com/7e25c4d9135cefc0.gif">
+<meta property="og:image" content="http://7xrz94.com1.z0.glb.clouddn.com/q8.gif">
+<meta property="og:image" content="http://7xrz94.com1.z0.glb.clouddn.com/q9.png">
+<meta property="og:updated_time" content="2016-05-04T10:10:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="QuartzCore核心动画框架">
+<meta name="twitter:description" content="核心动画框架 QuartzCoreCALayer就是UIView上的图层，很多的CALayer组成了UIView。CALayer与UIView是两个完全不同的类UIView动画就是简单动画，可以实现改变，偏移，形变，翻转，旋转，翻页">
+<meta name="twitter:image" content="http://7xrz94.com1.z0.glb.clouddn.com/q1.png">
+<meta name="twitter:creator" content="@[object Object]">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6318926023282918000,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/12/07/QuartzCore核心动画框架/"/>
+
+  <title> QuartzCore核心动画框架 | 安跃超 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">安跃超</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">安跃超的博客</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                QuartzCore核心动画框架
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-07T18:57:23+08:00" content="2015-12-07">
+              2015-12-07
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="核心动画框架-QuartzCore"><a href="#核心动画框架-QuartzCore" class="headerlink" title="核心动画框架 QuartzCore"></a>核心动画框架 QuartzCore</h3><p>CALayer就是UIView上的图层，很多的CALayer组成了UIView。<br>CALayer与UIView是两个完全不同的类<br>UIView动画就是简单动画，可以实现改变，偏移，形变，翻转，旋转，翻页 </p>
+<a id="more"></a>
+<p>QuartzCore.framework:<br>NSObject<br>CAAnimation：<br>CAAnimationGroup: 并行动画<br>CATransition:<br>CAPropertyAnimation: 属性动画<br>CABasicAnimation:<br>CAKeyframeAnimation:</p>
+<p>大家都知道在iOS中实现一个动画相当简单，只要调用UIView的块代码即可实现一个动画效果，这在其他系统开发中基本不可能实现。<br>使用上面UIView封装的方法进行动画设置固然十分方便，但是具体动画如何实现我们是不清楚的。</p>
+<p>这里就需要了解iOS的核心动画Core Animation（包含在Quartz Core框架中）。在iOS中核心动画分为几类：基础动画、关键帧动画、动画组、转场动画。各个类的关系大致如下：<br><img src="http://7xrz94.com1.z0.glb.clouddn.com/q1.png" alt=""></p>
+<p>CAAnimation：核心动画的基础类，不能直接使用，负责动画运行时间、速度的控制，本身实现了CAMediaTiming协议。</p>
+<p>CAPropertyAnimation：属性动画的基类（通过属性进行动画设置，注意是可动画属性），不能直接使用。<br>1-1 CABasicAnimation：基础动画，通过属性修改进行动画参数控制，只有初始状态和结束状态。<br>1-2 CAKeyframeAnimation：关键帧动画，同样是通过属性进行动画参数控制，但是同基础动画不同的是它可以有多个状态控制。</p>
+<p>CAAnimationGroup：动画组，动画组是一种组合模式设计，可以通过动画组来进行所有动画行为的统一控制，组中所有动画效果可以并发执行。</p>
+<p>CATransition：转场动画，主要通过滤镜进行动画效果设置。重要属性type : 转场类型，subType: 方向</p>
+<p>基础动画、关键帧动画都属于属性动画，就是通过修改属性值产生动画效果，开发人员只需要设置fromValue初始值和toValue结束值，中间的过程动画（又叫“补间动画”）由系统自动计算产生。<br>和基础动画不同的是关键帧动画可以设置多个属性值，每两个属性中间的补间动画由系统自动完成，因此从这个角度而言基础动画又可以看成是有两个关键帧的关键帧动画。</p>
+<p>CABasicAnimation基础动画<br>如果不使用UIView封装的方法，动画创建一般分为以下几步：<br>1.初始化动画并设置动画属性<br>2.设置动画属性初始值（可以省略）、结束值以及其他动画属性<br>3.给图层添加动画</p>
+<pre><code>#import &quot;KCMainViewController.h&quot;
+@interface KCMainViewController (){
+CALayer *_layer;
+}
+@end
+
+@implementation KCMainViewController
+
+- (void)viewDidLoad {
+[super viewDidLoad];
+//设置背景(注意这个图片其实在根图层)
+UIImage *backgroundImage=[UIImage imageNamed:@&quot;background.jpg&quot;];
+self.view.backgroundColor=[UIColor colorWithPatternImage:backgroundImage];
+//自定义一个图层
+_layer=[[CALayer alloc]init];
+_layer.bounds=CGRectMake(0, 0, 10, 20);
+_layer.position=CGPointMake(50, 150);
+_layer.contents=(id)[UIImage imageNamed:@&quot;petal.png&quot;].CGImage;
+[self.view.layer addSublayer:_layer];
+}
+
+
+
+    #pragma mark 点击事件
+    -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    UITouch *touch=touches.anyObject;
+    CGPoint location= [touch locationInView:self.view];
+    //创建并开始动画
+    [self translatonAnimation:location];
+    }
+
+#pragma mark 移动动画
+-(void)translatonAnimation:(CGPoint)location{
+//1.创建动画并指定动画属性
+CABasicAnimation *basicAnimation=[CABasicAnimation animationWithKeyPath:@&quot;position&quot;];
+
+//2.设置动画属性初始值和结束值
+//    basicAnimation.fromValue=[NSNumber numberWithInteger:50];//可以不设置，默认为图层初始状态
+basicAnimation.toValue=[NSValue valueWithCGPoint:location];
+
+//设置其他动画属性
+basicAnimation.duration=5.0;//动画时间5秒
+//basicAnimation.repeatCount=HUGE_VALF;//设置重复次数,HUGE_VALF可看做无穷大，起到循环动画的效果
+//    basicAnimation.removedOnCompletion=NO;//运行一次是否移除动画
+
+//3.添加动画到图层，注意key相当于给动画进行命名，以后获得该动画时可以使用此名称获取
+[_layer addAnimation:basicAnimation forKey:@&quot;KCBasicAnimation_Translation&quot;];
+}
+@end
+</code></pre><p><img src="http://7xrz94.com1.z0.glb.clouddn.com/q2.gif" alt=""></p>
+<p>上面实现了一个基本动画效果，但是这个动画存在一个问题：动画结束后动画图层回到了原来的位置，当然是用UIView封装的方法是没有这个问题的。如何解决这个问题呢？</p>
+<p>原因：<br>图层动画的本质就是将图层内部的内容转化为位图经硬件操作形成一种动画效果，其实图层本身并没有任何的变化。上面的动画中图层并没有因为动画效果而改变它的位置（对于缩放动画其大小也是不会改变的），所以动画完成之后图层还是在原来的显示位置没有任何变化，如果这个图层在一个UIView中你会发现在UIView移动过程中你要触发UIView的点击事件也只能点击原来的位置（即使它已经运动到了别的位置），因为它的位置从来没有变过。</p>
+<p> 解决方法之一：在动画完成之后重新设置它的位置。</p>
+<pre><code>#import &quot;KCMainViewController.h&quot;
+@interface KCMainViewController (){
+CALayer *_layer;
+}
+@end
+
+@implementation KCMainViewController
+- (void)viewDidLoad {
+[super viewDidLoad];
+
+//设置背景(注意这个图片其实在根图层)
+UIImage *backgroundImage=[UIImage imageNamed:@&quot;background.jpg&quot;];
+self.view.backgroundColor=[UIColor colorWithPatternImage:backgroundImage];
+
+//自定义一个图层
+_layer=[[CALayer alloc]init];
+_layer.bounds=CGRectMake(0, 0, 10, 20);
+_layer.position=CGPointMake(50, 150);
+_layer.contents=(id)[UIImage imageNamed:@&quot;petal.png&quot;].CGImage;
+[self.view.layer addSublayer:_layer];
+</code></pre><p>}</p>
+<pre><code>#pragma mark 点击事件
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+UITouch *touch=touches.anyObject;
+CGPoint location= [touch locationInView:self.view];
+//创建并开始动画
+[self translatonAnimation:location];
+}
+
+#pragma mark 移动动画
+-(void)translatonAnimation:(CGPoint)location{
+//1.创建动画并指定动画属性
+CABasicAnimation *basicAnimation=[CABasicAnimation animationWithKeyPath:@&quot;position&quot;];
+//2.设置动画属性初始值和结束值
+//    basicAnimation.fromValue=[NSNumber numberWithInteger:50];//可以不设置，默认为图层初始状态
+basicAnimation.toValue=[NSValue valueWithCGPoint:location];
+//设置其他动画属性
+basicAnimation.duration=5.0;//动画时间5秒
+//basicAnimation.repeatCount=HUGE_VALF;//设置重复次数,HUGE_VALF可看做无穷大，起到循环动画的效果
+//    basicAnimation.removedOnCompletion=NO;//运行一次是否移除动画
+basicAnimation.delegate=self;
+//（修改）存储当前位置在动画结束后使用（结束后固定其位置)
+[basicAnimation setValue:[NSValue valueWithCGPoint:location] forKey:@&quot;KCBasicAnimationLocation&quot;];
+
+//3.添加动画到图层，注意key相当于给动画进行命名，以后获得该动画时可以使用此名称获取
+[_layer addAnimation:basicAnimation forKey:@&quot;KCBasicAnimation_Translation&quot;];
+}
+
+#pragma mark - 动画代理方法
+#pragma mark 动画开始
+-(void)animationDidStart:(CAAnimation *)anim{
+}
+
+#pragma mark 动画结束
+-(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
+NSLog(@&quot;animation(%@) stop.\r_layer.frame=%@&quot;,anim,NSStringFromCGRect(_layer.frame));
+//通过前面的设置的key获得动画
+NSLog(@&quot;%@&quot;,[_layer animationForKey:@&quot;KCBasicAnimation_Translation&quot;]);
+   // 通过key 获取到动画设置的location
+_layer.position=[[anim valueForKey:@&quot;KCBasicAnimationLocation&quot;] CGPointValue];
+}
+</code></pre><p>上面通过给动画设置一个代理去监听动画的开始和结束事件，在动画开始前给动画添加一个自定义属性“KCBasicAnimationLocation”存储动画终点位置，然后在动画结束后设置动画的位置为终点位置。</p>
+<p>运行上述代码发现另外问题：动画运行完成后会重新从起始点运动到终点。</p>
+<p>产生原因：对于非根图层，设置图层的可动画属性（在动画结束后重新设置了position，而position是可动画属性）会产生动画效果<br>解决有两种办法：关闭图层隐式动画、设置动画图层为根图层。显然这里不能采取后者，因为根图层当前已经作为动画的背景。<br>要关闭隐式动画需要用到动画事务CATransaction，在事务内将隐式动画关闭，例如上面的代码可以改为：</p>
+<pre><code>#pragma mark 动画结束
+-(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
+NSLog(@&quot;animation(%@) stop.\r_layer.frame=%@&quot;,anim,NSStringFromCGRect(_layer.frame));
+//开启事务
+[CATransaction begin];
+//禁用隐式动画
+[CATransaction setDisableActions:YES]；
+_layer.position=[[anim valueForKey:@&quot;KCBasicAnimationLocation&quot;] CGPointValue];
+//提交事务
+[CATransaction commit];
+}
+</code></pre><p>当然上面的动画还显得有些生硬，因为落花飘散的时候可能不仅仅是自由落体运动，本身由于空气阻力、外界风力还会造成落花在空中的旋转、摇摆等，这里不妨给图层添加一个旋转的动画。<br>对于图层的旋转前面已经演示过怎么通过key path设置图层旋转的内容了，在这里需要强调一下，图层的形变都是基于锚点进行的。例如旋转，旋转的中心点就是图层的锚点。</p>
+<pre><code>#import &quot;KCMainViewController.h；
+@interface KCMainViewController (){
+CALayer *_layer;
+}
+@end
+
+@implementation KCMainViewController
+- (void)viewDidLoad {
+[super viewDidLoad];
+
+//设置背景(注意这个图片其实在根图层)
+UIImage *backgroundImage=[UIImage imageNamed:@&quot;background.jpg&quot;];
+self.view.backgroundColor=[UIColor colorWithPatternImage:backgroundImage];
+
+//自定义一个图层
+_layer=[[CALayer alloc]init];
+_layer.bounds=CGRectMake(0, 0, 10, 20);
+_layer.position=CGPointMake(50, 150);
+_layer.anchorPoint=CGPointMake(0.5, 0.6);//设置锚点
+_layer.contents=(id)[UIImage imageNamed:@&quot;petal.png&quot;].CGImage;
+[self.view.layer addSublayer:_layer];
+</code></pre><p>}</p>
+<pre><code>#pragma mark 移动动画
+-(void)translatonAnimation:(CGPoint)location{
+//1.创建动画并指定动画属性
+CABasicAnimation *basicAnimation=[CABasicAnimation animationWithKeyPath:@&quot;position&quot;];
+
+//2.设置动画属性初始值、结束值
+//    basicAnimation.fromValue=[NSNumber numberWithInteger:50];//可以不设置，默认为图层初始状态
+basicAnimation.toValue=[NSValue valueWithCGPoint:location];
+
+//设置其他动画属性
+basicAnimation.duration=5.0;//动画时间5秒
+//basicAnimation.repeatCount=HUGE_VALF;//设置重复次数,HUGE_VALF可看做无穷大，起到循环动画的效果
+//    basicAnimation.removedOnCompletion=NO;//运行一次是否移除动画
+basicAnimation.delegate=self;
+//存储当前位置在动画结束后使用
+[basicAnimation setValue:[NSValue valueWithCGPoint:location] forKey:@&quot;KCBasicAnimationLocation&quot;];
+
+//3.添加动画到图层，注意key相当于给动画进行命名，以后获得该图层时可以使用此名称获取
+[_layer addAnimation:basicAnimation forKey:@&quot;KCBasicAnimation_Translation&quot;];
+</code></pre><p>}</p>
+<pre><code>#pragma mark 旋转动画
+-(void)rotationAnimation{
+//1.创建动画并指定动画属性
+CABasicAnimation *basicAnimation=[CABasicAnimation animationWithKeyPath:@&quot;transform.rotation.z&quot;];
+
+//2.设置动画属性初始值、结束值
+//    basicAnimation.fromValue=[NSNumber numberWithInt:M_PI_2];
+basicAnimation.toValue=[NSNumber numberWithFloat:M_PI_2*3];
+
+//设置其他动画属性
+basicAnimation.duration=6.0;
+basicAnimation.autoreverses=true;//旋转后再旋转到原来的位置
+
+//4.添加动画到图层，注意key相当于给动画进行命名，以后获得该动画时可以使用此名称获取
+[_layer addAnimation:basicAnimation forKey:@&quot;KCBasicAnimation_Rotation&quot;];
+}
+
+#pragma mark 点击事件
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+UITouch *touch=touches.anyObject;
+CGPoint location= [touch locationInView:self.view];
+//创建并开始动画
+[self translatonAnimation:location];
+
+[self rotationAnimation];
+}
+
+#pragma mark - 动画代理方法
+#pragma mark 动画开始
+-(void)animationDidStart:(CAAnimation *)anim{
+NSLog(@&quot;animation(%@) start.\r_layer.frame=%@&quot;,anim,NSStringFromCGRect(_layer.frame));
+NSLog(@&quot;%@&quot;,[_layer animationForKey:@&quot;KCBasicAnimation_Translation&quot;]);//通过前面的设置的key获得动画
+}
+
+#pragma mark 动画结束
+-(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
+NSLog(@&quot;animation(%@) stop.\r_layer.frame=%@&quot;,anim,NSStringFromCGRect(_layer.frame));
+//开启事务
+[CATransaction begin];
+//禁用隐式动画
+[CATransaction setDisableActions:YES];
+_layer.position=[[anim valueForKey:@&quot;KCBasicAnimationLocation&quot;] CGPointValue];
+//提交事务
+[CATransaction commit];
+}
+@end
+</code></pre><p>上面代码中结合两种动画操作，需要注意的是只给移动动画设置了代理，在旋转动画中并没有设置代理，否则代理方法会执行两遍。<br>由于旋转动画会无限循环执行（上面设置了重复次数无穷大），并且两个动画的执行时间没有必然的关系，这样一来移动停止后可能还在旋转，为了让移动动画停止后旋转动画停止就需要使用到动画的暂停和恢复方法。<br>方法 </p>
+<ul>
+<li>核心动画的运行有一个媒体时间的概念，假设将一个旋转动画设置旋转一周用时60秒的话，那么当动画旋转90度后媒体时间就是15秒。如果此时要将动画暂停只需要让媒体时间偏移量设置为15秒即可，并把动画运行速度设置为0使其停止运动。 </li>
+<li>如果又过了60秒后需要恢复动画（此时媒体时间为75秒），这时只要将动画开始开始时间设置为当前媒体时间75秒减去暂停时的时间（也就是之前定格动画时的偏移量）15秒（开始时间=75-15=60秒），那么动画就会重新计算60秒后的状态再开始运行，与此同时将偏移量重新设置为0并且把运行速度设置1。 </li>
+<li>这个过程中真正起到暂停动画和恢复动画的其实是动画速度的调整，媒体时间偏移量以及恢复时的开始时间设置主要为了让动画更加连贯。</li>
+</ul>
+<p>下面的代码演示了移动动画结束后旋转动画暂停，并且当再次点击动画时旋转恢复的过程(注意在移动过程中如果再次点击屏幕可以暂停移动和旋转动画，再次点击可以恢复两种动画。但是当移动结束后触发了移动动画的完成事件如果再次点击屏幕则只能恢复旋转动画，因为此时移动动画已经结束而不是暂停，无法再恢复)。</p>
+<pre><code>#import &quot;KCMainViewController.h；
+@interface KCMainViewController (){
+CALayer *_layer;
+}
+@end
+@implementation KCMainViewController
+- (void)viewDidLoad {
+[super viewDidLoad];
+
+//设置背景(注意这个图片其实在根图层)
+UIImage *backgroundImage=[UIImage imageNamed:@&quot;background.jpg&quot;];
+self.view.backgroundColor=[UIColor colorWithPatternImage:backgroundImage];
+
+//自定义一个图层
+_layer=[[CALayer alloc]init];
+_layer.bounds=CGRectMake(0, 0, 10, 20);
+_layer.position=CGPointMake(50, 150);
+_layer.anchorPoint=CGPointMake(0.5, 0.6);//设置锚点
+_layer.contents=(id)[UIImage imageNamed:@&quot;petal.png&quot;].CGImage;
+[self.view.layer addSublayer:_layer];
+}
+
+#pragma mark 移动动画
+-(void)translatonAnimation:(CGPoint)location{
+//1.创建动画并指定动画属性
+CABasicAnimation *basicAnimation=[CABasicAnimation animationWithKeyPath:@&quot;position&quot;];
+//2.设置动画属性初始值、结束值
+//    basicAnimation.fromValue=[NSNumber     numberWithInteger:50];//可以不设置，默认为图层初始状态
+basicAnimation.toValue=[NSValue valueWithCGPoint:location];
+//设置其他动画属性
+basicAnimation.duration=5.0;//动画时间5秒
+//    basicAnimation.repeatCount=HUGE_VALF;//设置重复次数,HUGE_VALF可看做无穷大，起到循环动画的效果
+basicAnimation.removedOnCompletion=NO;//运行一次是否移除动画
+basicAnimation.delegate=self;
+//存储当前位置在动画结束后使用
+[basicAnimation setValue:[NSValue valueWithCGPoint:location] forKey:@&quot;KCBasicAnimationLocation&quot;];
+
+//3.添加动画到图层，注意key相当于给动画进行命名，以后获得该图层时可以使用此名称获取
+[_layer addAnimation:basicAnimation forKey:@&quot;KCBasicAnimation_Translation&quot;];
+}
+
+#pragma mark 旋转动画
+-(void)rotationAnimation{
+//1.创建动画并指定动画属性
+CABasicAnimation *basicAnimation=[CABasicAnimation animationWithKeyPath:@&quot;transform.rotation.z&quot;];
+
+//2.设置动画属性初始值、结束值
+//    basicAnimation.fromValue=[NSNumber numberWithInt:M_PI_2];
+basicAnimation.toValue=[NSNumber numberWithFloat:M_PI_2*3];
+
+//设置其他动画属性
+basicAnimation.duration=6.0;
+basicAnimation.autoreverses=true;//旋转后在旋转到原来的位置
+basicAnimation.repeatCount=HUGE_VALF;//设置无限循环
+basicAnimation.removedOnCompletion=NO;
+//    basicAnimation.delegate=self;
+
+//4.添加动画到图层，注意key相当于给动画进行命名，以后获得该动画时可以使用此名称获取
+[_layer addAnimation:basicAnimation forKey:@&quot;KCBasicAnimation_Rotation&quot;];
+</code></pre><p>}</p>
+<pre><code>#pragma mark 点击事件
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+UITouch *touch=touches.anyObject;
+CGPoint location= [touch locationInView:self.view];
+//判断是否已经常见过动画，如果已经创建则不再创建动画
+CAAnimation *animation= [_layer animationForKey:@&quot;KCBasicAnimation_Translation&quot;];
+if(animation){
+    if (_layer.speed==0) {
+    // 动画恢复
+        [self animationResume];
+    }else{
+    // 动画暂停
+        [self animationPause];
+    }
+}else{
+    //创建并开始动画
+    [self translatonAnimation:location];
+
+    [self rotationAnimation];
+}
+}
+
+#pragma mark 动画暂停
+-(void)animationPause{
+//取得指定图层动画的媒体时间，后面参数用于指定子图层，这里不需要
+CFTimeInterval interval=[_layer convertTime:CACurrentMediaTime() fromLayer:nil];
+//设置时间偏移量，保证暂停时停留在旋转的位置
+[_layer setTimeOffset:interval];
+//速度设置为0，暂停动画
+_layer.speed=0;
+}
+
+#pragma mark 动画恢复
+-(void)animationResume{
+//获得暂停的时间
+CFTimeInterval beginTime= CACurrentMediaTime()- _layer.timeOffset;
+//设置偏移量
+_layer.timeOffset=0;
+//设置开始时间
+_layer.beginTime=beginTime;
+//设置动画速度，开始运动
+_layer.speed=1.0;
+}
+
+#pragma mark - 动画代理方法
+#pragma mark 动画开始
+-(void)animationDidStart:(CAAnimation *)anim{
+NSLog(@&quot;animation(%@) start.\r_layer.frame=%@&quot;,anim,NSStringFromCGRect(_layer.frame));
+NSLog(@&quot;%@&quot;,[_layer animationForKey:@&quot;KCBasicAnimation_Translation&quot;]);//通过前面的设置的key获得动画
+}
+
+#pragma mark 动画结束
+-(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
+NSLog(@&quot;animation(%@) stop.\r_layer.frame=%@&quot;,anim,NSStringFromCGRect(_layer.frame));
+
+//开启事务
+[CATransaction begin];
+//禁用隐式动画
+[CATransaction setDisableActions:YES];
+_layer.position=[[anim valueForKey:@&quot;KCBasicAnimationLocation&quot;] CGPointValue];
+//提交事务
+[CATransaction commit];
+//暂停动画
+[self animationPause];
+}
+@end
+</code></pre><p><img src="http://7xrz94.com1.z0.glb.clouddn.com/q3.gif" alt=""></p>
+<p>注意：</p>
+<ul>
+<li>动画暂停针对的是图层而不是图层中的某个动画。</li>
+<li>要做无限循环的动画，动画的removedOnCompletion属性必须设置为NO，否则运行一次动画就会销毁。<br>CAKeyframeAnimation关键帧动画<br>属性解析： </li>
+<li>values：就是上述的NSArray对象。里面的元素称为”关键帧”(keyframe)。动画对象会在指定的时间(duration)内，依次显示values数组中的每一个关键帧 </li>
+<li>path：可以设置一个CGPathRef\CGMutablePathRef,让层跟着路径移动。path只对CALayer的anchorPoint和position起作用。如果你设置了path，那么values将被忽略 </li>
+<li>keyTimes：可以为对应的关键帧指定对应的时间点,其取值范围为0到1.0,keyTimes中的每一个时间值都对应values中的每一帧.当keyTimes没有设置的时候,各个关键帧的时间是平分的</li>
+</ul>
+<p>关键帧动画就是在动画控制过程中开发者指定主要的动画状态，至于各个状态间动画如何进行则由系统自动运算补充（每两个关键帧之间系统形成的动画称为“补间动画”），这种动画的好处就是开发者不用逐个控制每个动画帧，而只要关心几个关键帧的状态即可。<br>关键帧动画开发分为两种形式：一种是通过设置不同的属性值进行关键帧控制，另一种是通过绘制路径进行关键帧控制。后者优先级高于前者，如果设置了路径则属性值就不再起作用。<br>对于前面的落花动画效果而言其实落花的过程并不自然，很显然实际生活中它不可能沿着直线下落，这里我们不妨通过关键帧动画的values属性控制它在下落过程中的属性。假设下落过程如图：<br><img src="http://7xrz94.com1.z0.glb.clouddn.com/q4.png" alt=""><br>——————————————————————————————————————<br>在这里需要设置四个关键帧（如图中四个关键点），具体代码如下（动画创建过程同基本动画基本完全一致）：</p>
+<pre><code>#import &quot;KCMainViewController.h&quot;
+
+@interface KCMainViewController (){
+CALayer *_layer;
+}
+
+@end
+
+@implementation KCMainViewController
+
+- (void)viewDidLoad {
+[super viewDidLoad];
+
+//设置背景(注意这个图片其实在根图层)
+UIImage *backgroundImage=[UIImage imageNamed:@&quot;background.jpg&quot;];
+self.view.backgroundColor=[UIColor colorWithPatternImage:backgroundImage];
+
+//自定义一个图层
+_layer=[[CALayer alloc]init];
+_layer.bounds=CGRectMake(0, 0, 10, 20);
+_layer.position=CGPointMake(50, 150);
+_layer.contents=(id)[UIImage imageNamed:@&quot;petal.png&quot;].CGImage;
+[self.view.layer addSublayer:_layer];
+
+//创建动画
+[self translationAnimation];
+}
+
+#pragma mark 关键帧动画
+-(void)translationAnimation{
+//1.创建关键帧动画并设置动画属性
+CAKeyframeAnimation *keyframeAnimation=[CAKeyframeAnimation animationWithKeyPath:@&quot;position&quot;];
+
+//2.设置关键帧,这里有四个关键帧
+NSValue *key1=[NSValue valueWithCGPoint:_layer.position];//对于关键帧动画初始值不能省略
+NSValue *key2=[NSValue valueWithCGPoint:CGPointMake(80, 220)];
+NSValue *key3=[NSValue valueWithCGPoint:CGPointMake(45, 300)];
+NSValue *key4=[NSValue valueWithCGPoint:CGPointMake(55, 400)];
+NSArray *values=@[key1,key2,key3,key4];
+// 设置关键帧动画的重点 values 属性（是一个数组）
+keyframeAnimation.values=values;
+//设置其他属性
+keyframeAnimation.duration=8.0;
+keyframeAnimation.beginTime=CACurrentMediaTime()+2;//设置延迟2秒执行
+
+//3.添加动画到图层，添加动画后就会执行动画
+[_layer addAnimation:keyframeAnimation forKey:@&quot;KCKeyframeAnimation_Position&quot;];
+}
+@end
+</code></pre><p>运行效果(注意运行结束没有设置图层位置为动画运动结束位置)：<br><img src="http://7xrz94.com1.z0.glb.clouddn.com/q5.png" alt=""></p>
+<p>上面的方式固然比前面使用基础动画效果要好一些，但其实还是存在问题，那就是落花飞落的路径是直线的，当然这个直线是根据程序中设置的四个关键帧自动形成的，那么如何让它沿着曲线飘落呢？这就是第二种类型的关键帧动画，通过描绘路径进行关键帧动画控制。假设让落花沿着下面的曲线路径飘落：<br><img src="http://7xrz94.com1.z0.glb.clouddn.com/q6.gif" alt=""><br>————————————————————————————————————————<br>这是一条贝塞尔曲线</p>
+<pre><code>#import &quot;KCMainViewController.h&quot;
+@interface KCMainViewController (){
+CALayer *_layer;
+}
+@end
+@implementation KCMainViewController
+- (void)viewDidLoad {
+[super viewDidLoad];
+//设置背景(注意这个图片其实在根图层)
+UIImage *backgroundImage=[UIImage imageNamed:@&quot;background.jpg&quot;];
+self.view.backgroundColor=[UIColor colorWithPatternImage:backgroundImage];
+
+//自定义一个图层
+_layer=[[CALayer alloc]init];
+_layer.bounds=CGRectMake(0, 0, 10, 20);
+_layer.position=CGPointMake(50, 150);
+_layer.contents=(id)[UIImage imageNamed:@&quot;petal.png&quot;].CGImage;
+[self.view.layer addSublayer:_layer];
+//创建动画
+[self translationAnimation];
+}
+
+#pragma mark 关键帧动画
+-(void)translationAnimation{
+//1.创建关键帧动画并设置动画属性
+CAKeyframeAnimation *keyframeAnimation=[CAKeyframeAnimation animationWithKeyPath:@&quot;position&quot;];
+
+//2.设置路径
+//绘制贝塞尔曲线
+CGPathRef path=CGPathCreateMutable();
+CGPathMoveToPoint(path, NULL, _layer.position.x, _layer.position.y);//移动到起始点
+CGPathAddCurveToPoint(path, NULL, 160, 280, -30, 300, 55, 400);//绘制二次贝塞尔曲线
+keyframeAnimation.path=path;//设置path属性
+CGPathRelease(path);//释放路径对象
+//设置其他属性
+keyframeAnimation.duration=8.0;
+keyframeAnimation.beginTime=CACurrentMediaTime()+5;//设置延迟2秒执行
+
+//3.添加动画到图层，添加动画后就会执行动画
+[_layer addAnimation:keyframeAnimation forKey:@&quot;KCKeyframeAnimation_Position&quot;];
+}
+@end
+</code></pre><p> 运行效果(注意运行结束没有设置图层位置为动画运动结束位置)：<br><img src="http://i12.tietuku.com/7e25c4d9135cefc0.gif" alt=""></p>
+<p>看起来动画不会那么生硬了，但是这里需要注意，对于路径类型的关键帧动画系统是从描绘路径的位置开始路径，直到路径结束。如果上面的路径不是贝塞尔曲线而是矩形路径那么它会从矩形的左上角开始运行，顺时针一周回到左上角；如果指定的路径是一个椭圆，那么动画运行的路径是从椭圆右侧开始（0度）顺时针一周回到右侧。 </p>
+<ul>
+<li>补充–其他属性 *<br>keyTimes：各个关键帧的时间控制 ， 时间是占比 0~1。（运行完此帧之后占总时间的多少）</li>
+</ul>
+<p>CAAnimationGroup动画组 </p>
+<ul>
+<li>动画组是一系列动画的组合，凡是添加到动画组中的动画都受控于动画组，这样一来各类动画公共的行为就可以统一进行控制而不必单独设置，而且放到动画组中的各个动画可以并发执行，共同构建出复杂的动画效果。 </li>
+<li>动画组使用起来并不复杂，首先单独创建单个动画（可以是基础动画也可以是关键帧动画），然后将基础动画添加到动画组，最后将动画组添加到图层即可。 </li>
+<li>动画组的时间跟单个动画中最长时间相同（如果多余， 则仍然是单个动画时间， 如果少于，则按照动画组时间处理）</li>
+</ul>
+<p>下面代码实现完整落花效果（旋转 + 贝塞尔曲线）</p>
+<pre><code>#import &quot;KCMainViewController.h&quot;
+
+@interface KCMainViewController (){
+CALayer *_layer;
+}
+@end
+@implementation KCMainViewController
+- (void)viewDidLoad {
+[super viewDidLoad];
+//设置背景(注意这个图片其实在根图层)
+UIImage *backgroundImage=[UIImage imageNamed:@&quot;background.jpg&quot;];
+self.view.backgroundColor=[UIColor colorWithPatternImage:backgroundImage];
+//自定义一个图层
+_layer=[[CALayer alloc]init];
+_layer.bounds=CGRectMake(0, 0, 10, 20);
+_layer.position=CGPointMake(50, 150);
+_layer.contents=(id)[UIImage imageNamed:@&quot;petal.png&quot;].CGImage;
+[self.view.layer addSublayer:_layer];
+//创建动画
+[self groupAnimation];
+}
+
+#pragma mark 基础旋转动画
+-(CABasicAnimation *)rotationAnimation{
+CABasicAnimation *basicAnimation=[CABasicAnimation animationWithKeyPath:@&quot;transform.rotation.z&quot;];
+CGFloat toValue=M_PI_2*3;
+basicAnimation.toValue=[NSNumber numberWithFloat:M_PI_2*3];
+//    basicAnimation.duration=6.0;
+basicAnimation.autoreverses=true;
+basicAnimation.repeatCount=HUGE_VALF;
+basicAnimation.removedOnCompletion=NO;
+
+[basicAnimation setValue:[NSNumber numberWithFloat:toValue] forKey:@&quot;KCBasicAnimationProperty_ToValue&quot;];
+
+return basicAnimation;
+</code></pre><p>}</p>
+<pre><code>#pragma mark 关键帧移动动画
+-(CAKeyframeAnimation *)translationAnimation{
+CAKeyframeAnimation *keyframeAnimation=[CAKeyframeAnimation animationWithKeyPath:@&quot;position&quot;];
+
+CGPoint endPoint= CGPointMake(55, 400);
+CGPathRef path=CGPathCreateMutable();
+CGPathMoveToPoint(path, NULL, _layer.position.x, _layer.position.y);
+CGPathAddCurveToPoint(path, NULL, 160, 280, -30, 300, endPoint.x, endPoint.y);
+
+keyframeAnimation.path=path;
+CGPathRelease(path);
+[keyframeAnimation setValue:[NSValue valueWithCGPoint:endPoint] forKey:@&quot;KCKeyframeAnimationProperty_EndPosition&quot;];
+
+return keyframeAnimation;
+}
+
+#pragma mark 创建动画组
+-(void)groupAnimation{
+//1.创建动画组
+CAAnimationGroup *animationGroup=[CAAnimationGroup animation];
+//2.设置组中的动画和其他属性
+CABasicAnimation *basicAnimation=[self rotationAnimation];
+CAKeyframeAnimation *keyframeAnimation=[self translationAnimation];
+animationGroup.animations=@[basicAnimation,keyframeAnimation];
+animationGroup.delegate=self;
+animationGroup.duration=10.0;//设置动画时间，如果动画组中动画已经设置过动画属性则不再生效
+animationGroup.beginTime=CACurrentMediaTime()+5;//延迟五秒执行
+//3.给图层添加动画
+[_layer addAnimation:animationGroup forKey:nil];
+}
+
+
+
+#pragma mark - 代理方法
+    #pragma mark 动画完成
+-(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
+CAAnimationGroup *animationGroup=(CAAnimationGroup *)anim;
+CABasicAnimation *basicAnimation=animationGroup.animations[0];
+CAKeyframeAnimation *keyframeAnimation=animationGroup.animations[1];
+CGFloat toValue=[[basicAnimation valueForKey:@&quot;KCBasicAnimationProperty_ToValue&quot;] floatValue];
+CGPoint endPoint=[[keyframeAnimation valueForKey:@&quot;KCKeyframeAnimationProperty_EndPosition&quot;] CGPointValue];
+
+[CATransaction begin];
+[CATransaction setDisableActions:YES];
+
+//设置动画最终状态
+_layer.position=endPoint;
+_layer.transform=CATransform3DMakeRotation(toValue, 0, 0, 1);
+[CATransaction commit];
+}
+@end
+</code></pre><p><img src="http://7xrz94.com1.z0.glb.clouddn.com/q8.gif" alt=""></p>
+<p>CATransition转场动画</p>
+<p>属性解析:<br>type：动画过渡类型<br>subtype：动画过渡方向<br>startProgress：动画起点(在整体动画的百分比)<br>endProgress：动画终点(在整体动画的百分比)</p>
+<p>转场动画就是从一个场景以动画的形式过渡到另一个场景。转场动画的使用一般分为以下几个步骤：</p>
+<p>1.创建转场动画<br>2.设置转场类型、子类型（可选）及其他属性<br>3.设置转场后的新视图并添加动画到图层<br>下表列出了常用的转场类型(注意私有API是苹果官方没有公开的动画类型，但是目前通过仍然可以使用)：<br><img src="http://7xrz94.com1.z0.glb.clouddn.com/q9.png" alt=""></p>
+<pre><code>#import &quot;LayerTransitionAnimationVC.h&quot;
+#define IMAGE_COUNT 5
+@interface LayerTransitionAnimationVC (){
+UIImageView *_imageView;
+NSInteger _currentIndex;
+}
+@end
+@implementation LayerTransitionAnimationVC
+- (void)viewDidLoad {
+[super viewDidLoad];
+
+//定义图片控件
+_imageView=[[UIImageView alloc]init];
+_imageView.frame=[UIScreen mainScreen].bounds;
+_imageView.contentMode=UIViewContentModeScaleAspectFit;
+_imageView.image=[UIImage imageNamed:@&quot;image0.jpg&quot;];//默认图片
+[self.view addSubview:_imageView];
+//添加手势
+UISwipeGestureRecognizer *leftSwipeGesture=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(leftSwipe:)];
+leftSwipeGesture.direction=UISwipeGestureRecognizerDirectionLeft;
+[self.view addGestureRecognizer:leftSwipeGesture];
+
+UISwipeGestureRecognizer *rightSwipeGesture=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(rightSwipe:)];
+rightSwipeGesture.direction=UISwipeGestureRecognizerDirectionRight;
+[self.view addGestureRecognizer:rightSwipeGesture];
+</code></pre><p>}</p>
+<pre><code>#pragma mark 向左滑动浏览下一张图片
+-(void)leftSwipe:(UISwipeGestureRecognizer *)gesture{
+[self transitionAnimation:YES];
+</code></pre><p>}</p>
+<pre><code>#pragma mark 向右滑动浏览上一张图片
+-(void)rightSwipe:(UISwipeGestureRecognizer *)gesture{
+[self transitionAnimation:NO];
+</code></pre><p>}</p>
+<pre><code>#pragma mark 转场动画
+-(void)transitionAnimation:(BOOL)isNext{
+//1.创建转场动画对象
+CATransition *transition=[[CATransition alloc]init];
+
+//2.设置动画类型,注意对于苹果官方没公开的动画类型只能使用字符串，并没有对应的常量定义
+transition.type=@&quot;cube&quot;;
+
+//设置子类型
+if (isNext) {
+    transition.subtype=kCATransitionFromRight;
+}else{
+    transition.subtype=kCATransitionFromLeft;
+}
+//设置动画时常
+transition.duration=1.0f;
+
+//3.设置转场后的新视图添加转场动画
+_imageView.image=[self getImage:isNext];
+[_imageView.layer addAnimation:transition forKey:@&quot;KCTransitionAnimation&quot;];
+}
+
+#pragma mark 取得当前图片
+-(UIImage *)getImage:(BOOL)isNext{
+if (isNext) {
+    _currentIndex=(_currentIndex+1)%IMAGE_COUNT;
+}else{
+    _currentIndex=(_currentIndex-1+IMAGE_COUNT)%IMAGE_COUNT;
+}
+NSString *imageName=[NSString stringWithFormat:@&quot;image%ld&quot;,_currentIndex];
+return [UIImage imageNamed:imageName];
+}
+@end
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/path/to/wechat-reward-image.png" alt="YueChao An WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/path/to/alipay-reward-image.png" alt="YueChao An Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/20/使用WKWebView替换UIWebView/" rel="next" title="使用WKWebView替换UIWebView">
+                <i class="fa fa-chevron-left"></i> 使用WKWebView替换UIWebView
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/12/16/Guard/" rel="prev" title="Guard">
+                Guard <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<div class="duoshuo" id="comments">     
+       <!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="<%=key%>" data-title="<%=title%>" data-url="<%=url%>"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"995684946"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="YueChao An" />
+          <p class="site-author-name" itemprop="name">YueChao An</p>
+          <p class="site-description motion-element" itemprop="description">你那么优秀，我有什么理由不努力</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/995684946" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/61821afa755b/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-jianshu"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhangtianqi.net/" target="_blank" title="zhangtianqi">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  zhangtianqi
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.ilakeyc.gift/" target="_blank" title="ilakeyc">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ilakeyc
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wangshiyu13" target="_blank" title="shiyu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  shiyu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.lidaze.com/" target="_blank" title="lidaze">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  lidaze
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://liushuang.win/" target="_blank" title="feelShuang">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  feelShuang
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/EmyWong" target="_blank" title="装逼王">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  装逼王
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://jenko.cc/" target="_blank" title="jenko">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  jenko
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://liuyanwei.jumppo.com/" target="_blank" title="ali大神">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ali大神
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#核心动画框架-QuartzCore"><span class="nav-number">1.</span> <span class="nav-text">核心动画框架 QuartzCore</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YueChao An</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,894 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="3DTouch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3DTouch、ShortcutItem、Peek And Pop">
+<meta property="og:url" content="http://yoursite.com/2015/11/10/3DTouch、ShortcutItem、Peek-And-Pop/index.html">
+<meta property="og:site_name" content="安跃超">
+<meta property="og:description" content="3DTouch">
+<meta property="og:image" content="http://i12.tietuku.com/14bc7ec46d5364ab.jpg">
+<meta property="og:image" content="http://i12.tietuku.com/3aa54dab286d6e1c.jpg">
+<meta property="og:image" content="http://i12.tietuku.com/544e882ddf85ae59.jpg">
+<meta property="og:updated_time" content="2015-12-10T07:06:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="3DTouch、ShortcutItem、Peek And Pop">
+<meta name="twitter:description" content="3DTouch">
+<meta name="twitter:image" content="http://i12.tietuku.com/14bc7ec46d5364ab.jpg">
+<meta name="twitter:creator" content="@[object Object]">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6318926023282918000,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/11/10/3DTouch、ShortcutItem、Peek-And-Pop/"/>
+
+  <title> 3DTouch、ShortcutItem、Peek And Pop | 安跃超 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">安跃超</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">安跃超的博客</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                3DTouch、ShortcutItem、Peek And Pop
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-11-10T11:01:28+08:00" content="2015-11-10">
+              2015-11-10
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="3DTouch"><a href="#3DTouch" class="headerlink" title="3DTouch"></a>3DTouch</h3><a id="more"></a>
+<p><img src="http://i12.tietuku.com/14bc7ec46d5364ab.jpg" alt=""></p>
+<h4 id="UITouch类里API的变化"><a href="#UITouch类里API的变化" class="headerlink" title="UITouch类里API的变化"></a>UITouch类里API的变化</h4><h5 id="iOS9中添加的属性"><a href="#iOS9中添加的属性" class="headerlink" title="iOS9中添加的属性"></a>iOS9中添加的属性</h5><p><code>altitudeAngle</code></p>
+<ul>
+<li><p>当笔平行于平面时,该值为0</p>
+</li>
+<li><p>当笔垂直于平面时,该值为Pi / 2</p>
+</li>
+</ul>
+<p><code>estimatedProperties</code></p>
+<ul>
+<li><p>当前触摸对象估计的触摸特性</p>
+</li>
+<li><p>返回值是UITouchPropertyies</p>
+</li>
+</ul>
+<p><code>updatedProperties</code></p>
+<ul>
+<li><p>当前触摸对象已经更新的触摸特性</p>
+</li>
+<li><p>返回值是UITouchPropertyies</p>
+</li>
+</ul>
+<p><code>estimationUpdateIndex</code></p>
+<ul>
+<li><p>当每个触摸对象的触摸特性发生变化时，该值将会单独增加</p>
+</li>
+<li><p>返回值是NSNumber</p>
+</li>
+</ul>
+<h5 id="iOS9中添加的方法"><a href="#iOS9中添加的方法" class="headerlink" title="iOS9中添加的方法"></a>iOS9中添加的方法</h5><p><code>- PreciseLocationInView:</code></p>
+<ul>
+<li><p>当前触摸对象的坐标<br><code>- PrecisePreviousLocationInView:</code></p>
+</li>
+<li><p>当前触摸对象的前置坐标<br><code>- azimuthAngleInview:</code></p>
+</li>
+<li><p>沿着x轴正向的方位角</p>
+</li>
+<li><p>当与x轴正向方向相同时,该值为0</p>
+</li>
+<li><p>当view参数为nil时，默认为keyWindow</p>
+</li>
+</ul>
+<p><code>- azimuthUnitVectorInView:</code></p>
+<ul>
+<li><p>当前触摸对象的方向上的单位向量</p>
+</li>
+<li><p>当view参数为nil时，默认为keyWindow</p>
+</li>
+</ul>
+<h4 id="UIForceTouchCapability"><a href="#UIForceTouchCapability" class="headerlink" title="UIForceTouchCapability"></a>UIForceTouchCapability</h4><p><code>UIForceTouchCapabilityUnknown</code></p>
+<ul>
+<li>不能确定是否支持压力感应<br><code>UIForceTouchCapabilityUnavailable</code></li>
+<li>不能支持压力感应<br><code>UIForceTouchCapabilityAvailable</code></li>
+<li><p>可以支持压力感应</p>
+<h4 id="UITouchType"><a href="#UITouchType" class="headerlink" title="UITouchType"></a>UITouchType</h4><p><code>UITouchTypeDirect</code></p>
+</li>
+<li><p>垂直的触摸类型<br><code>UITouchTypeIndirect</code></p>
+</li>
+<li>非初值的触摸类型<br><code>UITouchTypeStylus</code></li>
+<li>水平的触摸类型<br><code>UITouchProperties</code><br><code>UITouchPropertyForce</code></li>
+</ul>
+<hr>
+<h3 id="ShortcutItem"><a href="#ShortcutItem" class="headerlink" title="ShortcutItem"></a>ShortcutItem</h3><hr>
+<p><img src="http://i12.tietuku.com/3aa54dab286d6e1c.jpg" alt=""></p>
+<h4 id="静态方式"><a href="#静态方式" class="headerlink" title="静态方式"></a>静态方式</h4><ul>
+<li>打开Info.plist文件</li>
+<li><p>在对应UIApplicationShortcutItems关键字下添加item</p>
+<h4 id="动态方式"><a href="#动态方式" class="headerlink" title="动态方式"></a>动态方式</h4><h5 id="修改当前应用程序的某个shortcutItem"><a href="#修改当前应用程序的某个shortcutItem" class="headerlink" title="修改当前应用程序的某个shortcutItem"></a>修改当前应用程序的某个shortcutItem</h5><pre><code>//获取第0个shortcutItem  
+id oldItem = [existingShortcutItems objectAtIndex: 0];  
+//将旧的shortcutItem改变为可修改类型shortcutItem  
+id mutableItem = [oldItem mutableCopy];  
+//修改shortcutItem的显示标题  
+[mutableItem setLocalizedTitle: @“Click Lewis”];
+</code></pre><h5 id="获取当前应用程序的shortcutItems"><a href="#获取当前应用程序的shortcutItems" class="headerlink" title="获取当前应用程序的shortcutItems"></a>获取当前应用程序的shortcutItems</h5><pre><code>//获取当前应用程序对象  
+UIApplication *app = [UIApplication sharedApplication];  
+//获取一个应用程序对象的shortcutItem列表  
+id existingShortcutItems = [app shortcutItems];
+</code></pre><h5 id="重置当前应用程序的shortcutItems"><a href="#重置当前应用程序的shortcutItems" class="headerlink" title="重置当前应用程序的shortcutItems"></a>重置当前应用程序的shortcutItems</h5><pre><code>//根据旧的shortcutItems生成可变shortcutItems数组  
+id updatedShortcutItems = [existingShortcutItems mutableCopy];  
+//修改可变shortcutItems数组中对应index下的元素为新的shortcutItem  
+[updatedShortcutItems replaceObjectAtIndex: 0 withObject: mutableItem];  
+//修改应用程序对象的shortcutItems为新的数组  
+[app setShortcutItems: updatedShortcutItems];
+</code></pre><h5 id="创建一个新的UIApplicationShortcutItem"><a href="#创建一个新的UIApplicationShortcutItem" class="headerlink" title="创建一个新的UIApplicationShortcutItem"></a>创建一个新的UIApplicationShortcutItem</h5></li>
+<li><p>初始化函数</p>
+<ul>
+<li>initWithType:localizedTitle:localizedSubtitle:icon:userInfo:</li>
+<li>initWithType:localizedTitle:</li>
+</ul>
+</li>
+<li><p>属性</p>
+<ul>
+<li><p>localizedTitle:NSString</p>
+</li>
+<li><p>localizedSubtitle:NSString</p>
+</li>
+<li><p>type:NSString</p>
+</li>
+<li><p>icon:UIApplicationShortcutIcon</p>
+</li>
+<li><p>userInfo:NSDictionary</p>
+</li>
+<li><p>只有只读特性，想要进行修改时，需要通过mutableCopy方法转变为<br>NSMutableApplicationShortcutItem</p>
+<h4 id="创建一个新的Item图标"><a href="#创建一个新的Item图标" class="headerlink" title="创建一个新的Item图标"></a>创建一个新的Item图标</h4></li>
+</ul>
+</li>
+<li><p>初始化函数</p>
+<ul>
+<li><p>iconWithType:</p>
+</li>
+<li><p>iconWithTemplateImageName:</p>
+</li>
+<li><p>iconWithContact:</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="当程序启动时"><a href="#当程序启动时" class="headerlink" title="当程序启动时"></a>当程序启动时</h4><ul>
+<li>判断launchOptions字典内的UIApplicationLaunchOptionsShortcutItemKey是否为空</li>
+<li>当不为空时,application:didFinishLaunchWithOptions方法返回false，否则返回true</li>
+<li>在application:performActionForShortcutItem:completionHandler方法内处理点击事件</li>
+</ul>
+<hr>
+<h3 id="Peek-and-Pop"><a href="#Peek-and-Pop" class="headerlink" title="Peek and Pop"></a>Peek and Pop</h3><hr>
+<p><img src="http://i12.tietuku.com/544e882ddf85ae59.jpg" alt=""><br>注册预览功能的代理对象和源视图<br>代理对象需要接受UIViewControllerPreviewingDelegate协议<br>  @interface RootVC<uiviewcontrollerpreviewingdelegate><br>  {}<br>  @end<br>代理对象实现协议内的Peek和Pop方法</uiviewcontrollerpreviewingdelegate></p>
+<pre><code>@implementation RootVC  
+- (UIViewController *)previewingContext:(id&lt;UIViewControllerPreviewing&gt;)context viewControllerForLocation:(CGPoint) point  
+{  
+UIViewController *childVC = [[UIViewController alloc] init];  
+childVC.preferredContentSize = CGSizeMake(0.0f,300f);  
+
+CGRect rect = CGRectMake(10, point.y - 10, self.view.frame.size.width - 20,20);  
+context.sourceRect = rect;  
+return childVC;  
+}  
+- (void)previewContext:(id&lt;UIViewControllerPreviewing&gt;)context commitViewController:(UIViewController*)vc  
+{  
+[self showViewController:vc sender:self];  
+}  
+@end
+</code></pre><h4 id="注册方法声明在UIViewController类内"><a href="#注册方法声明在UIViewController类内" class="headerlink" title="注册方法声明在UIViewController类内"></a>注册方法声明在UIViewController类内</h4><pre><code>[self registerForPreviewingWithDelegate:self sourceView:self.view];       
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/path/to/wechat-reward-image.png" alt="YueChao An WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/path/to/alipay-reward-image.png" alt="YueChao An Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/30/如何制作想淘宝口令一样的链接/" rel="next" title="关于iOS的剪贴板基本知识">
+                <i class="fa fa-chevron-left"></i> 关于iOS的剪贴板基本知识
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/10/iOS分屏多任务-Slide-Over-Split-View/" rel="prev" title="iOS分屏多任务(Slide Over &Split View)">
+                iOS分屏多任务(Slide Over &Split View) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<div class="duoshuo" id="comments">     
+       <!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="<%=key%>" data-title="<%=title%>" data-url="<%=url%>"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"995684946"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="YueChao An" />
+          <p class="site-author-name" itemprop="name">YueChao An</p>
+          <p class="site-description motion-element" itemprop="description">你那么优秀，我有什么理由不努力</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/995684946" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/61821afa755b/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-jianshu"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhangtianqi.net/" target="_blank" title="zhangtianqi">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  zhangtianqi
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.ilakeyc.gift/" target="_blank" title="ilakeyc">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ilakeyc
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wangshiyu13" target="_blank" title="shiyu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  shiyu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.lidaze.com/" target="_blank" title="lidaze">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  lidaze
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://liushuang.win/" target="_blank" title="feelShuang">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  feelShuang
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/EmyWong" target="_blank" title="装逼王">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  装逼王
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://jenko.cc/" target="_blank" title="jenko">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  jenko
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://liuyanwei.jumppo.com/" target="_blank" title="ali大神">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ali大神
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#3DTouch"><span class="nav-number">1.</span> <span class="nav-text">3DTouch</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#UITouch类里API的变化"><span class="nav-number">1.1.</span> <span class="nav-text">UITouch类里API的变化</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#iOS9中添加的属性"><span class="nav-number">1.1.1.</span> <span class="nav-text">iOS9中添加的属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#iOS9中添加的方法"><span class="nav-number">1.1.2.</span> <span class="nav-text">iOS9中添加的方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UIForceTouchCapability"><span class="nav-number">1.2.</span> <span class="nav-text">UIForceTouchCapability</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UITouchType"><span class="nav-number">1.3.</span> <span class="nav-text">UITouchType</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ShortcutItem"><span class="nav-number">2.</span> <span class="nav-text">ShortcutItem</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#静态方式"><span class="nav-number">2.1.</span> <span class="nav-text">静态方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态方式"><span class="nav-number">2.2.</span> <span class="nav-text">动态方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#修改当前应用程序的某个shortcutItem"><span class="nav-number">2.2.1.</span> <span class="nav-text">修改当前应用程序的某个shortcutItem</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#获取当前应用程序的shortcutItems"><span class="nav-number">2.2.2.</span> <span class="nav-text">获取当前应用程序的shortcutItems</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#重置当前应用程序的shortcutItems"><span class="nav-number">2.2.3.</span> <span class="nav-text">重置当前应用程序的shortcutItems</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建一个新的UIApplicationShortcutItem"><span class="nav-number">2.2.4.</span> <span class="nav-text">创建一个新的UIApplicationShortcutItem</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建一个新的Item图标"><span class="nav-number">2.3.</span> <span class="nav-text">创建一个新的Item图标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#当程序启动时"><span class="nav-number">2.4.</span> <span class="nav-text">当程序启动时</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Peek-and-Pop"><span class="nav-number">3.</span> <span class="nav-text">Peek and Pop</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注册方法声明在UIViewController类内"><span class="nav-number">3.1.</span> <span class="nav-text">注册方法声明在UIViewController类内</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YueChao An</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
