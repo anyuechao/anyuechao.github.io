@@ -103,7 +103,6 @@
 
 
 <meta name="description" content="####普通版单例
-
 class TheOneAndOnlyKraken {
 
 static let sharedInstance = TheOneAndOnlyKraken()
@@ -116,7 +115,6 @@ private init() {}">
 <meta property="og:url" content="http://yoursite.com/2016/01/22/swift单例/index.html">
 <meta property="og:site_name" content="安跃超">
 <meta property="og:description" content="####普通版单例
-
 class TheOneAndOnlyKraken {
 
 static let sharedInstance = TheOneAndOnlyKraken()
@@ -125,11 +123,10 @@ static let sharedInstance = TheOneAndOnlyKraken()
 
 private init() {}">
 <meta property="og:image" content="http://7xrz94.com1.z0.glb.clouddn.com/67E6B986-7BBD-417D-A1B2-25FD2F36EA25.png">
-<meta property="og:updated_time" content="2016-08-31T09:18:54.000Z">
+<meta property="og:updated_time" content="2016-08-31T09:20:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="swift单例">
 <meta name="twitter:description" content="####普通版单例
-
 class TheOneAndOnlyKraken {
 
 static let sharedInstance = TheOneAndOnlyKraken()
@@ -381,9 +378,8 @@ private init() {}">
 
       
         <p><img src="http://7xrz94.com1.z0.glb.clouddn.com/67E6B986-7BBD-417D-A1B2-25FD2F36EA25.png" width="400" height="600"></p>
-<pre><code>####普通版单例
-
-class TheOneAndOnlyKraken {
+<p>####普通版单例</p>
+<pre><code>class TheOneAndOnlyKraken {
 
 static let sharedInstance = TheOneAndOnlyKraken()
 
@@ -392,10 +388,8 @@ static let sharedInstance = TheOneAndOnlyKraken()
 private init() {}     
 
 }        
-
-    ####多线程版单例    
-
- class func theOneAndOnlyKraken() -&gt; TheOneAndOnlyKraken{
+</code></pre><p>####多线程版单例    </p>
+<pre><code> class func theOneAndOnlyKraken() -&gt; TheOneAndOnlyKraken{
     struct Singleton {
         static var predicate:dispatch_once_t = 0
         static var instance:TheOneAndOnlyKraken? = nil
