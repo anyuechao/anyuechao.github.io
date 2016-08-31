@@ -1,0 +1,943 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="数据持久化是我们开发中经常涉及的问题,以下是本人对于数据持久化使用的基本了解,和大家分享下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据持久化的几种方式">
+<meta property="og:url" content="http://yoursite.com/2015/05/14/数据持久化的几种方式/index.html">
+<meta property="og:site_name" content="安跃超">
+<meta property="og:description" content="数据持久化是我们开发中经常涉及的问题,以下是本人对于数据持久化使用的基本了解,和大家分享下">
+<meta property="og:updated_time" content="2015-12-12T05:01:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据持久化的几种方式">
+<meta name="twitter:description" content="数据持久化是我们开发中经常涉及的问题,以下是本人对于数据持久化使用的基本了解,和大家分享下">
+<meta name="twitter:creator" content="@[object Object]">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6318926023282918000,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/05/14/数据持久化的几种方式/"/>
+
+  <title> 数据持久化的几种方式 | 安跃超 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">安跃超</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">安跃超的博客</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                数据持久化的几种方式
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-05-14T16:07:04+08:00" content="2015-05-14">
+              2015-05-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="数据持久化是我们开发中经常涉及的问题-以下是本人对于数据持久化使用的基本了解-和大家分享下"><a href="#数据持久化是我们开发中经常涉及的问题-以下是本人对于数据持久化使用的基本了解-和大家分享下" class="headerlink" title="数据持久化是我们开发中经常涉及的问题,以下是本人对于数据持久化使用的基本了解,和大家分享下"></a>数据持久化是我们开发中经常涉及的问题,以下是本人对于数据持久化使用的基本了解,和大家分享下</h3><hr>
+<a id="more"></a> 
+<h3 id="1-数据持久化的方式"><a href="#1-数据持久化的方式" class="headerlink" title="1.数据持久化的方式"></a>1.数据持久化的方式</h3><ul>
+<li>1.属性列表(一种XML文件)</li>
+<li>2.NSUserDefault(NSUserDefaults只支持： NSString, NSNumber, NSDate, NSArray, NSDictionary.） </li>
+<li>3.write to file </li>
+<li>4.sqlite (推荐使用FMDB进行管理)</li>
+<li>5.CoreData</li>
+</ul>
+<h3 id="2-沙盒-存文件时-应存在document路径下-在手机上运行app才能成功存储"><a href="#2-沙盒-存文件时-应存在document路径下-在手机上运行app才能成功存储" class="headerlink" title="2.沙盒(存文件时,应存在document路径下,在手机上运行app才能成功存储)"></a>2.沙盒(存文件时,应存在document路径下,在手机上运行app才能成功存储)</h3><ul>
+<li>1.数据持久化的本质：数据保存成文件，存储到程序的沙盒中</li>
+<li>2.沙盒机制：沙盒的本质就是一个文件夹，名字是随机分配的 </li>
+<li>3.模拟器路径内有可能包含多个系统版本的路径 </li>
+<li><p>4.构成：document、library（cache、preference）、tmp、app程序包</p>
+<p>  通过代码查找各个文件的相对路径： </p>
+<pre><code>NSHomeDirectory（）—沙盒主路径 
+NSDocumentDirectory—documents文件夹 
+NSLibraryDirectory—Library文件夹 
+NSCacheDirectory—caches文件夹 
+NSTemporaryDirectory—tmp文件夹
+</code></pre></li>
+</ul>
+<pre><code>  //获取沙盒主路径
+
+  NSString *homePath = NSHomeDirectory();
+  NSLog(@&quot;%@&quot;,homePath);
+
+  pragma mark - objectAtIndex:0、firstObject、    lastObject、[0] 使用任意一个都是同一个文件(手机)
+
+
+ //document路径 (通常存放应用程序需要持久化使用的关键数据（用户数据），比如本地数据库等，iTunes在备份的时候会自动备份此文件夹)
+  NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, NO) objectAtIndex:0];
+  NSLog(@&quot;%@&quot;,documentPath);
+
+//library路径 （通常用来存储应用程序运行期间生成的持久数据，比如用户账户名等。应用程序退出后不会被删除文件夹内数据，但是iTunes备份时，不会备份此文件夹）
+NSString *libraryPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject];
+NSLog(@&quot;%@&quot;,libraryPath);
+
+//cache路径（运行期间的缓存文件：历史记录等）
+NSString *cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+NSLog(@&quot;%@&quot;,cachePath);
+
+//preference：应用程序的偏好设置，夜间模式等
+
+
+
+//tmp路径（存放临时文件，比如下载的zip包，应用程序结束后被清除）
+NSString *tmpPath = NSTemporaryDirectory();
+NSLog(@&quot;%@&quot;,tmpPath);
+
+
+//BUndle（当前应用程序包）
+//获取当前应用程序包
+NSBundle *bundle = [NSBundle mainBundle];
+//获取包的路径
+//NSString *bundlePath = [bundle resourcePath];
+//或者
+NSString *bundlePath = [bundle bundlePath];
+NSLog(@&quot;%@&quot;,bundlePath);
+
+
+//NSString *image = [bundle pathForResource:@&quot;image&quot; ofType:@&quot;png&quot;];
+
+//NSString *interfacePath = [bundle pathForResource:@&quot;news&quot; ofType:@&quot;txt&quot;];
+//NSLog(@&quot;%@&quot;,image);
+</code></pre><h3 id="3-简单对象写入文件（字符串、数组、字典、图片）"><a href="#3-简单对象写入文件（字符串、数组、字典、图片）" class="headerlink" title="3.简单对象写入文件（字符串、数组、字典、图片）"></a>3.简单对象写入文件（字符串、数组、字典、图片）</h3><h4 id="字符串写入文件"><a href="#字符串写入文件" class="headerlink" title="字符串写入文件"></a>字符串写入文件</h4><pre><code>NSString *incantation = @&quot;等闲变却故人心，却道故人心易变&quot;;
+
+NSString *path = NSHomeDirectory();
+NSLog(@&quot;%@&quot;,path);
+path = [path stringByAppendingString:@&quot;/纳兰容若.txt&quot;];
+
+//encoding：NSStringEncodingConversionAllowLossy 允许文件丢失
+//NSStringEncodingConversionExternalRepresentation 不允许文件丢失
+[incantation writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];//（atomically：YES 指的是原子性，和我们声明属性时候的nonatomic非原子性类似的道理，选择YES意思就是说不能被中断，实际操作写入文件的时候，系统会先开辟一个内存空间，将字符串存入这个缓存中，再写入文件，而不是直接写入文件，这样就保证不会出现写入过程中突然中断导致只写入一部分的情况。选择NO即直接写入文件，可以被中断）
+
+
+ //从文件中获取字符串
+NSString *resultString = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+        NSLog(@&quot;%@&quot;,resultString);
+</code></pre><h4 id="数组写入文件"><a href="#数组写入文件" class="headerlink" title="数组写入文件"></a>数组写入文件</h4><pre><code>NSArray *array = @[@&quot;相怜相念倍相亲&quot;,@&quot;一生一世一双人&quot;];
+NSString *path = NSHomeDirectory();
+path = [path stringByAppendingPathComponent:@&quot;王安石.txt&quot;];
+
+//写入
+[array writeToFile:path atomically:YES];
+
+//读取
+NSArray *resultArr = [NSArray arrayWithContentsOfFile:path];
+NSLog(@&quot;%@&quot;,resultArr[0]);
+</code></pre><h4 id="字典写入文件"><a href="#字典写入文件" class="headerlink" title="字典写入文件"></a>字典写入文件</h4><pre><code> NSDictionary *dict = @{@&quot;周议&quot;:@&quot;宁可我付天下人，不可天下人负我&quot;};
+ NSString *path = NSHomeDirectory();
+ path = [path stringByAppendingString:@&quot;/南阳.txt&quot;];
+//写入文件
+ [dict writeToFile:path atomically:YES];
+
+ //读取文件
+ NSDictionary *resultDict = [NSDictionary dictionaryWithContentsOfFile:path];
+ NSLog(@&quot;%@&quot;,resultDict); 
+</code></pre><h4 id="图片写入文件"><a href="#图片写入文件" class="headerlink" title="图片写入文件"></a>图片写入文件</h4><pre><code> UIImage *image = [UIImage imageNamed:@&quot;image&quot;];
+
+//NSData *data = UIImagePNGRepresentation(image);
+ NSData *data1 = UIImageJPEGRepresentation(image, 1);//“1”表示图片压缩质量（不超过1，越小质量越差）
+
+ NSString *path = NSHomeDirectory();
+ path = [path stringByAppendingString:@&quot;/gir.jpg&quot;];
+ //写入文件
+ [data1 writeToFile:path atomically:YES];
+ //取出
+ UIImage *resultImg = [UIImage imageWithContentsOfFile:path];
+ NSLog(@&quot;%@&quot;,resultImg); 
+</code></pre><h4 id="复杂对象写入文件"><a href="#复杂对象写入文件" class="headerlink" title="复杂对象写入文件"></a>复杂对象写入文件</h4><ul>
+<li>1）复杂对象即Foundation 框架下不存在的数据类，例如自己创建的类 </li>
+<li>2）复杂对象至少包含一个实例对象 </li>
+<li><p>3）无法在程序内通过writeToFile 类型的方法写入文件中，只能转换为NSData，再通过writeToFile进行数据持久化 </p>
+</li>
+<li><p>4）归档：将复杂对象转换为NSData<br>反归档：将NSData转换为复杂对象 </p>
+</li>
+<li><p>5）要想写入文件，复杂对象要遵循NSCoding协议，并实现协议方法 </p>
+</li>
+<li><p>6）复杂对象写入的文件在本地打不开</p>
+</li>
+</ul>
+<p>注意：归档和反归档，只是辅助完成数据持久化的功能，本身不能数据持久化</p>
+<pre><code>#import &quot;Person.h&quot;
+
+@implementation Person
+
+//编码
+- (void)encodeWithCoder:(NSCoder *)aCoder{
+
+[aCoder encodeObject:_name forKey:@&quot;name&quot;];
+[aCoder encodeObject:_gender forKey:@&quot;gender&quot;];
+
+}
+//解码
+- (id)initWithCoder:(NSCoder *)aDecoder{
+if (self = [super init]) {
+    _name = [aDecoder decodeObjectForKey:@&quot;name&quot;];
+    _gender = [aDecoder decodeObjectForKey:@&quot;gender&quot;];
+}
+return self;
+}
+
+
+@end
+</code></pre><h3 id="具体事例"><a href="#具体事例" class="headerlink" title="具体事例"></a>具体事例</h3><pre><code> Person *person = [Person new];        
+ person.name = @&quot;Anna&quot;;
+ person.gender = @&quot;male&quot;;
+
+ NSString *path = NSHomeDirectory();
+ path = [path stringByAppendingString:@&quot;/person.txt&quot;];//此文件在本地打不开
+//对象归档的文件是保密的磁盘上无法查看文件中的内容
+
+//创建可变data，用来存放归档数据
+ NSMutableData *mutData = [[NSMutableData alloc] initWithCapacity:10];
+
+//创建归档对象
+ NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:mutData];
+
+//归档
+ [archiver encodeObject:person forKey:@&quot;person&quot;];
+//完成归档
+ [archiver finishEncoding];
+//写入文件
+ [mutData writeToFile:path atomically:YES];
+
+
+//使用data对象获取对象
+ NSData *data = [NSData dataWithContentsOfFile:path];
+//创建反归档对象
+ NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+//反归档
+ Person *p = [unarchiver decodeObjectForKey:@&quot;person&quot;];
+//完成反归档
+ [unarchiver finishDecoding];
+ NSLog(@&quot;%@，%@&quot;,p.name,p.gender);
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/path/to/wechat-reward-image.png" alt="YueChao An WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/path/to/alipay-reward-image.png" alt="YueChao An Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/05/11/Masonry-快速上手autoLayout/" rel="next" title="Masonry:快速上手autoLayout">
+                <i class="fa fa-chevron-left"></i> Masonry:快速上手autoLayout
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/05/18/iOS添加测试设备与调试/" rel="prev" title="iOS添加测试设备与调试">
+                iOS添加测试设备与调试 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<div class="duoshuo" id="comments">     
+       <!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="<%=key%>" data-title="<%=title%>" data-url="<%=url%>"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"995684946"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="YueChao An" />
+          <p class="site-author-name" itemprop="name">YueChao An</p>
+          <p class="site-description motion-element" itemprop="description">你那么优秀，我有什么理由不努力</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/995684946" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/61821afa755b/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-jianshu"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhangtianqi.net/" target="_blank" title="zhangtianqi">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  zhangtianqi
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.ilakeyc.gift/" target="_blank" title="ilakeyc">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ilakeyc
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wangshiyu13" target="_blank" title="shiyu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  shiyu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.lidaze.com/" target="_blank" title="lidaze">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  lidaze
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://liushuang.win/" target="_blank" title="feelShuang">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  feelShuang
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/EmyWong" target="_blank" title="装逼王">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  装逼王
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://jenko.cc/" target="_blank" title="jenko">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  jenko
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://liuyanwei.jumppo.com/" target="_blank" title="ali大神">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ali大神
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据持久化是我们开发中经常涉及的问题-以下是本人对于数据持久化使用的基本了解-和大家分享下"><span class="nav-number">1.</span> <span class="nav-text">数据持久化是我们开发中经常涉及的问题,以下是本人对于数据持久化使用的基本了解,和大家分享下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-数据持久化的方式"><span class="nav-number">2.</span> <span class="nav-text">1.数据持久化的方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-沙盒-存文件时-应存在document路径下-在手机上运行app才能成功存储"><span class="nav-number">3.</span> <span class="nav-text">2.沙盒(存文件时,应存在document路径下,在手机上运行app才能成功存储)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-简单对象写入文件（字符串、数组、字典、图片）"><span class="nav-number">4.</span> <span class="nav-text">3.简单对象写入文件（字符串、数组、字典、图片）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串写入文件"><span class="nav-number">4.1.</span> <span class="nav-text">字符串写入文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数组写入文件"><span class="nav-number">4.2.</span> <span class="nav-text">数组写入文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字典写入文件"><span class="nav-number">4.3.</span> <span class="nav-text">字典写入文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图片写入文件"><span class="nav-number">4.4.</span> <span class="nav-text">图片写入文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复杂对象写入文件"><span class="nav-number">4.5.</span> <span class="nav-text">复杂对象写入文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#具体事例"><span class="nav-number">5.</span> <span class="nav-text">具体事例</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YueChao An</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

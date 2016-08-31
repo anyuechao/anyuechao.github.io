@@ -1,0 +1,817 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="一、概述KVO,即：Key-Value Observing，它提供一种机制，当指定的对象的属性被修改后，则对象就会接受到通知。简单的说就是每次指定的被观察的对象的属性被修改后，KVO就会自动通知相应的观察者了。KVO其实也是“观察者”设计模式的一种应用。我的看法是，这种模式有利于两个类间的解耦合，尤其是对于 业务逻辑 M与视图控制 C 这两个功能的解耦合。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KVO">
+<meta property="og:url" content="http://yoursite.com/2015/03/07/KVO/index.html">
+<meta property="og:site_name" content="安跃超">
+<meta property="og:description" content="一、概述KVO,即：Key-Value Observing，它提供一种机制，当指定的对象的属性被修改后，则对象就会接受到通知。简单的说就是每次指定的被观察的对象的属性被修改后，KVO就会自动通知相应的观察者了。KVO其实也是“观察者”设计模式的一种应用。我的看法是，这种模式有利于两个类间的解耦合，尤其是对于 业务逻辑 M与视图控制 C 这两个功能的解耦合。">
+<meta property="og:updated_time" content="2015-12-07T08:24:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="KVO">
+<meta name="twitter:description" content="一、概述KVO,即：Key-Value Observing，它提供一种机制，当指定的对象的属性被修改后，则对象就会接受到通知。简单的说就是每次指定的被观察的对象的属性被修改后，KVO就会自动通知相应的观察者了。KVO其实也是“观察者”设计模式的一种应用。我的看法是，这种模式有利于两个类间的解耦合，尤其是对于 业务逻辑 M与视图控制 C 这两个功能的解耦合。">
+<meta name="twitter:creator" content="@[object Object]">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6318926023282918000,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/03/07/KVO/"/>
+
+  <title> KVO | 安跃超 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">安跃超</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">安跃超的博客</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                KVO
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-03-07T15:53:28+08:00" content="2015-03-07">
+              2015-03-07
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h3><p>KVO,即：Key-Value Observing，它提供一种机制，当指定的对象的属性被修改后，则对象就会接受到通知。简单的说就是每次指定的被观察的对象的属性被修改后，KVO就会自动通知相应的观察者了。<br>KVO其实也是“观察者”设计模式的一种应用。我的看法是，这种模式有利于两个类间的解耦合，尤其是对于 业务逻辑 M与视图控制 C 这两个功能的解耦合。</p>
+<a id="more"></a>
+<p>KVO使⽤用步骤:</p>
+<ul>
+<li>1、注册观察者(为被观察者指定观察者以及被观察属性)</li>
+<li>2、实现回调⽅方法</li>
+<li>3、触发回调⽅方法(被观察属性发⽣生更改)</li>
+<li>4、移除观察者</li>
+</ul>
+<p>KVO使⽤用场景:MVC中M与C通信,M发⽣生变化通知C。其中M是被<br>观察者,C是观察者。</p>
+<p>KVO注意事项:观察者销毁之前,移除观察者,否则会出现程序异 常(给已经销毁的对象发送消息)<br>实例：<br>有一个业务类：Walker，在这个类内部只负责关于业务逻辑的处理，比如负责从服务器传来的JSON中解析数据，或做其他业务数据上的处理。<br>有另一个类：ViewController，专门负责界面的交互与试图更新。其中，需要将Walker的某些属性显示出来，并实时更新。</p>
+<p>目前，据我所能想到的方法有以下几种：</p>
+<h4 id="方法1、直接的函数调用"><a href="#方法1、直接的函数调用" class="headerlink" title="方法1、直接的函数调用"></a>方法1、直接的函数调用</h4><p>在Walker的类内部，把创建一个ViewController的对象，然后调用ViewController的修改界面的方法，把需要改动的属性值作为形参传给该函数。（加载数据之后动态刷新）</p>
+<p>这种方式最直观，因为它不需要绕任何弯子。但是，确实最糟的方法。因为Walker与ViewController这两个类从此紧紧耦合在一起了。记住这句话，处理业务逻辑的类，对外部的事情知道得越少越好。甚至于，要做到外部是否有VC(View Controller)，有多少个VC都不影响我。假设这是一个项目，程序员A负责业务逻辑的处理，程序员B负责UI，则采取这种方式后，程序员A就受制于B，互相干扰。</p>
+<h4 id="方法2、利用消息通信机制（NSNotification）"><a href="#方法2、利用消息通信机制（NSNotification）" class="headerlink" title="方法2、利用消息通信机制（NSNotification）"></a>方法2、利用消息通信机制（NSNotification）</h4><p>在Walker内部建立消息中心NSNotificationCenter，把实例化之后的VC对象作为observer。Center建在Walker或者VC都无所谓，这种方法比前面的方法好一些。但是有一个很大的缺点：如果Walker需要更改的属性很多而且很频繁，那么这种方式很不方便传值。而且，注意到了没，“把实例化后的VC对象作为observer”，始终逃不开在Walker内部对VC实例化。依旧是耦合着。</p>
+<h4 id="方法3、利用delegate"><a href="#方法3、利用delegate" class="headerlink" title="方法3、利用delegate"></a>方法3、利用delegate</h4><p>关于delegate的介绍有很多，这里就不多讲。但是在这种需求下用 delegate，有点“杀鸡用牛刀”感觉，成本较大，而且不直观。</p>
+<h4 id="方法4、利用KVO模式"><a href="#方法4、利用KVO模式" class="headerlink" title="方法4、利用KVO模式"></a>方法4、利用KVO模式</h4><p>所有的代码都将在ViewController中实现。对于Walker，它自己都不知道外部是否有VC，以及VC会怎用用我的属性。</p>
+<p>代码<br>Person 类属性name。<br>Controller功能：<br>nameLabel.text = person.name;<br>点击页面实例变量person的 name 属性值发生改变。<br>随之实现nameLabel.text 的改变。</p>
+<pre><code> #import &quot;ViewController.h&quot;
+ #import &quot;Person.h&quot;
+
+@interface ViewController ()
+@property (nonatomic, strong) Person * person;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+[super viewDidLoad];
+   //初始化person 实例变量
+self.person = [[Person alloc] init];
+self.person.name = @&quot;宋静静&quot;;
+// nameLabel.text 的值为self.person.name ，此时为宋静静。不使用观察者模式，当name 的值发生改变时，nameLabel.text显示并没有改变。
+_nameLabel.text = self.person.name;
+
+//  添加观察者，为person 实例变量添加观察者，键值是 name 属性。也就是监测的是person的name属性。 NSKeyValueObservingOptionNew 新值
+[self.person addObserver:self forKeyPath:@&quot;name&quot; options:NSKeyValueObservingOptionNew context:@&quot;描述&quot;];
+}
+//点击按钮 为实现名字改变，name 被监听后，一旦name 的值改变，触发下面方法。改变label 的值
+//通知是一种观察者模式
+
+ #pragma mark 触发观察者 被观察者对象的属性一旦发生变化，立即触发此方法。
+-(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+//    keyPath 对象被观察的属性。
+//    object ：被观察对象
+//    change：被观察对象的属性变化. change 是一个字典。key 值为new 时，键值就是更新后的数据
+//   context： 描述，可以用来传值，使用强制转换获取值。
+NSLog(@&quot;%@&quot;,keyPath);
+NSLog(@&quot;%@&quot;,object);
+NSLog(@&quot;%@&quot;,change);
+NSLog(@&quot;%@&quot;,context);
+//    多个观察者存在时， 可以根据被观察对象的类别以及被观察属性做出不同操作。
+if ([object isKindOfClass:[Person class]]&amp;&amp;[keyPath isEqualToString:@&quot;name&quot;]) {
+//设置监听到 改变后需要执行的操作，这里是设置 _nameLabel.text。也可以设置背景变色（name 值修改背景变色）等等
+//        两种方式等价
+//1.  _nameLabel.text = change [@&quot;new&quot;];
+// 2.  _nameLabel.text = change[NSKeyValueChangeNewKey];
+//      第二种内部实现： NSString *const NSKeyValueChangeNewKey = @&quot;new&quot;; _nameLabel.text = change[NSKeyValueChangeNewKey];
+}
+//    移除观察者 例如音乐缓存结束后，移除观察者
+[self.person removeObserver:self forKeyPath:@&quot;name&quot;]; 
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+self.person.name = @&quot;邹静&quot;;
+}
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/path/to/wechat-reward-image.png" alt="YueChao An WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/path/to/alipay-reward-image.png" alt="YueChao An Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/02/10/synthesize-与-dynamic-的不同/" rel="next" title="@synthesize 与@dynamic 的不同">
+                <i class="fa fa-chevron-left"></i> @synthesize 与@dynamic 的不同
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/03/10/转-关于应用程序生命周期的问题/" rel="prev" title="[转]关于应用程序生命周期的问题">
+                [转]关于应用程序生命周期的问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<div class="duoshuo" id="comments">     
+       <!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="<%=key%>" data-title="<%=title%>" data-url="<%=url%>"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"995684946"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="YueChao An" />
+          <p class="site-author-name" itemprop="name">YueChao An</p>
+          <p class="site-description motion-element" itemprop="description">你那么优秀，我有什么理由不努力</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/995684946" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/61821afa755b/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-jianshu"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhangtianqi.net/" target="_blank" title="zhangtianqi">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  zhangtianqi
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.ilakeyc.gift/" target="_blank" title="ilakeyc">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ilakeyc
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wangshiyu13" target="_blank" title="shiyu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  shiyu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.lidaze.com/" target="_blank" title="lidaze">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  lidaze
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://liushuang.win/" target="_blank" title="feelShuang">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  feelShuang
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/EmyWong" target="_blank" title="装逼王">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  装逼王
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://jenko.cc/" target="_blank" title="jenko">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  jenko
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://liuyanwei.jumppo.com/" target="_blank" title="ali大神">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ali大神
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、概述"><span class="nav-number">1.</span> <span class="nav-text">一、概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法1、直接的函数调用"><span class="nav-number">1.1.</span> <span class="nav-text">方法1、直接的函数调用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法2、利用消息通信机制（NSNotification）"><span class="nav-number">1.2.</span> <span class="nav-text">方法2、利用消息通信机制（NSNotification）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法3、利用delegate"><span class="nav-number">1.3.</span> <span class="nav-text">方法3、利用delegate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法4、利用KVO模式"><span class="nav-number">1.4.</span> <span class="nav-text">方法4、利用KVO模式</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YueChao An</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

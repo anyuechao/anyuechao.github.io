@@ -1,0 +1,774 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Object-C,占位符," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="在使用NSLog打印信息时，会用到很多占位符，如下：%@ 对象%d， %i 整数%u 无符号整形%f 浮点/双字%x, %X 二进制整数%o 八进制整数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="各种占位符">
+<meta property="og:url" content="http://yoursite.com/2014/09/15/OC-各种占位符/index.html">
+<meta property="og:site_name" content="安跃超">
+<meta property="og:description" content="在使用NSLog打印信息时，会用到很多占位符，如下：%@ 对象%d， %i 整数%u 无符号整形%f 浮点/双字%x, %X 二进制整数%o 八进制整数">
+<meta property="og:updated_time" content="2015-12-18T09:58:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="各种占位符">
+<meta name="twitter:description" content="在使用NSLog打印信息时，会用到很多占位符，如下：%@ 对象%d， %i 整数%u 无符号整形%f 浮点/双字%x, %X 二进制整数%o 八进制整数">
+<meta name="twitter:creator" content="@[object Object]">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6318926023282918000,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2014/09/15/OC-各种占位符/"/>
+
+  <title> 各种占位符 | 安跃超 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">安跃超</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">安跃超的博客</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                各种占位符
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-09-15T17:09:50+08:00" content="2014-09-15">
+              2014-09-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术篇/" itemprop="url" rel="index">
+                    <span itemprop="name">技术篇</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="在使用NSLog打印信息时，会用到很多占位符，如下："><a href="#在使用NSLog打印信息时，会用到很多占位符，如下：" class="headerlink" title="在使用NSLog打印信息时，会用到很多占位符，如下："></a>在使用NSLog打印信息时，会用到很多占位符，如下：</h2><h4 id="对象"><a href="#对象" class="headerlink" title="%@ 对象"></a>%@ 对象</h4><h4 id="d，-i-整数"><a href="#d，-i-整数" class="headerlink" title="%d， %i 整数"></a>%d， %i 整数</h4><h4 id="u-无符号整形"><a href="#u-无符号整形" class="headerlink" title="%u 无符号整形"></a>%u 无符号整形</h4><h4 id="f-浮点-双字"><a href="#f-浮点-双字" class="headerlink" title="%f 浮点/双字"></a>%f 浮点/双字</h4><h4 id="x-X-二进制整数"><a href="#x-X-二进制整数" class="headerlink" title="%x, %X 二进制整数"></a>%x, %X 二进制整数</h4><h4 id="o-八进制整数"><a href="#o-八进制整数" class="headerlink" title="%o 八进制整数"></a>%o 八进制整数</h4><a id="more"></a>
+<h4 id="zu-size-t"><a href="#zu-size-t" class="headerlink" title="%zu size_t"></a>%zu size_t</h4><h4 id="p-指针"><a href="#p-指针" class="headerlink" title="%p 指针"></a>%p 指针</h4><h4 id="e-浮点-双字-科学计算"><a href="#e-浮点-双字-科学计算" class="headerlink" title="%e 浮点/ 双字 (科学计算)"></a>%e 浮点/ 双字 (科学计算)</h4><h4 id="g-浮点-双字"><a href="#g-浮点-双字" class="headerlink" title="%g 浮点/ 双字"></a>%g 浮点/ 双字</h4><h4 id="s-C字符串"><a href="#s-C字符串" class="headerlink" title="%s C字符串"></a>%s C字符串</h4><h4 id="s-Pascal字符串"><a href="#s-Pascal字符串" class="headerlink" title="%.*s Pascal字符串"></a>%.*s Pascal字符串</h4><h4 id="c-字符"><a href="#c-字符" class="headerlink" title="%c 字符"></a>%c 字符</h4><h4 id="C-unichar"><a href="#C-unichar" class="headerlink" title="%C unichar"></a>%C unichar</h4><h4 id="lld-64位长整数（long-long）"><a href="#lld-64位长整数（long-long）" class="headerlink" title="%lld 64位长整数（long long）"></a>%lld 64位长整数（long long）</h4><h4 id="llu-无符号64位长整数"><a href="#llu-无符号64位长整数" class="headerlink" title="%llu 无符号64位长整数"></a>%llu 无符号64位长整数</h4><h4 id="Lf-64位双数"><a href="#Lf-64位双数" class="headerlink" title="%Lf  64位双数"></a>%Lf  64位双数</h4>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/path/to/wechat-reward-image.png" alt="YueChao An WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/path/to/alipay-reward-image.png" alt="YueChao An Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Object-C/" rel="tag">#Object-C</a>
+          
+            <a href="/tags/占位符/" rel="tag">#占位符</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/10/01/Swiftype添加站内搜索/" rel="prev" title="Swiftype添加站内搜索">
+                Swiftype添加站内搜索 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<div class="duoshuo" id="comments">     
+       <!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="<%=key%>" data-title="<%=title%>" data-url="<%=url%>"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"995684946"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="YueChao An" />
+          <p class="site-author-name" itemprop="name">YueChao An</p>
+          <p class="site-description motion-element" itemprop="description">你那么优秀，我有什么理由不努力</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/995684946" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/61821afa755b/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-jianshu"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhangtianqi.net/" target="_blank" title="zhangtianqi">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  zhangtianqi
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.ilakeyc.gift/" target="_blank" title="ilakeyc">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ilakeyc
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wangshiyu13" target="_blank" title="shiyu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  shiyu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.lidaze.com/" target="_blank" title="lidaze">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  lidaze
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://liushuang.win/" target="_blank" title="feelShuang">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  feelShuang
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/EmyWong" target="_blank" title="装逼王">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  装逼王
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://jenko.cc/" target="_blank" title="jenko">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  jenko
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://liuyanwei.jumppo.com/" target="_blank" title="ali大神">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ali大神
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#在使用NSLog打印信息时，会用到很多占位符，如下："><span class="nav-number">1.</span> <span class="nav-text">在使用NSLog打印信息时，会用到很多占位符，如下：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对象"><span class="nav-number">1.0.1.</span> <span class="nav-text">%@ 对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#d，-i-整数"><span class="nav-number">1.0.2.</span> <span class="nav-text">%d， %i 整数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u-无符号整形"><span class="nav-number">1.0.3.</span> <span class="nav-text">%u 无符号整形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#f-浮点-双字"><span class="nav-number">1.0.4.</span> <span class="nav-text">%f 浮点/双字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#x-X-二进制整数"><span class="nav-number">1.0.5.</span> <span class="nav-text">%x, %X 二进制整数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#o-八进制整数"><span class="nav-number">1.0.6.</span> <span class="nav-text">%o 八进制整数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#zu-size-t"><span class="nav-number">1.0.7.</span> <span class="nav-text">%zu size_t</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p-指针"><span class="nav-number">1.0.8.</span> <span class="nav-text">%p 指针</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#e-浮点-双字-科学计算"><span class="nav-number">1.0.9.</span> <span class="nav-text">%e 浮点/ 双字 (科学计算)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#g-浮点-双字"><span class="nav-number">1.0.10.</span> <span class="nav-text">%g 浮点/ 双字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#s-C字符串"><span class="nav-number">1.0.11.</span> <span class="nav-text">%s C字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#s-Pascal字符串"><span class="nav-number">1.0.12.</span> <span class="nav-text">%.*s Pascal字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c-字符"><span class="nav-number">1.0.13.</span> <span class="nav-text">%c 字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C-unichar"><span class="nav-number">1.0.14.</span> <span class="nav-text">%C unichar</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lld-64位长整数（long-long）"><span class="nav-number">1.0.15.</span> <span class="nav-text">%lld 64位长整数（long long）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#llu-无符号64位长整数"><span class="nav-number">1.0.16.</span> <span class="nav-text">%llu 无符号64位长整数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lf-64位双数"><span class="nav-number">1.0.17.</span> <span class="nav-text">%Lf  64位双数</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YueChao An</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

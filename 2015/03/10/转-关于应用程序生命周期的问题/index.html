@@ -1,0 +1,844 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="开发应用程序都要了解其生命周期，今天我们接触一下iOS应用程序的生命周期。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[转]关于应用程序生命周期的问题">
+<meta property="og:url" content="http://yoursite.com/2015/03/10/转-关于应用程序生命周期的问题/index.html">
+<meta property="og:site_name" content="安跃超">
+<meta property="og:description" content="开发应用程序都要了解其生命周期，今天我们接触一下iOS应用程序的生命周期。">
+<meta property="og:image" content="http://i5.tietuku.com/f770793cfd4c0ed3.png">
+<meta property="og:updated_time" content="2015-12-04T03:32:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[转]关于应用程序生命周期的问题">
+<meta name="twitter:description" content="开发应用程序都要了解其生命周期，今天我们接触一下iOS应用程序的生命周期。">
+<meta name="twitter:image" content="http://i5.tietuku.com/f770793cfd4c0ed3.png">
+<meta name="twitter:creator" content="@[object Object]">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6318926023282918000,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/03/10/转-关于应用程序生命周期的问题/"/>
+
+  <title> [转]关于应用程序生命周期的问题 | 安跃超 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">安跃超</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">安跃超的博客</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                [转]关于应用程序生命周期的问题
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-03-10T11:16:42+08:00" content="2015-03-10">
+              2015-03-10
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>开发应用程序都要了解其生命周期，今天我们接触一下iOS应用程序的生命周期。</p>
+<a id="more"></a>
+<h3 id="Main-函数入口"><a href="#Main-函数入口" class="headerlink" title="Main 函数入口"></a>Main 函数入口</h3><p>应用程序启动的时候会执行main 函数，而main函数里面执行了UIApplicationMain函数。UIApplicationMain函数执行完主要做了以下几个操作：<br>（1）创建应用程序UIApplication 对象<br>（2）创建了应用程序代理对象。默认的应用程序代理对象是AppDelegate。<br>（3）建立一个事件循环RunLoop。用来实时监测应用程序中的各种事件（触摸，晃动，远程控制事件，通知，观察者，timer 等）</p>
+<p>main</p>
+<pre><code>int main(int argc, char * argv[]) {
+@autoreleasepool {
+    return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+}
+}
+</code></pre><p><code>UIApplicationMain</code>函数有四个参数，你不需要改变这些参数值，不过我们也需要理解这些参数和程序是如何开始的</p>
+<p>argc 和argv参数包含了系统带过来的启动时间。 第三个参数确定了主要应用程序类的名称，这个参数指定为nil，这样UIKit就会使用默认的程序类UIApplication。第四个参数是程序自定义的代理类名，这个类负责系统和代码之间的交互。它一般在Xcode新建项目时会自动生成。</p>
+<p>另外 UIApplicationMain函数加载了程序主界面的文件。虽然这个函数加载了界面文件，但是没有放到应用程序的windows上，你需要在Delegate的 <code>application:willFinishLaunchingWithOptions</code>方法中加载它。</p>
+<p>一个应用程序可以有一个主的storyboard文件或者有一个主的nib文件，但不能同时有两个存在。</p>
+<p>如果程序在启动时没有自动加载主要的故事版或nib文件，你可以在application:willFinishLaunchingWithOptions方法里准备windows的展示。<br>各个程序运行状态时代理的回调</p>
+<pre><code>// 告诉代理进程启动但还没进入状态保存
+- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+NSLog(@&quot;%s,%d&quot;,__func__,__LINE__);
+return YES;
+}
+</code></pre><p>// 当应用程序启动时执行，应用程序启动入口，只在应用程序启动时执行一次。若用户直接启动，lauchOptions内无数据,若通过其他方式启动应用，lauchOptions包含对应方式的内容。</p>
+<pre><code>- (BOOL)application:(UIApplication *)application     didFinishLaunchingWithOptions:(NSDictionary     *)launchOptions {
+NSLog(@&quot;%s,%d&quot;,__func__,__LINE__);   
+return YES;
+}
+</code></pre><p>//在应用程序将要由活动状态切换到非活动状态时候，要执行的委托调用，如 按下 home 按钮，返回主屏幕，或全屏之间切换应用程序等。<br>当应用程序将要入非活动状态执行，在此期间，应用程序不接收消息或事件，比如来电话了</p>
+<pre><code>- (void)applicationWillResignActive:(UIApplication     *)application {
+NSLog(@&quot;%s,%d&quot;,__func__,__LINE__);
+}
+// 当应用程序入活动状态执行，这个刚好跟上面那个方法相反
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+NSLog(@&quot;%s,%d&quot;,__func__,__LINE__);
+}
+
+// 当程序被推送到后台的时候调用。所以要设置后台继续运行，则在这个函数里面设置即可
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+NSLog(@&quot;%s,%d&quot;,__func__,__LINE__);
+}
+// 当程序从后台将要重新回到前台时候调用，这个刚好跟上面的那个方法相反。
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+NSLog(@&quot;%s,%d&quot;,__func__,__LINE__);
+}
+
+// 当程序将要退出是被调用，通常是用来保存数据和一些退出前的清理工作。这个需要要设置UIApplicationExitsOnSuspend的键值。
+- (void)applicationWillTerminate:(UIApplication *)application {
+NSLog(@&quot;%s,%d&quot;,__func__,__LINE__);
+}
+// 当程序载入后执行
+- (void)applicationDidFinishLaunching:(UIApplication *)application
+{
+NSLog(@&quot;%s,%d&quot;,__func__,__LINE__);
+}
+</code></pre><h4 id="启动："><a href="#启动：" class="headerlink" title="启动："></a>启动：</h4><p><code>willFinishLaunchingWithOptions</code></p>
+<p><code>didFinishLaunchingWithOptions</code></p>
+<p><code>applicationDidBecomeActive</code></p>
+<h4 id="按下home-键"><a href="#按下home-键" class="headerlink" title="按下home 键"></a>按下home 键</h4><pre><code>// 先进入非活跃状态
+applicationWillResignActive
+// 再进入后台
+applicationDidEnterBackground
+</code></pre><h4 id="双击Home-键，再次打开程序"><a href="#双击Home-键，再次打开程序" class="headerlink" title="双击Home 键，再次打开程序"></a>双击Home 键，再次打开程序</h4><pre><code>// 先进入前台
+applicationWillEnterForeground
+// 再进入活跃状态
+applicationDidBecomeActive
+</code></pre><h4 id="使用注意："><a href="#使用注意：" class="headerlink" title="使用注意："></a>使用注意：</h4><p>一.响应中断<br>1.当一个基于警告式的中断发生时，比如有电话打进来了，这是程序会临时进入inactive状态，这用户可以选择如何处理这个中断，流程如下图：<br>这里写图片描述<br>在iOS5,通知不会把程序变成为激活状态，通知会显示在状态栏上，如果你；拉下状态栏，程序会变成inactive,把状态栏放回去，程序变回active。</p>
+<p>按锁屏键也是另外一种程序的中断，当你按下锁屏键，系统屏蔽了所有触摸事件，把app放到了后台，这时app状态是 inactive，并进入后台。<br>2.当有这些中断时，我们的app该怎么办呢？我们应该在<code>applicationWillResignActive:</code>方法中：</p>
+<p>停止<code>timer</code> 和其他周期性的任务<br>停止任何正在运行的请求<br>暂停视频的播放<br>如果是游戏那就暂停它<br>减少OpenGL ES的帧率<br>挂起任何分发的队列和不重要的操作队列（你可以继续处理网络请求或其他时间敏感的后台任务）。<br>二、应用程序进入后台</p>
+<pre><code>// 先进入非活跃状态 
+applicationWillResignActive 
+// 再进入后台 
+applicationDidEnterBackground
+</code></pre><p>进入后台app 的状态</p>
+<p>当一个 iOS 应用被送到后台,它的主线程会被暂停。用 <code>NSThread</code> 的 <code>detachNewThreadSelector:toTar get:withObject:</code>类方法创建的线程也被挂起了。<br>进入后台操作</p>
+<ol>
+<li>保存用户数据或状态信息，所有没写到磁盘的文件或信息，在进入后台时，最后都写到磁盘去，因为程序可能在后台被杀死，</li>
+<li>释放尽可能释放的内存<br>注意：</li>
+</ol>
+<p><code>applicationDidEnterBackgound:</code> 方法有大概5秒的时间让你完成这些任务。如果超过时间还有未完成的任务，你的程序就会被终止而且从内存中清除。如果还需要长时间的运行任务，可以调用 <code>beginBackgroundTaskWithExpirationHandler</code> 方法去请求后台运行时间和启动线程来运行长时间运行的任务。<br>应用程序在后台时的内存使用:</p>
+<p>在后台时，每个应用程序都应该释放最大的内存。系统努力的保持更多的应用程序在后台同时 运行。不过当内存不足时，会终止一些挂起的程序来回收内存，那些内存最大的程序首先被终止。<br>事实上，应用程序应该的对象如果不再使用了，那就应该尽快的去掉强引用，这样编译器可以回收这些内存。如果你想缓存一些对象提升程序的性能，你可以在进入后台时，把这些对象去掉强引用。<br>下面这样的对象应该尽快的去掉强引用：</p>
+<p><img src="http://i5.tietuku.com/f770793cfd4c0ed3.png" alt=""></p>
+<p>你可以重新加载的 大的视频或数据文件<br>任何没用而且可以轻易创建的对象<br>注意：</p>
+<p>在后台时，为了减少程序占用的内存，系统会自动在回收一些系统帮助你开辟的内存。比如：<br>系统回收Core Animation的后备存储。<br>去掉任何系统引用的缓存图片<br>去掉系统管理数据缓存强引用<br>三、后台返回前台</p>
+<p>当app处于挂起状态时，它是不能执行任何代码的。因此它不能处理在挂起期间发过来的通知，比如方向改变，时间改变，设置的改变还有其他影响程序展现的或状态的通知。在程序返回后台或前台是，程序都要正确的处理这些通知。<br>四、程序终止<code>applicationWillTerminate</code></p>
+<p>程序只要符合以下情况之一，只要进入后台或挂起状态就会终止：</p>
+<p>iOS4.0以前的系统<br>app是基于iOS4.0之前系统开发的。<br>设备不支持多任务<br>在Info.plist文件中，程序包含了 <code>UIApplicationExitsOnSuspend</code>键。<br>注意：<br>app如果终止了 ,系统会调用app的代理的方法 <code>applicationWillTerminate:</code> 这样可以让你可以做一些清理工作。你可以保存一些数据或app的状态。这个方法也有5秒钟的限制。超时后方法会返回程序从内存中清除。<br>注意：用户可以手工关闭应用程序。’</p>
+<p>应用程序进入后台后什么时候被销毁？</p>
+<p>根据苹果文档中关于后台执行的描述，任何app都有10分钟左右的后台任务执行时间。 10分钟后，app会被iOS强行挂起。</p>
+<p>这是由iOS系统管理决定的，但APP退出在后台后，只有10秒的持续运行时间，然后暂停。但该APP还在内存中，当出现内存警告，也就是别的APP要运行，而此时内存又不足的情况下，系统会回收停在后台APP所占用的内存。如果出现这种情况，那么你再次打开你的APP，就会重新启动。</p>
+<h4 id="iOS-APP类型："><a href="#iOS-APP类型：" class="headerlink" title="iOS APP类型："></a>iOS APP类型：</h4><ol>
+<li>保存现场。按下Home键10秒内直接杀死进程，并释放内存。 </li>
+<li>iOS支持的“多任务”。按下Home键转入多任务状态，保留在内存中，但只能系统允许的动作：比如GPS，比如VoIP，比如音乐等等。 </li>
+<li>真正的桌面级别的多任务。只有Safari/Mail是，苹果嫡系大都都不是。这个级别的app在后台没有任何限制动作。</li>
+</ol>
+<p>无限制动作的程序，会在用户无察觉的情况下耗光电力，并且有安全上面的问题(那些在后台依旧默默发送你的个人消息程序)<br>顺便提一句，后两种占用内存的app，也会在任意时间从内存中被砍掉，取决于你是否动用了其它app而导致内存不足。<br>真正不会被砍掉的后台，只有苹果那个通知系统。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/path/to/wechat-reward-image.png" alt="YueChao An WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/path/to/alipay-reward-image.png" alt="YueChao An Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/03/07/KVO/" rel="next" title="KVO">
+                <i class="fa fa-chevron-left"></i> KVO
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/03/10/Block技术中的weak-strong/" rel="prev" title="Block技术中的weak-strong">
+                Block技术中的weak-strong <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<div class="duoshuo" id="comments">     
+       <!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="<%=key%>" data-title="<%=title%>" data-url="<%=url%>"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"995684946"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="YueChao An" />
+          <p class="site-author-name" itemprop="name">YueChao An</p>
+          <p class="site-description motion-element" itemprop="description">你那么优秀，我有什么理由不努力</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/995684946" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/61821afa755b/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-jianshu"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhangtianqi.net/" target="_blank" title="zhangtianqi">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  zhangtianqi
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.ilakeyc.gift/" target="_blank" title="ilakeyc">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ilakeyc
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wangshiyu13" target="_blank" title="shiyu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  shiyu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.lidaze.com/" target="_blank" title="lidaze">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  lidaze
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://liushuang.win/" target="_blank" title="feelShuang">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  feelShuang
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/EmyWong" target="_blank" title="装逼王">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  装逼王
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://jenko.cc/" target="_blank" title="jenko">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  jenko
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://liuyanwei.jumppo.com/" target="_blank" title="ali大神">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ali大神
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Main-函数入口"><span class="nav-number">1.</span> <span class="nav-text">Main 函数入口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动："><span class="nav-number">1.1.</span> <span class="nav-text">启动：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#按下home-键"><span class="nav-number">1.2.</span> <span class="nav-text">按下home 键</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#双击Home-键，再次打开程序"><span class="nav-number">1.3.</span> <span class="nav-text">双击Home 键，再次打开程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用注意："><span class="nav-number">1.4.</span> <span class="nav-text">使用注意：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#iOS-APP类型："><span class="nav-number">1.5.</span> <span class="nav-text">iOS APP类型：</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YueChao An</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

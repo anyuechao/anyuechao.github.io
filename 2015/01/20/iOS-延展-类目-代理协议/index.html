@@ -1,0 +1,882 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="类目应用对现有的类添加扩展，如：系统中的类，在类目中添加的方法会被子类继承，而且运行时跟其他的方法没有区别。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS--延展,类目,代理协议">
+<meta property="og:url" content="http://yoursite.com/2015/01/20/iOS-延展-类目-代理协议/index.html">
+<meta property="og:site_name" content="安跃超">
+<meta property="og:description" content="类目应用对现有的类添加扩展，如：系统中的类，在类目中添加的方法会被子类继承，而且运行时跟其他的方法没有区别。">
+<meta property="og:updated_time" content="2015-12-10T08:45:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS--延展,类目,代理协议">
+<meta name="twitter:description" content="类目应用对现有的类添加扩展，如：系统中的类，在类目中添加的方法会被子类继承，而且运行时跟其他的方法没有区别。">
+<meta name="twitter:creator" content="@[object Object]">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6318926023282918000,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/01/20/iOS-延展-类目-代理协议/"/>
+
+  <title> iOS--延展,类目,代理协议 | 安跃超 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">安跃超</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">安跃超的博客</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS--延展,类目,代理协议
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-01-20T10:45:27+08:00" content="2015-01-20">
+              2015-01-20
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="类目"><a href="#类目" class="headerlink" title="类目"></a>类目</h2><h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>对现有的类添加扩展，如：系统中的类，在类目中添加的方法会被子类继承，而且运行时跟其他的方法没有区别。</p>
+<a id="more"></a>
+<p>作为子类的替代方式，不需要定义和使用一个子类，可以通过类目直接向已有的类目里添加方法。</p>
+<p>对类中的方法进行归类，利用catigopry把一个庞大的类划分为小块来分别进行开发，从而更好地对类中的方法进行更新和维护。</p>
+<p>通过类目添加的方法会成为原始类 的一部分</p>
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><p>当然也有使用Category是需要注意的问题：</p>
+<pre><code>1、Category可以访问原始类的实例变量，但不能添加实例变量，如果想添加变量，那就通过继承创建子类来实现。 
+2、Category可以重载原始类的方法，不大不推荐这么做，这样会覆盖掉原始类的方法。如果确实要重载，那就通过继承创建子类来实现。 
+3、和普通接口有所区别的是，在Category的实现文件中的实例方法只要你不去调用它你可以不用实现所有声明的所有方法。
+</code></pre><h3 id="命名方式：-类名-扩展方法"><a href="#命名方式：-类名-扩展方法" class="headerlink" title="命名方式： 类名+扩展方法"></a>命名方式： 类名+扩展方法</h3><p>如“UIAlertView+AFNetworking”。类目的接口声明与类的定义十分相似，但类目不继承父类，只需要带有一个括号，表明该类目的主要用 途。<br>Category 与SubClass 区别</p>
+<p>分类    Category<br>功能    只能为类添加方法    既能为类添加方法，又能添加变量<br>特点    新添加的方法会成为原始类的一部分，能被子类继承    新添加的方法只有子类才有，父类不具有子类才能调用，如果项目开发到尾声使用原始类的实例（-方法）或者原始类（+方法）调用方法    使用子类添加了方法，需要对已写代码做类型的替换（将父类替换为子类）<br>代码：</p>
+<p>类目.h文件</p>
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+//类目  在类目中不能添加实例变量
+@interface NSString (CSayHi)
+-(void)sayHi;//类目的方法
+@end
+</code></pre><p>类目.m文件</p>
+<pre><code>#import &quot;NSString+CSayHi.h&quot;
+@implementation NSString (CSayHi)
+-(void)sayHi{//类目方法的实现
+NSLog(@&quot;这是类目提供的方法，字符内容是%@&quot;,self);
+}
+@end
+</code></pre><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><pre><code>#import &lt;UIKit/UIKit.h&gt;
+#import &quot;NSString+CSayHi.h&quot;
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    NSString *str=@&quot;hello&quot;;//定义一个字符串对象并赋值
+    [str sayHi];//调用类目方法
+}
+</code></pre><h2 id="延展"><a href="#延展" class="headerlink" title="延展"></a>延展</h2><p>延展是特殊形式的类目<br>延展中定义的方法在类本身中实现<br>延展定义的是自己的类，必须有源代码的类<br>延展写在.m文件上<br>延展不提供名称表示方法必须实现，提供名称可以不实现<br>作用</p>
+<p>定义类的私有方法，管理类的私有方法</p>
+<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><p>形式和类目相同，不用新创建文件，只是把类目的interface地方的文件放在了你需要扩展的类的.m文件里边。</p>
+<pre><code>#import &quot;Student.h&quot;
+@interface Student (extension)//为Student类创建一个私有的方法text
+-(void)text;
+@end
+
+@implementation Student
+-(void)hello;
+{
+[self  text];
+}
+-(void)text
+{
+NSLog(@&quot;你好&quot;);
+}
+@end
+</code></pre><p>外界  [student hello]的时候就会打印出“你好”。但是在外界不能调用text方法，[student text]是不对的。只能在.m文件里边通过self来调用私有方法text。隐藏了内部的实现。</p>
+<h3 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h3><ul>
+<li><p>1.协议声明了可以被其他的类实现的方法。协议本身并不会去实现。协议就是一套标准，接受协议的对象负责实现</p>
+</li>
+<li><p>2.协议不是类，只是一个其他对象可以实现的接口。<br>代码实现</p>
+</li>
+</ul>
+<p>oc的协议由@protocol声明的一组方法列表<br>要求其他的类去实现，相当于@interface部分的声明<br><code>@protocol</code> 协议名称<br>  必须实现的协议方法<br><code>@required</code><br>  可选实现<br><code>@opyional</code><br><code>@end</code><br>代理模式<br>即本身不做实际的事情，而要求其他人去做<br>需要做事情的对象 </p>
+<ul>
+<li><ol>
+<li>设置代理 </li>
+</ol>
+</li>
+<li><ol>
+<li>遵守协议 </li>
+</ol>
+</li>
+<li><ol>
+<li>实现协议方法</li>
+</ol>
+</li>
+</ul>
+<p>代码：<br>看实际代码 我们要求一个学生对服务员制定一个协议</p>
+<p>学生类的.h文件</p>
+<pre><code>//首先我们创建一个学生的类
+#import &lt;Foundation/Foundation.h&gt;
+//学生的协议内容的声明
+@protocol roomServer &lt;NSObject&gt;
+@required//必须要实现的
+-(void)check;//结账声明
+@optional//不是必须要实现的
+-(void)tackClothes;//拿衣服
+@end
+
+@interface Student : NSObject
+@property(assign,nonatomic)id&lt;roomServer&gt; delegate;//声明属性代理（）该属性遵守roomServer协议//
+-(void)serve;//声明方法
+@end
+</code></pre><p>学生类的.m文件</p>
+<pre><code>#import &quot;Student.h&quot;
+@implementation Student
+@synthesize delegate;
+-(void)serve{
+//使用if委托给的对象是否遵守了协议
+if ([self.delegate conformsToProtocol:@protocol(roomServer)]) {
+    [self.delegate check];//服务员类的一个（代理）对象调用代理方法
+    [self.delegate tackClothes];
+}
+}
+</code></pre><p>//制定一个服务员的类，需要服务员去遵守学生定的协议<br>服务员的.h</p>
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+#import &quot;Student.h&quot;
+@interface Waiter : NSObject &lt;roomServer&gt;//把学生的协议引进
+
+@end
+</code></pre><p>服务员的.m文件<br>学生定的协议要由服务员来施行</p>
+<pre><code>#import &quot;Waiter.h&quot;
+
+@implementation Waiter
+-(void)check
+{
+NSLog(@&quot;我给您结账&quot;);
+}
+-(void)tackClothes
+{
+NSLog(@&quot;我给您拿衣服&quot;);
+}
+@end
+</code></pre><p>main文件     </p>
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+#import &quot;Student.h&quot;
+#import &quot;Waiter.h&quot;
+int main(int argc, const char * argv[])
+{
+
+@autoreleasepool {
+
+    Student *stu=[[Student alloc]init];//给Student的stu对象开辟空间并赋初值       
+    Waiter *wa=[[Waiter alloc]init];//非Waiter的wa对象开辟空间并赋初值
+    stu.delegate=wa;//因为要用stu对象的代理去执行学生对服务员协议的方法
+    [stu serve];
+}
+return 0;
+</code></pre><h3 id="概念理解"><a href="#概念理解" class="headerlink" title="概念理解"></a>概念理解</h3><p>代理与协议的区别</p>
+<p>代理是一种概念,协议是一种技术,代理是用协议来实现的,代理是<code>2</code>个对象之间通讯的一种方式。 代理主要做反向传值的。实现系统的一些回调方法,比如 scrollview 滑动事件,选择照片,asi网络下载完成等.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/path/to/wechat-reward-image.png" alt="YueChao An WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/path/to/alipay-reward-image.png" alt="YueChao An Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/01/14/属性的属性/" rel="next" title="属性的属性">
+                <i class="fa fa-chevron-left"></i> 属性的属性
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/01/20/cocopods使用/" rel="prev" title="cocopods使用">
+                cocopods使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<div class="duoshuo" id="comments">     
+       <!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="<%=key%>" data-title="<%=title%>" data-url="<%=url%>"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"995684946"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="YueChao An" />
+          <p class="site-author-name" itemprop="name">YueChao An</p>
+          <p class="site-description motion-element" itemprop="description">你那么优秀，我有什么理由不努力</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/995684946" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/61821afa755b/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-jianshu"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhangtianqi.net/" target="_blank" title="zhangtianqi">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  zhangtianqi
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.ilakeyc.gift/" target="_blank" title="ilakeyc">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ilakeyc
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wangshiyu13" target="_blank" title="shiyu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  shiyu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.lidaze.com/" target="_blank" title="lidaze">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  lidaze
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://liushuang.win/" target="_blank" title="feelShuang">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  feelShuang
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/EmyWong" target="_blank" title="装逼王">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  装逼王
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://jenko.cc/" target="_blank" title="jenko">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  jenko
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://liuyanwei.jumppo.com/" target="_blank" title="ali大神">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ali大神
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#类目"><span class="nav-number">1.</span> <span class="nav-text">类目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#应用"><span class="nav-number">1.1.</span> <span class="nav-text">应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意："><span class="nav-number">1.2.</span> <span class="nav-text">注意：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命名方式：-类名-扩展方法"><span class="nav-number">1.3.</span> <span class="nav-text">命名方式： 类名+扩展方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用"><span class="nav-number">1.4.</span> <span class="nav-text">使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#延展"><span class="nav-number">2.</span> <span class="nav-text">延展</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实现"><span class="nav-number">2.0.1.</span> <span class="nav-text">实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#协议"><span class="nav-number">2.1.</span> <span class="nav-text">协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概念理解"><span class="nav-number">2.2.</span> <span class="nav-text">概念理解</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YueChao An</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
