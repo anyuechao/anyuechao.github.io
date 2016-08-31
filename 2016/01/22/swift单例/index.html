@@ -123,7 +123,7 @@ static let sharedInstance = TheOneAndOnlyKraken()
 
 private init() {}">
 <meta property="og:image" content="http://7xrz94.com1.z0.glb.clouddn.com/67E6B986-7BBD-417D-A1B2-25FD2F36EA25.png">
-<meta property="og:updated_time" content="2016-08-31T09:20:20.000Z">
+<meta property="og:updated_time" content="2016-08-31T09:21:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="swift单例">
 <meta name="twitter:description" content="####普通版单例
@@ -388,7 +388,8 @@ static let sharedInstance = TheOneAndOnlyKraken()
 private init() {}     
 
 }        
-</code></pre><p>####多线程版单例    </p>
+</code></pre><a id="more"></a>
+<p>####多线程版单例    </p>
 <pre><code> class func theOneAndOnlyKraken() -&gt; TheOneAndOnlyKraken{
     struct Singleton {
         static var predicate:dispatch_once_t = 0
