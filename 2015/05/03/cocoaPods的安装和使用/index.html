@@ -1,0 +1,741 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+    
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.4"/>
+
+
+
+
+  <meta name="keywords" content="cocoaPods," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.4" />
+
+
+<meta name="description" content="当你开发iOS应用时，会经常使用到很多第三方开源类库，比如JSONKit，AFNetWorking等等。可能某个类库又用到其他类库，所以要使用它，必须得另外下载其他类库，而其他类库又用到其他类库，“子子孙孙无穷尽也”，这也许是比较特殊的情况。总之小编的意思就是，手动一个个去下载所需类库十分麻烦。另外一种常见情况是，你项目中用到的类库有更新，你必须得重新下载新版本，重新加入到项目中，十分麻烦。如果能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CocoaPods的安装和使用">
+<meta property="og:url" content="http://yoursite.com/2015/05/03/cocoaPods的安装和使用/index.html">
+<meta property="og:site_name" content="刘 爽">
+<meta property="og:description" content="当你开发iOS应用时，会经常使用到很多第三方开源类库，比如JSONKit，AFNetWorking等等。可能某个类库又用到其他类库，所以要使用它，必须得另外下载其他类库，而其他类库又用到其他类库，“子子孙孙无穷尽也”，这也许是比较特殊的情况。总之小编的意思就是，手动一个个去下载所需类库十分麻烦。另外一种常见情况是，你项目中用到的类库有更新，你必须得重新下载新版本，重新加入到项目中，十分麻烦。如果能">
+<meta property="og:image" content="http://7xrz9m.com1.z0.glb.clouddn.com/cocoaPods_cocoaPods.png">
+<meta property="og:image" content="http://7xrz9m.com1.z0.glb.clouddn.com/cocoaPods_Successful%20installation.png">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/9c2363adgw1es4677n31fj20gw02mjrt.jpg">
+<meta property="og:image" content="http://7xrz9m.com1.z0.glb.clouddn.com/cocoaPods_podsFile%20directory.png">
+<meta property="og:updated_time" content="2016-06-04T01:56:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CocoaPods的安装和使用">
+<meta name="twitter:description" content="当你开发iOS应用时，会经常使用到很多第三方开源类库，比如JSONKit，AFNetWorking等等。可能某个类库又用到其他类库，所以要使用它，必须得另外下载其他类库，而其他类库又用到其他类库，“子子孙孙无穷尽也”，这也许是比较特殊的情况。总之小编的意思就是，手动一个个去下载所需类库十分麻烦。另外一种常见情况是，你项目中用到的类库有更新，你必须得重新下载新版本，重新加入到项目中，十分麻烦。如果能">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'hide'
+  };
+</script>
+
+    <title> CocoaPods的安装和使用 // 刘 爽 </title>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+
+
+
+<div class="container one-column page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+        <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">刘 爽</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+<form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'fdvvyy7PB-9jT2KHeYD_','2.0.0');
+</script>
+
+<div class="site-search-toggle"></div>
+    </div>
+  
+</nav>
+
+
+        </div>
+    </header>
+
+    <main id="main" class="main">
+        <div class="main-inner">
+            <div id="content" class="content">
+                
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              CocoaPods的安装和使用
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-05-03T22:44:23+08:00" content="2015-05-03">
+            2015-05-03
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a></span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>当你开发iOS应用时，会经常使用到很多第三方开源类库，比如JSONKit，AFNetWorking等等。可能某个类库又用到其他类库，所以要使用它，必须得另外下载其他类库，而其他类库又用到其他类库，“子子孙孙无穷尽也”，这也许是比较特殊的情况。总之小编的意思就是，手动一个个去下载所需类库十分麻烦。另外一种常见情况是，你项目中用到的类库有更新，你必须得重新下载新版本，重新加入到项目中，十分麻烦。如果能有什么工具能解决这些恼人的问题，那将“善莫大焉”。所以，你需要 CocoaPods。</p>
+<p><img src="http://7xrz9m.com1.z0.glb.clouddn.com/cocoaPods_cocoaPods.png" alt="cocoaPods"></p>
+<a id="more"></a>
+<h2 id="准备工作">准备工作</h2><p>在安装CocoaPods之前，首先要在本地安装好Ruby环境</p>
+<p>系统需求<br>Mac OS X<br>任意 Linux 发行版本(Ubuntu,CentOS, Redhat, ArchLinux …)<br>强烈新手使用 Ubuntu 省掉不必要的麻烦！</p>
+<p>以下代码区域，带有 $ 打头的表示需要在控制台（终端）下面执行（不包括 $ 符号）</p>
+<h3 id="步骤0_－_安装系统需要的包">步骤0 － 安装系统需要的包</h3><ul>
+<li>For Mac
+　　</li>
+<li>先安装 <a href="http://developer.apple.com/xcode/" target="_blank" rel="external">Xcode</a> 开发工具，它将帮你安装好 Unix 环境需要的开发包</li>
+</ul>
+<h3 id="步骤1_－_安装_RVM">步骤1 － 安装 RVM</h3><p>RVM 是干什么的这里就不解释了，后面你将会慢慢搞明白。</p>
+<pre><code>curl -L <span class="string">https:</span><span class="comment">//get.rvm.io | bash -s stable</span>
+</code></pre><p>期间可能会问你sudo管理员密码，以及自动通过homebrew安装依赖包，等待一段时间后就可以成功安装好 RVM。</p>
+<p>下图表示已安装成功：</p>
+<p><img src="http://7xrz9m.com1.z0.glb.clouddn.com/cocoaPods_Successful%20installation.png" alt="Successfulinstallation"></p>
+<p>然后，载入 RVM 环境（新开 Termal 就不用这么做了，会自动重新载入的）</p>
+<pre><code><span class="keyword">source</span> ~<span class="regexp">/.rvm/</span>scripts<span class="regexp">/rvm</span>
+</code></pre><p>检查一下是否安装正确</p>
+<pre><code>rvm -v
+
+rvm <span class="number">1.2</span><span class="number">2.1</span><span class="number">7</span> (stable) <span class="annotation">by</span> Wayne E. Seguin &lt;wayneeseguin<span class="annotation">@gmail</span>.com&gt;, Michal Papis &lt;mpapis<span class="annotation">@gmail</span>.com&gt; [https:<span class="comment">//rvm.io/]</span>
+</code></pre><h3 id="步骤2_－_用_RVM_安装_Ruby_环境">步骤2 － 用 RVM 安装 Ruby 环境</h3><pre><code>rvm install <span class="number">2.0</span><span class="number">.0</span>
+</code></pre><p>同样继续等待漫长的下载，编译过程，完成以后，Ruby, Ruby Gems 就安装好了。</p>
+<h3 id="步骤3_－_设置_Ruby_版本">步骤3 － 设置 Ruby 版本</h3><p>RVM 装好以后，需要执行下面的命令将指定版本的 Ruby 设置为系统默认版本</p>
+<pre><code>rvm <span class="number">2.0</span><span class="number">.0</span> --<span class="keyword">default</span>
+</code></pre><p>同样，也可以用其他版本号，前提是你有用 rvm install 安装过那个版本</p>
+<p>这个时候你可以测试是否正确</p>
+<pre><code>ruby -v
+ruby <span class="number">2.0</span><span class="number">.0</span>p247 (<span class="number">2013</span>-<span class="number">06</span>-<span class="number">27</span> revision <span class="number">41674</span>) [x86_64-darwin13<span class="number">.0</span><span class="number">.0</span>]
+
+gem -v
+<span class="number">2.1</span><span class="number">.6</span>
+</code></pre><p>这有可能是因为Ruby的默认源使用的是cocoapods.org，国内访问这个网址有时候会有问题，网上的一种解决方案是将远替换成淘宝的，替换方式如下：</p>
+<pre><code>gem <span class="keyword">source</span> -<span class="keyword">r</span> http<span class="variable">s:</span>//rubygems.org/
+gem <span class="keyword">source</span> -<span class="keyword">a</span> http<span class="variable">s:</span>//<span class="keyword">ruby</span>.taobao.org
+</code></pre><p>要想验证是否替换成功了，可以执行：</p>
+<pre><code>gem sources <span class="operator">-l</span>
+</code></pre><p>正常的输出结果：</p>
+<pre><code>CURRENT SOURCES
+
+<span class="label">http:</span>//ruby.taobao<span class="preprocessor">.org</span>/
+</code></pre><p>到这里就已经把Ruby环境成功的安装到了Mac OS X上，接下来就可以进行相应的开发使用了。</p>
+<h2 id="如何下载和安装CocoaPods？">如何下载和安装CocoaPods？</h2><p>好了本地已经安装好Ruby环境，那么下载和安装CocoaPods将十分简单，只需要一行命令。在终端中输入以下命令</p>
+<pre><code>sudo gem <span class="keyword">install</span> cocoapods
+</code></pre><p>等上十几秒钟，CocoaPods就可以在你本地下载并且安装好了，不再需要其他设置，是不是很简单。<br><img src="http://ww2.sinaimg.cn/large/9c2363adgw1es4677n31fj20gw02mjrt.jpg" alt=""></p>
+<h2 id="使用CocoaPods">使用CocoaPods</h2><p>好了，安装好CocoPods之后，接下来就是使用它。所幸，使用CocoPods和安装它一样简单，也是通过一两行命令就可以搞定。</p>
+<h3 id="查看类库是否支持CocoPods">查看类库是否支持CocoPods</h3><p>为了确定AFNetworking是否支持CocoaPods，可以用CocoaPods的搜索功能验证一下。在终端中输入：</p>
+<pre><code><span class="title">pod</span> search AFNetworking
+</code></pre><p>等几秒钟可以看到终端中看到关于AFNetworking类库的一些信息。</p>
+<pre><code>-&gt; AFNetworking (<span class="number">3.0</span><span class="number">.0</span>-beta<span class="number">.2</span>)
+A delightful iOS and OS X networking framework.
+pod <span class="string">'AFNetworking'</span>, <span class="string">'~&gt; 3.0.0-beta.2'</span>
+- <span class="string">Homepage:</span> <span class="string">https:</span><span class="comment">//github.com/AFNetworking/AFNetworking</span>
+- <span class="string">Source:</span>   <span class="string">https:</span><span class="comment">//github.com/AFNetworking/AFNetworking.git</span>
+</code></pre><h3 id="导入类库">导入类库</h3><ul>
+<li>1、在终端输入 cd空格，拖入项目文件夹，回车，进入项目所在的根目录</li>
+<li><p>2、通过命令行创建Podfile文件，该文件的作用是配置第三方类库的信息，就是告诉CocoaPods去管理哪些类库 </p>
+<pre><code><span class="title">vim</span> Podfile
+</code></pre></li>
+</ul>
+<p>vim打开文件后，按i进入编辑模式，输入如下文字（也就是pod search 出来的版本信息）：</p>
+<pre><code><span class="title">pod</span> <span class="string">'AFNetworking'</span>, <span class="string">'~&gt; 3.0.0-beta.2'</span>
+</code></pre><p>输入完成后按ESC退出编辑模式，接着输入:wq，并按回车键进行保存并退出。</p>
+<p><strong>上面的操作完成之后，我们可以在项目根目录发现一个没有后缀的Podfile文件，这就是刚刚创建的文件，里面保存了需要使用的第三方类库的信息。(注意：Podfile文件必须和.xcodeproj文件在同一目录下)</strong></p>
+<p>. 接下来，我们就可以使用命令来安装第三方类库了，(确保终端路径在项目根目录)运行如下命令：</p>
+<pre><code><span class="title">pod</span> insall
+</code></pre><p>运行完上面的命令之后终端会显示</p>
+<pre><code>EricmatoMacBook-Pro:CocoaPodsDemo ericwang$ pod <span class="operator"><span class="keyword">install</span>
+Analyzing dependencies
+Downloading dependencies
+Installing AFNetworking (<span class="number">2.0</span><span class="number">.2</span>)
+Generating Pods <span class="keyword">project</span>
+Integrating <span class="keyword">client</span> <span class="keyword">project</span>
+
+[!] <span class="keyword">From</span> <span class="keyword">now</span> <span class="keyword">on</span> <span class="keyword">use</span> <span class="string">`CocoaPodsDemo.xcworkspace`</span>.</span>
+</code></pre><p><strong>意思就是                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       安装完成后项目中回多出来一个后缀名为 ‘.xcworkspace’的文件以后我们就是用这个文件来打开工程</strong></p>
+<p>打开工程后会开到多了一个Pods文件目录<br><img src="http://7xrz9m.com1.z0.glb.clouddn.com/cocoaPods_podsFile%20directory.png" alt="podsFiledirectory"></p>
+<p><strong>tips:</strong></p>
+<ul>
+<li>Podfile.lock文件<ul>
+<li>最后一次更新Pods时, 所有第三方框架的版本号</li>
+</ul>
+</li>
+<li>常用指令的区别<ul>
+<li>pod install<ul>
+<li>会根据Podfile.lock文件中列举的版本号来安装第三方框架</li>
+<li>如果一开始Podfile.lock文件不存在, 就会按照Podfile文件列举的版本号来安装第三方框架</li>
+<li>安装框架之前, 默认会执行pod repo update指令</li>
+</ul>
+</li>
+<li>pod update<ul>
+<li>将所有第三方框架更新到最新版本, 并且创建一个新的Podfile.lock文件</li>
+<li>安装框架之前, 默认会执行pod repo update指令</li>
+</ul>
+</li>
+<li>pod install –no-repo-update</li>
+<li>pod update –no-repo-update<ul>
+<li>安装框架之前, 不会执行pod repo update指令</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="问题">问题</h2><p>再倒入第三方类库的时候，出现<code>Updating local specs repositories</code>的情况，然后一直等待下载……<br>原因：使用命令pod install被墙了。<br>解决办法：使用<code>pod install --no-repo-update</code></p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/cocoaPods/" rel="tag">#cocoaPods</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/05/11/Masonry-快速上手autoLayout/" rel="prev">Masonry:快速上手autoLayout</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/04/28/iOS编程细节整理/" rel="next">iOS编程细节整理</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+            </div>
+
+            
+
+            
+              <div class="comments" id="comments">
+                
+              </div>
+            
+        </div>
+
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/avatar.jpg" alt="刘爽" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">刘爽</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">Links</p>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.baidu.com/" target="_blank">百度</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.zhihu.com/" target="_blank">知乎</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.github.com/" target="_blank">Github</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.cocoachina.com" target="_blank">CocoaChina</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank">Git教程</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://blog.callmewhy.com" target="_blank">Why</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备工作"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤0_－_安装系统需要的包"><span class="nav-number">1.1.</span> <span class="nav-text">步骤0 － 安装系统需要的包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤1_－_安装_RVM"><span class="nav-number">1.2.</span> <span class="nav-text">步骤1 － 安装 RVM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤2_－_用_RVM_安装_Ruby_环境"><span class="nav-number">1.3.</span> <span class="nav-text">步骤2 － 用 RVM 安装 Ruby 环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤3_－_设置_Ruby_版本"><span class="nav-number">1.4.</span> <span class="nav-text">步骤3 － 设置 Ruby 版本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何下载和安装CocoaPods？"><span class="nav-number">2.</span> <span class="nav-text">如何下载和安装CocoaPods？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用CocoaPods"><span class="nav-number">3.</span> <span class="nav-text">使用CocoaPods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看类库是否支持CocoPods"><span class="nav-number">3.1.</span> <span class="nav-text">查看类库是否支持CocoPods</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导入类库"><span class="nav-number">3.2.</span> <span class="nav-text">导入类库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">4.</span> <span class="nav-text">问题</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+        <div class="footer-inner">
+            <div class="copyright" >
+  
+  &copy; &nbsp;  2014 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘爽</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+        </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+</div>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.4"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.4"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.4" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.4" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        if (CONFIG.sidebar === 'always') {
+            displaySidebar();
+        }
+    });
+</script>
+
+
+
+
+
+
+
+
+<!-- lazyload -->
+<script type="text/javascript" src="/js/lazyload.js"></script>
+<script type="text/javascript">
+    jQuery(function () {
+        jQuery("#posts img").lazyload({
+            placeholder: "/images/loading.gif",
+            effect: "fadeIn"
+        });
+    });
+</script>
+</body>
+</html>

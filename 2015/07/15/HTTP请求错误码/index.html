@@ -1,0 +1,735 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+    
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.4"/>
+
+
+
+
+  <meta name="keywords" content="HTTP错误码," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.4" />
+
+
+<meta name="description" content="1xx - 信息提示这些状态代码表示临时的响应。客户端在收到常规响应之前，应准备接收一个或多个 1xx 响应。
+
+100 - 继续
+101 - 切换协议">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP请求错误码">
+<meta property="og:url" content="http://yoursite.com/2015/07/15/HTTP请求错误码/index.html">
+<meta property="og:site_name" content="刘 爽">
+<meta property="og:description" content="1xx - 信息提示这些状态代码表示临时的响应。客户端在收到常规响应之前，应准备接收一个或多个 1xx 响应。
+
+100 - 继续
+101 - 切换协议">
+<meta property="og:updated_time" content="2015-12-23T07:37:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTTP请求错误码">
+<meta name="twitter:description" content="1xx - 信息提示这些状态代码表示临时的响应。客户端在收到常规响应之前，应准备接收一个或多个 1xx 响应。
+
+100 - 继续
+101 - 切换协议">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'hide'
+  };
+</script>
+
+    <title> HTTP请求错误码 // 刘 爽 </title>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+
+
+
+<div class="container one-column page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+        <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">刘 爽</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+<form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'fdvvyy7PB-9jT2KHeYD_','2.0.0');
+</script>
+
+<div class="site-search-toggle"></div>
+    </div>
+  
+</nav>
+
+
+        </div>
+    </header>
+
+    <main id="main" class="main">
+        <div class="main-inner">
+            <div id="content" class="content">
+                
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              HTTP请求错误码
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-07-15T12:44:10+08:00" content="2015-07-15">
+            2015-07-15
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a href="/categories/网络/" itemprop="url" rel="index"><span itemprop="name">网络</span></a></span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h3 id="1xx_-_信息提示">1xx - 信息提示</h3><p>这些状态代码表示临时的响应。客户端在收到常规响应之前，应准备接收一个或多个 1xx 响应。</p>
+<ul>
+<li>100 - 继续</li>
+<li>101 - 切换协议</li>
+</ul>
+<a id="more"></a>
+<h3 id="2xx_-_成功">2xx - 成功</h3><p>这类状态代码表明服务器成功地接受了客户端请求。</p>
+<ul>
+<li>200 - 确定。客户端请求已成功</li>
+<li>201 - 已创建</li>
+<li>202 - 已接受</li>
+<li>203 - 非权威性信息</li>
+<li>204 - 无内容</li>
+<li>205 - 重置内容</li>
+<li>206 - 部分内容</li>
+</ul>
+<h3 id="3xx_-_重定向">3xx - 重定向</h3><p>客户端浏览器必须采取更多操作来实现请求。例如，浏览器可能不得不请求服务器上的不同的页面，或通过代理服务器重复该请求。</p>
+<ul>
+<li>302 - 对象已移动。</li>
+<li>304 - 未修改。</li>
+<li>307 - 临时重定向。</li>
+</ul>
+<h3 id="4xx_-_客户端错误">4xx - 客户端错误</h3><p>发生错误，客户端似乎有问题。例如，客户端请求不存在的页面，客户端未提供有效的身份验证信息。</p>
+<ul>
+<li>400 - 错误的请求</li>
+<li><p>401 - 访问被拒绝</p>
+<pre><code><span class="number">401.1</span> - 登录失败。
+<span class="number">401.2</span> - 服务器配置导致登录失败。
+<span class="number">401.3</span> - 由于 ACL 对资源的限制而未获得授权。
+<span class="number">401.4</span> - 筛选器授权失败。
+<span class="number">401.5</span> - ISAPI/CGI 应用程序授权失败。
+<span class="number">401.7</span> – 访问被 Web 服务器上的 URL 授权策略拒绝。这个错误代码为 IIS <span class="number">6.0</span> 所专用。
+</code></pre></li>
+<li><p>403 - 禁止访问</p>
+<pre><code><span class="number">403.1</span> - 执行访问被禁止。
+<span class="number">403.2</span> - 读访问被禁止。
+<span class="number">403.3</span> - 写访问被禁止。
+<span class="number">403.4</span> - 要求 SSL。
+<span class="number">403.5</span> - 要求 SSL <span class="number">128</span>。
+<span class="number">403.6</span> - IP 地址被拒绝。
+<span class="number">403.7</span> - 要求客户端证书。
+<span class="number">403.8</span> - 站点访问被拒绝。
+<span class="number">403.9</span> - 用户数过多。
+<span class="number">403.10</span> - 配置无效。
+<span class="number">403.11</span> - 密码更改。
+<span class="number">403.12</span> - 拒绝访问映射表。
+<span class="number">403.13</span> - 客户端证书被吊销。
+<span class="number">403.14</span> - 拒绝目录列表。
+<span class="number">403.15</span> - 超出客户端访问许可。
+<span class="number">403.16</span> - 客户端证书不受信任或无效。
+<span class="number">403.17</span> - 客户端证书已过期或尚未生效。
+<span class="number">403.18</span> - 在当前的应用程序池中不能执行所请求的 URL。这个错误代码为 IIS <span class="number">6.0</span> 所专用。
+<span class="number">403.19</span> - 不能为这个应用程序池中的客户端执行 CGI。这个错误代码为 IIS <span class="number">6.0</span> 所专用。
+<span class="number">403.20</span> - Passport 登录失败。这个错误代码为 IIS <span class="number">6.0</span> 所专用。
+</code></pre></li>
+<li><p>404 - 没有找到文件或目录</p>
+<pre><code><span class="number">404.1</span> - 无法在所请求的端口上访问 Web 站点。
+<span class="number">404.2</span> - Web 服务扩展锁定策略阻止本请求。
+<span class="number">404.3</span> - MIME 映射策略阻止本请求。
+</code></pre></li>
+<li>405 - 用来访问本页面的 HTTP 谓词不被允许（方法不被允许）</li>
+<li>406 - 客户端浏览器不接受所请求页面的 MIME 类型</li>
+<li>407 - 要求进行代理身份验证</li>
+<li>412 - 前提条件失败</li>
+<li>413 – 请求实体太大</li>
+<li>414 - 请求 URI 太长</li>
+<li>415 – 不支持的媒体类型</li>
+<li>416 – 所请求的范围无法满足</li>
+<li>417 – 执行失败</li>
+<li>423 – 锁定的错误</li>
+</ul>
+<h3 id="5xx_-_服务器端错误">5xx - 服务器端错误</h3><p>服务器由于遇到错误而不能完成该请求。</p>
+<ul>
+<li><p>500 - 内部服务器错误</p>
+<pre><code>500<span class="class">.12</span> <span class="tag">-</span> 应用程序正忙于在 <span class="tag">Web</span> 服务器上重新启动。
+500<span class="class">.13</span> <span class="tag">-</span> <span class="tag">Web</span> 服务器太忙。
+500<span class="class">.15</span> <span class="tag">-</span> 不允许直接请求 <span class="tag">Global</span><span class="class">.asa</span>。
+500<span class="class">.16</span> – <span class="tag">UNC</span> 授权凭据不正确。这个错误代码为 <span class="tag">IIS</span> 6<span class="class">.0</span> 所专用。
+500<span class="class">.18</span> – <span class="tag">URL</span> 授权存储不能打开。这个错误代码为 <span class="tag">IIS</span> 6<span class="class">.0</span> 所专用。
+500<span class="class">.100</span> <span class="tag">-</span> 内部 <span class="tag">ASP</span> 错误。
+</code></pre></li>
+<li>501 - 页眉值指定了未实现的配置</li>
+<li>502 - Web 服务器用作网关或代理服务器时收到了无效响应。502.1 - CGI 应用程序超时</li>
+<li>502.2 - CGI 应用程序出错。application</li>
+<li>503 - 服务不可用。这个错误代码为 IIS 6.0 所专用</li>
+<li>504 - 网关超时</li>
+<li>505 - HTTP 版本不受支持</li>
+</ul>
+<h3 id="HTTP_304_错误介绍">HTTP 304 错误介绍</h3><p>表示请求的网页(文件)与上次对比没有更新。</p>
+<p>意思是蜘蛛来到你的网站，你网站没有更新内容，并且与上次一样，就会返回304代码。如果每次蜘蛛来你的网站都有新的内容出现，就会反回200代码。因为304代码是记录网站内容是否有更新，在24小时内没有更新，那么快照就会停止。同样，如果返回的304太多，表示网站没有更新，蜘蛛也就不会经常光顾， 影响收录。</p>
+<p>把蜘蛛来的时候给记录下来，算出蜘蛛每隔多久来一次网站，然后就分隔多久更新一下文章，更新文章时要原创+转载。让蜘蛛每次来都能够有新的内容，而不是无功而返。这样就会产生很多200代码。 </p>
+<p>如果客户端在请求一个文件的时候，发现自己缓存的文件有 Last Modified ，那么在请求中会包含 If Modified Since ，这个时间就是缓存文件的 Last Modified 。因此，如果请求中包含 If Modified Since，就说明已经有缓存在客户端。只要判断这个时间和当前请求的文件的修改时间就可以确定是返回 304 还是 200 。对于静态文件，例如：CSS、图片，服务器会自动完成 Last Modified 和 If Modified Since 的比较，完成缓存或者更新。但是对于动态页面，就是动态产生的页面，往往没有包含 Last Modified 信息，这样浏览器、网关等都不会做缓存，也就是在每次请求的时候都完成一个 200 的请求。</p>
+<p>因此，对于动态页面做缓存加速，首先要在 Response 的 HTTP Header 中增加 Last Modified 定义，其次根据 Request 中的 If Modified Since 和被请求内容的更新时间来返回 200 或者 304 。虽然在返回 304 的时候已经做了一次数据库查询，但是可以避免接下来更多的数据库查询，并且没有返回页面内容而只是一个 HTTP Header，从而大大的降低带宽的消耗，对于用户的感觉也是提高。</p>
+<p>304不是错误。是请求一下图片，如果图片在上次访问后没有更新过，就不用下载了，返回304，叫浏览器直接用cache里的，这个很正常的。可以打开火狐firebug使用”网络”功能查看加载一个页面时所有请求文件的状态，再F5看一下，会看到很多是304，表示直接从浏览器缓存中读取的。</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HTTP错误码/" rel="tag">#HTTP错误码</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/07/20/Xcode7无证真机测试/" rel="prev">Xcode7无证真机测试</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/06/04/Xcode快捷键/" rel="next">Xcode快捷键</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+            </div>
+
+            
+
+            
+              <div class="comments" id="comments">
+                
+              </div>
+            
+        </div>
+
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/avatar.jpg" alt="刘爽" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">刘爽</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">Links</p>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.baidu.com/" target="_blank">百度</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.zhihu.com/" target="_blank">知乎</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.github.com/" target="_blank">Github</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.cocoachina.com" target="_blank">CocoaChina</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank">Git教程</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://blog.callmewhy.com" target="_blank">Why</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1xx_-_信息提示"><span class="nav-number">1.</span> <span class="nav-text">1xx - 信息提示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2xx_-_成功"><span class="nav-number">2.</span> <span class="nav-text">2xx - 成功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3xx_-_重定向"><span class="nav-number">3.</span> <span class="nav-text">3xx - 重定向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4xx_-_客户端错误"><span class="nav-number">4.</span> <span class="nav-text">4xx - 客户端错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5xx_-_服务器端错误"><span class="nav-number">5.</span> <span class="nav-text">5xx - 服务器端错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP_304_错误介绍"><span class="nav-number">6.</span> <span class="nav-text">HTTP 304 错误介绍</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+        <div class="footer-inner">
+            <div class="copyright" >
+  
+  &copy; &nbsp;  2014 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘爽</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+        </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+</div>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.4"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.4"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.4" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.4" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        if (CONFIG.sidebar === 'always') {
+            displaySidebar();
+        }
+    });
+</script>
+
+
+
+
+
+
+
+
+<!-- lazyload -->
+<script type="text/javascript" src="/js/lazyload.js"></script>
+<script type="text/javascript">
+    jQuery(function () {
+        jQuery("#posts img").lazyload({
+            placeholder: "/images/loading.gif",
+            effect: "fadeIn"
+        });
+    });
+</script>
+</body>
+</html>
