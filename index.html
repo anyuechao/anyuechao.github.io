@@ -1300,26 +1300,31 @@
         
           
             <p><img src="http://7xrz94.com1.z0.glb.clouddn.com/67E6B986-7BBD-417D-A1B2-25FD2F36EA25.png" width="400" height="600"></p>
-<pre><code>class TheOneAndOnlyKraken {
+<pre><code>####普通版单例
+
+class TheOneAndOnlyKraken {
 
 static let sharedInstance = TheOneAndOnlyKraken()
 
 //This prevents others from using the default &apos;()&apos; initializer for this class.
 
-private init() {} 
+private init() {}     
 
+}        
+
+    ####多线程版单例    
+
+ class func theOneAndOnlyKraken() -&gt; TheOneAndOnlyKraken{
+    struct Singleton {
+        static var predicate:dispatch_once_t = 0
+        static var instance:TheOneAndOnlyKraken? = nil
+    }
+    dispatch_once(&amp;Singleton.predicate, {
+        Singleton.instance = TheOneAndOnlyKraken()
+    })
+    return Singleton.instance!
 }
-</code></pre><p> <code>class func theOneAndOnlyKraken() -&gt; TheOneAndOnlyKraken{
-        struct Singleton {
-            static var predicate:dispatch_once_t = 0
-            static var instance:TheOneAndOnlyKraken? = nil
-        }
-        dispatch_once(&amp;Singleton.predicate, {
-            Singleton.instance = TheOneAndOnlyKraken()
-        })
-        return Singleton.instance!
-    }</code></p>
-
+</code></pre>
           
         
       
