@@ -1,0 +1,901 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="title: Xcode预编译命令date: 2014-02-10 16:24:09 categories: 编辑工具tags: Mou,Xcode
+cd ~/Desktop 
+ touch main.m
+ open main.m 
+ vi main.m 
+  #import &amp;lt;Foundation/Foundation.h&amp;gt;
+
+ int main() {
+
+NSLog(@&amp;quot;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安跃超">
+<meta property="og:url" content="http://yoursite.com/2016/10/20/编译器命令/index.html">
+<meta property="og:site_name" content="安跃超">
+<meta property="og:description" content="title: Xcode预编译命令date: 2014-02-10 16:24:09 categories: 编辑工具tags: Mou,Xcode
+cd ~/Desktop 
+ touch main.m
+ open main.m 
+ vi main.m 
+  #import &amp;lt;Foundation/Foundation.h&amp;gt;
+
+ int main() {
+
+NSLog(@&amp;quot;">
+<meta property="og:image" content="http://chuantu.biz/t5/38/1476935851x981781122.png">
+<meta property="og:image" content="http://chuantu.biz/t5/38/1476940990x981781122.png">
+<meta property="og:image" content="http://chuantu.biz/t5/38/1476941655x981781122.png">
+<meta property="og:image" content="http://chuantu.biz/t5/38/1476942114x981781122.png">
+<meta property="og:image" content="http://chuantu.biz/t5/38/1476942267x981781122.png">
+<meta property="og:updated_time" content="2016-10-20T06:01:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="安跃超">
+<meta name="twitter:description" content="title: Xcode预编译命令date: 2014-02-10 16:24:09 categories: 编辑工具tags: Mou,Xcode
+cd ~/Desktop 
+ touch main.m
+ open main.m 
+ vi main.m 
+  #import &amp;lt;Foundation/Foundation.h&amp;gt;
+
+ int main() {
+
+NSLog(@&amp;quot;">
+<meta name="twitter:image" content="http://chuantu.biz/t5/38/1476935851x981781122.png">
+<meta name="twitter:creator" content="@[object Object]">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6318926023282918000,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/10/20/编译器命令/"/>
+
+  <title>  | 安跃超 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">安跃超</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">安跃超的博客</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-20T11:45:29+08:00" content="2016-10-20">
+              2016-10-20
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>title: Xcode预编译命令<br>date: 2014-02-10 16:24:09 <br><br>categories: 编辑工具<br>tags: <font color="lightgreen" face="黑体">Mou,Xcode</font></p>
+<pre><code>cd ~/Desktop 
+</code></pre><h1 id=""><a href="#" class="headerlink" title=" "></a> </h1><pre><code>touch main.m
+</code></pre><h1 id="-1"><a href="#-1" class="headerlink" title=" "></a> </h1><pre><code>open main.m 
+</code></pre><h1 id="-2"><a href="#-2" class="headerlink" title=" "></a> </h1><pre><code>vi main.m 
+</code></pre><h1 id="-3"><a href="#-3" class="headerlink" title=" "></a> </h1><pre><code> #import &lt;Foundation/Foundation.h&gt;
+
+ int main() {
+
+NSLog(@&quot;Hello world&quot;);
+return 0;
+
+  }
+</code></pre><h1 id="-4"><a href="#-4" class="headerlink" title=" "></a> </h1><pre><code>clang main.m -o main  //直接生成一个可执行文件
+</code></pre><h1 id="错误原因-未识别Foundation框架"><a href="#错误原因-未识别Foundation框架" class="headerlink" title="错误原因:未识别Foundation框架"></a>错误原因:未识别Foundation框架</h1><pre><code>Undefined symbols for architecture x86_64:
+&quot;_NSLog&quot;, referenced from:
+  _main in main-276b38.o
+&quot;___CFConstantStringClassReference&quot;, referenced from:
+  CFString in main-276b38.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+</code></pre><h1 id="-5"><a href="#-5" class="headerlink" title=" "></a> </h1><pre><code>clang -fmodules main.m -o main //-fmodules强转成@import形式
+</code></pre><h1 id="-6"><a href="#-6" class="headerlink" title=" "></a> </h1><pre><code>./main  //run一下
+</code></pre><h1 id="-7"><a href="#-7" class="headerlink" title=" "></a> </h1><pre><code>clear
+</code></pre><h1 id="-8"><a href="#-8" class="headerlink" title=" "></a> </h1><pre><code>clang -fmodules -fsyntax-only -Xclang -ast-dump main.m  //查看语法树
+</code></pre><h4 id="第一部分为环境"><a href="#第一部分为环境" class="headerlink" title="#     第一部分为环境"></a>#     第一部分为环境</h4><pre><code>TranslationUnitDecl 0x7fec3180a6d0 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt;
+|-TypedefDecl 0x7fec3180abc8 &lt;&lt;invalid sloc&gt;&gt;     &lt;invalid sloc&gt; implicit __int128_t &apos;__int128&apos;
+| `-BuiltinType 0x7fec3180a920 &apos;__int128&apos;
+|-TypedefDecl 0x7fec3180ac28 &lt;&lt;invalid sloc&gt;&gt;     &lt;invalid sloc&gt; implicit __uint128_t &apos;unsigned __int128&apos;
+| `-BuiltinType 0x7fec3180a940 &apos;unsigned __int128&apos;
+|-TypedefDecl 0x7fec3180acb8 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit SEL &apos;SEL *&apos;
+| `-PointerType 0x7fec3180ac80 &apos;SEL *&apos;
+|   `-BuiltinType 0x7fec3180ab30 &apos;SEL&apos;
+|-TypedefDecl 0x7fec3180ad98 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit id &apos;id&apos;
+| `-ObjCObjectPointerType 0x7fec3180ad40 &apos;id&apos; imported
+|   `-ObjCObjectType 0x7fec3180ad10 &apos;id&apos; imported
+|-TypedefDecl 0x7fec3180ae78 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit Class &apos;Class&apos;
+| `-ObjCObjectPointerType 0x7fec3180ae20 &apos;Class&apos;
+|   `-ObjCObjectType 0x7fec3180adf0 &apos;Class&apos;
+|-ObjCInterfaceDecl 0x7fec3180aec8 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit Protocol
+|-TypedefDecl 0x7fec3180b218 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit __NSConstantString &apos;struct     __NSConstantString_tag&apos;
+| `-RecordType 0x7fec3180b030 &apos;struct     __NSConstantString_tag&apos;
+|   `-Record 0x7fec3180af90 &apos;__NSConstantString_tag&apos;
+|-TypedefDecl 0x7fec3180b2a8 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit __builtin_ms_va_list &apos;char *&apos;
+| `-PointerType 0x7fec3180b270 &apos;char *&apos;
+|   `-BuiltinType 0x7fec3180a760 &apos;char&apos;
+|-TypedefDecl 0x7fec32000178 &lt;&lt;invalid sloc&gt;&gt; &lt;invalid sloc&gt; implicit __builtin_va_list &apos;struct __va_list_tag [1]&apos;
+| `-ConstantArrayType 0x7fec32000120 &apos;struct __va_list_tag [1]&apos; 1 
+|   `-RecordType 0x7fec3180b3a0 &apos;struct __va_list_tag&apos;
+|     `-Record 0x7fec3180b2f8 &apos;__va_list_tag&apos;
+</code></pre><h4 id="第二部分为自己的代码部分"><a href="#第二部分为自己的代码部分" class="headerlink" title="#     第二部分为自己的代码部分"></a>#     第二部分为自己的代码部分</h4><pre><code>|-ImportDecl 0x7fec32000eb0 &lt;main.m:1:1&gt; col:1 implicit Foundation
+|-FunctionDecl 0x7fec32000f38 &lt;line:3:1, line:8:1&gt; line:3:5 main &apos;int ()&apos;
+| `-CompoundStmt 0x7fec309f5550 &lt;col:12, line:8:1&gt;
+|   |-CallExpr 0x7fec309f54d0 &lt;line:5:5, col:25&gt; &apos;void&apos;
+|   | |-ImplicitCastExpr 0x7fec309f54b8 &lt;col:5&gt; &apos;void (*)(id, ...)&apos; &lt;FunctionToPointerDecay&gt;
+|   | | `-DeclRefExpr 0x7fec309f53a0 &lt;col:5&gt; &apos;void     (id, ...)&apos; Function 0x7fec309ed460 &apos;NSLog&apos; &apos;void     (id, ...)&apos;
+|   | `-ImplicitCastExpr 0x7fec309f5500 &lt;col:11, col:12&gt; &apos;id&apos;:&apos;id&apos; &lt;BitCast&gt;
+|   |   `-ObjCStringLiteral 0x7fec309f5440 &lt;col:11, col:12&gt; &apos;NSString *&apos;
+|   |     `-StringLiteral 0x7fec309f5408 &lt;col:12&gt; &apos;char [12]&apos; lvalue &quot;Hello world&quot;
+|   `-ReturnStmt 0x7fec309f5538 &lt;line:6:5, col:12&gt;
+|     `-IntegerLiteral 0x7fec309f5518 &lt;col:12&gt; &apos;int&apos; 0
+</code></pre><h1 id="-9"><a href="#-9" class="headerlink" title=" "></a> </h1><pre><code>`-&lt;undeserialized declarations&gt;
+</code></pre><p># </p>
+<h4 id="生成汇编"><a href="#生成汇编" class="headerlink" title="生成汇编"></a>生成汇编</h4><pre><code>clang -S main.m -o main.s
+</code></pre><h1 id="-10"><a href="#-10" class="headerlink" title=" "></a> </h1><pre><code>vi main.s
+</code></pre><h5 id="输出"><a href="#输出" class="headerlink" title="#          输出"></a>#          输出</h5><pre><code>retq
+
+.cfi_endproc
+
+
+
+.section        __TEXT,__cstring,cstring_literals
+</code></pre><p>L_.str:                                 ## @.str</p>
+<pre><code>.asciz  &quot;Hello world&quot;
+
+
+
+.section        __DATA,__cfstring
+
+.align  3                       ## @_unnamed_cfstring_
+</code></pre><p>L__unnamed<em>cfstring</em>:</p>
+<pre><code>.quad   ___CFConstantStringClassReference
+
+.long   1992                    ## 0x7c8
+
+.space  4
+
+.quad   L_.str
+
+.quad   11                      ## 0xb
+
+
+
+.section        __DATA,__objc_imageinfo,regular,no_dead_strip
+</code></pre><p>L_OBJC_IMAGE_INFO:</p>
+<pre><code>.long   0
+
+.long   64
+</code></pre><p>.subsections_via_symbols</p>
+<p><img src="http://chuantu.biz/t5/38/1476935851x981781122.png" width="100%" align="center" <="" img=""></p>
+<h1 id="我们能在Clang上做些什么"><a href="#我们能在Clang上做些什么" class="headerlink" title="我们能在Clang上做些什么"></a>我们能在Clang上做些什么</h1><h2 id="LibClang"><a href="#LibClang" class="headerlink" title="LibClang"></a>LibClang</h2><h3 id="1-优缺点"><a href="#1-优缺点" class="headerlink" title="(1)优缺点"></a>(1)优缺点</h3><p>1.C API 来访问Clang的上层能力,如获取Tokens、遍历语法树、代码补全、获取诊断信息<br><br>2.API稳定,不受Clang源码更新影响<br><br>3.只有上层的语法树访问,不能获取到全部信息<br></p>
+<h3 id="2-LibClang-如何使用"><a href="#2-LibClang-如何使用" class="headerlink" title="(2)LibClang - 如何使用"></a>(2)LibClang - 如何使用</h3><p>1.使用原始C API<br>2.脚本语言:使用官方提供的python binding 或开源的node-js/rubybinding<br>3.Object-c:开源库ClangKit</p>
+<h3 id="3-LibClang-Demo"><a href="#3-LibClang-Demo" class="headerlink" title="(3)LibClang-Demo"></a>(3)LibClang-Demo</h3><p>@inteface Sark : NSObject<br>@property (nonatomic , strong) NSString * backgrond;<br>@end<br>代码中一些常用单词的拼写错误<br><img src="http://chuantu.biz/t5/38/1476940990x981781122.png" width="100%" align="center" <="" img=""></p>
+<p>运行结果<br>$python property-linter.py main.m</p>
+<p>获取正确的提示<br><br>typo: backgrond, do you mean: background?</p>
+<h2 id="LibTooling"><a href="#LibTooling" class="headerlink" title="LibTooling"></a>LibTooling</h2><h3 id="1-优缺点-1"><a href="#1-优缺点-1" class="headerlink" title="(1)优缺点"></a>(1)优缺点</h3><p>1.对语法树有完全的控制权<br>2.可以作为一个standalore命令单独的使用,如clang-format<br>3.需要使用C++且对Clang源码熟悉</p>
+<h3 id="LibTooling-Demo"><a href="#LibTooling-Demo" class="headerlink" title="LibTooling -Demo"></a>LibTooling -Demo</h3><p>@interface Sark : NSObject<br><br>@property (nonatomic , copy)NSString *name;<br></p>
+<ul>
+<li><p>(void)becomeGay;<br><br>@end<br></p>
+<p>实现一个建议的Object-c -&gt; Swift源码转换器<br><img src="http://chuantu.biz/t5/38/1476941655x981781122.png" width="100%" align="center" <="" img=""><br>创建RecursiveASTVisitor, 在AST中重写感兴趣节点的Visit方法<br></p>
+<p>$objc2swift test.m – -fsyntax-only -fmodules<br><br>转换完毕之后<br></p>
+<pre><code>class Sark: NSObject {&lt;br&gt;
+
+    var name: NSString?&lt;br&gt;
+
+    func becomeGay() {&lt;br&gt;
+
+}&lt;br&gt;
+</code></pre><p>   } <br></p>
+</li>
+</ul>
+<h2 id="ClangPlugin"><a href="#ClangPlugin" class="headerlink" title="ClangPlugin"></a>ClangPlugin</h2><h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><p>1.对语法书有完全的控制权<br><br>2.作为插件注入到编译流程中,可以影响build和决定编译过程<br><br>3.需要使用C++且对Clang源码熟悉<br></p>
+<h3 id="可以定义前缀提示-比如大公司整顿代码风格"><a href="#可以定义前缀提示-比如大公司整顿代码风格" class="headerlink" title="可以定义前缀提示,比如大公司整顿代码风格"></a>可以定义前缀提示,比如大公司整顿代码风格</h3><p> <img src="http://chuantu.biz/t5/38/1476942114x981781122.png" width="100%" align="center" <="" img=""></p>
+<h3 id="代码Demo"><a href="#代码Demo" class="headerlink" title="代码Demo"></a>代码Demo</h3><p> <img src="http://chuantu.biz/t5/38/1476942267x981781122.png" width="100%" align="center" <="" img=""></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/path/to/wechat-reward-image.png" alt="YueChao An WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/path/to/alipay-reward-image.png" alt="YueChao An Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/19/1.真机运行报错an_unknown_error_occurred./" rel="next" title="Xcode常见错误总结">
+                <i class="fa fa-chevron-left"></i> Xcode常见错误总结
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<div class="duoshuo" id="comments">     
+       <!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="<%=key%>" data-title="<%=title%>" data-url="<%=url%>"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"995684946"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="YueChao An" />
+          <p class="site-author-name" itemprop="name">YueChao An</p>
+          <p class="site-description motion-element" itemprop="description">你那么优秀，我有什么理由不努力</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">51</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/995684946" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/61821afa755b/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-jianshu"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhangtianqi.net/" target="_blank" title="zhangtianqi">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  zhangtianqi
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.ilakeyc.gift/" target="_blank" title="ilakeyc">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ilakeyc
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wangshiyu13" target="_blank" title="shiyu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  shiyu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.lidaze.com/" target="_blank" title="lidaze">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  lidaze
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://liushuang.win/" target="_blank" title="feelShuang">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  feelShuang
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/EmyWong" target="_blank" title="装逼王">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  装逼王
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://jenko.cc/" target="_blank" title="jenko">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  jenko
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://liuyanwei.jumppo.com/" target="_blank" title="ali大神">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ali大神
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text"> </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#-1"><span class="nav-number">2.</span> <span class="nav-text"> </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#-2"><span class="nav-number">3.</span> <span class="nav-text"> </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#-3"><span class="nav-number">4.</span> <span class="nav-text"> </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#-4"><span class="nav-number">5.</span> <span class="nav-text"> </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#错误原因-未识别Foundation框架"><span class="nav-number">6.</span> <span class="nav-text">错误原因:未识别Foundation框架</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#-5"><span class="nav-number">7.</span> <span class="nav-text"> </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#-6"><span class="nav-number">8.</span> <span class="nav-text"> </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#-7"><span class="nav-number">9.</span> <span class="nav-text"> </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#-8"><span class="nav-number">10.</span> <span class="nav-text"> </span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一部分为环境"><span class="nav-number">10.0.0.1.</span> <span class="nav-text">#     第一部分为环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二部分为自己的代码部分"><span class="nav-number">10.0.0.2.</span> <span class="nav-text">#     第二部分为自己的代码部分</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#-9"><span class="nav-number">11.</span> <span class="nav-text"> </span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#生成汇编"><span class="nav-number">11.0.0.1.</span> <span class="nav-text">生成汇编</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#-10"><span class="nav-number">12.</span> <span class="nav-text"> </span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#输出"><span class="nav-number">12.0.0.0.1.</span> <span class="nav-text">#          输出</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#我们能在Clang上做些什么"><span class="nav-number">13.</span> <span class="nav-text">我们能在Clang上做些什么</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LibClang"><span class="nav-number">13.1.</span> <span class="nav-text">LibClang</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-优缺点"><span class="nav-number">13.1.1.</span> <span class="nav-text">(1)优缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-LibClang-如何使用"><span class="nav-number">13.1.2.</span> <span class="nav-text">(2)LibClang - 如何使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-LibClang-Demo"><span class="nav-number">13.1.3.</span> <span class="nav-text">(3)LibClang-Demo</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LibTooling"><span class="nav-number">13.2.</span> <span class="nav-text">LibTooling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-优缺点-1"><span class="nav-number">13.2.1.</span> <span class="nav-text">(1)优缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LibTooling-Demo"><span class="nav-number">13.2.2.</span> <span class="nav-text">LibTooling -Demo</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ClangPlugin"><span class="nav-number">13.3.</span> <span class="nav-text">ClangPlugin</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优缺点"><span class="nav-number">13.3.1.</span> <span class="nav-text">优缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可以定义前缀提示-比如大公司整顿代码风格"><span class="nav-number">13.3.2.</span> <span class="nav-text">可以定义前缀提示,比如大公司整顿代码风格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码Demo"><span class="nav-number">13.3.3.</span> <span class="nav-text">代码Demo</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YueChao An</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
