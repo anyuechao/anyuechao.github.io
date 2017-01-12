@@ -86,6 +86,8 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
+  <meta name="keywords" content="<font color=lightgreen face=黑体>iOS</font>," />
+
 
 
 
@@ -100,16 +102,34 @@
 
 
 
-<meta name="description" content="#####1.交换两个方法12345678910111213141516171819202122+ (void)load&amp;#123;    static dispatch_once_t onceToken;    dispatch_once(&amp;amp;onceToken, ^&amp;#123;        Method viewDidLoad = class_getInstanceMethod(sel">
+<meta name="description" content="####一、runtime简介
+
+RunTime简称运行时。OC就是运行时机制，也就是在运行时候的一些机制，其中最主要的是消息机制。
+对于C语言，函数的调用在编译的时候会决定调用哪个函数。
+对于OC的函数，属于动态调用过程，在编译的时候并不能决定真正调用哪个函数，只有在真正运行的时候才会根据函数的名称找到对应的函数来调用。
+事实证明：
+在编译阶段，OC可以调用任何函数，即使这个函数并未实现，只要声">
 <meta property="og:type" content="article">
-<meta property="og:title" content="runtime">
-<meta property="og:url" content="http://yoursite.com/2015/01/14/runtime/index.html">
+<meta property="og:title" content="runtime学习笔记">
+<meta property="og:url" content="http://yoursite.com/2017/01/10/runtime/index.html">
 <meta property="og:site_name" content="安跃超">
-<meta property="og:description" content="#####1.交换两个方法12345678910111213141516171819202122+ (void)load&amp;#123;    static dispatch_once_t onceToken;    dispatch_once(&amp;amp;onceToken, ^&amp;#123;        Method viewDidLoad = class_getInstanceMethod(sel">
-<meta property="og:updated_time" content="2017-01-10T06:13:52.000Z">
+<meta property="og:description" content="####一、runtime简介
+
+RunTime简称运行时。OC就是运行时机制，也就是在运行时候的一些机制，其中最主要的是消息机制。
+对于C语言，函数的调用在编译的时候会决定调用哪个函数。
+对于OC的函数，属于动态调用过程，在编译的时候并不能决定真正调用哪个函数，只有在真正运行的时候才会根据函数的名称找到对应的函数来调用。
+事实证明：
+在编译阶段，OC可以调用任何函数，即使这个函数并未实现，只要声">
+<meta property="og:updated_time" content="2017-01-12T08:36:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="runtime">
-<meta name="twitter:description" content="#####1.交换两个方法12345678910111213141516171819202122+ (void)load&amp;#123;    static dispatch_once_t onceToken;    dispatch_once(&amp;amp;onceToken, ^&amp;#123;        Method viewDidLoad = class_getInstanceMethod(sel">
+<meta name="twitter:title" content="runtime学习笔记">
+<meta name="twitter:description" content="####一、runtime简介
+
+RunTime简称运行时。OC就是运行时机制，也就是在运行时候的一些机制，其中最主要的是消息机制。
+对于C语言，函数的调用在编译的时候会决定调用哪个函数。
+对于OC的函数，属于动态调用过程，在编译的时候并不能决定真正调用哪个函数，只有在真正运行的时候才会根据函数的名称找到对应的函数来调用。
+事实证明：
+在编译阶段，OC可以调用任何函数，即使这个函数并未实现，只要声">
 <meta name="twitter:creator" content="@[object Object]">
 
 
@@ -131,9 +151,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2015/01/14/runtime/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/01/10/runtime/"/>
 
-  <title> runtime | 安跃超 </title>
+  <title> runtime学习笔记 | 安跃超 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -293,7 +313,7 @@
             
             
               
-                runtime
+                runtime学习笔记
               
             
           </h1>
@@ -305,11 +325,30 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-01-14T11:07:13+08:00" content="2015-01-14">
-              2015-01-14
+            <time itemprop="dateCreated" datetime="2017-01-10T14:13:00+08:00" content="2017-01-10">
+              2017-01-10
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -333,11 +372,47 @@
       
 
       
-        <p>#####1.交换两个方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">+ (void)load&#123;</div><div class="line"></div><div class="line">    static dispatch_once_t onceToken;</div><div class="line">    dispatch_once(&amp;onceToken, ^&#123;</div><div class="line">        Method viewDidLoad = class_getInstanceMethod(self, @selector(viewDidLoad));</div><div class="line">        Method viewDidLoaded = class_getInstanceMethod(self, @selector(viewDidLoaded));</div><div class="line">        method_exchangeImplementations(viewDidLoad, viewDidLoaded);</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)viewDidLoaded &#123;</div><div class="line"></div><div class="line">    NSLog(@&quot;helloviewDidLoaded&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line"></div><div class="line">    NSLog(@&quot;helloviewDidLoad&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>#####2.IMP指针的使用</p>
+        <p>####一、runtime简介</p>
+<ul>
+<li>RunTime简称运行时。OC就是运行时机制，也就是在运行时候的一些机制，其中最主要的是消息机制。</li>
+<li>对于C语言，函数的调用在编译的时候会决定调用哪个函数。</li>
+<li>对于OC的函数，属于动态调用过程，在编译的时候并不能决定真正调用哪个函数，只有在真正运行的时候才会根据函数的名称找到对应的函数来调用。</li>
+<li>事实证明：<ul>
+<li>在编译阶段，OC可以调用任何函数，即使这个函数并未实现，只要声明过就不会报错。</li>
+<li>在编译阶段，C语言调用未实现的函数就会报错。</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+<p>#目录:</p>
+<ul>
+<li><a href="#交换两个方法">交换两个方法</a></li>
+<li><a href="#IMP指针的使用">IMP指针的使用</a></li>
+<li><a href="#动态添加方法">动态添加方法</a></li>
+<li><a href="#给分类添加属性">给分类添加属性</a></li>
+</ul>
+<p>#####<a id="交换两个方法"></a>1.交换两个方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">+ (void)load&#123;</div><div class="line"></div><div class="line">    static dispatch_once_t onceToken;</div><div class="line">    dispatch_once(&amp;onceToken, ^&#123;</div><div class="line">        Method viewDidLoad = class_getInstanceMethod(self, @selector(viewDidLoad));</div><div class="line">        Method viewDidLoaded = class_getInstanceMethod(self, @selector(viewDidLoaded));</div><div class="line">        method_exchangeImplementations(viewDidLoad, viewDidLoaded);</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)viewDidLoaded &#123;</div><div class="line"></div><div class="line">    NSLog(@&quot;helloviewDidLoaded&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line"></div><div class="line">    NSLog(@&quot;helloviewDidLoad&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>实例:</strong>交换<code>imageNamed:</code>方法实现没有图片时给出相应提示;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">#import &lt;UIKit/UIKit.h&gt;</div><div class="line">@interface UIImage (image)</div><div class="line">+ (instancetype)imageWithName:(NSString *)name;</div><div class="line">@end</div><div class="line"></div><div class="line">#import &quot;UIImage+imageName.h&quot;</div><div class="line">#import &lt;objc/runtime.h&gt;</div><div class="line">@implementation UIImage (image)</div><div class="line">+ (void)load</div><div class="line">&#123;</div><div class="line">    // 交换方法</div><div class="line">    // 获取imageWithName方法地址</div><div class="line">    Method imageWithName = class_getClassMethod(self, @selector(imageWithName:));</div><div class="line">    // 获取imageWithName方法地址</div><div class="line">    Method imageName = class_getClassMethod(self, @selector(imageNamed:));</div><div class="line">    // 交换方法地址，相当于交换实现方式</div><div class="line">    method_exchangeImplementations(imageWithName, imageName);</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 不能在分类中重写系统方法imageNamed，因为会把系统的功能给覆盖掉，而且分类中不能调用super.</div><div class="line">// 既能加载图片又能打印</div><div class="line">+ (instancetype)imageWithName:(NSString *)name</div><div class="line">&#123;</div><div class="line">    // 这里调用imageWithName，相当于调用imageName</div><div class="line">    UIImage *image = [self imageWithName:name];</div><div class="line">    if (image == nil) &#123;</div><div class="line">        NSLog(@&quot;加载空的图片&quot;);</div><div class="line">    &#125;</div><div class="line">    return image;</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line">    UIImage *image = [UIImage imageNamed:@&quot;111&quot;];</div><div class="line">    UIImageView *imagView = [UIImageView new];</div><div class="line">    imagView.frame = [UIScreen mainScreen].bounds;</div><div class="line">    imagView.contentMode = UIViewContentModeScaleAspectFit;</div><div class="line">    [imagView setImage:image];</div><div class="line">    [self.view addSubview:imagView];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>#####<a id="IMP指针的使用"></a>2.IMP指针的使用</p>
 <p><em>还有一个地方我们需要注意，如果这样直接调用IMP的话就会发生经典的EXC_BAD_ACCESS错误，我们定义的IMP指针是一个有返回值的类型，而其实我们获取的viewDidLoad这个方法是没有返回值的，所以我们需要新定义一个和IMP相同类型的函数指针比如VIMP，把他的返回值定位Void，**</em>这样如果你修改的方法有返回值就用IMP，没有返回值就用VIMP。<em>**</em></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">typedef id(*_VIMP) (id,SEL,...);</div><div class="line">typedef void(*_IMP) (id,SEL,...);</div><div class="line"></div><div class="line">@implementation UIViewController</div><div class="line"></div><div class="line">+ (void)load&#123;</div><div class="line"></div><div class="line">    static dispatch_once_t onceToken;</div><div class="line">    dispatch_once(&amp;onceToken, ^&#123;</div><div class="line">        Method viewDidLoad = class_getInstanceMethod(self, @selector(viewDidLoad));</div><div class="line">       _IMP viewDidLoad_IMP = (_IMP)method_getImplementation(viewDidLoad);</div><div class="line">      </div><div class="line">       method_setImplementation(viewDidLoad, imp_implementationWithBlock(^(id target, SEL action)&#123;</div><div class="line">        </div><div class="line">            viewDidLoad_IMP(target,@selector(action));</div><div class="line">            NSLog(@&quot;%@&quot;,target);</div><div class="line">        </div><div class="line">        &#125;));</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line">    </div><div class="line">    NSLog(@&quot;helloviewDidLoad&quot;);</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><em>实际上</em> <strong>直接调用一个方法的IMP指针的效率是高于调用方法本身的</strong>，<em>所以，如果你有一个合适的时机获取到方法的IMP的话，你可以试着调用它。</em></p>
+<p>#####<a id="动态添加方法"></a>3.动态添加方法</p>
+<ul>
+<li>开发使用场景：如果一个类方法非常多，加载类到内存的时候也比较* 耗费资源，需要给每个方法生成映射表，可以使用动态给某个类，添加方法解决。</li>
+<li>经典面试题：有没有使用performSelector，其实主要想问你有没有动态添加过方法。</li>
+<li>简单使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">@implementation ViewController</div><div class="line">-(void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line"></div><div class="line">  Person *p = [Person new];</div><div class="line">    </div><div class="line">    if ([p respondsToSelector:@selector(eat)])&#123;</div><div class="line">        // 默认person，没有实现eat方法，可以通过performSelector调用，但是会报错。</div><div class="line">        // 动态添加方法就不会报错</div><div class="line">        [p performSelector:@selector(eat)];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">@implementation Person</div><div class="line">// void(*)()</div><div class="line">// 默认方法都有两个隐式参数，</div><div class="line">void eat(id self,SEL sel)</div><div class="line">&#123;</div><div class="line">    NSLog(@&quot;%@ %@&quot;,self,NSStringFromSelector(sel));</div><div class="line">&#125;</div><div class="line">// 当一个对象调用未实现的方法，会调用这个方法处理,并且会把对应的方法列表传过来.</div><div class="line">// 刚好可以用来判断，未实现的方法是不是我们想要动态添加的方法</div><div class="line">+(BOOL)resolveInstanceMethod:(SEL)sel</div><div class="line">&#123;</div><div class="line">    if (sel == @selector(eat)) &#123;</div><div class="line">        // 动态添加eat方法</div><div class="line">        // 第一个参数：给哪个类添加方法</div><div class="line">        // 第二个参数：添加方法的方法编号</div><div class="line">        // 第三个参数：添加方法的函数实现（函数地址）</div><div class="line">        // 第四个参数：函数的类型，(返回值+参数类型) v:void @:对象-&gt;self :表示SEL-&gt;_cmd</div><div class="line">        class_addMethod(self, @selector(eat), eat, &quot;v@:&quot;);</div><div class="line">    &#125;</div><div class="line">    return [super resolveInstanceMethod:sel];</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>#####<a id="给分类添加属性"></a>4. 给分类添加属性</p>
+<ul>
+<li>原理：给一个类声明属性，其实本质就是给这个类添加关联，并不是直接把这个值的内存空间添加到类存空间。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">@implementation ViewController</div><div class="line"></div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line">    // Do any additional setup after loading the view, typically from a nib.</div><div class="line">    </div><div class="line">    // 给系统NSObject类动态添加属性name</div><div class="line">    </div><div class="line">    NSObject *objc = [[NSObject alloc] init];</div><div class="line">    objc.name = @&quot;小码哥&quot;;</div><div class="line">    NSLog(@&quot;%@&quot;,objc.name);</div><div class="line">    </div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">// 定义关联的key</div><div class="line">static const char *key = &quot;name&quot;;</div><div class="line"></div><div class="line">@implementation NSObject (Property)</div><div class="line"></div><div class="line">- (NSString *)name</div><div class="line">&#123;</div><div class="line">    // 根据关联的key，获取关联的值。</div><div class="line">    return objc_getAssociatedObject(self, key);</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)setName:(NSString *)name</div><div class="line">&#123;</div><div class="line">    // 第一个参数：给哪个对象添加关联</div><div class="line">    // 第二个参数：关联的key，通过这个key获取</div><div class="line">    // 第三个参数：关联的value</div><div class="line">    // 第四个参数:关联的策略</div><div class="line">    objc_setAssociatedObject(self, key, name, OBJC_ASSOCIATION_RETAIN_NONATOMIC);</div><div class="line">&#125;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>附上<a href="https://github.com/anyuechao/runtimeDemo" target="_blank" rel="external">runtimeDemo</a></p>
 
       
     </div>
@@ -379,21 +454,27 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/font-color-lightgreen-face-黑体-iOS-font/" rel="tag">#<font color=lightgreen face=黑体>iOS</font></a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/01/03/vi编辑器的使用/" rel="next" title="vi编辑器的使用">
-                <i class="fa fa-chevron-left"></i> vi编辑器的使用
+              <a href="/2016/10/20/编译器命令/" rel="next" title="Xcode预编译命令<br>">
+                <i class="fa fa-chevron-left"></i> Xcode预编译命令<br>
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/01/14/属性的属性/" rel="prev" title="属性的属性">
-                属性的属性 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/01/11/快速集成极光推送/" rel="prev" title="快速集成极光推送<br>">
+                快速集成极光推送<br> <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
