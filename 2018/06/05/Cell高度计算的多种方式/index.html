@@ -1,0 +1,779 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="title:cell高度计算的多种方式date:2017-03-14 16:24:09 categories:iOS tags:iOS 相关文推荐:UITableView自动计算cell高度并缓存,无需再手动计算四种方法实现UITableView的cell高度自动计算">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安跃超">
+<meta property="og:url" content="https://anyuechao.github.io/2018/06/05/Cell高度计算的多种方式/index.html">
+<meta property="og:site_name" content="安跃超">
+<meta property="og:description" content="title:cell高度计算的多种方式date:2017-03-14 16:24:09 categories:iOS tags:iOS 相关文推荐:UITableView自动计算cell高度并缓存,无需再手动计算四种方法实现UITableView的cell高度自动计算">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-05T07:35:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="安跃超">
+<meta name="twitter:description" content="title:cell高度计算的多种方式date:2017-03-14 16:24:09 categories:iOS tags:iOS 相关文推荐:UITableView自动计算cell高度并缓存,无需再手动计算四种方法实现UITableView的cell高度自动计算">
+<meta name="twitter:creator" content="@[object Object]">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6318926023282918000,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://anyuechao.github.io/2018/06/05/Cell高度计算的多种方式/"/>
+
+  <title>  | 安跃超 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">安跃超</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">安跃超的博客</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-06-05T14:14:20+08:00" content="2018-06-05">
+              2018-06-05
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p>title:cell高度计算的多种方式<br><br>date:2017-03-14 16:24:09 <br><br>categories:iOS<br></p>
+<h2 id="tags-iOS"><a href="#tags-iOS" class="headerlink" title="tags:iOS "></a>tags:<font color="lightgreen" face="黑体">iOS</font> </h2><p><strong>相关文推荐:</strong><br><a href="http://www.jianshu.com/p/64f0e1557562" target="_blank" rel="noopener">UITableView自动计算cell高度并缓存,无需再手动计算</a><br><a href="http://www.jianshu.com/p/b8172aba9a8f" target="_blank" rel="noopener">四种方法实现UITableView的cell高度自动计算</a><br><a id="more"></a></p>
+<p><strong>第三方:</strong><br><strong><a href="https://github.com/forkingdog/UITableView-FDTemplateLayoutCell" target="_blank" rel="noopener">UITableView-FDTemplateLayoutCell</a></strong>使用教程详见README或者<a href="http://blog.sunnyxx.com/2015/05/17/cell-height-calculation/" target="_blank" rel="noopener">优化UITableViewCell高度计算的那些事</a></p>
+<p>##cell的高度</p>
+<p>cell的高度可以简单分为等高和不等高两大类。等高的情况不用多说，直接设置表视图的cellHeight的属性即可，所以这里只想聊聊不等高的情况。不等高的算法也可以分为两类：</p>
+<p>#####一. 设置计算cell高度的辅助属性</p>
+<blockquote>
+<p>最常见的是在模型里设置一个计算cell高度的辅助属性，然后重写这个属性的get方法，计算cell高度。</p>
+</blockquote>
+<p>[^<a href="http://download.csdn.net/detail/joonchen111/9330317" target="_blank" rel="noopener">示例代码下载地址</a>]:</p>
+<p>HomeModel<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">//HomeModel .h</span><br><span class="line">#import &lt;UIKit/UIKit.h&gt;</span><br><span class="line"></span><br><span class="line">@interface HomeModel : NSObject</span><br><span class="line"></span><br><span class="line">@property (nonatomic,copy) NSString *icon; //图片</span><br><span class="line">@property (nonatomic,copy) NSString *content; //内容的label</span><br><span class="line">//单元格的高度</span><br><span class="line">@property (nonatomic,assign) CGFloat cellHeight;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">//HomeModel.m</span><br><span class="line">#import &quot;HomeModel.h&quot;</span><br><span class="line">#import &quot;HomeViewCell.h&quot;</span><br><span class="line"></span><br><span class="line">@implementation HomeModel</span><br><span class="line"></span><br><span class="line">//惰性初始化是这样写的</span><br><span class="line">-(CGFloat)cellHeight</span><br><span class="line">&#123;</span><br><span class="line">    //只在初始化的时候调用一次就Ok</span><br><span class="line">    if(!_cellHeight)&#123;</span><br><span class="line">        HomeViewCell *cell=[[HomeViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:homeIndentifier];</span><br><span class="line">        NSLog(@&quot;我要计算高度&quot;);</span><br><span class="line">        // 调用cell的方法计算出高度</span><br><span class="line">        _cellHeight=[cell rowHeightWithCellModel:self];</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    return _cellHeight;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure></p>
+<p>HomeViewCell<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br></pre></td><td class="code"><pre><span class="line">//cell.h文件</span><br><span class="line">#import &lt;UIKit/UIKit.h&gt;</span><br><span class="line">#import &quot;Masonry.h&quot;</span><br><span class="line"></span><br><span class="line">@class HomeModel;</span><br><span class="line"></span><br><span class="line">static  NSString *homeIndentifier=@&quot;homeCell&quot;;</span><br><span class="line"></span><br><span class="line">@interface HomeViewCell : UITableViewCell</span><br><span class="line"></span><br><span class="line">//数据模型</span><br><span class="line">@property (nonatomic,strong) HomeModel *homeModel;</span><br><span class="line"></span><br><span class="line">//我们最后得到cell的高度的方法</span><br><span class="line">-(CGFloat)rowHeightWithCellModel:(HomeModel *)homeModel;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">// cell.m文件</span><br><span class="line"></span><br><span class="line">#import &quot;HomeViewCell.h&quot;</span><br><span class="line">#import &quot;HomeModel.h&quot;</span><br><span class="line"></span><br><span class="line">#define WS(weakSelf)  __weak __typeof(&amp;*self)weakSelf = self;</span><br><span class="line"></span><br><span class="line">//头像的高度</span><br><span class="line">#define iconH  80</span><br><span class="line">#define iconW 100</span><br><span class="line">//间距</span><br><span class="line">#define  marginW 10</span><br><span class="line"></span><br><span class="line">@interface HomeViewCell ()</span><br><span class="line"></span><br><span class="line">@property (nonatomic,weak) UIImageView *icon;  //头像</span><br><span class="line">@property (nonatomic,weak) UILabel *content; //显示文本的label</span><br><span class="line">@property (nonatomic,weak) UIImageView *line;  //下划线</span><br><span class="line"></span><br><span class="line">//定义一个contentLabel文本高度的属性</span><br><span class="line">@property (nonatomic,assign) CGFloat contentLabelH;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation HomeViewCell</span><br><span class="line"></span><br><span class="line">-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier</span><br><span class="line">&#123;</span><br><span class="line">    self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];</span><br><span class="line">    if(self)&#123;</span><br><span class="line">        //1.添加子控件</span><br><span class="line">        [self setupUI];</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#pragma mark 添加子控件</span><br><span class="line">-(void)setupUI</span><br><span class="line">&#123;</span><br><span class="line">    //1.添加图片</span><br><span class="line">    UIImageView *icon=[UIImageView new];</span><br><span class="line">    icon.contentMode=UIViewContentModeScaleAspectFill;</span><br><span class="line">    icon.clipsToBounds=YES;</span><br><span class="line">    [self.contentView addSubview:icon];</span><br><span class="line">    self.icon=icon;</span><br><span class="line">    //2.添加label</span><br><span class="line">    UILabel *content=[UILabel new];</span><br><span class="line">    content.numberOfLines=0; //多行显示</span><br><span class="line">    content.font=[UIFont systemFontOfSize:16];</span><br><span class="line">    [self.contentView addSubview:content];</span><br><span class="line">     self.content=content;</span><br><span class="line">    //3.底部添加一条线</span><br><span class="line">    UIImageView *line=[UIImageView new];</span><br><span class="line">    line.backgroundColor=[UIColor grayColor];</span><br><span class="line">    [self.contentView addSubview:line];</span><br><span class="line">    self.line=line;</span><br><span class="line">    </span><br><span class="line">    //设置约束</span><br><span class="line">     __weak __typeof(&amp;*self)weakSelf = self;</span><br><span class="line">    //1.设置图片的大小</span><br><span class="line">    [self.icon mas_makeConstraints:^(MASConstraintMaker *make) &#123;</span><br><span class="line">        make.height.mas_equalTo(iconH);  //头像的高度</span><br><span class="line">        make.width.mas_equalTo(iconW); //头像的宽度</span><br><span class="line">        make.top.equalTo(weakSelf.mas_top).offset(marginW) ; //距离顶部10的距离</span><br><span class="line">        make.centerX.equalTo(weakSelf.mas_centerX); //头像的中心x和cell的中心x一样</span><br><span class="line">        </span><br><span class="line">       // make.centerY.equalTo(self.mas_centerY);  头像的中心y和cell的中心y一样</span><br><span class="line">    &#125;];</span><br><span class="line">    //2.设置contentLabel</span><br><span class="line">    [self.content mas_makeConstraints:^(MASConstraintMaker *make) &#123;</span><br><span class="line">        make.top.equalTo(weakSelf.icon.mas_bottom).offset(marginW); //文本距离头像底部10个间距</span><br><span class="line">        make.left.equalTo(weakSelf.mas_left).offset(marginW);  //文本距离左边的距离</span><br><span class="line">        make.right.equalTo(weakSelf.mas_right).offset(-marginW);  //文本距离右边的距离</span><br><span class="line">        </span><br><span class="line">        //文本高度 我们再得到模型的时候 在传递</span><br><span class="line">    &#125;];</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    //3.设置下划线的大小</span><br><span class="line">    [self.line mas_makeConstraints:^(MASConstraintMaker *make) &#123;</span><br><span class="line">        make.height.mas_equalTo(0.5);</span><br><span class="line">        make.left.equalTo(weakSelf.mas_left).offset(0);</span><br><span class="line">        make.right.equalTo(weakSelf.mas_right).offset(0);</span><br><span class="line">        make.bottom.equalTo(weakSelf.mas_bottom).offset(-marginW); //下划线距离底部10的距离</span><br><span class="line">    &#125;];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//传递数据模型</span><br><span class="line">-(void)setHomeModel:(HomeModel *)homeModel</span><br><span class="line">&#123;</span><br><span class="line">    _homeModel=homeModel;</span><br><span class="line">   </span><br><span class="line">    self.icon.image=[UIImage imageNamed:homeModel.icon];  //头像</span><br><span class="line">    self.content.text=homeModel.content; //文本内容</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//在表格cell中 计算出高度</span><br><span class="line">-(CGFloat)rowHeightWithCellModel:(HomeModel *)homeModel</span><br><span class="line">&#123;</span><br><span class="line">    _homeModel=homeModel;</span><br><span class="line">    __weak __typeof(&amp;*self)weakSelf = self;</span><br><span class="line">    //设置标签的高度</span><br><span class="line">    [self.content mas_makeConstraints:^(MASConstraintMaker *make) &#123;</span><br><span class="line">        // weakSelf.contentLabelH  这个会调用下面的懒加载方法</span><br><span class="line">        make.height.mas_equalTo(weakSelf.contentLabelH);</span><br><span class="line">    &#125;];</span><br><span class="line">    </span><br><span class="line">    // 2. 更新约束</span><br><span class="line">    [self layoutIfNeeded];</span><br><span class="line">    </span><br><span class="line">    //3.  视图的最大 Y 值</span><br><span class="line">    CGFloat h= CGRectGetMaxY(self.content.frame);</span><br><span class="line">   </span><br><span class="line">    return h+marginW; //最大的高度+10</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"> *  懒加载的方法返回contentLabel的高度  (只会调用一次)</span><br><span class="line"> */</span><br><span class="line">-(CGFloat)contentLabelH</span><br><span class="line">&#123;</span><br><span class="line">    if(!_contentLabelH)&#123;</span><br><span class="line">        CGFloat h=[self.homeModel.content boundingRectWithSize:CGSizeMake(([UIScreen mainScreen].bounds.size.width)-2*marginW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@&#123;NSFontAttributeName:[UIFont systemFontOfSize:16]&#125; context:nil].size.height;</span><br><span class="line">        </span><br><span class="line">        _contentLabelH=h+marginW;  //内容距离底部下划线10的距离</span><br><span class="line">    &#125;</span><br><span class="line">    return _contentLabelH;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure></p>
+<p>HomeViewController<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line">//HomeViewController.h</span><br><span class="line">#import &lt;UIKit/UIKit.h&gt;</span><br><span class="line"></span><br><span class="line">@interface HomeViewController : UITableViewController</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">//HomeViewController.m</span><br><span class="line">#import &quot;HomeViewController.h&quot;</span><br><span class="line">#import &quot;HomeViewCell.h&quot;</span><br><span class="line">#import &quot;HomeModel.h&quot;</span><br><span class="line"></span><br><span class="line">@interface HomeViewController ()</span><br><span class="line"></span><br><span class="line">@property (nonatomic,strong) NSMutableArray *arr; //存放的我们自定义的数据</span><br><span class="line">@property (nonatomic,strong) NSMutableArray *arrModel; //存放的数据模型</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation HomeViewController</span><br><span class="line"></span><br><span class="line">-(NSMutableArray *)arr</span><br><span class="line">&#123;</span><br><span class="line">    if(_arr==nil)&#123;</span><br><span class="line">        _arr=[NSMutableArray array];</span><br><span class="line">        [_arr addObject:@&quot;高通与小米达成专利授权协议的主要影响在于小米的海外市场，因为在国内小米并不会遇到专利问题。然而，分析小米在海外遇到的问题会发现，这远不是签订一个专利协议能解决&quot;];</span><br><span class="line">        [_arr addObject:@&quot;当年科比和乔丹的对决，那时的科比几乎无所不能，谁又会想到他会退役，说不定再过10年，我也就退役了。&quot;];</span><br><span class="line">        [_arr addObject:@&quot;高通与小米达成专利授权协议的主要影响在于小米的海外市场，因为在国内小米并不会遇到专利问题。然而，分析小米在海外遇到的问题会发现，这远不是签订一个专利协议能解决&quot;];</span><br><span class="line">        [_arr addObject:@&quot;hello 这是我的iOS学习群 519797474，欢迎加入&quot;];</span><br><span class="line">        [_arr addObject:@&quot;佛堂中，大师正在对弟子讲话：“为师为你们所起之名并非随随便便，而是为师对你们的期望，你们懂了吗？”众弟子都回答懂了。只有一名弟子默然不语。大师见状，问那名弟子道：“圆寂，你为什么不说话?&quot;];</span><br><span class="line">        [_arr addObject:@&quot;最后这个例子是老例子了最后这个例子是老例子了，我想给大家看看其实Masonry做动画也和其他的Autolayout方法一样，但是添加约束的代码却非常的少最后这个例子是老例子了，我想给大家看看其实Masonry做动画也和其他的Autolayout方法一样，但是添加约束的代码却非常的少最后这个例子是老例子了，我想给大家看看其实Masonry做动画也和其他的Autolayout方法一样，但是添加约束的代码却非常的少最后这个例子是老例子了，我想给大家看看其实Masonry做动画也和其他的Autolayout方法一样，但是添加约束的代码却非常的少最后这个例子是老例子了，我想给大家看看其实Masonry做动画也和其他的Autolayout方法一样，但是添加约束的代码却非常的少最后这个例子是老例子了，我想给大家看看其实Masonry做动画也和其他的Autolayout方法一样，但是添加约束的代码却非常的少&quot;];</span><br><span class="line">        [_arr addObject:@&quot;今天和老婆吵架,吵到激烈的时候,我突然觉得我一个大男人为什么要和一个女人一般见识呢?何况还是自己的老婆!当时我就跟老婆道了歉,老婆挺高兴的.道完歉,她哥哥把菜刀放下了,她弟弟把铁锹也放下了,她妹妹拽着我头发的手也松开了,妹夫手里的擀面杖也扔地下了,老丈人也把砖头丢开了;&quot;];</span><br><span class="line">        [_arr addObject:@&quot;昨天去一家工厂面试监工，给出的工资太低，简直不能忍。最后跟主管去车间看了看，我觉得工资只是数字而已，关键是学习的机会，所以留下来了。&quot;];</span><br><span class="line">        [_arr addObject:@&quot;大家好，我是他主治医生。请原谅他，他因为神经病引起的并发症迷恋上了装逼，去年高考 ，他差一点就上清华了，现在想来依然倍感惋惜，清华分数695，他考了69.5，就差那么一点。巨大的打击彻底粉碎了他对未来的憧憬，整日在家自暴自弃专研怎么装逼，终成为新一代装逼大师，将装逼 方法研究的出神入化，各种装逼方法，无死角装逼，终于横空出世…。你看，他又在装逼.......&quot;];</span><br><span class="line">        [_arr addObject:@&quot;高通与小米达成专利授权协议的主要影响在于小米的海外市场，因为在国内小米并不会遇到专利问题。然而，分析小米在海外遇到的问题会发现，这远不是签订一个专利协议能解决，周鸿祎的当别人都这么做的时候，我们换一种方式去做；和雷军的打败一种东西的一定是更新的东西而不是简单的复制。越想越觉得他们的理念异曲同工周鸿祎的当别人都这么做的时候，我们换一种方式去做；和雷军的打败一种东西的一定是更新的东西而不是简单的复制。越想越觉得他们的理念异曲同工周鸿祎的当别人都这么做的时候，我们换一种方式去做；和雷军的打败一种东西的一定是更新的东西而不是简单的复制。越想越觉得他们的理念异曲同工周鸿祎的当别人都这么做的时候，我们换一种方式去做；和雷军的打败一种东西的一定是更新的东西而不是简单的复制。越想越觉得他们的理念异曲同工周鸿祎的当别人都这么做的时候，我们换一种方式去做；和雷军的打败一种东西的一定是更新的东西而不是简单的复制。越想越觉得他们的理念异曲同工周鸿祎的当别人都这么做的时候，我们换一种方式去做；和雷军的打败一种东西的一定是更新的东西而不是简单的复制。越想越觉得他们的理念异曲同工周鸿祎的当别人都这么做的时候，我们换一种方式去做；和雷军的打败一种东西的一定是更新的东西而不是简单的复制。越想越觉得他们的理念异曲同工周鸿祎的当别人都这么做的时候，我们换一种方式去做；和雷军的打败一种东西的一定是更新的东西而不是简单的复制。越想越觉得他们的理念异曲同工周鸿祎的当别人都这么做的时候，我们换一种方式去做；和雷军的打败一种东西的一定是更新的东西而不是简单的复制。越想越觉得他们的理念异曲同工周鸿祎的当别人都这么做的时候，我们换一种方式去做；和雷军的打败一种东西的一定是更新的东西而不是简单的复制。越想越觉得他们的理念异曲同工&quot;];</span><br><span class="line">        [_arr addObject:@&quot;很多时候我们过高估计了机遇的力量，低估了规划的重要性，不明确的乐观主义者只知道未来越来越好，却不知道究竟多好，因此不去制定具体计划。他想在未来获利，但是却认为没有必要制定具体规划。&quot;];</span><br><span class="line">        [_arr addObject:@&quot;hello 这是我的iOS学习群 519797474，欢迎加入&quot;];</span><br><span class="line">        for(int i=0;i&lt;_arr.count;i++)&#123;</span><br><span class="line">            HomeModel *m=[[HomeModel alloc]init];</span><br><span class="line">            m.icon=[NSString stringWithFormat:@&quot;%i&quot;,i];</span><br><span class="line">            m.content=_arr[i];</span><br><span class="line">            //把模型那存到模型数组中</span><br><span class="line">            [self.arrModel addObject:m];</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    return _arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-(NSMutableArray *)arrModel</span><br><span class="line">&#123;</span><br><span class="line">    if(_arrModel==nil)&#123;</span><br><span class="line">        _arrModel=[NSMutableArray array];</span><br><span class="line">    &#125;</span><br><span class="line">    return _arrModel;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    </span><br><span class="line">    self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;//去掉默认下划线</span><br><span class="line">    self.tableView.estimatedRowHeight=200; //预估行高 可以提高性能</span><br><span class="line">    self.tableView.rowHeight = 88;</span><br><span class="line">    </span><br><span class="line">    //注册表格单元</span><br><span class="line">    [self.tableView registerClass:[HomeViewCell class] forCellReuseIdentifier:homeIndentifier];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">  返回多少行</span><br><span class="line"> */</span><br><span class="line">- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section &#123;</span><br><span class="line">    //因为是我们自定义的数据 所以 这里写arr而不是arrModel  因为只有这样才会调用arr的懒加载犯法</span><br><span class="line">    return self.arr.count;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">    返回表格单元</span><br><span class="line"> */</span><br><span class="line">- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath &#123;</span><br><span class="line">    //取出模型</span><br><span class="line">    HomeModel *model=self.arrModel[indexPath.row];</span><br><span class="line">    </span><br><span class="line">    HomeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:homeIndentifier];</span><br><span class="line">    </span><br><span class="line">    //传递模型给cell</span><br><span class="line">    cell.homeModel=model;</span><br><span class="line">    </span><br><span class="line">    return cell;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"> *  返回每一个表格单元的高度</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    //取出模型</span><br><span class="line">    HomeModel *homeModel=self.arrModel[indexPath.row];</span><br><span class="line">    </span><br><span class="line">    return    homeModel.cellHeight ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure></p>
+<p>#####二. 自动布局计算cell高度 </p>
+<blockquote>
+<p>上面的方法相对麻烦一些，好消息是iOS8以后，苹果提供了一个自动计算cell高度的方法，也就是本文要介绍的方法。<br>利用自动布局计算cell高度</p>
+</blockquote>
+<p>首先我们要了解的是在xib,或storyBoard里面UILabel,UIButton等控件的的尺寸是可以随着内容的变化而自动变化的，也就是说你给一个label添加好位置约束后，它的尺寸就可以不添加任何约束。<br>让自动适应内容的子控件与cell建立联系。例如，一个label通过添加约束使它距左边，上边的距离以及宽度已经确定，此时再让label的底部与父控件的底部建立约束关系（注意label的numberOfLines应该设置为0，要不然label不会自动换行）。</p>
+<p><em>添加计算cell估算高度的代码和cell高度的代码</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">self.tableView.estimatedRowHeight = 44;</span><br><span class="line"> self.tableView.rowHeight = UITableViewAutomaticDimension;</span><br></pre></td></tr></table></figure></p>
+<p><strong>总结：</strong> 其实用autoLayout自动计算cell高度可以分为三步：</p>
+<ul>
+<li><p>让子控件和父控件建立联系。</p>
+</li>
+<li><p>添加cell的估算高度。</p>
+</li>
+<li><p>添加cell的高度。</p>
+<p>另外，这个方法只试用在iOS8以后，iOS8之前的系统不支持，然而可喜的消息是在今年3月的苹果发布会上，说到iOS9的普及率已经达到了80%，想必iOS8的普及率在90%应该没有什么问题。</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/path/to/wechat-reward-image.png" alt="YueChao An WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/path/to/alipay-reward-image.png" alt="YueChao An Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/05/搭建私有库以及个人遇到的一些问题总结/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/05/CoreGraphics—Quartz2D/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<div class="duoshuo" id="comments">     
+       <!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="<%=key%>" data-title="<%=title%>" data-url="<%=url%>"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"995684946"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="YueChao An" />
+          <p class="site-author-name" itemprop="name">YueChao An</p>
+          <p class="site-description motion-element" itemprop="description">你那么优秀，我有什么理由不努力</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">65</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/anyuechao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/61821afa755b/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-jianshu"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhangtianqi.net/" target="_blank" title="zhangtianqi">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  zhangtianqi
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.ilakeyc.gift/" target="_blank" title="ilakeyc">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ilakeyc
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wangshiyu13" target="_blank" title="shiyu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  shiyu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.lidaze.com/" target="_blank" title="lidaze">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  lidaze
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://liushuang.win/" target="_blank" title="feelShuang">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  feelShuang
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/EmyWong" target="_blank" title="装逼王">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  装逼王
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://jenko.cc/" target="_blank" title="jenko">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  jenko
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://liuyanwei.jumppo.com/" target="_blank" title="ali大神">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ali大神
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tags-iOS"><span class="nav-number">1.</span> <span class="nav-text">tags:iOS </span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YueChao An</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

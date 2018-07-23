@@ -1,0 +1,796 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="title:搭建私有库以及个人遇到的一些问题总结date:2017-06-14 16:24:09 categories:iOS tags:github 搭建私有库以及个人遇到的一些问题总结 作为一名资深的 iOS开发，在开发过程中会用到大量的 category，以及一些常用的宏定义和github 一些常用的开源库，如果全都是网往目中拖得话会显得比较无力、麻烦，这本身就是组件化程度比较高的东西，完">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安跃超">
+<meta property="og:url" content="https://anyuechao.github.io/2018/06/05/搭建私有库以及个人遇到的一些问题总结/index.html">
+<meta property="og:site_name" content="安跃超">
+<meta property="og:description" content="title:搭建私有库以及个人遇到的一些问题总结date:2017-06-14 16:24:09 categories:iOS tags:github 搭建私有库以及个人遇到的一些问题总结 作为一名资深的 iOS开发，在开发过程中会用到大量的 category，以及一些常用的宏定义和github 一些常用的开源库，如果全都是网往目中拖得话会显得比较无力、麻烦，这本身就是组件化程度比较高的东西，完">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1060239-34fff5b5da7ee088.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1060239-f89316aa6a128fa6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1060239-e828f39b8a0a6761.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1060239-87b6d1690389c4bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1060239-be55f6f848081f9b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1060239-8904da65fe8f696a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1060239-35f1c92006b1207a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-06-05T07:34:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="安跃超">
+<meta name="twitter:description" content="title:搭建私有库以及个人遇到的一些问题总结date:2017-06-14 16:24:09 categories:iOS tags:github 搭建私有库以及个人遇到的一些问题总结 作为一名资深的 iOS开发，在开发过程中会用到大量的 category，以及一些常用的宏定义和github 一些常用的开源库，如果全都是网往目中拖得话会显得比较无力、麻烦，这本身就是组件化程度比较高的东西，完">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1060239-34fff5b5da7ee088.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:creator" content="@[object Object]">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6318926023282918000,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://anyuechao.github.io/2018/06/05/搭建私有库以及个人遇到的一些问题总结/"/>
+
+  <title>  | 安跃超 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">安跃超</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">安跃超的博客</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-06-05T14:10:24+08:00" content="2018-06-05">
+              2018-06-05
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p>title:搭建私有库以及个人遇到的一些问题总结<br><br>date:2017-06-14 16:24:09 <br><br>categories:iOS<br></p>
+<h2 id="tags-github"><a href="#tags-github" class="headerlink" title="tags:github "></a>tags:<font color="lightgreen" face="黑体">github</font> </h2><h4 id="搭建私有库以及个人遇到的一些问题总结"><a href="#搭建私有库以及个人遇到的一些问题总结" class="headerlink" title="搭建私有库以及个人遇到的一些问题总结"></a><strong>搭建私有库以及个人遇到的一些问题总结</strong></h4><blockquote>
+<p>作为一名资深的 iOS开发，在开发过程中会用到大量的 category，以及一些常用的宏定义和github 一些常用的开源库，如果全都是网往目中拖得话会显得比较无力、麻烦，这本身就是组件化程度比较高的东西，完全没有必要一个一个的往项目中拖，现在有一个非常好用的方法来分享给大家。（当然了网上的博客很多，但是我要打造一个非常简洁便利的方法来让大家去管理自己的私有库）。</p>
+</blockquote>
+<ul>
+<li><p>1.首先你得有一个 github，或者 coding亦或是 oschina 等代码托管平台的账号(个人推荐 Coding 和 oschina，原因是 Coding，和oschina 是可以免费创建私有项目的，而github是需要收费的)</p>
+</li>
+<li><p>2.然后呢你需要在 你得代码托管平台上创建两个项目（一个是你得私有源，另一个是你想要引用的私有库）<br>那就拿我的我的做个例子吧~<br>这是我的私有源<br><img src="http://upload-images.jianshu.io/upload_images/1060239-34fff5b5da7ee088.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="私有源仓库1"><br>这是我要引用的私有库<br><img src="http://upload-images.jianshu.io/upload_images/1060239-f89316aa6a128fa6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="这是我要引用的私有库"></p>
+</li>
+<li><p>3.创建完仓库之后，紧接着在本地创建两个文件夹，和创建仓库时的名字一样YCPodSpec(下文称地址1)，和YCBaseCategory（下文称地址2）。</p>
+</li>
+<li><p>4.然后呢在在地址2中创建一个你的项目比如说我的（下面的 category 就是你在 cocoapods 中即将要引用的东西）<br><img src="http://upload-images.jianshu.io/upload_images/1060239-e828f39b8a0a6761.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建的项目"><br>然后在终端输入命令<br><code>cd 地址2中你创建项目的路径（一般直接拖就 OK）</code><br><code>pod spec create YCBaseCategory</code><br>然后在你的地址2中会出现一个叫 <code>YCBaseCategory.podspec</code>的文件，用 Xcode 打开它编辑<br>像我这样对应改一下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Pod::Spec.new do |s|</span><br><span class="line">s.name = &quot;YCBaseCategory&quot;</span><br><span class="line">s.authors = &quot;???&quot;</span><br><span class="line">s.homepage = &quot;git@git.coding.net:???/YCBaseCategory.git&quot;</span><br><span class="line">s.summary = &quot;YCBaseCategory&quot;</span><br><span class="line">s.version = &quot;1.0.0&quot;</span><br><span class="line">s.platform = :ios, &quot;8.0&quot;</span><br><span class="line">s.source = &#123; :git =&gt; &quot;git@git.coding.net:???/YCBaseCategory.git&quot;, :tag =&gt; s.version &#125;</span><br><span class="line">s.source_files = &quot;YCBaseCategory/Category/*.&#123;h,m&#125;&quot;</span><br><span class="line">#s.dependency &apos;MJRefresh&apos;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>然后呢在打开命令行输入以下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add .</span><br><span class="line">git commit -m &apos;category&apos;</span><br><span class="line">git remote add origin https://git.coding.net/???/YCBaseCategory.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure></p>
+<p>添加 tag用来区分版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git tag 1.0.0</span><br><span class="line">git push --tags</span><br></pre></td></tr></table></figure></p>
+<p>现在呢距离完成已经到了50%了<br><a id="more"></a>    </p>
+<ul>
+<li>5.还记得另一个仓库的名字么 YCPodSpec这时候私有源该上场了，首先你把地址1添加到你的 cocopods 的源中去<br><code>pod repo add YCPodSpec https://git.coding.net/???/YCPodSpec.git</code><br>这里呢如果遇到这个问题的就是托管平台没有配公钥和私钥<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> -&gt; YCBaseCategory (1.0.0)</span><br><span class="line">    - WARN  | attributes: Missing required attribute `license`.</span><br><span class="line">    - WARN  | license: Missing license type.</span><br><span class="line">    - WARN  | source: Git SSH URLs will NOT work for people behind firewalls configured to only allow HTTP, therefore HTTPS is preferred.</span><br><span class="line">    - WARN  | url: There was a problem validating the URL git@git.coding.net:CoderAn/YCBaseCategory.git.</span><br><span class="line">    - ERROR | [iOS] unknown: Encountered an unknown error ([!] /usr/bin/git clone git@git.coding.net:CoderAn/YCBaseCategory.git /var/folders/4y/z_qs1rx56892cbwxb53kkhyw0000gn/T/d20170717-9015-13p049l --template= --single-branch --depth 1 --branch 1.0.0</span><br><span class="line">Cloning into &apos;/var/folders/4y/z_qs1rx56892cbwxb53kkhyw0000gn/T/d20170717-9015-13p049l&apos;...</span><br><span class="line">Permission denied (publickey).</span><br><span class="line">fatal: Could not read from remote repository.</span><br><span class="line">Please make sure you have the correct access rights</span><br><span class="line">and the repository exists.</span><br><span class="line">) during validation.</span><br><span class="line">Analyzed 1 podspec.</span><br><span class="line">[!] The spec did not pass validation, due to 1 error.</span><br><span class="line">[!] The validator for Swift projects uses Swift 3.0 by default, if you are using a different version of swift you can use a `.swift-version` file to set the version for your Pod. For example to use Swift 2.3, run: </span><br><span class="line">    `echo &quot;2.3&quot; &gt; .swift-version`.</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong> 解决:添加公钥和私钥 </strong><br>** 终端输入  <figure class="highlight plain"><figcaption><span>```**</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">然后在这个路径中</span><br><span class="line">``` cd ~/.ssh</span><br></pre></td></tr></table></figure></p>
+<p>把生成好的公钥复制到托管平台这里去（以 coding 为例）<br><img src="http://upload-images.jianshu.io/upload_images/1060239-87b6d1690389c4bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="配置公钥"></p>
+<p>检查加没加到 cocoapods源中去<br>输入命令<br><figure class="highlight plain"><figcaption><span>~/.cocoapods/repos  ```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">``` ls</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1060239-be55f6f848081f9b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的私有源"></p>
+<p>如果没有出现问题呢就在地址1中创建一个文件夹名称YCBaseCategory（就是你需要被管理的私有库），然后在里面在创建相关的版本号（就是刚才你项目中的 tag 值1.0.0）类似于这样<br><img src="http://upload-images.jianshu.io/upload_images/1060239-8904da65fe8f696a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Markdown"><br>然后呢在对应版本号中把这个文件复制进来<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">紧接着呢开始验证</span><br></pre></td></tr></table></figure></p>
+<p> pod spec lint YCBaseCategory.podspec  –allow-warnings<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">然后推到 代码托管平台</span><br></pre></td></tr></table></figure></p>
+<p>  git init<br>  git add .<br>  git commit -m “first commit”<br>  git remote add origin <a href="https://git.coding.net/CoderAn/YCPodSpec.git" target="_blank" rel="noopener">https://git.coding.net/CoderAn/YCPodSpec.git</a><br>  git push -u origin master<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">更新你的私有源</span><br><span class="line">然后进入你任意的一个项目在 Podfile 中添加</span><br><span class="line">![在 Podfile 中添加](http://upload-images.jianshu.io/upload_images/1060239-08aecd26d41a806c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br><span class="line">#对了还有最重要的一点---你的私有源没有更新到最新版现在你的私有源还是空的</span><br><span class="line">那咱们就更新吧</span><br><span class="line">终端</span><br><span class="line">``` </span><br><span class="line">cd 你的任意一个项目</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod repo update (这是升级 cocoapods 中所有的源，包括 cocoapods 默认的那个私有源)</span><br></pre></td></tr></table></figure>
+<p>你要是升级某一个呢就用这个命令吧<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod repo update YCPodSpec(替换成你的源)</span><br></pre></td></tr></table></figure></p>
+<p>如果没有报红的话就是成功了，一般没什么问题如果有的话下面评论，或者自行百度</p>
+<p>然后紧接着在你刚才修改Podfile的那个项目<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod install</span><br></pre></td></tr></table></figure></p>
+<p>哈哈大功告成1.0版本的私有源成功面世<br>来看看我的吧<br><img src="http://upload-images.jianshu.io/upload_images/1060239-35f1c92006b1207a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="来看看我的吧"><br>哈哈哈现在你还在等什么赶快行动起来吧~~~</p>
+<p>##可能有些同学会遇到一些问题：</p>
+<p>#####问题1.<br><figure class="highlight plain"><figcaption><span>Insecure world writable dir</span><a href="/usr/local/bin">in PATH, mode 040777。```</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">提示含义：</span><br><span class="line">目录被赋予777的权限，不安全。</span><br><span class="line"></span><br><span class="line">如何解决：</span><br><span class="line">将提示权限改为775，问题即可解决。</span><br><span class="line"></span><br><span class="line">具体实现：</span><br><span class="line">在终端写入下列命令行，即可消除上面的提示。</span><br><span class="line"></span><br><span class="line">```sudo chmod go-w /usr/local/bin</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><figcaption><span>chmod 775</span><a href="/usr/local```">link</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#####问题2.</span><br><span class="line">```/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rubygems/core_ext/kernel_require.rb:55:in `require&apos;: cannot load such file -- colored2 (LoadError)</span><br></pre></td></tr></table></figure>
+<p>提示缺少 colored2， 可使用<br><code>sudo gem install colored2</code><br>进行安装， 提示缺什么就装什么。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/path/to/wechat-reward-image.png" alt="YueChao An WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/path/to/alipay-reward-image.png" alt="YueChao An Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/05/HTTP状态码/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/05/Cell高度计算的多种方式/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<div class="duoshuo" id="comments">     
+       <!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="<%=key%>" data-title="<%=title%>" data-url="<%=url%>"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"995684946"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="YueChao An" />
+          <p class="site-author-name" itemprop="name">YueChao An</p>
+          <p class="site-description motion-element" itemprop="description">你那么优秀，我有什么理由不努力</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">65</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/anyuechao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/61821afa755b/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-jianshu"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhangtianqi.net/" target="_blank" title="zhangtianqi">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  zhangtianqi
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.ilakeyc.gift/" target="_blank" title="ilakeyc">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ilakeyc
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wangshiyu13" target="_blank" title="shiyu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  shiyu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.lidaze.com/" target="_blank" title="lidaze">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  lidaze
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://liushuang.win/" target="_blank" title="feelShuang">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  feelShuang
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/EmyWong" target="_blank" title="装逼王">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  装逼王
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://jenko.cc/" target="_blank" title="jenko">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  jenko
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://liuyanwei.jumppo.com/" target="_blank" title="ali大神">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ali大神
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tags-github"><span class="nav-number">1.</span> <span class="nav-text">tags:github </span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#搭建私有库以及个人遇到的一些问题总结"><span class="nav-number">1.0.1.</span> <span class="nav-text">搭建私有库以及个人遇到的一些问题总结</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YueChao An</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

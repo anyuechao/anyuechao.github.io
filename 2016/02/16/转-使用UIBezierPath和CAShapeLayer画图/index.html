@@ -1,0 +1,999 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="画图," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="CAShapeLayer 是 CALayer 的子类，但是比 CALayer 更灵活，可以画出各种图形，当然，你也可以使用其他方式来画，随你">
+<meta name="keywords" content="画图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[转]使用UIBezierPath和CAShapeLayer画图">
+<meta property="og:url" content="https://anyuechao.github.io/2016/02/16/转-使用UIBezierPath和CAShapeLayer画图/index.html">
+<meta property="og:site_name" content="安跃超">
+<meta property="og:description" content="CAShapeLayer 是 CALayer 的子类，但是比 CALayer 更灵活，可以画出各种图形，当然，你也可以使用其他方式来画，随你">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://i12.tietuku.com/0fa6b1e7c63da7b6.png">
+<meta property="og:image" content="http://i12.tietuku.com/f5fe5ad8a2b1c985.png">
+<meta property="og:image" content="http://i12.tietuku.com/9819133aaa52736a.png">
+<meta property="og:image" content="http://i12.tietuku.com/6838967810b55b17.png">
+<meta property="og:image" content="http://i12.tietuku.com/b3398df28e8f6f04.png">
+<meta property="og:image" content="http://i12.tietuku.com/f6eb1b2b678262c8.png">
+<meta property="og:image" content="http://i12.tietuku.com/b328219c92f37b3e.gif">
+<meta property="og:image" content="http://i12.tietuku.com/403dcb13b584be5b.gif">
+<meta property="og:image" content="http://i12.tietuku.com/1c66062c9c7e61c0.gif">
+<meta property="og:image" content="http://i12.tietuku.com/e81a659553d477d6.png">
+<meta property="og:image" content="http://i12.tietuku.com/4fc8a1f65aecf42a.png">
+<meta property="og:image" content="http://i12.tietuku.com/5e0dbaa998710c7c.gif">
+<meta property="og:updated_time" content="2016-03-11T09:36:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[转]使用UIBezierPath和CAShapeLayer画图">
+<meta name="twitter:description" content="CAShapeLayer 是 CALayer 的子类，但是比 CALayer 更灵活，可以画出各种图形，当然，你也可以使用其他方式来画，随你">
+<meta name="twitter:image" content="http://i12.tietuku.com/0fa6b1e7c63da7b6.png">
+<meta name="twitter:creator" content="@[object Object]">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6318926023282918000,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://anyuechao.github.io/2016/02/16/转-使用UIBezierPath和CAShapeLayer画图/"/>
+
+  <title> [转]使用UIBezierPath和CAShapeLayer画图 | 安跃超 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">安跃超</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">安跃超的博客</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                [转]使用UIBezierPath和CAShapeLayer画图
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-16T11:08:27+08:00" content="2016-02-16">
+              2016-02-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="CAShapeLayer-是-CALayer-的子类，但是比-CALayer-更灵活，可以画出各种图形，当然，你也可以使用其他方式来画，随你"><a href="#CAShapeLayer-是-CALayer-的子类，但是比-CALayer-更灵活，可以画出各种图形，当然，你也可以使用其他方式来画，随你" class="headerlink" title="CAShapeLayer 是 CALayer 的子类，但是比 CALayer 更灵活，可以画出各种图形，当然，你也可以使用其他方式来画，随你"></a>CAShapeLayer 是 CALayer 的子类，但是比 CALayer 更灵活，可以画出各种图形，当然，你也可以使用其他方式来画，随你</h3><a id="more"></a>
+<p>在 CAShapeLayer 中，也可以像 CALayer 一样指定它的 frame 来画，就像这样：</p>
+<pre><code>let layer = CAShapeLayer()
+layer.frame = CGRectMake(110, 100, 150, 100)
+layer.backgroundColor = UIColor.blackColor().CGColor
+view.layer.addSublayer(layer)
+</code></pre><p>然后你就会得到如图这样的黑色矩形<br><img src="http://i12.tietuku.com/0fa6b1e7c63da7b6.png" alt=""></p>
+<p>但是，CAShapeLayer 有一个神奇的属性 path 用这个属性配合上 UIBezierPath 这个类就可以达到超神的效果。</p>
+<p>UIBezierPath 顾名思义，这是用贝塞尔曲线的方式来构建一段弧线，你可以用任意条弧线来组成你想要的形状，比如，你想用它来和上面一样画一个矩形，那就可以这样子来做：</p>
+<pre><code>let path = UIBezierPath(rect: CGRectMake(110, 100, 150, 100))
+let layer = CAShapeLayer()
+layer.path = path.CGPath
+layer.fillColor = UIColor.blackColor().CGColor
+view.layer.addSublayer(layer)
+</code></pre><p>要注意的是，这里就不要用backgroundColor 这个属性了，而要使用 fillColor 和 strokeColor ，前者代表设置这个 Layer 的填充色，后者代表设置它的边框色</p>
+<pre><code>layer.fillColor = UIColor.clearColor().CGCo
+lorlayer.strokeColor = UIColor.blackColor().CGColor
+</code></pre><p>可以试一下把上面代码设置颜色的部分改成这个样子，那么运行程序的时候就会是这种样子<br> <img src="http://i12.tietuku.com/f5fe5ad8a2b1c985.png" alt=""></p>
+<h3 id="UIBezierPath"><a href="#UIBezierPath" class="headerlink" title="UIBezierPath"></a>UIBezierPath</h3><p>在说回 UIBezierPath ，在 UIBezierPath 的 init 方法中，就有很多方便你画各种图形的方法，比如你可以画一个带圆角的图形</p>
+<pre><code>let path = UIBezierPath(roundedRect: CGRectMake(110, 100, 150, 100), cornerRadius: 50)
+let layer = CAShapeLayer()
+layer.path = path.CGPath
+layer.fillColor = UIColor.clearColor().CGColor
+layer.strokeColor = UIColor.blackColor().CGColor
+</code></pre><p>还可以指定起始角和半径画圆    </p>
+<pre><code>let radius: CGFloat = 60.0
+let startAngle: CGFloat = 0.0
+let endAngle: CGFloat = CGFloat(M_PI * 2)
+let path = UIBezierPath(arcCenter: view.center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+let layer = CAShapeLayer()
+layer.path = path.CGPath
+layer.fillColor = UIColor.clearColor().CGColor
+layer.strokeColor = UIColor.blackColor().CGColor
+</code></pre><p><img src="http://i12.tietuku.com/9819133aaa52736a.png" alt=""><br>在这里涉及到角度的问题，起始角和结束角，这里的角度使使用弧度制来表示，这里我收藏了一张图片，以方便参考。<br><img src="http://i12.tietuku.com/6838967810b55b17.png" alt=""></p>
+<h4 id="怎么画曲线"><a href="#怎么画曲线" class="headerlink" title="怎么画曲线"></a>怎么画曲线</h4><p>贝塞尔曲线的画法是由起点、终点、控制点三个参数来画的，为了解释清楚这个点，我写了几行代码来解释它</p>
+<pre><code>let startPoint = CGPointMake(50, 300)
+let endPoint = CGPointMake(300, 300)
+let controlPoint = CGPointMake(170, 200)
+
+let layer1 = CALayer()
+layer1.frame = CGRectMake(startPoint.x, startPoint.y, 5, 5)
+layer1.backgroundColor = UIColor.redColor().CGColor
+
+let layer2 = CALayer()
+layer2.frame = CGRectMake(endPoint.x, endPoint.y, 5, 5)
+layer2.backgroundColor = UIColor.redColor().CGColor
+
+let layer3 = CALayer()
+layer3.frame = CGRectMake(controlPoint.x, controlPoint.y, 5, 5)
+layer3.backgroundColor = UIColor.redColor().CGColor
+
+let path = UIBezierPath()
+let layer = CAShapeLayer()
+
+path.moveToPoint(startPoint)
+path.addQuadCurveToPoint(endPoint, controlPoint: controlPoint)
+
+layer.path = path.CGPath
+layer.fillColor = UIColor.clearColor().CGColor
+layer.strokeColor = UIColor.blackColor().CGColor
+
+view.layer.addSublayer(layer)
+view.layer.addSublayer(layer1)
+view.layer.addSublayer(layer2)
+view.layer.addSublayer(layer3)
+</code></pre><p>我很随意的定义了三个点，为了清楚显示它们的位置，我放了三个矩形在上面以便观察，然后调用 path.moveToPoint(startPoint) 让它移动到起始点，然后调用path.addQuadCurveToPoint(endPoint, controlPoint: controlPoint) 这个方法告诉它结束点和控制点，这样它就能画出一条有弧度的线条了，如果把fillColor设置一个颜色，那么它就会变成一个很丑的形状了，示例图如下<br><img src="http://i12.tietuku.com/b3398df28e8f6f04.png" alt=""><br>控制点决定了它的曲率，曲线的顶点不等于控制点的位置，具体可以看一下贝塞尔曲线的定义，你还可以使用两个控制点来画，两个控制点可以使用方法 path.addCurveToPoint(endPoint, controlPoint1: controlPoint, controlPoint2: controlPoint2)来搞定<br><img src="http://i12.tietuku.com/f6eb1b2b678262c8.png" alt=""></p>
+<h4 id="再来说说-CAShapeLayer"><a href="#再来说说-CAShapeLayer" class="headerlink" title="再来说说 CAShapeLayer"></a>再来说说 CAShapeLayer</h4><p>CAShapeLayer 是个神奇的东西，给它一个path它就能变成你想要的形状，它还有很多可以玩的地方。综合使用可以组合成不同的动画，比如下面这样<br><img src="http://i12.tietuku.com/b328219c92f37b3e.gif" alt=""><br><img src="http://i12.tietuku.com/403dcb13b584be5b.gif" alt=""><br><img src="http://i12.tietuku.com/1c66062c9c7e61c0.gif" alt=""><br>这三个动画就是使用了 strokeEnd、strokeStart和lineWidth 三个属性，第一个动画用了strokeEnd这个属性的值范围是0-1，动画显示了从0到1之间每一个值对这条曲线的影响，strokeStart的方法则是相反的，如果把这两个值首先都设置成0.5然后慢慢改变成0和1的时候就会变成第二个动画，配合lineWidth则曲线会慢慢变粗，这里的很多属性都是支持动画的。</p>
+<pre><code>private func animation1() {
+    let animation = CABasicAnimation(keyPath: &quot;strokeEnd&quot;)
+    animation.fromValue = 0
+    animation.toValue = 1
+    animation.duration = 2
+    layer.addAnimation(animation, forKey: &quot;&quot;)
+}
+
+private func animation2() {
+    layer.strokeStart = 0.5
+    layer.strokeEnd = 0.5
+
+    let animation = CABasicAnimation(keyPath: &quot;strokeStart&quot;)
+    animation.fromValue = 0.5
+    animation.toValue = 0
+    animation.duration = 2
+
+    let animation2 = CABasicAnimation(keyPath: &quot;strokeEnd&quot;)
+    animation2.fromValue = 0.5
+    animation2.toValue = 1
+    animation2.duration = 2
+
+    layer.addAnimation(animation, forKey: &quot;&quot;)
+    layer.addAnimation(animation2, forKey: &quot;&quot;)
+}
+
+private func animation3() {
+    let animation = CABasicAnimation(keyPath: &quot;lineWidth&quot;)
+    animation.fromValue = 1
+    animation.toValue = 10
+    animation.duration = 2
+    layer.addAnimation(animation, forKey: &quot;&quot;)
+}
+</code></pre><h4 id="应用一下"><a href="#应用一下" class="headerlink" title="应用一下"></a>应用一下</h4><p>前一阵子在仿时光网这个APP，其中有一个Layer的形状很怪异，是这样的<br><img src="http://i12.tietuku.com/e81a659553d477d6.png" alt=""><br>很明显它可以用 CAShapeLayer + UIBezierPath 来做，思路大概是这样，先移动到左上方的位置，然后向下划线，然后往右划线，然后往上划线，还剩一个盖子，这个盖子就用一个控制点控制曲率，非常简单，代码如下</p>
+<pre><code>let finalSize = CGSizeMake(CGRectGetWidth(view.frame), 400)
+let layerHeight = finalSize.height * 0.2
+let layer = CAShapeLayer()
+let bezier = UIBezierPath()
+bezier.moveToPoint(CGPointMake(0, finalSize.height - layerHeight))
+bezier.addLineToPoint(CGPointMake(0, finalSize.height - 1))
+bezier.addLineToPoint(CGPointMake(finalSize.width, finalSize.height - 1))
+bezier.addLineToPoint(CGPointMake(finalSize.width, finalSize.height - layerHeight))
+bezier.addQuadCurveToPoint(CGPointMake(0,finalSize.height - layerHeight),
+controlPoint: CGPointMake(finalSize.width / 2, (finalSize.height - layerHeight) - 40))
+layer.path = bezier.CGPath
+layer.fillColor = UIColor.blackColor().CGColor
+view.layer.addSublayer(layer)    
+</code></pre><p>就能画出这样的形状来<br><img src="http://i12.tietuku.com/4fc8a1f65aecf42a.png" alt=""><br>再来一个复杂点的，微信下拉拍小视频的那只眼睛很有趣，来模仿一下那个效果吧，它是这样的<br><img src="http://i12.tietuku.com/5e0dbaa998710c7c.gif" alt=""><br>首先你得画出这只眼睛，这是眼睛包括5个部分组成（这个是用OC写的）</p>
+<pre><code>@property (strong, nonatomic) CAShapeLayer *eyeFirstLightLayer;
+@property (strong, nonatomic) CAShapeLayer *eyeSecondLightLayer;
+@property (strong, nonatomic) CAShapeLayer *eyeballLayer;
+@property (strong, nonatomic) CAShapeLayer *topEyesocketLayer;
+@property (strong, nonatomic) CAShapeLayer *bottomEyesocketLayer;
+</code></pre><p>然后，还是通过 UIBezierPath 和 CAShapeLayer 这样的老套路来画，代码较多</p>
+<pre><code>- (CAShapeLayer *)eyeFirstLightLayer {
+    if (!_eyeFirstLightLayer) {
+    _eyeFirstLightLayer = [CAShapeLayer layer];
+        CGPoint center =     CGPointMake(CGRectGetWidth(self.frame) / 2, CGRectGetHeight(self.frame) / 2);
+    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:center
+                                                        radius:CGRectGetWidth(self.frame) * 0.2
+                                                    startAngle:(230.f / 180.f) * M_PI
+                                                      endAngle:(265.f / 180.f) * M_PI
+                                                     clockwise:YES];
+    _eyeFirstLightLayer.borderColor = [UIColor blackColor].CGColor;
+    _eyeFirstLightLayer.lineWidth = 5.f;
+    _eyeFirstLightLayer.path = path.CGPath;
+    _eyeFirstLightLayer.fillColor = [UIColor clearColor].CGColor;
+    _eyeFirstLightLayer.strokeColor = [UIColor whiteColor].CGColor;
+}
+return _eyeFirstLightLayer;
+}
+
+- (CAShapeLayer *)eyeSecondLightLayer {
+if (!_eyeSecondLightLayer) {
+    _eyeSecondLightLayer = [CAShapeLayer layer];
+    CGPoint center =     CGPointMake(CGRectGetWidth(self.frame) / 2, CGRectGetHeight(self.frame) / 2);
+    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:center
+                                                            radius:CGRectGetWidth(self.frame) * 0.2
+                                                    startAngle:(211.f / 180.f) * M_PI
+                                                      endAngle:(220.f / 180.f) * M_PI
+                                                     clockwise:YES];
+    _eyeSecondLightLayer.borderColor = [UIColor blackColor].CGColor;
+    _eyeSecondLightLayer.lineWidth = 5.f;
+    _eyeSecondLightLayer.path = path.CGPath;
+    _eyeSecondLightLayer.fillColor = [UIColor clearColor].CGColor;
+    _eyeSecondLightLayer.strokeColor = [UIColor whiteColor].CGColor;
+}
+return _eyeSecondLightLayer;
+}
+
+- (CAShapeLayer *)eyeballLayer {
+if (!_eyeballLayer) {
+    _eyeballLayer = [CAShapeLayer layer];
+    CGPoint center = CGPointMake(CGRectGetWidth(self.frame) / 2, CGRectGetHeight(self.frame) / 2);
+    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:center
+                                                        radius:CGRectGetWidth(self.frame) * 0.3
+                                                    startAngle:(0.f / 180.f) * M_PI
+                                                      endAngle:(360.f / 180.f) * M_PI
+                                                     clockwise:YES];
+    _eyeballLayer.borderColor = [UIColor blackColor].CGColor;
+    _eyeballLayer.lineWidth = 1.f;
+    _eyeballLayer.path = path.CGPath;
+    _eyeballLayer.fillColor = [UIColor clearColor].CGColor;
+    _eyeballLayer.strokeColor = [UIColor whiteColor].CGColor;
+    _eyeballLayer.anchorPoint = CGPointMake(0.5, 0.5);
+}
+return _eyeballLayer;
+}
+
+- (CAShapeLayer *)topEyesocketLayer {
+if (!_topEyesocketLayer) {
+    _topEyesocketLayer = [CAShapeLayer layer];
+    CGPoint center = CGPointMake(CGRectGetWidth(self.frame) / 2, CGRectGetHeight(self.frame) / 2);
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    [path moveToPoint:CGPointMake(0, CGRectGetHeight(self.frame) / 2)];
+    [path addQuadCurveToPoint:CGPointMake(CGRectGetWidth(self.frame), CGRectGetHeight(self.frame) / 2)
+                 controlPoint:CGPointMake(CGRectGetWidth(self.frame) / 2, center.y - center.y - 20)];
+    _topEyesocketLayer.borderColor = [UIColor blackColor].CGColor;
+    _topEyesocketLayer.lineWidth = 1.f;
+    _topEyesocketLayer.path = path.CGPath;
+    _topEyesocketLayer.fillColor = [UIColor clearColor].CGColor;
+    _topEyesocketLayer.strokeColor = [UIColor whiteColor].CGColor;
+}
+return _topEyesocketLayer;
+}
+
+- (CAShapeLayer *)bottomEyesocketLayer {
+if (!_bottomEyesocketLayer) {
+    _bottomEyesocketLayer = [CAShapeLayer layer];
+    CGPoint center = CGPointMake(CGRectGetWidth(self.frame) / 2, CGRectGetHeight(self.frame) / 2);
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    [path moveToPoint:CGPointMake(0, CGRectGetHeight(self.frame) / 2)];
+    [path addQuadCurveToPoint:CGPointMake(CGRectGetWidth(self.frame), CGRectGetHeight(self.frame) / 2)
+                 controlPoint:CGPointMake(CGRectGetWidth(self.frame) / 2, center.y + center.y + 20)];
+    _bottomEyesocketLayer.borderColor = [UIColor blackColor].CGColor;
+    _bottomEyesocketLayer.lineWidth = 1.f;
+    _bottomEyesocketLayer.path = path.CGPath;
+    _bottomEyesocketLayer.fillColor = [UIColor clearColor].CGColor;
+    _bottomEyesocketLayer.strokeColor = [UIColor whiteColor].CGColor;
+}
+return _bottomEyesocketLayer;
+}
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/path/to/wechat-reward-image.png" alt="YueChao An WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/path/to/alipay-reward-image.png" alt="YueChao An Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/画图/" rel="tag">#画图</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/28/UIView的layoutSubviews和drawRect方法何时调用/" rel="next" title="UIView的layoutSubviews和drawRect方法何时调用">
+                <i class="fa fa-chevron-left"></i> UIView的layoutSubviews和drawRect方法何时调用
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/17/swift编程细节整理/" rel="prev" title="swift编程细节整理">
+                swift编程细节整理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<div class="duoshuo" id="comments">     
+       <!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="<%=key%>" data-title="<%=title%>" data-url="<%=url%>"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"995684946"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="YueChao An" />
+          <p class="site-author-name" itemprop="name">YueChao An</p>
+          <p class="site-description motion-element" itemprop="description">你那么优秀，我有什么理由不努力</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">65</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/anyuechao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/61821afa755b/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-jianshu"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhangtianqi.net/" target="_blank" title="zhangtianqi">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  zhangtianqi
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.ilakeyc.gift/" target="_blank" title="ilakeyc">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ilakeyc
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wangshiyu13" target="_blank" title="shiyu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  shiyu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.lidaze.com/" target="_blank" title="lidaze">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  lidaze
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://liushuang.win/" target="_blank" title="feelShuang">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  feelShuang
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/EmyWong" target="_blank" title="装逼王">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  装逼王
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://jenko.cc/" target="_blank" title="jenko">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  jenko
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://liuyanwei.jumppo.com/" target="_blank" title="ali大神">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ali大神
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#CAShapeLayer-是-CALayer-的子类，但是比-CALayer-更灵活，可以画出各种图形，当然，你也可以使用其他方式来画，随你"><span class="nav-number">1.</span> <span class="nav-text">CAShapeLayer 是 CALayer 的子类，但是比 CALayer 更灵活，可以画出各种图形，当然，你也可以使用其他方式来画，随你</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UIBezierPath"><span class="nav-number">2.</span> <span class="nav-text">UIBezierPath</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#怎么画曲线"><span class="nav-number">2.1.</span> <span class="nav-text">怎么画曲线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#再来说说-CAShapeLayer"><span class="nav-number">2.2.</span> <span class="nav-text">再来说说 CAShapeLayer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用一下"><span class="nav-number">2.3.</span> <span class="nav-text">应用一下</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YueChao An</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

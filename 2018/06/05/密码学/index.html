@@ -1,0 +1,787 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="title:密码学date:2017-09-18 16:24:09 categories:iOS tags:密码 网络开发原则：   在网络上不允许传输用户的明文隐私数据 在本地不允许保存用户的明文隐私数据   #加密算法 #1. 哈希(散列)算法特点:1).不能够反算回来!!2).同样的数据加密之后的结果是一样的!! 基于密钥的算法,按照密钥的特点分为以下几种： ①.MD5 用户登录时候，对密">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安跃超">
+<meta property="og:url" content="https://anyuechao.github.io/2018/06/05/密码学/index.html">
+<meta property="og:site_name" content="安跃超">
+<meta property="og:description" content="title:密码学date:2017-09-18 16:24:09 categories:iOS tags:密码 网络开发原则：   在网络上不允许传输用户的明文隐私数据 在本地不允许保存用户的明文隐私数据   #加密算法 #1. 哈希(散列)算法特点:1).不能够反算回来!!2).同样的数据加密之后的结果是一样的!! 基于密钥的算法,按照密钥的特点分为以下几种： ①.MD5 用户登录时候，对密">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-05T07:35:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="安跃超">
+<meta name="twitter:description" content="title:密码学date:2017-09-18 16:24:09 categories:iOS tags:密码 网络开发原则：   在网络上不允许传输用户的明文隐私数据 在本地不允许保存用户的明文隐私数据   #加密算法 #1. 哈希(散列)算法特点:1).不能够反算回来!!2).同样的数据加密之后的结果是一样的!! 基于密钥的算法,按照密钥的特点分为以下几种： ①.MD5 用户登录时候，对密">
+<meta name="twitter:creator" content="@[object Object]">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6318926023282918000,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://anyuechao.github.io/2018/06/05/密码学/"/>
+
+  <title>  | 安跃超 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">安跃超</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">安跃超的博客</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-06-05T14:00:31+08:00" content="2018-06-05">
+              2018-06-05
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p>title:密码学<br><br>date:2017-09-18 16:24:09 <br><br>categories:iOS<br></p>
+<h2 id="tags-密码"><a href="#tags-密码" class="headerlink" title="tags:密码 "></a>tags:<font color="lightgreen" face="黑体">密码</font> </h2><p>网络开发原则：</p>
+<blockquote>
+<ol>
+<li>在网络上不允许传输用户的明文隐私数据</li>
+<li>在本地不允许保存用户的明文隐私数据</li>
+</ol>
+</blockquote>
+<p>#加密算法</p>
+<p>#1. 哈希(散列)算法<br>特点:<br>1).不能够反算回来!!<br>2).同样的数据加密之后的结果是一样的!!</p>
+<p>基于密钥的算法,按照密钥的特点分为以下几种：</p>
+<h5 id="①-MD5"><a href="#①-MD5" class="headerlink" title="①.MD5"></a>①.MD5</h5><ul>
+<li>用户登录时候，对密码直接进行MD5加密得到 Key </li>
+<li>发送到服务器与服务器的key 进行比对</li>
+<li>登录成功，保存账号到手机，密码存在钥匙串中</li>
+<li>下次登录的时候直接从本地获取用户信息直接登录<h5 id="②-MD5加盐（为了解决-MD5被破解的问题早期使用）"><a href="#②-MD5加盐（为了解决-MD5被破解的问题早期使用）" class="headerlink" title="②.MD5加盐（为了解决 MD5被破解的问题早期使用）"></a>②.MD5加盐（为了解决 MD5被破解的问题早期使用）</h5></li>
+<li>用户登录时，获取用户密码后在密码后加入固定的字符串，盐要足够长足够复杂。在对其进行 MD5加密得到 key<ul>
+<li>发送到服务器与服务器的key 进行比对</li>
+</ul>
+</li>
+<li>登录成功，保存账号到手机，密码存在钥匙串中</li>
+<li>下次登录的时候直接从本地获取用户信息直接登录</li>
+</ul>
+<h5 id="③-HMAC"><a href="#③-HMAC" class="headerlink" title="③.HMAC"></a>③.HMAC</h5><blockquote>
+<p>近一两年,在国内开始使用增多! 给定一个密钥,对明文进行密钥拼接,并且做”两次散列” -&gt; 得到32位结果!</p>
+<ul>
+<li>用户在注册的那一刻,向服务器索取 密钥(key)!!</li>
+<li>客户端拿到KEY的这一刻,就将KEY保存在本地!!</li>
+<li>切换了新的设备(换手机登录,登录新的已有账号!) – 重新找服务器获取!!</li>
+</ul>
+</blockquote>
+<p>密码具有时效性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//如何避免</span><br><span class="line">一种情况! 如果黑客 模拟你的网络请求..不需要拿到真实密码!用加密后的信息,也可以获得登录之后的权限!!</span><br><span class="line">//让我们的密码具有时效性!! 也就是 加密过后的密码 有时间限制!!</span><br><span class="line"></span><br><span class="line">客户端:</span><br><span class="line">    UserID = hank</span><br><span class="line">    Pass == (123456+KEY)HMAC == e9cdab82d48dcd37af7734b6617357e6</span><br><span class="line">    KEY</span><br><span class="line">发送:UserID :  (Pass + &apos;201702102020&apos;)md5</span><br><span class="line"></span><br><span class="line">服务器:</span><br><span class="line">    KEY</span><br><span class="line">    UserID = hank</span><br><span class="line">    密码 = Pass == e9cdab82d48dcd37af7734b6617357e6</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">对比: 只要服务器当前时间或者上一分钟 加密后的字符相等!就返回登录成功!!</span><br><span class="line">    (Pass + &apos;201702102020&apos;)md5 != (Pass + &apos;201702102021&apos;)md5</span><br><span class="line">    (Pass + &apos;201702102020&apos;)md5 == (Pass + &apos;201702102020&apos;)md5</span><br></pre></td></tr></table></figure></p>
+<p>钥匙串访问<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 苹果的&quot;生态圈&quot;,从 iOS7.0.3 版本开放给开发者!</span><br><span class="line">2. 功能:在Mac上能够动态生成复杂密码,帮助用户记住密码!</span><br><span class="line">3. 如果用户访问网站,记住密码,我们还可以看到记住的密码明文!明文记录</span><br><span class="line">4. 本身的所有接口都是 C 语言的.借助三方库</span><br><span class="line">5. 采用的加密方式是 AES 加密!</span><br></pre></td></tr></table></figure></p>
+<p>相关的指纹验证，刷脸的</p>
+<h5 id="④-SHA1"><a href="#④-SHA1" class="headerlink" title="④.SHA1"></a>④.SHA1</h5><h5 id="⑤-SHA256-512"><a href="#⑤-SHA256-512" class="headerlink" title="⑤.SHA256/512"></a>⑤.SHA256/512</h5><ol start="2">
+<li>对称加密算法 - 传统加密算法<br>①.DES - 数据加密标准(用的比较少,因为强度不够).<br>②.3DES - 使用3个密钥,对相同的数据执行三次加密,强度增强.<br>③.AES - 高级加密标准,目前美国国家安全局使用AES加密,苹果的钥匙串访问就是使用</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/path/to/wechat-reward-image.png" alt="YueChao An WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/path/to/alipay-reward-image.png" alt="YueChao An Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/05/iOS减少应用程序安装包大小/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/05/密码-MD5判断两文件是否被修改/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<div class="duoshuo" id="comments">     
+       <!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="<%=key%>" data-title="<%=title%>" data-url="<%=url%>"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"995684946"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="YueChao An" />
+          <p class="site-author-name" itemprop="name">YueChao An</p>
+          <p class="site-description motion-element" itemprop="description">你那么优秀，我有什么理由不努力</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">65</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/anyuechao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/61821afa755b/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-jianshu"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhangtianqi.net/" target="_blank" title="zhangtianqi">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  zhangtianqi
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.ilakeyc.gift/" target="_blank" title="ilakeyc">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ilakeyc
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wangshiyu13" target="_blank" title="shiyu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  shiyu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.lidaze.com/" target="_blank" title="lidaze">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  lidaze
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://liushuang.win/" target="_blank" title="feelShuang">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  feelShuang
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/EmyWong" target="_blank" title="装逼王">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  装逼王
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://jenko.cc/" target="_blank" title="jenko">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  jenko
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://liuyanwei.jumppo.com/" target="_blank" title="ali大神">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ali大神
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tags-密码"><span class="nav-number">1.</span> <span class="nav-text">tags:密码 </span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#①-MD5"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">①.MD5</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#②-MD5加盐（为了解决-MD5被破解的问题早期使用）"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">②.MD5加盐（为了解决 MD5被破解的问题早期使用）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#③-HMAC"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">③.HMAC</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#④-SHA1"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">④.SHA1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#⑤-SHA256-512"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">⑤.SHA256/512</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YueChao An</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

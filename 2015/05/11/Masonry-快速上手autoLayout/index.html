@@ -1,0 +1,1142 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Masonry,代码约束,autoLayout," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="前言来源：里脊串的开发随笔（在此谢过分享者） 纯手写代码所经历的关于页面布局的三个时期 MagicNumber -&amp;gt; autoresizingMask -&amp;gt; autolayout">
+<meta name="keywords" content="Masonry,代码约束,autoLayout">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Masonry:快速上手autoLayout">
+<meta property="og:url" content="https://anyuechao.github.io/2015/05/11/Masonry-快速上手autoLayout/index.html">
+<meta property="og:site_name" content="安跃超">
+<meta property="og:description" content="前言来源：里脊串的开发随笔（在此谢过分享者） 纯手写代码所经历的关于页面布局的三个时期 MagicNumber -&amp;gt; autoresizingMask -&amp;gt; autolayout">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://i5.tietuku.com/a3f1b5b3c8ecdfb3.png">
+<meta property="og:image" content="http://i5.tietuku.com/559d80622ffd45d0.png">
+<meta property="og:image" content="http://i12.tietuku.com/e51b46fcd1cbee6e.png">
+<meta property="og:image" content="http://i5.tietuku.com/6b46f1ade2a7f0ba.png">
+<meta property="og:image" content="http://i12.tietuku.com/0ead55378b7a7111.png">
+<meta property="og:image" content="http://i12.tietuku.com/a27aa334358fddef.png">
+<meta property="og:image" content="http://i12.tietuku.com/5ef072f7c4e6f689.png">
+<meta property="og:updated_time" content="2015-12-18T09:58:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Masonry:快速上手autoLayout">
+<meta name="twitter:description" content="前言来源：里脊串的开发随笔（在此谢过分享者） 纯手写代码所经历的关于页面布局的三个时期 MagicNumber -&amp;gt; autoresizingMask -&amp;gt; autolayout">
+<meta name="twitter:image" content="http://i5.tietuku.com/a3f1b5b3c8ecdfb3.png">
+<meta name="twitter:creator" content="@[object Object]">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6318926023282918000,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://anyuechao.github.io/2015/05/11/Masonry-快速上手autoLayout/"/>
+
+  <title> Masonry:快速上手autoLayout | 安跃超 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">安跃超</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">安跃超的博客</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Masonry:快速上手autoLayout
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-05-11T15:58:23+08:00" content="2015-05-11">
+              2015-05-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>来源：里脊串的开发随笔（在此谢过分享者）</p>
+<p>纯手写代码所经历的关于页面布局的三个时期</p>
+<pre><code>MagicNumber -&gt; autoresizingMask -&gt; autolayout
+</code></pre><a id="more"></a>
+<ul>
+<li><p>在iphone1-iphone3gs时代 window的size固定为(320,480) 我们只需要简单计算一下相对位置就好了</p>
+</li>
+<li><p>在iphone4-iphone4s时代 苹果推出了retina屏 但是给了码农们非常大的福利:window的size不变</p>
+</li>
+<li><p>在iphone5-iphone5s时代 window的size变了(320,568) 这时autoresizingMask派上了用场(为啥这时候不用Autolayout? 因为还要支持ios5呗) 简单的适配一下即可</p>
+</li>
+<li><p>在iphone6+时代 window的width也发生了变化(相对5和5s的屏幕比例没有变化) 终于是时候抛弃autoresizingMask改用autolayout了(不用支持ios5了 相对于屏幕适配的多样性来说autoresizingMask也已经过时了)</p>
+</li>
+</ul>
+<p>那如何快速的上手autolayout呢? 说实话 当年ios6推出的同时新增了autolayout的特性 我看了一下官方文档和demo 就立马抛弃到一边了 因为实在过于的繁琐和啰嗦(有过经验的朋友肯定有同感)</p>
+<p>直到iphone6发布之后 我知道使用autolayout势在必行了 这时想起了以前在浏览Github看到过的一个第三方库Masonry 在花了几个小时的研究使用后 我就将autolayout掌握了(重点是我并没有学习任何的官方文档或者其他的关于autolayout的知识) 这就是我为什么要写下这篇文章来推荐它的原因</p>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Masonry源码<br>Masonry是一个轻量级的布局框架，拥有自己的描述语法，采用更优雅的链式语法封装自动布局，简洁明了并具有高可读性<code>而且同时支持iOS和Max OS X</code></p>
+<p>我们先来看一段官方的sample code来认识一下Masonry</p>
+<pre><code>[view1 mas_makeConstraints:^(MASConstraintMaker *make) {
+make.edges.equalTo(superview).with.insets(padding);
+}];
+</code></pre><p>看到block里面的那句话: <code>make edges equalTo superview with insets</code><br>通过链式的自然语言 就把view1给autolayout好了 是不是简单易懂?</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>看一下Masonry支持哪一些属性</p>
+<pre><code>@property (nonatomic, strong, readonly) MASConstraint *left;
+@property (nonatomic, strong, readonly) MASConstraint *top;
+@property (nonatomic, strong, readonly) MASConstraint *right;
+@property (nonatomic, strong, readonly) MASConstraint *bottom;
+@property (nonatomic, strong, readonly) MASConstraint *leading;
+@property (nonatomic, strong, readonly) MASConstraint *trailing;
+@property (nonatomic, strong, readonly) MASConstraint *width;
+property (nonatomic, strong, readonly) MASConstraint *height;
+@property (nonatomic, strong, readonly) MASConstraint *centerX;
+@property (nonatomic, strong, readonly) MASConstraint *centerY;
+@property (nonatomic, strong, readonly) MASConstraint *baseline;
+</code></pre><p>这些属性与NSLayoutAttrubute的对照表如下</p>
+<p>代码效果<br><img src="http://i5.tietuku.com/a3f1b5b3c8ecdfb3.png" alt=""></p>
+<p>其中leading与left trailing与right 在正常情况下是等价的 但是当一些布局是从右至左时(比如阿拉伯文?没有类似的经验) 则会对调 换句话说就是基本可以不理不用 用left和right就好了</p>
+<p>在ios8发布后 又新增了一堆奇奇怪怪的属性(有兴趣的朋友可以去瞅瞅) Masonry暂时还不支持(不过你要支持ios6,ios7 就没必要去管那么多了)</p>
+<p>下面进入正题(为了方便 我们测试的superView都是一个size为(300,300)的UIView)</p>
+<p>下面 通过一些简单的实例来简单介绍如何轻松愉快的使用Masonry:</p>
+<h3 id="居中显示一个view"><a href="#居中显示一个view" class="headerlink" title="居中显示一个view"></a>居中显示一个view</h3><pre><code>- (void)viewDidLoad {
+
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+
+    UIView *sv = [UIView new];
+    [sv showPlaceHolder];
+    sv.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:sv];
+    [sv mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.view);
+        make.size.mas_equalTo(CGSizeMake(300, 300));
+    }];
+
+}
+</code></pre><p>代码效果<br><img src="http://i5.tietuku.com/559d80622ffd45d0.png" alt="代码效果"></p>
+<p>使用我之前写的MMPlaceHolder 可以看到superview已经按照我们预期居中并且设置成了适当的大小</p>
+<p>那么先看看这几行代码</p>
+<pre><code>//从此以后基本可以抛弃CGRectMake了
+UIView *sv = [UIView new];
+
+//在做autoLayout之前 一定要先将view添加到superview上 否则会报错
+[self.view addSubview:sv];
+
+//mas_makeConstraints就是Masonry的autolayout添加函数 将所需的约束添加到block中行了
+[sv mas_makeConstraints:^(MASConstraintMaker *make) {
+
+    //将sv居中(很容易理解吧?)
+    make.center.equalTo(self.view);
+
+    //将size设置成(300,300)
+    make.size.mas_equalTo(CGSizeMake(300, 300));
+}];
+</code></pre><p>这里有两个问题要分解一下</p>
+<ul>
+<li>首先在Masonry中能够添加autolayout约束有三个函数</li>
+</ul>
+<pre><code>- (NSArray *)mas_makeConstraints:(void(^)(MASConstraintMaker *make))block;
+- (NSArray *)mas_updateConstraints:(void(^)(MASConstraintMaker *make))block;
+- (NSArray *)mas_remakeConstraints:(void(^)(MASConstraintMaker *make))block;
+
+    /*
+        mas_makeConstraints 只负责新增约束 Autolayout不能同时存在两条针对于同一对象的约束 否则会报错 
+        mas_updateConstraints 针对上面的情况 会更新在block中出现的约束 不会导致出现两个相同约束的情况
+        mas_remakeConstraints 则会清除之前的所有约束 仅保留最新的约束
+
+        三种函数善加利用 就可以应对各种情况了
+    */
+</code></pre><ul>
+<li><p>其次 equalTo 和 mas_equalTo的区别在哪里呢? 其实 mas_equalTo是一个MACRO</p>
+<pre><code>#define mas_equalTo(...)                 equalTo(MASBoxValue((__VA_ARGS__)))
+#define mas_greaterThanOrEqualTo(...)    greaterThanOrEqualTo(MASBoxValue((__VA_ARGS__)))
+#define mas_lessThanOrEqualTo(...)       lessThanOrEqualTo(MASBoxValue((__VA_ARGS__)))
+
+#define mas_offset(...)                  valueOffset(MASBoxValue((__VA_ARGS__)))
+</code></pre></li>
+</ul>
+<p>可以看到 mas_equalTo只是对其参数进行了一个BOX操作(装箱) MASBoxValue的定义具体可以看看源代码 太长就不贴出来了</p>
+<p>所支持的类型 除了NSNumber支持的那些数值类型之外 就只支持<code>CGPoint</code> <code>CGSize</code> <code>UIEdgeInsets</code></p>
+<p>介绍完这几个问题 我们就继续往下了 PS:刚才定义的sv会成为我们接下来所有sample的superView</p>
+<h3 id="初级-让一个view略小于其superView-边距为10"><a href="#初级-让一个view略小于其superView-边距为10" class="headerlink" title="[初级] 让一个view略小于其superView(边距为10)"></a>[初级] 让一个view略小于其superView(边距为10)</h3><pre><code>UIView *sv1 = [UIView new];
+[sv1 showPlaceHolder];
+sv1.backgroundColor = [UIColor redColor];
+[sv addSubview:sv1];
+[sv1 mas_makeConstraints:^(MASConstraintMaker *make) {
+     make.edges.equalTo(sv).with.insets(UIEdgeInsetsMake(10, 10, 10, 10));
+
+    /* 等价于
+    make.top.equalTo(sv).with.offset(10);
+    make.left.equalTo(sv).with.offset(10);
+    make.bottom.equalTo(sv).with.offset(-10);
+    make.right.equalTo(sv).with.offset(-10);
+    */
+
+    /* 也等价于
+    make.top.left.bottom.and.right.equalTo(sv).with.insets(UIEdgeInsetsMake(10, 10, 10, 10));
+    */
+}];
+</code></pre><p>代码效果<br><img src="http://i12.tietuku.com/e51b46fcd1cbee6e.png" alt="代码效果"></p>
+<p>可以看到 edges 其实就是top,left,bottom,right的一个简化 分开写也可以 一句话更省事</p>
+<p>那么为什么bottom和right里的offset是负数呢? 因为这里计算的是绝对的数值 计算的bottom需要小于sv的底部高度 所以要-10 同理用于right</p>
+<p>这里有意思的地方是<code>and</code>和<code>with</code> 其实这两个函数什么事情都没做</p>
+<pre><code>- (MASConstraint *)with {
+return self;
+}
+
+- (MASConstraint *)and {
+    return self;
+}
+</code></pre><p>但是用在这种链式语法中 就非常的巧妙和易懂 不得不佩服作者的心思(虽然我现在基本都会省略)</p>
+<h3 id="初级-让两个高度为150的view垂直居中且等宽且等间隔排列-间隔为10-自动计算其宽度"><a href="#初级-让两个高度为150的view垂直居中且等宽且等间隔排列-间隔为10-自动计算其宽度" class="headerlink" title="[初级] 让两个高度为150的view垂直居中且等宽且等间隔排列 间隔为10(自动计算其宽度)"></a>[初级] 让两个高度为150的view垂直居中且等宽且等间隔排列 间隔为10(自动计算其宽度)</h3><pre><code>int padding1 = 10;
+
+[sv2 mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.centerY.mas_equalTo(sv.mas_centerY);
+    make.left.equalTo(sv.mas_left).with.offset(padding1);
+    make.right.equalTo(sv3.mas_left).with.offset(-padding1);
+    make.height.mas_equalTo(@150);
+    make.width.equalTo(sv3);
+}];
+
+[sv3 mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.centerY.mas_equalTo(sv.mas_centerY);
+    make.left.equalTo(sv2.mas_right).with.offset(padding1);
+    make.right.equalTo(sv.mas_right).with.offset(-padding1);
+    make.height.mas_equalTo(@150);
+    make.width.equalTo(sv2);
+}];
+</code></pre><p>代码效果<br><img src="http://i5.tietuku.com/6b46f1ade2a7f0ba.png" alt="代码效果"></p>
+<p>这里我们在两个子view之间互相设置的约束 可以看到他们的宽度在约束下自动的被计算出来了</p>
+<h3 id="中级-在UIScrollView顺序排列一些view并自动计算contentSize"><a href="#中级-在UIScrollView顺序排列一些view并自动计算contentSize" class="headerlink" title="[中级] 在UIScrollView顺序排列一些view并自动计算contentSize"></a>[中级] 在UIScrollView顺序排列一些view并自动计算contentSize</h3><pre><code>UIScrollView *scrollView = [UIScrollView new];
+scrollView.backgroundColor = [UIColor whiteColor];
+[sv addSubview:scrollView];
+[scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.edges.equalTo(sv).with.insets(UIEdgeInsetsMake(5,5,5,5));
+}];
+
+UIView *container = [UIView new];
+[scrollView addSubview:container];
+[container mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.edges.equalTo(scrollView);
+    make.width.equalTo(scrollView);
+}];
+
+int count = 10;
+
+UIView *lastView = nil;
+
+for ( int i = 1 ; i &lt;= count ; ++i )
+{
+    UIView *subv = [UIView new];
+    [container addSubview:subv];
+    subv.backgroundColor = [UIColor colorWithHue:( arc4random() % 256 / 256.0 )
+                                      saturation:( arc4random() % 128 / 256.0 ) + 0.5
+                                      brightness:( arc4random() % 128 / 256.0 ) + 0.5
+                                       alpha:1];
+
+    []subv mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.and.right.equalTo(container);
+        make.height.mas_equalTo(@(20*i));
+
+        if ( lastView )
+        {
+            make.top.mas_equalTo(lastView.mas_bottom);
+        }
+        else
+        {
+            make.top.mas_equalTo(container.mas_top);
+        }
+    }];
+
+    lastView = subv;
+}
+
+
+[container mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.bottom.equalTo(lastView.mas_bottom);
+}];
+</code></pre><p>头部效果<br><img src="http://i12.tietuku.com/0ead55378b7a7111.png" alt="头部效果"></p>
+<p>尾部效果<br><img src="http://i12.tietuku.com/a27aa334358fddef.png" alt="尾部效果"></p>
+<p>从scrollView的scrollIndicator可以看出 scrollView的内部已如我们所想排列好了</p>
+<p>这里的关键就在于container这个view起到了一个中间层的作用 能够自动的计算uiscrollView的contentSize</p>
+<h3 id="高级-横向或者纵向等间隙的排列一组view"><a href="#高级-横向或者纵向等间隙的排列一组view" class="headerlink" title="[高级] 横向或者纵向等间隙的排列一组view"></a>[高级] 横向或者纵向等间隙的排列一组view</h3><p>很遗憾 autoLayout并没有直接提供等间隙排列的方法(Masonry的官方demo中也没有对应的案例) 但是参考案例3 我们可以通过一个小技巧来实现这个目的 为此我写了一个Category</p>
+<pre><code>@implementation UIView(Masonry_LJC)
+
+- (void) distributeSpacingHorizontallyWith:(NSArray*)views
+{
+    NSMutableArray *spaces = [NSMutableArray arrayWithCapacity:views.count+1];
+
+    for ( int i = 0 ; i &lt; views.count+1 ; ++i )
+    {
+        UIView *v = [UIView new];
+        [spaces addObject:v];
+        [self addSubview:v];
+
+        [v mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.equalTo(v.mas_height);
+        }];
+    }    
+
+    UIView *v0 = spaces[0];
+
+    [v0 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.mas_left);
+        make.centerY.equalTo(((UIView*)views[0]).mas_centerY);
+    }];
+
+     UIView *lastSpace = v0;
+    for ( int i = 0 ; i &lt; views.count; ++i )
+    {
+        UIView *obj = views[i];
+        UIView *space = spaces[i+1];
+
+        [obj mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(lastSpace.mas_right);
+        }];
+
+        [space mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(obj.mas_right);
+            make.centerY.equalTo(obj.mas_centerY);
+            make.width.equalTo(v0);
+        }];
+
+        lastSpace = space;
+    }
+
+    [lastSpace mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.mas_right);
+    }];
+
+}
+
+- (void) distributeSpacingVerticallyWith:(NSArray*)views
+{
+    NSMutableArray *spaces = [NSMutableArray arrayWithCapacity:views.count+1];
+
+    for ( int i = 0 ; i &lt; views.count+1 ; ++i )
+    {
+        UIView *v = [UIView new];
+        [spaces addObject:v];
+        [self addSubview:v];
+
+        [v mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.equalTo(v.mas_height);
+        }];
+    }
+
+
+    UIView *v0 = spaces[0];
+
+    [v0 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.mas_top);
+        make.centerX.equalTo(((UIView*)views[0]).mas_centerX);
+    }];
+
+    UIView *lastSpace = v0;
+    for ( int i = 0 ; i &lt; views.count; ++i )
+    {
+        UIView *obj = views[i];
+        UIView *space = spaces[i+1];
+
+        [obj mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(lastSpace.mas_bottom);
+        }];
+
+        [space mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(obj.mas_bottom);
+            make.centerX.equalTo(obj.mas_centerX);
+            make.height.equalTo(v0);
+        }];
+
+        lastSpace = space;
+    }
+
+    [lastSpace mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.mas_bottom);
+    }];
+
+}
+
+@end
+</code></pre><p>简单的来测试一下</p>
+<pre><code>UIView *sv11 = [UIView new];
+UIView *sv12 = [UIView new];
+UIView *sv13 = [UIView new];
+UIView *sv21 = [UIView new];
+UIView *sv31 = [UIView new];
+
+sv11.backgroundColor = [UIColor redColor];
+sv12.backgroundColor = [UIColor redColor];
+sv13.backgroundColor = [UIColor redColor];
+sv21.backgroundColor = [UIColor redColor];
+sv31.backgroundColor = [UIColor redColor];
+
+[sv addSubview:sv11];
+[sv addSubview:sv12];
+[sv addSubview:sv13];
+[sv addSubview:sv21];
+[sv addSubview:sv31];
+
+//给予不同的大小 测试效果
+
+[sv11 mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.centerY.equalTo(@[sv12,sv13]);
+    make.centerX.equalTo(@[sv21,sv31]);
+    make.size.mas_equalTo(CGSizeMake(40, 40));
+}];
+
+[sv12 mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.size.mas_equalTo(CGSizeMake(70, 20));
+}];
+
+[sv13 mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.size.mas_equalTo(CGSizeMake(50, 50));
+}];
+
+[sv21 mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.size.mas_equalTo(CGSizeMake(50, 20));
+}];
+
+[sv31 mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.size.mas_equalTo(CGSizeMake(40, 60));
+}];
+
+[sv distributeSpacingHorizontallyWith:@[sv11,sv12,sv13]];
+[sv distributeSpacingVerticallyWith:@[sv11,sv21,sv31]];
+
+[sv showPlaceHolderWithAllSubviews];
+[sv hidePlaceHolder];
+</code></pre><p>代码效果<br><img src="http://i12.tietuku.com/5ef072f7c4e6f689.png" alt="代码效果"></p>
+<p>perfect! 简洁明了的达到了我们所要的效果</p>
+<p>这里所用的技巧就是 使用空白的占位view来填充我们目标view的旁边 这点通过图上的空白标注可以看出来</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>通过以上5个案例 我觉得已经把Masonry的常用功能介绍得差不多了 如果你觉得意犹未尽呢 请下载官方的demo来学习</p>
+<p>总而言之 Masonry是一个非常优秀的autolayout库 能够节省大量的开发和学习时间 尤其适合我这种纯代码的iOSer 在iPhone6发布后引发的适配潮中 Masonry一定可以助你一臂之力 :)</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/path/to/wechat-reward-image.png" alt="YueChao An WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/path/to/alipay-reward-image.png" alt="YueChao An Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Masonry/" rel="tag">#Masonry</a>
+          
+            <a href="/tags/代码约束/" rel="tag">#代码约束</a>
+          
+            <a href="/tags/autoLayout/" rel="tag">#autoLayout</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/04/28/iOS编程细节整理/" rel="next" title="iOS编程细节整理">
+                <i class="fa fa-chevron-left"></i> iOS编程细节整理
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/05/14/数据持久化的几种方式/" rel="prev" title="数据持久化的几种方式">
+                数据持久化的几种方式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<div class="duoshuo" id="comments">     
+       <!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="<%=key%>" data-title="<%=title%>" data-url="<%=url%>"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"995684946"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="YueChao An" />
+          <p class="site-author-name" itemprop="name">YueChao An</p>
+          <p class="site-description motion-element" itemprop="description">你那么优秀，我有什么理由不努力</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">65</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/anyuechao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/61821afa755b/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-jianshu"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhangtianqi.net/" target="_blank" title="zhangtianqi">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  zhangtianqi
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.ilakeyc.gift/" target="_blank" title="ilakeyc">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ilakeyc
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wangshiyu13" target="_blank" title="shiyu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  shiyu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.lidaze.com/" target="_blank" title="lidaze">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  lidaze
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://liushuang.win/" target="_blank" title="feelShuang">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  feelShuang
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/EmyWong" target="_blank" title="装逼王">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  装逼王
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://jenko.cc/" target="_blank" title="jenko">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  jenko
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://liuyanwei.jumppo.com/" target="_blank" title="ali大神">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ali大神
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">2.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">3.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#居中显示一个view"><span class="nav-number">3.1.</span> <span class="nav-text">居中显示一个view</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初级-让一个view略小于其superView-边距为10"><span class="nav-number">3.2.</span> <span class="nav-text">[初级] 让一个view略小于其superView(边距为10)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初级-让两个高度为150的view垂直居中且等宽且等间隔排列-间隔为10-自动计算其宽度"><span class="nav-number">3.3.</span> <span class="nav-text">[初级] 让两个高度为150的view垂直居中且等宽且等间隔排列 间隔为10(自动计算其宽度)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中级-在UIScrollView顺序排列一些view并自动计算contentSize"><span class="nav-number">3.4.</span> <span class="nav-text">[中级] 在UIScrollView顺序排列一些view并自动计算contentSize</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高级-横向或者纵向等间隙的排列一组view"><span class="nav-number">3.5.</span> <span class="nav-text">[高级] 横向或者纵向等间隙的排列一组view</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YueChao An</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
