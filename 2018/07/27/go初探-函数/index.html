@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>go初探-函数 | 安跃超</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="安跃超">
+    <meta name="author" content="YueChao An">
+    <meta name="description" content="安跃超的博客" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="安跃超" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/xcode.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/Swift/" class="animsition-link">Swift<small>(0)</small></a></li>
+				    
+				    <li><a href="/categories/Swift-br/" class="animsition-link">Swift &lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/UNIX/" class="animsition-link">UNIX<small>(0)</small></a></li>
+				    
+				    <li><a href="/categories/UNIX-br/" class="animsition-link">UNIX &lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/github-br/" class="animsition-link">github&lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/go基础/" class="animsition-link">go基础<small>(5)</small></a></li>
+				    
+				    <li><a href="/categories/hexo/" class="animsition-link">hexo<small>(0)</small></a></li>
+				    
+				    <li><a href="/categories/hexo-br/" class="animsition-link">hexo&lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/iOS/" class="animsition-link">iOS<small>(10)</small></a></li>
+				    
+				    <li><a href="/categories/iOS-br/" class="animsition-link">iOS &lt;br/&gt;<small>(3)</small></a></li>
+				    
+				    <li><a href="/categories/iOS-br/" class="animsition-link">iOS&lt;/br&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/iOS-br/" class="animsition-link">iOS&lt;br/&gt;<small>(8)</small></a></li>
+				    
+				    <li><a href="/categories/iOS-br/" class="animsition-link">iOS&lt;br&gt;<small>(12)</small></a></li>
+				    
+				    <li><a href="/categories/iOS可视化/" class="animsition-link">iOS可视化<small>(0)</small></a></li>
+				    
+				    <li><a href="/categories/iOS可视化-br/" class="animsition-link">iOS可视化 &lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/python/" class="animsition-link">python<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/swift/" class="animsition-link">swift<small>(3)</small></a></li>
+				    
+				    <li><a href="/categories/swift-br/" class="animsition-link">swift &lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/兴趣篇/" class="animsition-link">兴趣篇<small>(0)</small></a></li>
+				    
+				    <li><a href="/categories/微信表情-br/" class="animsition-link">微信表情&lt;/br&gt;<small>(0)</small></a></li>
+				    
+				    <li><a href="/categories/技术篇/" class="animsition-link">技术篇<small>(0)</small></a></li>
+				    
+				    <li><a href="/categories/技术篇-br/" class="animsition-link">技术篇 &lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/技术篇-br/" class="animsition-link">技术篇&lt;br/&gt;<small>(3)</small></a></li>
+				    
+				    <li><a href="/categories/编辑工具/" class="animsition-link">编辑工具<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/编辑工具-br/" class="animsition-link">编辑工具 &lt;br&gt;<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/编辑工具-br/" class="animsition-link">编辑工具&lt;br&gt;<small>(1)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://zhangtianqi.net/" class="animsition-link">zhangtianqi</a></li>
+                    
+                    <li><a href="http://www.ilakeyc.gift/" class="animsition-link">ilakeyc</a></li>
+                    
+                    <li><a href="https://github.com/wangshiyu13" class="animsition-link">wangshiyu13</a></li>
+                    
+                    <li><a href="http://www.lidaze.com/" class="animsition-link">lidaze</a></li>
+                    
+                    <li><a href="http://liushuang.win/" class="animsition-link">feelShuang</a></li>
+                    
+                    <li><a href="https://github.com/EmyWong" class="animsition-link">EmyWong</a></li>
+                    
+                    <li><a href="http://jenko.cc/" class="animsition-link">jenko</a></li>
+                    
+                    <li><a href="http://liuyanwei.jumppo.com/" class="animsition-link">liuyanwei</a></li>
+                    
+                    <li><a href="https://github.com/casatwy" class="animsition-link">casatwy</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">安跃超</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/anyuechao" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2018-07-27T06:24:09.000Z" itemprop="datePublished">
+          2018-07-27
+      </time>
+    
+    
+    | 
+    <a href='/tags/go/'>go</a>
+    
+    
+</span>
+                <h1>go初探-函数</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="函数的声明"><a href="#函数的声明" class="headerlink" title="函数的声明"></a>函数的声明</h1><p>在 Go 语言中，函数声明通用语法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func functionname(parametername type) returntype &#123;  </span><br><span class="line">    // 函数体（具体实现的功能）</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>函数的声明以关键词 func 开始，后面紧跟自定义的函数名 functionname (函数名)。函数的参数列表定义在 ( 和 ) 之间，返回值的类型则定义在之后的 returntype (返回值类型)处。声明一个参数的语法采用 参数名 参数类型 的方式，任意多个参数采用类似 (parameter1 type, parameter2 type) 即(参数1 参数1的类型,参数2 参数2的类型)的形式指定。之后包含在 { 和 } 之间的代码，就是函数体。<br><a id="more"></a><br>函数中的参数列表和返回值并非是必须的，所以下面这个函数的声明也是有效的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func functionname() &#123;  </span><br><span class="line">    // 译注: 表示这个函数不需要输入参数，且没有返回值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="示例函数"><a href="#示例函数" class="headerlink" title="示例函数"></a>示例函数</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">func calculateBill(price int, no int) int &#123;  </span><br><span class="line">    var totalPrice = price * no // 商品总价 = 商品单价 * 数量</span><br><span class="line">    return totalPrice // 返回总价</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述函数有两个整型的输入 price 和 no，返回值 totalPrice 为 price 和 no 的乘积，也是整数类型。<br>如果有连续若干个参数，它们的类型一致，那么我们无须一一罗列，只需在最后一个参数后添加该类型。 例如，price int, no int 可以简写为 price, no int，所以示例函数也可写成</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">func calculateBill(price, no int) int &#123;  </span><br><span class="line">    var totalPrice = price * no</span><br><span class="line">    return totalPrice</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在我们已经定义了一个函数，我们要在代码中尝试着调用它。调用函数的语法为 functionname(parameters)。调用示例函数的方法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">calculateBill(10, 5)</span><br></pre></td></tr></table></figure>
+<p>完成了示例函数声明和调用后，我们就能写出一个完整的程序，并把商品总价打印在控制台上：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (  </span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func calculateBill(price, no int) int &#123;  </span><br><span class="line">    var totalPrice = price * no</span><br><span class="line">    return totalPrice</span><br><span class="line">&#125;</span><br><span class="line">func main() &#123;  </span><br><span class="line">    price, no := 90, 6 // 定义 price 和 no,默认类型为 int</span><br><span class="line">    totalPrice := calculateBill(price, no)</span><br><span class="line">    fmt.Println(&quot;Total price is&quot;, totalPrice) // 打印到控制台上</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="多返回值"><a href="#多返回值" class="headerlink" title="多返回值"></a>多返回值</h1><p>Go 语言支持一个函数可以有多个返回值。我们来写个以矩形的长和宽为输入参数，计算并返回矩形面积和周长的函数 rectProps。矩形的面积是长度和宽度的乘积, 周长是长度和宽度之和的两倍。即：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (  </span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func rectProps(length, width float64)(float64, float64) &#123;  </span><br><span class="line">    var area = length * width</span><br><span class="line">    var perimeter = (length + width) * 2</span><br><span class="line">    return area, perimeter</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;  </span><br><span class="line">    area, perimeter := rectProps(10.8, 5.6)</span><br><span class="line">    fmt.Printf(&quot;Area %f Perimeter %f&quot;, area, perimeter) </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="命名返回值"><a href="#命名返回值" class="headerlink" title="命名返回值"></a>命名返回值</h1><p>从函数中可以返回一个命名值。一旦命名了返回值，可以认为这些值在函数第一行就被声明为变量了。<br>上面的 rectProps 函数也可用这个方式写成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">func rectProps(length, width float64)(area, perimeter float64) &#123;  </span><br><span class="line">    area = length * width</span><br><span class="line">    perimeter = (length + width) * 2</span><br><span class="line">    return // 不需要明确指定返回值，默认返回 area, perimeter 的值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>请注意, 函数中的 return 语句没有显式返回任何值。由于 area 和 perimeter 在函数声明中指定为返回值, 因此当遇到 return 语句时, 它们将自动从函数返回。</p>
+<h1 id="空白符"><a href="#空白符" class="headerlink" title="空白符"></a>空白符</h1><p>_ 在 Go 中被用作空白符，可以用作表示任何类型的任何值。<br>我们继续以 rectProps 函数为例，该函数计算的是面积和周长。假使我们只需要计算面积，而并不关心周长的计算结果，该怎么调用这个函数呢？这时，空白符 _ 就上场了。<br>下面的程序我们只用到了函数 rectProps 的一个返回值 area</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (  </span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func rectProps(length, width float64) (float64, float64) &#123;  </span><br><span class="line">    var area = length * width</span><br><span class="line">    var perimeter = (length + width) * 2</span><br><span class="line">    return area, perimeter</span><br><span class="line">&#125;</span><br><span class="line">func main() &#123;  </span><br><span class="line">    area, _ := rectProps(10.8, 5.6) // 返回值周长被丢弃</span><br><span class="line">    fmt.Printf(&quot;Area %f &quot;, area)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在程序的 area, _ := rectProps(10.8, 5.6) 这一行，我们看到空白符 _ 用来跳过不要的计算结果。</p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2018/07/27/go初探-常量/" style="float: left;">
+        ← go初探-常量
+    </a>
+    
+    
+    <a class="pull-right" href="/2018/07/26/go初探-类型/">
+        go初探-类型 →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By YueChao An. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/anyuechao" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+</body>
+</html>

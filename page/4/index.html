@@ -90,6 +90,8 @@
 				    
 				    <li><a href="/categories/github-br/" class="animsition-link">github&lt;br/&gt;<small>(1)</small></a></li>
 				    
+				    <li><a href="/categories/go基础/" class="animsition-link">go基础<small>(5)</small></a></li>
+				    
 				    <li><a href="/categories/hexo/" class="animsition-link">hexo<small>(0)</small></a></li>
 				    
 				    <li><a href="/categories/hexo-br/" class="animsition-link">hexo&lt;br/&gt;<small>(1)</small></a></li>
@@ -253,6 +255,195 @@
 
 <section id="intro">
     <div class="container">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/01/28/如何创建一个视图然后关联一个XIB/">如何创建一个视图然后关联一个XIB <br/></a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-01-28T02:46:22.000Z" itemprop="datePublished">
+          2016-01-28
+      </time>
+    
+    
+    | 
+    <a href='/tags/view关联xib-br/'>view关联xib&lt;br/&gt;</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        <p>列举了一种使用File’s Owner关联视图的方法,仅供参考</p>
+<h3 id="part-1"><a href="#part-1" class="headerlink" title="part 1"></a>part 1</h3><p>  创建一个视图,创建一个XIB文件</p>
+<h3 id="part-2"><a href="#part-2" class="headerlink" title="part 2"></a>part 2</h3><p>  在xib文件的File’s Owner设置所有者为当前视图<br><img src="http://7xrz94.com1.z0.glb.clouddn.com/ruhe1.png" alt=""></p>
+<p>  <br><br><img src="http://7xrz94.com1.z0.glb.clouddn.com/ruhe2.png" alt=""><br>
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/01/28/如何创建一个视图然后关联一个XIB/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/01/22/swift单例/">swift单例</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-01-22T09:14:21.000Z" itemprop="datePublished">
+          2016-01-22
+      </time>
+    
+    
+    | 
+    <a href='/tags/单例/'>单例</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        <p>###普通版单例</p>
+<pre><code>class TheOneAndOnlyKraken {
+
+static let sharedInstance = TheOneAndOnlyKraken()
+
+//This prevents others from using the default &apos;()&apos; initializer for this class.
+
+private init() {}     
+
+}        
+</code></pre>
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/01/22/swift单例/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/01/19/iOS编程细节整理/">iOS编程细节整理 <br/></a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-01-19T03:19:19.000Z" itemprop="datePublished">
+          2016-01-19
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        <h4 id="关于iOS开发中遇到的一些小问题及其解决方法"><a href="#关于iOS开发中遇到的一些小问题及其解决方法" class="headerlink" title="关于iOS开发中遇到的一些小问题及其解决方法"></a>关于iOS开发中遇到的一些小问题及其解决方法</h4><h4 id="tableView不全屏问题"><a href="#tableView不全屏问题" class="headerlink" title="tableView不全屏问题"></a>tableView不全屏问题</h4><pre><code>cell.separatorInset = UIEdgeInsetsMake(0, -100, 0, 0);
+</code></pre><h4 id="解决有的图片显示时只是一块颜色，而显示不正常的问题"><a href="#解决有的图片显示时只是一块颜色，而显示不正常的问题" class="headerlink" title="解决有的图片显示时只是一块颜色，而显示不正常的问题"></a>解决有的图片显示时只是一块颜色，而显示不正常的问题</h4><pre><code>//渲染
+UIImage *image = [UIImage imageNamed:@&quot;imageName&quot;];
+image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+</code></pre>
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/01/19/iOS编程细节整理/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/01/18/怎么把segmentControl边框隐藏/">把segmentControl边框隐藏</br></a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-01-18T06:11:45.000Z" itemprop="datePublished">
+          2016-01-18
+      </time>
+    
+    
+    | 
+    <a href='/tags/iOS-br/'>iOS &lt;/br&gt;</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        <pre><code>segment.tintColor = [UIColor clearColor];//去掉颜色,现在整个segment都看不见
+</code></pre>
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/01/18/怎么把segmentControl边框隐藏/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/01/18/cocopods使用/">cocopods使用 <br/></a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-01-18T06:11:07.000Z" itemprop="datePublished">
+          2016-01-18
+      </time>
+    
+    
+    | 
+    <a href='/tags/cocopods/'>cocopods</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        <p>cocopods的安装与使用</p>
+<h3 id="更新导入库用此条命令-解决卡死问题"><a href="#更新导入库用此条命令-解决卡死问题" class="headerlink" title="更新导入库用此条命令! 解决卡死问题"></a>更新导入库用此条命令! 解决卡死问题</h3><h3 id="pod-install-–no-repo-update"><a href="#pod-install-–no-repo-update" class="headerlink" title="pod install –no-repo-update"></a>pod install –no-repo-update</h3><h3 id="CocoaPods是什么"><a href="#CocoaPods是什么" class="headerlink" title="CocoaPods是什么"></a>CocoaPods是什么</h3><p>当我们开发iOS项目时候，会经常使用到第三方类库，并且会使用很多。<br>大家的做法基本上都是到GitHub上下载一个一个的类库，然后导入到工程中，并且引入各种的类库，做各种的配置。有时候还要处理ARC与MRC的问题，很麻烦。<br>还有一种情况，就是当第三方类库出现升级的情况时候，我们还需要删掉旧的，下载新的，再重新导入。<br>
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/01/18/cocopods使用/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
@@ -433,186 +624,6 @@ Ivar *vars = class_copyIvarList(object_getClass(self), &amp;ivarCount);
                     
                     <p class="pull-right readMore">
                         <a href="/2015/12/22/动态归档/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/12/21/UIImagePicker拍照/">UIImagePicker拍照<br/></a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-12-21T13:15:45.000Z" itemprop="datePublished">
-          2015-12-21
-      </time>
-    
-    
-    | 
-    <a href='/tags/iOS-br/'>iOS&lt;br/&gt;</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        <p>关于如何使用UIImagePickerController来拍照和录制视频，下面的程序中只要将_isVideo设置为YES就是视频录制模式，录制完后在主视图控制器中自动播放；如果将_isVideo设置为NO则为拍照模式，拍照完成之后在主视图控制器中显示拍摄的照片：<br>
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/12/21/UIImagePicker拍照/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/12/16/Guard/">Guard <br/></a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-12-16T08:08:17.000Z" itemprop="datePublished">
-          2015-12-16
-      </time>
-    
-    
-    | 
-    <a href='/tags/Guard-br/'>Guard &lt;br/&gt;</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        <p>当你查看这篇文章时，肯定是看到了代码中使用了guard特性，这样，这篇文章能解决你的疑惑<br>不过直接学习的也没关系，照样可以让你学会guard，开始吧。。。</p>
-<p>guard特性是在Swift 2.0后推出的，所以请使用Xcode 7.X版本来编写代码</p>
-<p>很多人都疑惑guard和if..else..到底有什么瓜葛，向下看，慢慢解释<br>
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/12/16/Guard/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/12/11/Block技术中的weak-strong/">Block技术中的weak-strong <br/></a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-12-11T04:19:55.000Z" itemprop="datePublished">
-          2015-12-11
-      </time>
-    
-    
-    | 
-    <a href='/tags/iOS-br/'>iOS &lt;br/&gt;</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        <h3 id="一、看一看什么是Block"><a href="#一、看一看什么是Block" class="headerlink" title="一、看一看什么是Block"></a>一、看一看什么是Block</h3><p>我们使用^运算符来声明一个Block变量，而且在声明完一个Block变量后要像声明普通变量一样，最后要加;。</p>
-<h3 id="声明Block变量"><a href="#声明Block变量" class="headerlink" title="声明Block变量"></a>声明Block变量</h3><p>接下来，我们通过一个例子来声明一个简单的Block变量.</p>
-<pre><code>int (^block)( int ) = NULL;
-</code></pre><p>我们一起来看一下声明Block变量的语法<br>
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/12/11/Block技术中的weak-strong/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/12/10/使用WebViewJavascriptBridge实现OC与JS交互/">使用WebViewJavascriptBridge实现OC与JS交互<br/></a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-12-10T07:53:06.000Z" itemprop="datePublished">
-          2015-12-10
-      </time>
-    
-    
-    | 
-    <a href='/tags/iOS-webView-JS/'>iOS,webView,JS</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>当下,很多APP里面都会有HTML5网页,我们除了简单的用WebView加载显示外，很多情况下，我们还需要和WebView进行交互,比如点击WebView上面的按钮调用OC端的函数实现具体操作。</p>
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/12/10/使用WebViewJavascriptBridge实现OC与JS交互/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/12/10/使用WKWebView替换UIWebView/">使用WKWebView替换UIWebView <br/></a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-12-10T07:08:44.000Z" itemprop="datePublished">
-          2015-12-10
-      </time>
-    
-    
-    | 
-    <a href='/tags/iOS-WebView/'>iOS,WebView</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        <h2 id="WKWebView替换UIWebView"><a href="#WKWebView替换UIWebView" class="headerlink" title="WKWebView替换UIWebView"></a>WKWebView替换UIWebView</h2><p> 开发App的过程中，常常会遇到在App内部加载网页，通常用UIWebView加载。这个自iOS2开始使用的网页加载器一直是开发的心病：加载速度慢，占用内存多，优化困难。如果加载网页多，还可能因为过量占用内存而给系统kill掉。各种优化的方法效果也不那么明显iOS8以后，苹果推出了新框架Wekkit，提供了替换UIWebView的组件WKWebView。各种UIWebView的问题没有了，速度更快了，占用内存少了，一句话，WKWebView是App内部加载网页的最佳选择！</p>
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/12/10/使用WKWebView替换UIWebView/">Read More...</a>
                     </p>
                     
                 </div>

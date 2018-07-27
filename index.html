@@ -90,6 +90,8 @@
 				    
 				    <li><a href="/categories/github-br/" class="animsition-link">github&lt;br/&gt;<small>(1)</small></a></li>
 				    
+				    <li><a href="/categories/go基础/" class="animsition-link">go基础<small>(5)</small></a></li>
+				    
 				    <li><a href="/categories/hexo/" class="animsition-link">hexo<small>(0)</small></a></li>
 				    
 				    <li><a href="/categories/hexo-br/" class="animsition-link">hexo&lt;br/&gt;<small>(1)</small></a></li>
@@ -253,6 +255,201 @@
 
 <section id="intro">
     <div class="container">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2018/07/27/go初探-常量/">go初探-常量</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2018-07-27T06:24:09.000Z" itemprop="datePublished">
+          2018-07-27
+      </time>
+    
+    
+    | 
+    <a href='/tags/go/'>go</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        <p>#定义</p>
+<blockquote>
+<p>在 Go 语言中，术语”常量”用于表示固定的值。比如 5 、-89、 I love Go、67.89 等等。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var a int = 50  </span><br><span class="line">var b string = &quot;I love Go&quot;</span><br></pre></td></tr></table></figure>
+<p>在上面的代码中，变量 a 和 b 分别被赋值为常量 50 和 I love GO。关键字 const 被用于表示常量，比如 50 和 I love Go。即使在上面的代码中我们没有明确的使用关键字 const，但是在 Go 的内部，它们是常量。<br>
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2018/07/27/go初探-常量/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2018/07/27/go初探-函数/">go初探-函数</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2018-07-27T06:24:09.000Z" itemprop="datePublished">
+          2018-07-27
+      </time>
+    
+    
+    | 
+    <a href='/tags/go/'>go</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        <h1 id="函数的声明"><a href="#函数的声明" class="headerlink" title="函数的声明"></a>函数的声明</h1><p>在 Go 语言中，函数声明通用语法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func functionname(parametername type) returntype &#123;  </span><br><span class="line">    // 函数体（具体实现的功能）</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>函数的声明以关键词 func 开始，后面紧跟自定义的函数名 functionname (函数名)。函数的参数列表定义在 ( 和 ) 之间，返回值的类型则定义在之后的 returntype (返回值类型)处。声明一个参数的语法采用 参数名 参数类型 的方式，任意多个参数采用类似 (parameter1 type, parameter2 type) 即(参数1 参数1的类型,参数2 参数2的类型)的形式指定。之后包含在 { 和 } 之间的代码，就是函数体。<br>
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2018/07/27/go初探-函数/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2018/07/26/go初探-类型/">go初探-类型</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2018-07-26T08:24:09.000Z" itemprop="datePublished">
+          2018-07-26
+      </time>
+    
+    
+    | 
+    <a href='/tags/go/'>go</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        <blockquote>
+<p>下面是 Go 支持的基本类型：     </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">bool</span><br><span class="line">数字类型</span><br><span class="line">		int8, int16, int32, int64, int</span><br><span class="line">		uint8, uint16, uint32, uint64, uint</span><br><span class="line">		float32, float64</span><br><span class="line">		complex64, complex128</span><br><span class="line">		byte</span><br><span class="line">		rune</span><br><span class="line">string</span><br></pre></td></tr></table></figure>
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2018/07/26/go初探-类型/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2018/07/26/go初探-变量/">go初探-变量</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2018-07-26T08:24:09.000Z" itemprop="datePublished">
+          2018-07-26
+      </time>
+    
+    
+    | 
+    <a href='/tags/go/'>go</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
+</blockquote>
+<p>1.变量推断<br>2.可以声明多个变量<br>3.在一个语句中声明不同类型的变量<br>4.简短声明，并且简短声明的语法要求 := 操作符的左边至少有一个变量是尚未声明的，否则会抛出 no new variables on left side of := 的错误<br>5.变量也可以在运行时进行赋值<br>6.Go 是强类型（Strongly Typed）语言，因此不允许某一类型的变量赋值为其他类型的值。  </p>
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2018/07/26/go初探-变量/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2018/07/26/mac环境下go安装环境配置/">mac环境下go安装环境配置</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2018-07-26T05:24:09.000Z" itemprop="datePublished">
+          2018-07-26
+      </time>
+    
+    
+    | 
+    <a href='/tags/go/'>go</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        <p>#Golang 是什么</p>
+<blockquote>
+<p>Go 亦称为 Golang（译注：按照 Rob Pike 说法，语言叫做 Go，Golang 只是官方网站的网址），是由谷歌开发的一个开源的编译型的静态语言。</p>
+</blockquote>
+<blockquote>
+<p>Golang 的主要关注点是使得高可用性和可扩展性的 Web 应用的开发变得简便容易。（译注：Go 的定位是系统编程语言，只是对 Web 开发支持较好）</p>
+</blockquote>
+<h1 id="为何选择-Golang"><a href="#为何选择-Golang" class="headerlink" title="为何选择 Golang"></a>为何选择 Golang</h1><p>既然有很多其他编程语言可以做同样的工作，如 Python，Ruby，Nodejs 等，为什么要选择 Golang 作为服务端编程语言？</p>
+<p>以下是我使用 Go 语言时发现的一些优点：<br>1.并发是语言的一部分（译注：并非通过标准库实现），所以编写多线程程序会是一件很容易的事。后续教程将会讨论到，并发是通过 Goroutines 和 channels 机制实现的。<br>2.Golang 是一种编译型语言。源代码会编译为二进制机器码。而在解释型语言中没有这个过程，如 Nodejs 中的 JavaScript。<br>3.语言规范十分简洁。所有规范都在一个页面展示，你甚至都可以用它来编写你自己的编译器呢。:smile:<br>4.Go 编译器支持静态链接。所有 Go 代码都可以静态链接为一个大的二进制文件（译注：相对现在的磁盘空间，其实根本不大），并可以轻松部署到云服务器，而不必担心各种依赖性。<br>
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2018/07/26/mac环境下go安装环境配置/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
@@ -452,193 +649,6 @@
                     
                     <p class="pull-right readMore">
                         <a href="/2018/06/05/Cell高度计算的多种方式/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2018/06/05/搭建私有库以及个人遇到的一些问题总结/">搭建私有库以及个人遇到的一些问题总结<br></a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2018-06-05T06:10:24.000Z" itemprop="datePublished">
-          2018-06-05
-      </time>
-    
-    
-    | 
-    <a href='/tags/github-iOS/'>github,iOS</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        <h4 id="搭建私有库以及个人遇到的一些问题总结"><a href="#搭建私有库以及个人遇到的一些问题总结" class="headerlink" title="搭建私有库以及个人遇到的一些问题总结"></a><strong>搭建私有库以及个人遇到的一些问题总结</strong></h4><blockquote>
-<p>作为一名资深的 iOS开发，在开发过程中会用到大量的 category，以及一些常用的宏定义和github 一些常用的开源库，如果全都是网往目中拖得话会显得比较无力、麻烦，这本身就是组件化程度比较高的东西，完全没有必要一个一个的往项目中拖，现在有一个非常好用的方法来分享给大家。（当然了网上的博客很多，但是我要打造一个非常简洁便利的方法来让大家去管理自己的私有库）。<br>
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2018/06/05/搭建私有库以及个人遇到的一些问题总结/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2018/06/05/密码-MD5判断两文件是否被修改/">密码-MD5判断两文件是否被修改<br></a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2018-06-05T06:02:13.000Z" itemprop="datePublished">
-          2018-06-05
-      </time>
-    
-    
-    | 
-    <a href='/tags/密码/'>密码</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        <p>怎样判断两个文件里的内容是否相同，或文件是否被修改，使用MD5方法来判断，准确性最高，使用最方便。<br>
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2018/06/05/密码-MD5判断两文件是否被修改/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2018/06/05/密码学/">密码学<br></a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2018-06-05T06:00:31.000Z" itemprop="datePublished">
-          2018-06-05
-      </time>
-    
-    
-    | 
-    <a href='/tags/密码/'>密码</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        <p>网络开发原则：</p>
-<blockquote>
-<ol>
-<li>在网络上不允许传输用户的明文隐私数据</li>
-<li>在本地不允许保存用户的明文隐私数据</li>
-</ol>
-</blockquote>
-<p>#加密算法</p>
-<p>#1. 哈希(散列)算法<br>特点:<br>1).不能够反算回来!!<br>2).同样的数据加密之后的结果是一样的!!<br>
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2018/06/05/密码学/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2018/06/05/iOS减少应用程序安装包大小/">iOS减少应用程序安装包大小<br></a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2018-06-05T05:51:31.000Z" itemprop="datePublished">
-          2018-06-05
-      </time>
-    
-    
-    | 
-    <a href='/tags/iOS-Xcode-优化/'>iOS,Xcode,优化</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        <h4 id="一-怎样才能让我的程序安装包小一点，让程序的下载和安装更快速？"><a href="#一-怎样才能让我的程序安装包小一点，让程序的下载和安装更快速？" class="headerlink" title="一.怎样才能让我的程序安装包小一点，让程序的下载和安装更快速？"></a>一.怎样才能让我的程序安装包小一点，让程序的下载和安装更快速？</h4><pre><code>缩减iOS安装包大小是很多中大型APP都要做的事，一般首先会对资源文件下手，压缩图片/音频，去除不必要的资源。这些资源优化做完后，我们还可以尝试对可执行文件进行瘦身，项目越大，可执行文件占用的体积越大，又因为AppStore会对可执行文件加密，导致可执行文件的压缩率低，压缩后可执行文件占整个APP安装包的体积比例大约有80%~90%，还是挺值得优化的。下面介绍一下在研究可执行文件过程中发现的可以优化的点。
-</code></pre>
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2018/06/05/iOS减少应用程序安装包大小/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2018/06/05/iOS 内存优化之-序章·启动时间内存优化/">iOS 内存优化之-序章·启动时间内存优化<br></a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2018-06-05T03:42:12.000Z" itemprop="datePublished">
-          2018-06-05
-      </time>
-    
-    
-    | 
-    <a href='/tags/Mou-Xcode-Error/'>Mou,Xcode,Error</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        <p>#一.序章·<font color="red" face="楷体">检测启动时间</font></p>
-<h3 id="1-1-配置环境"><a href="#1-1-配置环境" class="headerlink" title="1.1.配置环境"></a>1.1.配置环境</h3><p><img src="https://upload-images.jianshu.io/upload_images/1060239-2ad59acfe864cc51.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="DYLD_PRINT_STATISTICS"></p>
-<h3 id="1-2-main函数"><a href="#1-2-main函数" class="headerlink" title="1.2.main函数"></a>1.2.main函数</h3>
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2018/06/05/iOS 内存优化之-序章·启动时间内存优化/">Read More...</a>
                     </p>
                     
                 </div>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>go初探-类型 | 安跃超</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="安跃超">
+    <meta name="author" content="YueChao An">
+    <meta name="description" content="安跃超的博客" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="安跃超" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/xcode.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/Swift/" class="animsition-link">Swift<small>(0)</small></a></li>
+				    
+				    <li><a href="/categories/Swift-br/" class="animsition-link">Swift &lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/UNIX/" class="animsition-link">UNIX<small>(0)</small></a></li>
+				    
+				    <li><a href="/categories/UNIX-br/" class="animsition-link">UNIX &lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/github-br/" class="animsition-link">github&lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/go基础/" class="animsition-link">go基础<small>(5)</small></a></li>
+				    
+				    <li><a href="/categories/hexo/" class="animsition-link">hexo<small>(0)</small></a></li>
+				    
+				    <li><a href="/categories/hexo-br/" class="animsition-link">hexo&lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/iOS/" class="animsition-link">iOS<small>(10)</small></a></li>
+				    
+				    <li><a href="/categories/iOS-br/" class="animsition-link">iOS &lt;br/&gt;<small>(3)</small></a></li>
+				    
+				    <li><a href="/categories/iOS-br/" class="animsition-link">iOS&lt;/br&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/iOS-br/" class="animsition-link">iOS&lt;br/&gt;<small>(8)</small></a></li>
+				    
+				    <li><a href="/categories/iOS-br/" class="animsition-link">iOS&lt;br&gt;<small>(12)</small></a></li>
+				    
+				    <li><a href="/categories/iOS可视化/" class="animsition-link">iOS可视化<small>(0)</small></a></li>
+				    
+				    <li><a href="/categories/iOS可视化-br/" class="animsition-link">iOS可视化 &lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/python/" class="animsition-link">python<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/swift/" class="animsition-link">swift<small>(3)</small></a></li>
+				    
+				    <li><a href="/categories/swift-br/" class="animsition-link">swift &lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/兴趣篇/" class="animsition-link">兴趣篇<small>(0)</small></a></li>
+				    
+				    <li><a href="/categories/微信表情-br/" class="animsition-link">微信表情&lt;/br&gt;<small>(0)</small></a></li>
+				    
+				    <li><a href="/categories/技术篇/" class="animsition-link">技术篇<small>(0)</small></a></li>
+				    
+				    <li><a href="/categories/技术篇-br/" class="animsition-link">技术篇 &lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/技术篇-br/" class="animsition-link">技术篇&lt;br/&gt;<small>(3)</small></a></li>
+				    
+				    <li><a href="/categories/编辑工具/" class="animsition-link">编辑工具<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/编辑工具-br/" class="animsition-link">编辑工具 &lt;br&gt;<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/编辑工具-br/" class="animsition-link">编辑工具&lt;br&gt;<small>(1)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://zhangtianqi.net/" class="animsition-link">zhangtianqi</a></li>
+                    
+                    <li><a href="http://www.ilakeyc.gift/" class="animsition-link">ilakeyc</a></li>
+                    
+                    <li><a href="https://github.com/wangshiyu13" class="animsition-link">wangshiyu13</a></li>
+                    
+                    <li><a href="http://www.lidaze.com/" class="animsition-link">lidaze</a></li>
+                    
+                    <li><a href="http://liushuang.win/" class="animsition-link">feelShuang</a></li>
+                    
+                    <li><a href="https://github.com/EmyWong" class="animsition-link">EmyWong</a></li>
+                    
+                    <li><a href="http://jenko.cc/" class="animsition-link">jenko</a></li>
+                    
+                    <li><a href="http://liuyanwei.jumppo.com/" class="animsition-link">liuyanwei</a></li>
+                    
+                    <li><a href="https://github.com/casatwy" class="animsition-link">casatwy</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">安跃超</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/anyuechao" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2018-07-26T08:24:09.000Z" itemprop="datePublished">
+          2018-07-26
+      </time>
+    
+    
+    | 
+    <a href='/tags/go/'>go</a>
+    
+    
+</span>
+                <h1>go初探-类型</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<blockquote>
+<p>下面是 Go 支持的基本类型：     </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">bool</span><br><span class="line">数字类型</span><br><span class="line">		int8, int16, int32, int64, int</span><br><span class="line">		uint8, uint16, uint32, uint64, uint</span><br><span class="line">		float32, float64</span><br><span class="line">		complex64, complex128</span><br><span class="line">		byte</span><br><span class="line">		rune</span><br><span class="line">string</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="bool"><a href="#bool" class="headerlink" title="bool"></a>bool</h1><p> bool 类型表示一个布尔值，值为 true 或者 false。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package main </span><br><span class="line">import(</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">	&quot;unsafe&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	a := true</span><br><span class="line">	b := false</span><br><span class="line">	fmt.Println(&quot;a&quot;,a,&quot;b&quot;,b)</span><br><span class="line">	c := a &amp;&amp; b</span><br><span class="line">	fmt.Println(&quot;c&quot;,c)</span><br><span class="line">	d := a || b</span><br><span class="line">	fmt.Println(&quot;d&quot;,d) </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>在上面的程序中，a 赋值为 true，b 赋值为 false。</p>
+<p>c 赋值为 a &amp;&amp; b。仅当 a 和 b 都为 true 时，操作符 &amp;&amp; 才返回 true。因此，在这里 c 为 false。</p>
+<p>当 a 或者 b 为 true 时，操作符 || 返回 true。在这里，由于 a 为 true，因此 d 也为 true。我们将得到程序的输出如下。</p>
+<p>运行结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a: true b: false  </span><br><span class="line">c: false  </span><br><span class="line">d: true</span><br></pre></td></tr></table></figure>
+<h1 id="有符号整型"><a href="#有符号整型" class="headerlink" title="有符号整型"></a>有符号整型</h1><blockquote>
+</blockquote>
+<p>int8：表示 8 位有符号整型<br>大小：8 位<br>范围：-128～127<br>int16：表示 16 位有符号整型<br>大小：16 位<br>范围：-32768～32767<br>int32：表示 32 位有符号整型<br>大小：32 位<br>范围：-2147483648～2147483647<br>int64：表示 64 位有符号整型<br>大小：64 位<br>范围：-9223372036854775808～9223372036854775807<br>int：根据不同的底层平台（Underlying Platform），表示 32 或 64 位整型。除非对整型的大小有特定的需求，否则你通常应该使用 int 表示整型。<br>大小：在 32 位系统下是 32 位，而在 64 位系统下是 64 位。<br>范围：在 32 位系统下是 -2147483648～2147483647，而在 64 位系统是 -9223372036854775808～9223372036854775807。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> func sizeofval() &#123;</span><br><span class="line">	var a int = 89</span><br><span class="line">	b := 95</span><br><span class="line">	fmt.Println(&quot;value of a is&quot;,a,&quot;and b is&quot;,b)</span><br><span class="line">	fmt.Printf(&quot;type of a is %T,size of a is %d&quot;,a ,unsafe.Sizeof(a))</span><br><span class="line">	fmt.Printf(&quot;type of b is %T,size of b is %d&quot;,b ,unsafe.Sizeof(b))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><figcaption><span>value of a is 89 and b is 95。```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">在上述程序中，a 是 int 类型，而 b 的类型通过赋值（95）推断得出。上面我们提到，int 类型的大小在 32 位系统下是 32 位，而在 64 位系统下是 64 位。接下来我们会证实这种说法。</span><br><span class="line"></span><br><span class="line">在 Printf 方法中，使用 %T 格式说明符（Format Specifier），可以打印出变量的类型。Go 的 unsafe 包提供了一个 Sizeof 函数，该函数接收变量并返回它的字节大小。unsafe 包应该小心使用，因为使用 unsafe 包可能会带来可移植性问题。不过出于本教程的目的，我们是可以使用的。</span><br><span class="line"></span><br><span class="line">下面程序会输出变量 a 和 b 的类型和大小。格式说明符 %T 用于打印类型，而 %d 用于打印字节大小。</span><br><span class="line"></span><br><span class="line"># 无符号整型 </span><br><span class="line">&gt;</span><br><span class="line">uint8：表示 8 位无符号整型</span><br><span class="line">大小：8 位</span><br><span class="line">范围：0～255   </span><br><span class="line">uint16：表示 16 位无符号整型</span><br><span class="line">大小：16 位</span><br><span class="line">范围：0～65535   </span><br><span class="line">uint32：表示 32 位无符号整型</span><br><span class="line">大小：32 位</span><br><span class="line">范围：0～4294967295   </span><br><span class="line">uint64：表示 64 位无符号整型</span><br><span class="line">大小：64 位</span><br><span class="line">范围：0～18446744073709551615   </span><br><span class="line">uint：根据不同的底层平台，表示 32 或 64 位无符号整型。</span><br><span class="line">大小：在 32 位系统下是 32 位，而在 64 位系统下是 64 位。</span><br><span class="line">范围：在 32 位系统下是 0～4294967295，而在 64 位系统是 0～18446744073709551615。</span><br><span class="line"></span><br><span class="line"># 浮点型</span><br><span class="line"></span><br><span class="line">&gt; float32：32 位浮点数  </span><br><span class="line">float64：64 位浮点数</span><br><span class="line"></span><br><span class="line">下面一个简单程序演示了整型和浮点型的运用。</span><br></pre></td></tr></table></figure>
+<p> func floatfunc(){<br>    a,b := 5.67,8.79<br>    fmt.Printf(“type of a %T b %T \n”,a,b)<br>    sum := a+b<br>    dif := a-b<br>    fmt.Println(“sum”,sum,”dif”,dif)</p>
+<pre><code>no1,no2 := 56,89
+fmt.Println(&quot;sum&quot;,no1+no2,&quot;dif&quot;,no1-no2)
+</code></pre><p>}</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> a 和 b 的类型根据赋值推断得出。在这里，a 和 b 的类型为 float64（float64 是浮点数的默认类型）。我们把 a 和 b 的和赋值给变量 sum，把 b 和 a 的差赋值给 diff，接下来打印 sum 和 diff。no1 和 no2 也进行了相同的计算。上述程序将会输出：</span><br><span class="line"> </span><br><span class="line"># 复数类型</span><br><span class="line">&gt; </span><br><span class="line">complex64：实部和虚部都是 float32 类型的的复数。</span><br><span class="line">complex128：实部和虚部都是 float64 类型的的复数。</span><br><span class="line"></span><br><span class="line">内建函数 complex 用于创建一个包含实部和虚部的复数。complex 函数的定义如下：</span><br><span class="line">`func complex(r,i,FloatType) ComplexType`</span><br><span class="line"></span><br><span class="line">该函数的参数分别是实部和虚部，并返回一个复数类型。实部和虚部应该是相同类型，也就是 float32 或 float64。如果实部和虚部都是 float32 类型，则函数会返回一个 complex64 类型的复数。如果实部和虚部都是 float64 类型，则函数会返回一个 complex128 类型的复数。</span><br><span class="line"></span><br><span class="line">还可以使用简短语法来创建复数：</span><br></pre></td></tr></table></figure>
+<p> func complexFunc() {<br>    c1 := complex(5,7)<br>    c2 := 8 + 27i<br>    cadd := c1 + c2<br>    fmt.Println(“c1”,c1)<br>    fmt.Println(“sum”,cadd)<br>    cmul := c1 *c2<br>    fmt.Println(“product”,cmul)<br>}</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"> #其他数字类型</span><br><span class="line">&gt; byte 是 uint8 的别名。  </span><br><span class="line">rune 是 int32 的别名。</span><br><span class="line"></span><br><span class="line">在学习字符串的时候，我们会详细讨论 byte 和 rune。</span><br><span class="line"></span><br><span class="line"># string 类型</span><br><span class="line">在 Golang 中，字符串是字节的集合。如果你现在还不理解这个定义，也没有关系。我们可以暂且认为一个字符串就是由很多字符组成的。我们后面会在一个教程中深入学习字符串。 下面编写一个使用字符串的程序。</span><br></pre></td></tr></table></figure>
+<p>func strFunc() {<br>    first := “Naveen”<br>    last := “Ramanathan”<br>    name := first +” “+ last<br>    fmt.Println(“My name is”,name)<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 类型转换</span><br></pre></td></tr></table></figure>
+<p>func typeChangefunc() {<br>    i := 55      //int<br>    j := 67.8    //float64<br>    // sum := i + j //不允许 int + float64<br>    sum := i + int(j) //j is converted to int<br>    fmt.Println(sum)<br>}<br><code>`</code><br>Go 有着非常严格的强类型特征。Go 没有自动类型提升或类型转换。我们通过一个例子说明这意味着什么<br>上面的代码在 C 语言中是完全合法的，然而在 Go 中，却是行不通的。i 的类型是 int ，而 j 的类型是 float64 ，我们正试图把两个不同类型的数相加，Go 不允许这样的操作。如果运行程序，你会得到 main.go:10: invalid operation: i + j (mismatched types int and float64)。</p>
+<p>要修复这个错误，i 和 j 应该是相同的类型。在这里，我们把 j 转换为 int 类型。把 v 转换为 T 类型的语法是 T(v)。</p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2018/07/27/go初探-函数/" style="float: left;">
+        ← go初探-函数
+    </a>
+    
+    
+    <a class="pull-right" href="/2018/07/26/go初探-变量/">
+        go初探-变量 →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By YueChao An. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/anyuechao" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+</body>
+</html>

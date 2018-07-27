@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>mac环境下go安装环境配置 | 安跃超</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="安跃超">
+    <meta name="author" content="YueChao An">
+    <meta name="description" content="安跃超的博客" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="安跃超" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/xcode.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/Swift/" class="animsition-link">Swift<small>(0)</small></a></li>
+				    
+				    <li><a href="/categories/Swift-br/" class="animsition-link">Swift &lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/UNIX/" class="animsition-link">UNIX<small>(0)</small></a></li>
+				    
+				    <li><a href="/categories/UNIX-br/" class="animsition-link">UNIX &lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/github-br/" class="animsition-link">github&lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/go基础/" class="animsition-link">go基础<small>(5)</small></a></li>
+				    
+				    <li><a href="/categories/hexo/" class="animsition-link">hexo<small>(0)</small></a></li>
+				    
+				    <li><a href="/categories/hexo-br/" class="animsition-link">hexo&lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/iOS/" class="animsition-link">iOS<small>(10)</small></a></li>
+				    
+				    <li><a href="/categories/iOS-br/" class="animsition-link">iOS &lt;br/&gt;<small>(3)</small></a></li>
+				    
+				    <li><a href="/categories/iOS-br/" class="animsition-link">iOS&lt;/br&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/iOS-br/" class="animsition-link">iOS&lt;br/&gt;<small>(8)</small></a></li>
+				    
+				    <li><a href="/categories/iOS-br/" class="animsition-link">iOS&lt;br&gt;<small>(12)</small></a></li>
+				    
+				    <li><a href="/categories/iOS可视化/" class="animsition-link">iOS可视化<small>(0)</small></a></li>
+				    
+				    <li><a href="/categories/iOS可视化-br/" class="animsition-link">iOS可视化 &lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/python/" class="animsition-link">python<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/swift/" class="animsition-link">swift<small>(3)</small></a></li>
+				    
+				    <li><a href="/categories/swift-br/" class="animsition-link">swift &lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/兴趣篇/" class="animsition-link">兴趣篇<small>(0)</small></a></li>
+				    
+				    <li><a href="/categories/微信表情-br/" class="animsition-link">微信表情&lt;/br&gt;<small>(0)</small></a></li>
+				    
+				    <li><a href="/categories/技术篇/" class="animsition-link">技术篇<small>(0)</small></a></li>
+				    
+				    <li><a href="/categories/技术篇-br/" class="animsition-link">技术篇 &lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/技术篇-br/" class="animsition-link">技术篇&lt;br/&gt;<small>(3)</small></a></li>
+				    
+				    <li><a href="/categories/编辑工具/" class="animsition-link">编辑工具<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/编辑工具-br/" class="animsition-link">编辑工具 &lt;br&gt;<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/编辑工具-br/" class="animsition-link">编辑工具&lt;br&gt;<small>(1)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://zhangtianqi.net/" class="animsition-link">zhangtianqi</a></li>
+                    
+                    <li><a href="http://www.ilakeyc.gift/" class="animsition-link">ilakeyc</a></li>
+                    
+                    <li><a href="https://github.com/wangshiyu13" class="animsition-link">wangshiyu13</a></li>
+                    
+                    <li><a href="http://www.lidaze.com/" class="animsition-link">lidaze</a></li>
+                    
+                    <li><a href="http://liushuang.win/" class="animsition-link">feelShuang</a></li>
+                    
+                    <li><a href="https://github.com/EmyWong" class="animsition-link">EmyWong</a></li>
+                    
+                    <li><a href="http://jenko.cc/" class="animsition-link">jenko</a></li>
+                    
+                    <li><a href="http://liuyanwei.jumppo.com/" class="animsition-link">liuyanwei</a></li>
+                    
+                    <li><a href="https://github.com/casatwy" class="animsition-link">casatwy</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">安跃超</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/anyuechao" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2018-07-26T05:24:09.000Z" itemprop="datePublished">
+          2018-07-26
+      </time>
+    
+    
+    | 
+    <a href='/tags/go/'>go</a>
+    
+    
+</span>
+                <h1>mac环境下go安装环境配置</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<p>#Golang 是什么</p>
+<blockquote>
+<p>Go 亦称为 Golang（译注：按照 Rob Pike 说法，语言叫做 Go，Golang 只是官方网站的网址），是由谷歌开发的一个开源的编译型的静态语言。</p>
+</blockquote>
+<blockquote>
+<p>Golang 的主要关注点是使得高可用性和可扩展性的 Web 应用的开发变得简便容易。（译注：Go 的定位是系统编程语言，只是对 Web 开发支持较好）</p>
+</blockquote>
+<h1 id="为何选择-Golang"><a href="#为何选择-Golang" class="headerlink" title="为何选择 Golang"></a>为何选择 Golang</h1><p>既然有很多其他编程语言可以做同样的工作，如 Python，Ruby，Nodejs 等，为什么要选择 Golang 作为服务端编程语言？</p>
+<p>以下是我使用 Go 语言时发现的一些优点：<br>1.并发是语言的一部分（译注：并非通过标准库实现），所以编写多线程程序会是一件很容易的事。后续教程将会讨论到，并发是通过 Goroutines 和 channels 机制实现的。<br>2.Golang 是一种编译型语言。源代码会编译为二进制机器码。而在解释型语言中没有这个过程，如 Nodejs 中的 JavaScript。<br>3.语言规范十分简洁。所有规范都在一个页面展示，你甚至都可以用它来编写你自己的编译器呢。:smile:<br>4.Go 编译器支持静态链接。所有 Go 代码都可以静态链接为一个大的二进制文件（译注：相对现在的磁盘空间，其实根本不大），并可以轻松部署到云服务器，而不必担心各种依赖性。<br><a id="more"></a></p>
+<h1 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h1><blockquote>
+<p>Golang 支持三个平台：Mac，Windows 和 Linux（译注：不只是这三个，也支持其他主流平台）。</p>
+</blockquote>
+<p>1.安装<br>你可以在 <a href="https://golang.org/dl/" target="_blank" rel="noopener">https://golang.org/dl/</a> 中下载相应平台的二进制文件。（译注：因为众所周知的原因，如果下载不了，请到 <a href="https://studygolang.com/dl" target="_blank" rel="noopener">https://studygolang.com/dl</a> 下载）将下载下来的 go 文件解压在 document 里</p>
+<p>2.编译器选择<a href="https://code.visualstudio.com/docs/?dv=win" target="_blank" rel="noopener">Visual Studio Code</a></p>
+<p>3.环境变量</p>
+<figure class="highlight plain"><figcaption><span>vi ~/.bash_profile```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>export GOPATH=/Users/../Documents/go<br>export GOBIN=$GOPATH/bin<br>export PATH=$PATH:$GOBIN<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">编译</span><br></pre></td></tr></table></figure></p>
+<p>source ~/.bash_profile<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">查看是否设置成功</span><br><span class="line"></span><br><span class="line">```$ go env</span><br></pre></td></tr></table></figure></p>
+<p>4.Visual Studio Code 设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;go.buildOnSave&quot;: true,</span><br><span class="line">    &quot;go.buildFlags&quot;: [],</span><br><span class="line">    &quot;go.buildTags&quot;: &quot;&quot;,</span><br><span class="line">    &quot;go.lintOnSave&quot;: true,</span><br><span class="line">    &quot;go.formatOnSave&quot;: true,</span><br><span class="line">    &quot;go.gopath&quot;: &quot;/Users/../go&quot;,</span><br><span class="line">    &quot;go.goroot&quot;: &quot;/usr/local/Cellar/go/1.10.3/libexec&quot;,</span><br><span class="line">    &quot;workbench.colorTheme&quot;: &quot;Visual Studio Dark&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="第一个-hello-world"><a href="#第一个-hello-world" class="headerlink" title="第一个 hello world"></a>第一个 hello world</h1><p>所有 Go 源文件都应该放置在工作区里的 src 目录下。请在刚添加的 go 目录下面创建目录 src。<br>所有 Go 项目都应该依次在 src 里面设置自己的子目录。我们在 src 里面创建一个目录 hello 来放置整个 hello world 项目。</p>
+<p>1.创建文件 helloworld.go</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;  </span><br><span class="line">    fmt.Println(&quot;Hello World&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>文件目录结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">go</span><br><span class="line">  src</span><br><span class="line">    hello</span><br><span class="line">      helloworld.go</span><br></pre></td></tr></table></figure>
+<p>2.运行程序<br> 使用 go run 命令 - 在命令提示符旁，输入 </p>
+<figure class="highlight plain"><figcaption><span>go run workspacepath/src/hello/helloworld.go。```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> 或者在编译器直接运行。  </span><br><span class="line"> </span><br><span class="line">3.现在简单介绍每一行大概都做了些什么，在以后的教程中还会深入探讨每个部分。</span><br><span class="line"></span><br><span class="line">``` </span><br><span class="line">package main //1</span><br><span class="line">import &quot;fmt&quot; //2</span><br><span class="line">func main() &#123;//3  </span><br><span class="line">    fmt.Println(&quot;Hello World&quot;) //4</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>package main</strong>  - 每一个 Go 文件都应该在开头进行 package name 的声明（译注：只有可执行程序的包名应当为 main）。包（Packages）用于代码的封装与重用，这里的包名称是main。<br><strong>import “fmt”</strong> - 我们引入了 fmt 包，用于在 main 函数里面打印文本到标准输出。<br><strong>func main()</strong> - main 是一个特殊的函数。整个程序就是从 main 函数开始运行的。main 函数必须放置在 main 包中。{ 和 } 分别表示 main 函数的开始和结束部分。<br><strong>fmt.Println(“Hello World”)</strong> - fmt 包中的 Println 函数用于把文本写入标准输出。</p>
+</blockquote>
+<p>#问题<br>1.could not launch process: debugserver or lldb- server not found: install XCode’s command line tools or lldb- server<br><img src="https://upload-images.jianshu.io/upload_images/1060239-6f1f878320152aa3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>解决方案：</p>
+<figure class="highlight plain"><figcaption><span>xcode-select --install```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2.</span><br><span class="line">Failded to continue:&quot;Cannot find Delve debugger. Install from https://github.com/derekparker/delve &amp; ensure it is in your &quot;GOPATH/bin&quot; or &quot;PATH&quot;</span><br><span class="line">go get github.com/derekparker/delve/cmd/dlv</span><br><span class="line"></span><br><span class="line">解决方案：</span><br><span class="line">Visual Studio Code 设置</span><br></pre></td></tr></table></figure>
+<p>{<br>    “go.buildOnSave”: true,<br>    “go.buildFlags”: [],<br>    “go.buildTags”: “”,<br>    “go.lintOnSave”: true,<br>    “go.formatOnSave”: true,<br>    “go.gopath”: “/Users/../go”,<br>    “go.goroot”: “/usr/local/Cellar/go/1.10.3/libexec”,<br>    “workbench.colorTheme”: “Visual Studio Dark”<br>}<br><code>`</code></p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2018/07/26/go初探-变量/" style="float: left;">
+        ← go初探-变量
+    </a>
+    
+    
+    <a class="pull-right" href="/2018/06/05/NSFilehandle使用/">
+        NSFilehandle使用<br> →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By YueChao An. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/anyuechao" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+</body>
+</html>
