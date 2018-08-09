@@ -90,6 +90,8 @@
 				    
 				    <li><a href="/categories/github-br/" class="animsition-link">github&lt;br/&gt;<small>(1)</small></a></li>
 				    
+				    <li><a href="/categories/go-br/" class="animsition-link">go&lt;br&gt;<small>(4)</small></a></li>
+				    
 				    <li><a href="/categories/go基础/" class="animsition-link">go基础<small>(5)</small></a></li>
 				    
 				    <li><a href="/categories/hexo/" class="animsition-link">hexo<small>(0)</small></a></li>
@@ -255,6 +257,138 @@
 
 <section id="intro">
     <div class="container">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2015/03/07/KVO/">KVO</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2015-03-07T07:53:28.000Z" itemprop="datePublished">
+          2015-03-07
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        <h3 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h3><p>KVO,即：Key-Value Observing，它提供一种机制，当指定的对象的属性被修改后，则对象就会接受到通知。简单的说就是每次指定的被观察的对象的属性被修改后，KVO就会自动通知相应的观察者了。<br>KVO其实也是“观察者”设计模式的一种应用。我的看法是，这种模式有利于两个类间的解耦合，尤其是对于 业务逻辑 M与视图控制 C 这两个功能的解耦合。</p>
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2015/03/07/KVO/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2015/02/10/synthesize-与-dynamic-的不同/">@synthesize 与@dynamic 的不同</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2015-02-10T04:03:10.000Z" itemprop="datePublished">
+          2015-02-10
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        <p>一、SDK中描述是在声明property的时候，有2个选择<br>1：通过@synthesize 指令告诉编译器在编译期间产生getter/setter方法。<br>2：通过@dynamic指令，告诉编译器属性的setter与getter 方法由用户自己实现。<br>
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2015/02/10/synthesize-与-dynamic-的不同/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2015/01/20/iOS-延展-类目-代理协议/">iOS--延展,类目,代理协议</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2015-01-20T02:45:27.000Z" itemprop="datePublished">
+          2015-01-20
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        <h2 id="类目"><a href="#类目" class="headerlink" title="类目"></a>类目</h2><h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>对现有的类添加扩展，如：系统中的类，在类目中添加的方法会被子类继承，而且运行时跟其他的方法没有区别。</p>
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2015/01/20/iOS-延展-类目-代理协议/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2014/10/04/手势控制的使用/">手势控制的使用 <br/></a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2014-10-04T10:20:05.000Z" itemprop="datePublished">
+          2014-10-04
+      </time>
+    
+    
+    | 
+    <a href='/tags/iOS-手势-br/'>iOS,手势&lt;br/&gt;</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        <p>手势识别是具有互斥的原则的，比如单击和双击，如果它识别出一种手势，其后的手势将不被识别</p>
+<pre><code>// 添加单击的手势
+UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] init];
+tapGestureRecognizer.numberOfTapsRequired = 1; // 设置单击几次才触发方法
+[tapGestureRecognizer addTarget:self action:@selector(tapGestureAction:)]; // 添加点击手势的方法
+[self.view addGestureRecognizer:tapGestureRecognizer]; // 添加到当前的View上
+[tapGestureRecognizer release], tapGestureRecognizer = nil; // 释放内存
+</code></pre>
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2014/10/04/手势控制的使用/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">

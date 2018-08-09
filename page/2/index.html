@@ -90,6 +90,8 @@
 				    
 				    <li><a href="/categories/github-br/" class="animsition-link">github&lt;br/&gt;<small>(1)</small></a></li>
 				    
+				    <li><a href="/categories/go-br/" class="animsition-link">go&lt;br&gt;<small>(4)</small></a></li>
+				    
 				    <li><a href="/categories/go基础/" class="animsition-link">go基础<small>(5)</small></a></li>
 				    
 				    <li><a href="/categories/hexo/" class="animsition-link">hexo<small>(0)</small></a></li>
@@ -446,6 +448,155 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
+                    <h3><a href="/2018/06/05/第五章 面向接口/">第五章 面向接口 <br></a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2018-06-05T03:37:35.000Z" itemprop="datePublished">
+          2018-06-05
+      </time>
+    
+    
+    | 
+    <a href='/tags/go/'>go</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        第五章 面向接口一.duck typing 的概念1.duck typing2.java 中的类似代码   
+1234&lt;R extends Ret riever&gt;String download(R r) &#123;return r . get ( &quot;www. imooc. com&quot;) ;&#125;
+ 传入的参数必须实现retriever接口 不是duck typing   
+3.go语言中的 duck
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2018/06/05/第五章 面向接口/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2018/06/05/第三章总结 go内建容器/">第三章总结 go内建容器 <br></a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2018-06-05T03:37:35.000Z" itemprop="datePublished">
+          2018-06-05
+      </time>
+    
+    
+    | 
+    <a href='/tags/go/'>go</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        第三章.内建容器一.数组1.Range：1).Range 意义明确，美观2).c++ 没有类似能力3).java／python 只能for each value 不能同时获取i，v   
+2.数组是值类型1).[10]int和[20]int是不同类型2).调用func f(arr [10]int)会 拷贝 数组3).在go语言中一般不直接使用数组   
+二.切片(Slice)1).切片arr := […]int{0,1,2,3,4,5,
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2018/06/05/第三章总结 go内建容器/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2018/06/05/第一章总结 go语言特点 /">第一章总结 go语言特点 <br></a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2018-06-05T03:37:35.000Z" itemprop="datePublished">
+          2018-06-05
+      </time>
+    
+    
+    | 
+    <a href='/tags/go/'>go</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        第一章 Go 语言特点一.Go 语言特点1.编译型语言2.高并发3.没有对象，没有继承，多态，没有try/catch4.有接口，函数式编程，CSP并发模型（goroutine + channel）5.学习go语言简单，语法简单   
+二.调整三观纵观会的各种语言，优劣势，   
+二.软件安装1.goland  http://www.jetbrains.com/go/download/download-thanks.html?platfo
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2018/06/05/第一章总结 go语言特点 /">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2018/06/05/第四章 go面向“对象”/">第四章 go面向“对象” <br></a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2018-06-05T03:37:35.000Z" itemprop="datePublished">
+          2018-06-05
+      </time>
+    
+    
+    | 
+    <a href='/tags/go/'>go</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        第四章 面向“对象”一.结构体和方法1).面向对象1.go语言仅支持封装，不支持继承和多态2.go语言没有 class，只有 struct   
+2).结构体的定义   
+12345678type treeNode struct &#123;	value int	left, right *treeNode&#125;root := T reeNode&#123;Value:3&#125;root.Left = &amp;TreeNode
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2018/06/05/第四章 go面向“对象”/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
                     <h3><a href="/2018/06/05/ iOS 内存优化&性能优化/">iOS 内存优化&性能优化 <br></a></h3>
                     <span>
                         <span class="post-meta">
@@ -471,156 +622,6 @@
                     
                     <p class="pull-right readMore">
                         <a href="/2018/06/05/ iOS 内存优化&性能优化/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2018/02/10/python模块/">python 模块</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2018-02-10T08:24:09.000Z" itemprop="datePublished">
-          2018-02-10
-      </time>
-    
-    
-    | 
-    <a href='/tags/python/'>python</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        <p>##python 模块</p>
-<blockquote>
-<p>Python本身就内置了很多非常有用的模块，只要安装完毕，这些模块就可以立刻使用。</p>
-</blockquote>
-<p>我们以内建的sys模块为例，编写一个hello的模块：<br>
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2018/02/10/python模块/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2018/01/10/python 装饰器/">python 装饰器</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2018-01-10T08:24:09.000Z" itemprop="datePublished">
-          2018-01-10
-      </time>
-    
-    
-    | 
-    <a href='/tags/python/'>python</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        <p>####python 装饰器</p>
-<p>######1.打印函数名称<br><br><br>函数对象有一个<strong>name</strong>属性，可以拿到函数的名字：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def log(func):</span><br><span class="line">	def wrapper(*args,**kw):</span><br><span class="line">		print(&apos;call %s():&apos;% func.__name__)</span><br><span class="line">		return func(*args,**kw)</span><br><span class="line">	return wrapper</span><br><span class="line">@log</span><br><span class="line">def now():</span><br><span class="line">	print(&apos;2015-3-25&apos;)</span><br></pre></td></tr></table></figure>
-<p>打印结果<br>
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2018/01/10/python 装饰器/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2017/11/14/HTTP状态码/">HTTP状态码</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2017-11-14T08:24:09.000Z" itemprop="datePublished">
-          2017-11-14
-      </time>
-    
-    
-    | 
-    <a href='/tags/HTTP/'>HTTP</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        <h5 id="HTTP状态码（HTTP-Status-Code）是用以表示网页HTTP响应状态的3位数字代码。"><a href="#HTTP状态码（HTTP-Status-Code）是用以表示网页HTTP响应状态的3位数字代码。" class="headerlink" title="HTTP状态码（HTTP Status Code）是用以表示网页HTTP响应状态的3位数字代码。"></a>HTTP状态码（HTTP Status Code）是用以表示网页HTTP响应状态的3位数字代码。</h5>
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2017/11/14/HTTP状态码/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2017/01/11/快速集成极光推送/">快速集成极光推送<br></a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2017-01-11T03:03:46.000Z" itemprop="datePublished">
-          2017-01-11
-      </time>
-    
-    
-    | 
-    <a href='/tags/iOS/'>iOS</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        <p><strong> Tips:</strong> <em>不同版本极光推送SDK集成各有差异，各位童鞋在集成时一定要注意版本号，本人集成的是基于 极光SDK JPush SDK-3.0.1的版本.</em></p>
-<p><strong>注意：</strong>极光推送的远程推送是免费的，但相应的用户统计，终端统计等功能是不免费。如果你需要用户统计，终端统计这些功能意味着需要付费才能使用。</p>
-<blockquote>
-<p><a href="http://docs.jiguang.cn/jpush/resources/#ios-sdk" target="_blank" rel="noopener">先祭出极光SDK(内附极光官方Demo)</a><br>
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2017/01/11/快速集成极光推送/">Read More...</a>
                     </p>
                     
                 </div>

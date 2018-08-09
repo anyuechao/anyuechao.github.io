@@ -90,6 +90,8 @@
 				    
 				    <li><a href="/categories/github-br/" class="animsition-link">github&lt;br/&gt;<small>(1)</small></a></li>
 				    
+				    <li><a href="/categories/go-br/" class="animsition-link">go&lt;br&gt;<small>(4)</small></a></li>
+				    
 				    <li><a href="/categories/go基础/" class="animsition-link">go基础<small>(5)</small></a></li>
 				    
 				    <li><a href="/categories/hexo/" class="animsition-link">hexo<small>(0)</small></a></li>
@@ -255,6 +257,156 @@
 
 <section id="intro">
     <div class="container">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/01/05/swift小结/">swift小结</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-01-05T05:22:26.000Z" itemprop="datePublished">
+          2016-01-05
+      </time>
+    
+    
+    | 
+    <a href='/tags/swift总结/'>swift总结</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        <h3 id="数组相关语法更新"><a href="#数组相关语法更新" class="headerlink" title="数组相关语法更新"></a>数组相关语法更新</h3>
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/01/05/swift小结/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/01/04/Swift-mutating/">Swift_mutating</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-01-04T02:33:02.000Z" itemprop="datePublished">
+          2016-01-04
+      </time>
+    
+    
+    | 
+    <a href='/tags/mutating/'>mutating</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        <h3 id="方法添加-mutating-关键字"><a href="#方法添加-mutating-关键字" class="headerlink" title="方法添加 mutating 关键字"></a>方法添加 mutating 关键字</h3>
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/01/04/Swift-mutating/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/01/04/Swift-lazy-延迟存储属性/">Swift_lazy()延迟存储属性</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-01-04T02:28:37.000Z" itemprop="datePublished">
+          2016-01-04
+      </time>
+    
+    
+    | 
+    <a href='/tags/延迟加载/'>延迟加载</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        <p>所谓的延迟存储属性，就是我们OC中所谓的懒加载对象，也就是把创建对象的步骤放在重写的getter方法中进行。这样，只有当我们使用这个属性的getter方法的时候，才会创建对象，可以为我们节省不必要得内存开销。<br>
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/01/04/Swift-lazy-延迟存储属性/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2015/12/22/动态归档/">动态归档 <br></a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2015-12-22T14:02:02.000Z" itemprop="datePublished">
+          2015-12-22
+      </time>
+    
+    
+    | 
+    <a href='/tags/归档-br/'>归档&lt;br&gt;</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        <p>自定义归档,可以实现对象内包含对象等的动态判断,方便使用</p>
+<pre><code>#import &lt;objc/runtime.h&gt;
+@implementation NSObject (AutoEncoding)
+
+-(instancetype)initWithCoder:(NSCoder *)aDecoder{
+ //记录类中实例变量个数
+
+ unsigned int ivarCount = 0;
+
+Ivar *vars = class_copyIvarList(object_getClass(self), &amp;ivarCount);
+</code></pre>
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2015/12/22/动态归档/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
@@ -465,153 +617,6 @@
                     
                     <p class="pull-right readMore">
                         <a href="/2015/12/10/如何给开发者账号续费/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/12/10/hexo如何写博客/">hexo如何写博客 <br></a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-12-10T06:49:38.000Z" itemprop="datePublished">
-          2015-12-10
-      </time>
-    
-    
-    | 
-    <a href='/tags/hexo/'>hexo</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        <h2 id="关于写一篇博客编写和部署的相关问题"><a href="#关于写一篇博客编写和部署的相关问题" class="headerlink" title="关于写一篇博客编写和部署的相关问题"></a>关于写一篇博客编写和部署的相关问题</h2><h3 id="添加图片"><a href="#添加图片" class="headerlink" title="添加图片"></a>添加图片</h3><p>想要添加图片的话,可以先上传到这个网站<br><a href="http://yotuku.cn" target="_blank" rel="noopener">七牛云</a><br><a href="http://m.yea.im" target="_blank" rel="noopener">外链图床</a></p>
-<h3 id="创建博客文件"><a href="#创建博客文件" class="headerlink" title="创建博客文件"></a>创建博客文件</h3><p> Hexo使用markdown语法的纯文本编辑，文件后缀名.m ,文件存放在：我们的站点目录下/source/_post 文件夹下</p>
-<p>文件生成方式(只需在搭建博客文件夹内执行命令)：</p>
-<p><code>hexo new 文件名</code></p>
-<p> <code>例: hexo new 文件名</code></p>
-<p> 博客编辑完成之后在中端执行部署命令：(每次编辑都需要执行)</p>
-<p> <code>hexo d -g</code><br>
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/12/10/hexo如何写博客/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/12/08/属性的属性/">属性的属性 <br/></a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-12-08T09:30:00.000Z" itemprop="datePublished">
-          2015-12-08
-      </time>
-    
-    
-    | 
-    <a href='/tags/iOS/'>iOS</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        <p>属性关键字 </p>
-<p> <img src="http://i5.tietuku.com/d886f72d0f04079e.png" alt=""></p>
-<p>补充</p>
-<p>关于nonatomic,如果我们能确定不需要多线程访问时，强烈推荐使用这个关键字，因为atomic对于性能的损失相对较大。<br>nonatomic 决定比编译器生成的setter、getter 方法是否是原子操作。<br>如果是类的delegate，推荐使用assign关键字，原因是避免了retain的死循环造成的对象无法真正的释放<br>strong 、weak 补充<br>ARC 下新加 strong、weak<br>
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/12/08/属性的属性/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/12/07/QuartzCore核心动画框架/">QuartzCore核心动画框架</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-12-07T10:57:23.000Z" itemprop="datePublished">
-          2015-12-07
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        <h3 id="核心动画框架-QuartzCore"><a href="#核心动画框架-QuartzCore" class="headerlink" title="核心动画框架 QuartzCore"></a>核心动画框架 QuartzCore</h3><p>CALayer就是UIView上的图层，很多的CALayer组成了UIView。<br>CALayer与UIView是两个完全不同的类<br>UIView动画就是简单动画，可以实现改变，偏移，形变，翻转，旋转，翻页 </p>
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/12/07/QuartzCore核心动画框架/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/12/04/如何制作想淘宝口令一样的链接/">关于iOS的剪贴板基本知识 <br/></a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-12-04T03:00:10.000Z" itemprop="datePublished">
-          2015-12-04
-      </time>
-    
-    
-    | 
-    <a href='/tags/iOS/'>iOS</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        <h3 id="转-关于制作一个像淘宝那样复制链接就可以生成一条链接"><a href="#转-关于制作一个像淘宝那样复制链接就可以生成一条链接" class="headerlink" title="[转]关于制作一个像淘宝那样复制链接就可以生成一条链接"></a>[转]关于制作一个像淘宝那样复制链接就可以生成一条链接</h3><h4 id="在iOS中下面三个控件，自身就有复制-粘贴的功能："><a href="#在iOS中下面三个控件，自身就有复制-粘贴的功能：" class="headerlink" title="在iOS中下面三个控件，自身就有复制-粘贴的功能："></a>在iOS中下面三个控件，自身就有复制-粘贴的功能：</h4><ul>
-<li>1、UITextView</li>
-<li>2、UITextField</li>
-<li>3、UIWebView
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/12/04/如何制作想淘宝口令一样的链接/">Read More...</a>
                     </p>
                     
                 </div>
