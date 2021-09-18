@@ -86,6 +86,8 @@
 				    
 				    <li><a href="/categories/UNIX-br/" class="animsition-link">UNIX &lt;br/&gt;<small>(1)</small></a></li>
 				    
+				    <li><a href="/categories/dart/" class="animsition-link">dart<small>(1)</small></a></li>
+				    
 				    <li><a href="/categories/github-br/" class="animsition-link">github&lt;br/&gt;<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/go-br/" class="animsition-link">go&lt;br&gt;<small>(4)</small></a></li>
@@ -249,6 +251,36 @@
 
 <section id="intro">
     <div class="container">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2015/09/10/NSURLSession下载与缓存/">NSURLSession下载与缓存</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2015-09-10T02:00:25.000Z" itemprop="datePublished">
+          2015-09-10
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        <p>NSURLSession下载与缓存<br>iOS9要求网络请求需要使用NSURLSession,那么本篇文章<br>就使用NSURLsession来实现视频的下载,图片的下载、取消下载、恢复下<br>载和缓存功能，期望与大家一起学习。</p>
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2015/09/10/NSURLSession下载与缓存/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
@@ -590,48 +622,6 @@ NSSting *currentVersion = [infoDic objectForKey:@&quot;CFBundleShortVersionStrin
                     
                     <p class="pull-right readMore">
                         <a href="/2015/03/15/使用照相机或图库中的图片来获取图片/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2014/10/04/手势控制的使用/">手势控制的使用 <br/></a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2014-10-04T10:20:05.000Z" itemprop="datePublished">
-          2014-10-04
-      </time>
-    
-    
-    | 
-    <a href='/tags/iOS-手势-br/'>iOS,手势&lt;br/&gt;</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        <p>手势识别是具有互斥的原则的，比如单击和双击，如果它识别出一种手势，其后的手势将不被识别</p>
-<pre><code>// 添加单击的手势
-UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] init];
-tapGestureRecognizer.numberOfTapsRequired = 1; // 设置单击几次才触发方法
-[tapGestureRecognizer addTarget:self action:@selector(tapGestureAction:)]; // 添加点击手势的方法
-[self.view addGestureRecognizer:tapGestureRecognizer]; // 添加到当前的View上
-[tapGestureRecognizer release], tapGestureRecognizer = nil; // 释放内存
-</code></pre>
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2014/10/04/手势控制的使用/">Read More...</a>
                     </p>
                     
                 </div>

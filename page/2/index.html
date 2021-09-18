@@ -86,6 +86,8 @@
 				    
 				    <li><a href="/categories/UNIX-br/" class="animsition-link">UNIX &lt;br/&gt;<small>(1)</small></a></li>
 				    
+				    <li><a href="/categories/dart/" class="animsition-link">dart<small>(1)</small></a></li>
+				    
 				    <li><a href="/categories/github-br/" class="animsition-link">github&lt;br/&gt;<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/go-br/" class="animsition-link">go&lt;br&gt;<small>(4)</small></a></li>
@@ -249,6 +251,48 @@
 
 <section id="intro">
     <div class="container">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2018/06/05/命令行打包/">iOS命令行打包<br></a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2018-06-05T06:22:23.000Z" itemprop="datePublished">
+          2018-06-05
+      </time>
+    
+    
+    | 
+    <a href='/tags/iOS，python/'>iOS，python</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        <p>#命令行打包———— 打包步骤</p>
+<p>###1.准备</p>
+<ul>
+<li>工程环境路径<br>workspace_path= /Users/djnet/Desktop/text </li>
+<li>项目名称<br>project_name=test</li>
+<li>build的路径<br>build_path=$workspace_path/$project_name</li>
+<li>app生成后的路径<br>app_name_path=$build_path/build/Release-iphoneos/${project_name}.app</li>
+<li>ipa生成后的路径<br>ipa_name_path=$build_path/build/Release-iphoneos/${project_name}.ipa<br>###2.进入项目工程文件<br><code>cd workspace_path</code><br>###3.清除历史 builid<br><code>xcodebuild clean</code>
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2018/06/05/命令行打包/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
@@ -568,43 +612,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
-                    <h3><a href="/2018/06/05/ iOS 内存优化&性能优化/">iOS 内存优化&性能优化 <br></a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2018-06-05T03:37:35.000Z" itemprop="datePublished">
-          2018-06-05
-      </time>
-    
-    
-    | 
-    <a href='/tags/Mou-Xcode-Error/'>Mou,Xcode,Error</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        <p><strong>1. 用ARC管理内存</strong></p>
-<p>ARC(Automatic ReferenceCounting, 自动引用计数)，它避免了最常见的由于我们忘记释放内存所造成的内存泄露。它自动为你管理retain和release的过程，所以你就不必去手动管理了。编写代码的时候很容易忘掉结尾的release。而ARC会自动在底层为你做这些工作。除了帮你避免内存泄露，ARC还可以帮你提高性能，它能保证释放掉不再需要的对象的内存。<br>
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2018/06/05/ iOS 内存优化&性能优化/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2018/06/05/第一章总结 go语言特点 /">第一章总结 go语言特点 <br></a></h3>
+                    <h3><a href="/2018/06/05/第五章 面向接口/">第五章 面向接口 <br></a></h3>
                     <span>
                         <span class="post-meta">
       <time datetime="2018-06-05T03:37:35.000Z" itemprop="datePublished">
@@ -622,14 +630,15 @@
                 <div class="col-md-8">
                     <p>
                       
-                        第一章 Go 语言特点一.Go 语言特点1.编译型语言2.高并发3.没有对象，没有继承，多态，没有try/catch4.有接口，函数式编程，CSP并发模型（goroutine + channel）5.学习go语言简单，语法简单   
-二.调整三观纵观会的各种语言，优劣势，   
-二.软件安装1.goland  http://www.jetbrains.com/go/download/download-thanks.html?platfo
+                        第五章 面向接口一.duck typing 的概念1.duck typing2.java 中的类似代码   
+1234&lt;R extends Ret riever&gt;String download(R r) &#123;return r . get ( &quot;www. imooc. com&quot;) ;&#125;
+ 传入的参数必须实现retriever接口 不是duck typing   
+3.go语言中的 duck
                       
                     </p>
                     
                     <p class="pull-right readMore">
-                        <a href="/2018/06/05/第一章总结 go语言特点 /">Read More...</a>
+                        <a href="/2018/06/05/第五章 面向接口/">Read More...</a>
                     </p>
                     
                 </div>
