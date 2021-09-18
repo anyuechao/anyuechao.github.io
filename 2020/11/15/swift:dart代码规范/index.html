@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>swift/dart代码规范检查工具介绍 | 安跃超</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="安跃超">
+    <meta name="author" content="YueChao An">
+    <meta name="description" content="安跃超的博客" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="安跃超" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/xcode.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/Nginx-br/" class="animsition-link">Nginx&lt;br&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Swift-br/" class="animsition-link">Swift &lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/UNIX-br/" class="animsition-link">UNIX &lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/github-br/" class="animsition-link">github&lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/go-br/" class="animsition-link">go&lt;br&gt;<small>(4)</small></a></li>
+				    
+				    <li><a href="/categories/go基础/" class="animsition-link">go基础<small>(5)</small></a></li>
+				    
+				    <li><a href="/categories/hexo-br/" class="animsition-link">hexo&lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/iOS/" class="animsition-link">iOS<small>(7)</small></a></li>
+				    
+				    <li><a href="/categories/iOS-br/" class="animsition-link">iOS &lt;br/&gt;<small>(3)</small></a></li>
+				    
+				    <li><a href="/categories/iOS-dart/" class="animsition-link">iOS, dart<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/iOS-br/" class="animsition-link">iOS&lt;/br&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/iOS-br/" class="animsition-link">iOS&lt;br/&gt;<small>(8)</small></a></li>
+				    
+				    <li><a href="/categories/iOS-br/" class="animsition-link">iOS&lt;br&gt;<small>(12)</small></a></li>
+				    
+				    <li><a href="/categories/iOS可视化-br/" class="animsition-link">iOS可视化 &lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/python/" class="animsition-link">python<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/swift/" class="animsition-link">swift<small>(3)</small></a></li>
+				    
+				    <li><a href="/categories/swift-br/" class="animsition-link">swift &lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/技术篇-br/" class="animsition-link">技术篇 &lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/技术篇-br/" class="animsition-link">技术篇&lt;br/&gt;<small>(3)</small></a></li>
+				    
+				    <li><a href="/categories/编辑工具/" class="animsition-link">编辑工具<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/编辑工具-br/" class="animsition-link">编辑工具 &lt;br&gt;<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/编辑工具-br/" class="animsition-link">编辑工具&lt;br&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/设计-交互-调研/" class="animsition-link">设计,交互,调研<small>(1)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://zhangtianqi.net/" class="animsition-link">zhangtianqi</a></li>
+                    
+                    <li><a href="http://www.ilakeyc.gift/" class="animsition-link">ilakeyc</a></li>
+                    
+                    <li><a href="https://github.com/wangshiyu13" class="animsition-link">wangshiyu13</a></li>
+                    
+                    <li><a href="http://www.lidaze.com/" class="animsition-link">lidaze</a></li>
+                    
+                    <li><a href="http://liushuang.win/" class="animsition-link">feelShuang</a></li>
+                    
+                    <li><a href="https://github.com/EmyWong" class="animsition-link">EmyWong</a></li>
+                    
+                    <li><a href="http://jenko.cc/" class="animsition-link">jenko</a></li>
+                    
+                    <li><a href="http://liuyanwei.jumppo.com/" class="animsition-link">liuyanwei</a></li>
+                    
+                    <li><a href="https://github.com/casatwy" class="animsition-link">casatwy</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">安跃超</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/anyuechao" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2020-11-15T08:24:09.000Z" itemprop="datePublished">
+          2020-11-15
+      </time>
+    
+    
+    | 
+    <a href='/tags/iOS-dart/'>iOS, dart</a>
+    
+    
+</span>
+                <h1>swift/dart代码规范检查工具介绍</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="swift-dart代码规范检查工具介绍"><a href="#swift-dart代码规范检查工具介绍" class="headerlink" title="swift/dart代码规范检查工具介绍"></a>swift/dart代码规范检查工具介绍</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">简介：</span><br><span class="line">本篇主要介绍swift和dart代码规范检查工具，以及他们的工作原理，操作过程，代码规范规则。</span><br></pre></td></tr></table></figure>
+<h2 id="1-swift代码检查工具-swiftlint"><a href="#1-swift代码检查工具-swiftlint" class="headerlink" title="1 swift代码检查工具-swiftlint"></a>1 swift代码检查工具-swiftlint</h2><h3 id="1-1-介绍swiftlint"><a href="#1-1-介绍swiftlint" class="headerlink" title="1.1 介绍swiftlint"></a>1.1 介绍swiftlint</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SwiftLint 是 realm 公司开发的一个插件，专门用于管理 Swift 代码的规范。</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-swiftlint工作原理"><a href="#1-2-swiftlint工作原理" class="headerlink" title="1.2 swiftlint工作原理"></a>1.2 swiftlint工作原理</h3><p>SwiftLint 的工作原理是检查 Swift 代码编译过程中的 AST 和 SourceKit 环节，从而可以摆脱不同版本 Swift 语法变化的影响。AST 是编译前端形成的抽象语法树（Abstract Symbolic Tree）， SourceKit 过程用来对 AST 进行代码优化，减少内存开销，提高执行效率。如果对编译过程理解不太清楚，可以参考：<a href="https://clang.llvm.org/docs/index.html" target="_blank" rel="noopener">Clang官方文档</a>以及网络上两篇比较好的文章<a href="https://www.stephenw.cc/2018/01/08/clang-ast/" target="_blank" rel="noopener">AST</a> 和 <a href="https://www.cnblogs.com/zuopeng/p/4141467.html" target="_blank" rel="noopener">LLVM优点</a>以及<a href="https://ming1016.github.io/2017/03/01/deeply-analyse-llvm/" target="_blank" rel="noopener">戴铭的深入剖析 iOS 编译 Clang / LLVM</a></p>
+<h3 id="1-2-1-llvm编译过程"><a href="#1-2-1-llvm编译过程" class="headerlink" title="1.2.1 llvm编译过程"></a>1.2.1 llvm编译过程</h3><p><img src="https://images2015.cnblogs.com/blog/579007/201608/579007-20160804225753028-971554834.png" alt="llvm架构"></p>
+<h3 id="编译过程"><a href="#编译过程" class="headerlink" title="编译过程"></a>编译过程</h3><p>预处理 -&gt; 词法分析 -&gt; Token -&gt; 语法分析 -&gt; AST -&gt; 代码生成 -&gt; LLVM IR -&gt; 优化 -&gt; 生成汇编代码 -&gt; Link -&gt; 目标文件</p>
+<p>Ast，什么是抽象语法树，在llvm架构中，分为前端，优化器和后端三块，而clang是llvm的编译前端，当编译源代码c,c++,oc,swift时候。会对源代码进行词法分析，进行分词，变成token，包括（关键字，if，else，while等。标志符，函数名称。字面量，值，数字，字符串等，特殊符号+-*/）然后进行语法分析将token组合成语义生成节点。然后将这些节点根据层级关系生成抽象语法树。</p>
+<p>抽象语法树，顶层是一个编译单元。又包含很多个字节点，其中有一些内置定义。然后函数声明。</p>
+<p>Sourcekit是独立于Xcode的存在，它主要对swift源代码层面的操作性进行一个支持，例如语法解析，代码高亮，排版，自动补全等等。sourcekit主要借助与clang的符号解析usr，为源代码令牌（token，类，属性，方法）生成唯一的标志符，然后通过commad+点击源代码任意一处代码令牌，导航到对应的定义处。<br>如果有些时候你的代码全变白了，commad+点击失效了，类型推断失效了，这时候就是sourcekit出现了问题，可能是内存占用过高了。</p>
+<h3 id="1-2-2-SourceKit"><a href="#1-2-2-SourceKit" class="headerlink" title="1.2.2 SourceKit"></a>1.2.2 SourceKit</h3><p><a href="https://www.jpsim.com/uncovering-sourcekit/" target="_blank" rel="noopener">SourceKit</a> 是一套工具集，使得大多数 Swift 源代码层面的操作特性得以支持，例如源代码解析、语法高亮、排版（typesetting）、自动补全、跨语言头文件生成，等等<br>由于 SourceKit 是独立于Xcode之外的，所以可以利用以构建从 Swift IDE 到文档生成器等任何东西<br>例如第三方的工具</p>
+<p>1.<a href="https://github.com/realm/jazzy" target="_blank" rel="noopener">jazzy</a>是一个命令行实用程序，可为Swift或Objective-C生成文档</p>
+<h3 id="1-3-swiftlint配置"><a href="#1-3-swiftlint配置" class="headerlink" title="1.3 swiftlint配置"></a>1.3 swiftlint配置</h3><p>1.3.1 swiftlint配置<br>具体环境安装配置详见官方文档，写的比较详细就不一一赘述了 <a href="https://github.com/realm/SwiftLint/blob/master/README_CN.md" target="_blank" rel="noopener">swiftlint官方文档</a>以及<a href="https://realm.github.io/SwiftLint/rule-directory.html" target="_blank" rel="noopener">触发规则文档</a>。 </p>
+<p>swiftlint操作大体流程：<br>-&gt;安装swiftlint<br>-&gt;配置工程脚本<br>-&gt;配置.swiftlint.yml规则文件到项目根目录<br>-&gt;编译代码<br>-&gt;触发规则的项目报error和warning<br>-&gt;通过命令行进行具体操作(见下文)<br>-&gt;根据触发的规则对比<a href="https://realm.github.io/SwiftLint/rule-directory.html" target="_blank" rel="noopener">触发规则文档</a>修改代码  </p>
+<p>看一下配置的文件.swiftlint.yml（通过配置.swiflint.yml，控制禁用/启用哪个规则，并为给定规则设置警告和错误的阈值）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">disabled_rules: # 执行时排除掉的规则</span><br><span class="line">  - colon</span><br><span class="line">  - comma</span><br><span class="line">  - control_statement</span><br><span class="line">opt_in_rules: # 启用非默认设置的规则</span><br><span class="line">  - empty_count</span><br><span class="line">  - missing_docs</span><br><span class="line">  # 可以通过执行如下指令来查找所有可用的规则:</span><br><span class="line">  # swiftlint rules</span><br><span class="line">included: # 执行 linting 时包含的路径。如果出现这个 `--path` 会被忽略。</span><br><span class="line">  - Source</span><br><span class="line">excluded: # 执行 linting 时忽略的路径。 优先级比 `included` 更高。</span><br><span class="line">  - Carthage</span><br><span class="line">  - Pods</span><br><span class="line">  - Source/ExcludedFolder</span><br><span class="line">  - Source/ExcludedFile.swift</span><br><span class="line"></span><br><span class="line"># 可配置的规则可以通过这个配置文件来自定义</span><br><span class="line"># 强制转换规则，可以设置他们的严重程度error，warning</span><br><span class="line">force_cast: warning # 隐式</span><br><span class="line">force_try:</span><br><span class="line">  severity: warning # 显式</span><br><span class="line"># 同时有警告和错误等级的规则，可以只设置它的警告等级</span><br><span class="line"># 隐式</span><br><span class="line">line_length: 110</span><br><span class="line"># 可以通过一个数组同时进行隐式设置</span><br><span class="line">type_body_length:</span><br><span class="line">  - 300 # warning</span><br><span class="line">  - 400 # error</span><br><span class="line"># 或者也可以同时进行显式设置</span><br><span class="line">file_length:</span><br><span class="line">  warning: 500</span><br><span class="line">  error: 1200</span><br><span class="line"># 命名规则可以设置最小长度和最大程度的警告/错误</span><br><span class="line"># 此外它们也可以设置排除在外的名字</span><br><span class="line">type_name:</span><br><span class="line">  min_length: 4 # 只是警告</span><br><span class="line">  max_length: # 警告和错误</span><br><span class="line">    warning: 40</span><br><span class="line">    error: 50</span><br><span class="line">  excluded: iPhone # 排除某个名字</span><br><span class="line">identifier_name:</span><br><span class="line">  min_length: # 只有最小长度</span><br><span class="line">    error: 4 # 只有错误</span><br><span class="line">  excluded: # 排除某些名字</span><br><span class="line">    - id</span><br><span class="line">    - URL</span><br><span class="line">    - GlobalAPIKey</span><br><span class="line">reporter: &quot;xcode&quot; # 报告类型 (xcode, json, csv, checkstyle, codeclimate, junit, html, emoji, sonarqube, markdown, github-actions-logging)</span><br></pre></td></tr></table></figure>
+<p>强制转换,严重级别设置warning和error两个等级</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">force_cast: warning # 隐式</span><br><span class="line">force_try:</span><br><span class="line">  severity: warning # 显式</span><br></pre></td></tr></table></figure>
+<h5 id="可以查看规则文档SwiftLint-ruls示例"><a href="#可以查看规则文档SwiftLint-ruls示例" class="headerlink" title="可以查看规则文档SwiftLint-ruls示例"></a>可以查看规则文档<a href="https://realm.github.io/SwiftLint/rule-directory.html" target="_blank" rel="noopener">SwiftLint-ruls</a>示例</h5><p>force_cast<br>非触发例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSNumber() as? Int</span><br></pre></td></tr></table></figure>
+<p>触发例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSNumber() as! Int</span><br></pre></td></tr></table></figure>
+<p>force_try 非触发例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">func a() throws &#123;&#125;</span><br><span class="line">do &#123;</span><br><span class="line">  try a()</span><br><span class="line">&#125; catch &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>触发例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">func a() throws &#123;&#125;</span><br><span class="line">try! a()</span><br></pre></td></tr></table></figure>
+<p>也可以自定义规则：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">custom_rules:</span><br><span class="line">  pirates_beat_ninjas: # 规则标识符</span><br><span class="line">    name: &quot;Pirates Beat Ninjas&quot; # 规则名称，可选</span><br><span class="line">    regex: &quot;([nN]inja)&quot; # 匹配的模式</span><br><span class="line">    match_kinds: # 需要匹配的语法类型，可选</span><br><span class="line">      - comment</span><br><span class="line">      - identifier</span><br><span class="line">    message: &quot;Pirates are better than ninjas.&quot; # 提示信息，可选</span><br><span class="line">    severity: error # 提示的级别，可选</span><br><span class="line">  no_hiding_in_strings:</span><br><span class="line">    regex: &quot;([nN]inja)&quot;</span><br><span class="line">    match_kinds: string</span><br></pre></td></tr></table></figure>
+<p>输出样式：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210317103505631.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zNzczNzkxNQ==,size_16,color_FFFFFF,t_70" alt="自定义规则触发"></p>
+<h3 id="1-3-2-swiftlint-命令"><a href="#1-3-2-swiftlint-命令" class="headerlink" title="1.3.2 swiftlint 命令"></a>1.3.2 swiftlint 命令</h3><p><img src="https://img-blog.csdnimg.cn/20210316182303316.png#pic_center" alt="swiftlint命令行可用的命令"></p>
+<h4 id="输出所有的警告和错误"><a href="#输出所有的警告和错误" class="headerlink" title="// 输出所有的警告和错误"></a>// 输出所有的警告和错误</h4><p><code>swiftlint lint</code><br><img src="https://img-blog.csdnimg.cn/20210316182832556.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zNzczNzkxNQ==,size_16,color_FFFFFF,t_70#pic_center" alt="swiftlint lint"></p>
+<h5 id="生成错误报告"><a href="#生成错误报告" class="headerlink" title="生成错误报告"></a>生成错误报告</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swiftlint lint  --path ~/Desktop --reporter html &gt; swiftlint.html</span><br></pre></td></tr></table></figure>
+<h4 id="自动修复已知的Error和Warning"><a href="#自动修复已知的Error和Warning" class="headerlink" title="// 自动修复已知的Error和Warning"></a>// 自动修复已知的Error和Warning</h4><p><code>swiftlint autocorrect</code> </p>
+<h4 id="打开swiftlint文档，直接打开-SwiftLint官方文档"><a href="#打开swiftlint文档，直接打开-SwiftLint官方文档" class="headerlink" title="// 打开swiftlint文档，直接打开 SwiftLint官方文档"></a>// 打开swiftlint文档，直接打开 <a href="https://realm.github.io/SwiftLint/" target="_blank" rel="noopener">SwiftLint官方文档</a></h4><p><code>swiftlint docs</code></p>
+<h4 id="为所有规则生成文档"><a href="#为所有规则生成文档" class="headerlink" title="// 为所有规则生成文档"></a>// 为所有规则生成文档</h4><p><code>swiftlint generate-docs --path</code></p>
+<p><img src="https://img-blog.csdnimg.cn/2021031709520357.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zNzczNzkxNQ==,size_16,color_FFFFFF,t_70" alt="生成的规则文档"></p>
+<h4 id="输出swiftlint的所有规则以及目前工程配置情况"><a href="#输出swiftlint的所有规则以及目前工程配置情况" class="headerlink" title="// 输出swiftlint的所有规则以及目前工程配置情况"></a>// 输出swiftlint的所有规则以及目前工程配置情况</h4><p><code>swiftlint rules</code> </p>
+<p><img src="https://img-blog.csdnimg.cn/20210317095604239.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zNzczNzkxNQ==,size_16,color_FFFFFF,t_70" alt="输出swiftlint的所有规则"></p>
+<p>identifier：规则名称<br>Opt-in：启用非默认设置的规则<br>correctable：可纠正的规则<br>enabled in your config：配置中已经启用<br>Kind：规则的种类  </p>
+<h3 id="1-3-3-fastlane支持"><a href="#1-3-3-fastlane支持" class="headerlink" title="1.3.3 fastlane支持"></a>1.3.3 fastlane支持</h3><p>也可以用<a href="https://docs.fastlane.tools/actions/swiftlint/" target="_blank" rel="noopener">fastlane官方的SwiftLint功能</a>来运行SwiftLint作为你的Fastlane程序的一部分</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">swiftlint(</span><br><span class="line">    mode: :lint,                            # SwiftLint模式: :lint (默认) 或者 :autocorrect</span><br><span class="line">    executable: &quot;Pods/SwiftLint/swiftlint&quot;, # SwiftLint的程序路径 (可选的). 对于用CocoaPods集成SwiftLint时很重要</span><br><span class="line">    path: &quot;/path/to/lint&quot;,                  # 特殊的检查路径 (可选的)</span><br><span class="line">    output_file: &quot;swiftlint.result.json&quot;,   # 检查结果输出路径 (可选的)</span><br><span class="line">    reporter: &quot;json&quot;,                       # 输出格式 (可选的)</span><br><span class="line">    config_file: &quot;.swiftlint-ci.yml&quot;,       # 配置文件的路径 (可选的)</span><br><span class="line">    files: [                                # 指定检查文件列表 (可选的)</span><br><span class="line">        &quot;AppDelegate.swift&quot;,</span><br><span class="line">        &quot;path/to/project/Model.swift&quot;</span><br><span class="line">    ],</span><br><span class="line">    ignore_exit_status: true,               # 允许fastlane可以继续执行甚至是Swiftlint返回一个非0的退出状态(默认值: false)</span><br><span class="line">    quiet: true,                            # 不输出像‘Linting’和‘Done Linting’的状态日志 (默认值: false)</span><br><span class="line">    strict: true                            # 发现警告时报错? (默认值: false)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h2 id="2-dart代码规范检查"><a href="#2-dart代码规范检查" class="headerlink" title="2.dart代码规范检查"></a>2.dart代码规范检查</h2><h3 id="2-1-都有哪些代码规范检查的工具"><a href="#2-1-都有哪些代码规范检查的工具" class="headerlink" title="2.1 都有哪些代码规范检查的工具"></a>2.1 都有哪些代码规范检查的工具</h3><p>1.Flutter工程沿用Dart的静态代码检查器dartanalyzer, 并使用内置在Flutter Tools内的终端工具进行代码扫描和分析, 相关代码位于:<a href="https://github.com/flutter/flutter/tree/master/packages/flutter_tools/lib/src/commands" target="_blank" rel="noopener">commands</a></p>
+<h3 id="2-2-如何使用"><a href="#2-2-如何使用" class="headerlink" title="2.2 如何使用"></a>2.2 如何使用</h3><p>一般情况下, 在工程文件下配有分析脚本的情况下, 可以直接使用flutter analyze命令进行静态检查, 这和开发工具Android Studio自带的检查插件的效果是一样的, 最终结果会显示在AS下方的Dart Analysis Tab下.</p>
+<p><img src="https://img-blog.csdnimg.cn/20210318170759991.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zNzczNzkxNQ==,size_16,color_FFFFFF,t_70" alt="dart Analysis"></p>
+<h4 id="2-2-1-分析脚本长啥样放在哪"><a href="#2-2-1-分析脚本长啥样放在哪" class="headerlink" title="2.2.1 分析脚本长啥样放在哪"></a>2.2.1 分析脚本长啥样放在哪</h4><p>检查器会根据项目根目录下的分析脚本执行检查, 该文件通常会与pubspec文件处于同一层级.<br>老版本的分析脚本命名为.analysis_options, 没有yaml后缀, 新版本统一命名为：analysis_options.yaml</p>
+<p><img src="https://img-blog.csdnimg.cn/202103181721218.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zNzczNzkxNQ==,size_16,color_FFFFFF,t_70" alt="我的analysis_options位置"></p>
+<p>除了这么放还能怎么放，如果遇到更加复杂的情况怎么办，比如说不同的文件夹下适应不同的规则，见下图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210318144719650.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zNzczNzkxNQ==,size_16,color_FFFFFF,t_70" alt="引用flutter官方图片工程目录结构"></p>
+<p>检查器会使用#1检查other package和other other package, 使用#2检查my package.</p>
+<h4 id="2-2-2-分析脚本怎么写"><a href="#2-2-2-分析脚本怎么写" class="headerlink" title="2.2.2 分析脚本怎么写"></a>2.2.2 分析脚本怎么写</h4><h5 id="1-默认使用官方"><a href="#1-默认使用官方" class="headerlink" title="1). 默认使用官方"></a>1). 默认使用官方</h5><p>在flutter 1.22 版本后有默认的分析脚本，内置在flutter包中<a href="https://github.com/flutter/flutter/blob/master/packages/flutter/lib/analysis_options_user.yaml" target="_blank" rel="noopener">analysis_options_user.yml</a> </p>
+<h5 id="2-集成其他的分析脚本"><a href="#2-集成其他的分析脚本" class="headerlink" title="2). 集成其他的分析脚本"></a>2). 集成其他的分析脚本</h5><p>如果不想使用默认的分析脚本，当然也可以自己进行配置，如果嫌一条条配置lint规则麻烦, 可以直接集成Google的开源项目pedantic或者effective dart(二选一).    </p>
+<ul>
+<li><a href="https://pub.flutter-io.cn/packages/pedantic" target="_blank" rel="noopener">pedantic</a>: Google内部执行的规则.  </li>
+<li><a href="https://pub.flutter-io.cn/packages/effective_dart" target="_blank" rel="noopener">effective_dart</a> : 与 <a href="https://dart.dev/guides/language/effective-dart" target="_blank" rel="noopener">effective-dart指南</a> 相对应的规则.   </li>
+</ul>
+<h3 id="2-2-3-定制分析脚本-analysis-options-yaml"><a href="#2-2-3-定制分析脚本-analysis-options-yaml" class="headerlink" title="2.2.3 定制分析脚本 analysis_options.yaml"></a>2.2.3 定制分析脚本 analysis_options.yaml</h3><p>analysis_options.yaml配置</p>
+<p>dart语言的代码规范以及相关触发规则详见<a href="https://dart-lang.github.io/linter/" target="_blank" rel="noopener">linter</a></p>
+<h5 id="如果嫌一条条配置lint规则麻烦-可以直接集成下面的"><a href="#如果嫌一条条配置lint规则麻烦-可以直接集成下面的" class="headerlink" title="如果嫌一条条配置lint规则麻烦, 可以直接集成下面的"></a>如果嫌一条条配置lint规则麻烦, 可以直接集成下面的</h5><p>1). <a href="https://pub.flutter-io.cn/packages/pedantic" target="_blank" rel="noopener">pedantic</a>: Google内部执行的规则</p>
+<p>在 <code>pubspec.yaml</code> 中添加如下，再<code>flutter pub get</code>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dev_dependencies:</span><br><span class="line">  pedantic: ^1.11.0</span><br></pre></td></tr></table></figure>
+<p>在 <code>analysis_options.yaml</code> 中引入 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include: package:pedantic/analysis_options.yaml</span><br></pre></td></tr></table></figure>
+<p>2). <a href="https://pub.flutter-io.cn/packages/effective_dart" target="_blank" rel="noopener">effective_dart</a> : 与 <a href="https://dart.dev/guides/language/effective-dart" target="_blank" rel="noopener">effective-dart指南</a> 相对应的规则</p>
+<p>在pubspec.yaml中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dev_dependencies:</span><br><span class="line">  effective_dart: ^1.0.0</span><br></pre></td></tr></table></figure>
+<p>执行 <code>flutter pub get</code> 然后在 <code>analysis_options.yaml</code> 中引入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include: package:effective_dart/analysis_options.yaml</span><br></pre></td></tr></table></figure>
+<p>3). Flutter官方在1.22版本默认使用的分析脚本 : <a href="https://github.com/flutter/flutter/blob/master/packages/flutter/lib/analysis_options_user.yaml" target="_blank" rel="noopener">analysis_options_user.yml</a></p>
+<p>在flutter 1.22 版本默认使用的分析脚本 (注：flutter版本查看 <code>flutter --version</code>)当然也可以导入之后进行自定义，如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include: package:flutter/analysis_options_user.yaml</span><br></pre></td></tr></table></figure>
+<p>示例一个以google的pedantic为例 自定义 analysis_options.yaml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"># 指定引用第三方库中预设文件的路径</span><br><span class="line">include: package:pedantic/analysis_options.1.8.0.yaml</span><br><span class="line"></span><br><span class="line">## analyzer : 配置static analysis的条目，包括启用更严格的类型检查，排除文件，忽略特定规则，更改规则的严重程度等。</span><br><span class="line"></span><br><span class="line">## exclude 排除文件</span><br><span class="line">analyzer:</span><br><span class="line">  exclude:</span><br><span class="line">    - [build/**]</span><br><span class="line">    - lib/http_client.dart</span><br><span class="line">    - lib/models/*.g.dart</span><br><span class="line">    - lib/mock/**</span><br><span class="line"></span><br><span class="line">  strong-mode:</span><br><span class="line">    implicit-casts: false </span><br><span class="line">    implicit-dynamic: false </span><br><span class="line"></span><br><span class="line">  errors:</span><br><span class="line">    todo: ignore</span><br><span class="line"></span><br><span class="line">## linter : 配置linter规则</span><br><span class="line">linter:</span><br><span class="line">  rules:</span><br><span class="line">      - camel_case_types</span><br><span class="line">      - cancel_subscriptions</span><br></pre></td></tr></table></figure>
+<h5 id="严格类型检查"><a href="#严格类型检查" class="headerlink" title="严格类型检查"></a>严格类型检查</h5><p>我们知道dart使用语法糖实现了伪动态类型 - dynamic, 可以在编译器不确定类型时, 使用dynamic代替, implicit-dynamic可以阻止这种操作. implicit-casts表示禁止Object类型隐式转换为其他类型.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">analyzer:</span><br><span class="line">  strong-mode:</span><br><span class="line">    implicit-casts: false</span><br><span class="line">    implicit-dynamic: false</span><br></pre></td></tr></table></figure>
+<p>lint规则有两种配置方式一种是list方式 另一种是key-value方式，两者不能混用<br>list方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">linter:</span><br><span class="line">  rules:</span><br><span class="line">    -- annotate_overrides</span><br><span class="line">    -- await_only_futures</span><br></pre></td></tr></table></figure>
+<p>key-value方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">linter:</span><br><span class="line">  rules:</span><br><span class="line">    annotate_overrides: false #禁用规则</span><br><span class="line">    await_only_futures: true #开启规则</span><br></pre></td></tr></table></figure>
+<p>对于具体规则什么意思呢，咱们以上文中提到的 <a href="https://dart-lang.github.io/linter/lints/annotate_overrides.html" target="_blank" rel="noopener">annotate_overrides</a>和<a href="https://dart-lang.github.io/linter/lints/await_only_futures.html" target="_blank" rel="noopener">await_only_futures</a>为例</p>
+<p><img src="https://img-blog.csdnimg.cn/20210318160059754.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zNzczNzkxNQ==,size_16,color_FFFFFF,t_70" alt="annotate_overrides规则"></p>
+<p><img src="https://img-blog.csdnimg.cn/20210318160345745.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zNzczNzkxNQ==,size_16,color_FFFFFF,t_70" alt="await_only_futures规则"></p>
+<p>可以看到文档写的非常清楚，其他规则触发详见 dart语言的代码规范以及相关触发规则<a href="https://dart-lang.github.io/linter/" target="_blank" rel="noopener">linter</a></p>
+<h5 id="忽略特定文件或者代码行"><a href="#忽略特定文件或者代码行" class="headerlink" title="忽略特定文件或者代码行"></a>忽略特定文件或者代码行</h5><p>1).忽略文件<br>要忽略特定文件的特定非错误规则，请在文件中添加ignore_for_file注释</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//ignore_for_file: unnecessary_new</span><br></pre></td></tr></table></figure>
+<p>这在注释之前或之后对整个文件起作用，并且对于生成的代码特别有用。</p>
+<p>忽略多个规则</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//ignore_for_file: unnecessary_new, unused_import, unused_local_variable</span><br></pre></td></tr></table></figure>
+<p>忽略单行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// ignore: unnecessary_new</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210318185941184.png" alt="忽略单行-1"></p>
+<p><img src="https://img-blog.csdnimg.cn/20210318190015244.png" alt="忽略单行-2"></p>
+<h5 id="自定义规则"><a href="#自定义规则" class="headerlink" title="自定义规则"></a>自定义规则</h5><p>每个linter规则都有默认的严重性。您可以使用分析选项文件来更改单个规则的严重性，或者始终忽略某些规则。<br>支持三种严重性级别：   </p>
+<ul>
+<li>info<br>不会导致分析失败的参考消息。例子：todo</li>
+<li>warning<br>警告，例如：analysis_option_deprecated</li>
+<li>error<br>严重错误，导致失败的错误，例如：invalid_assignment</li>
+</ul>
+<p>忽略规则</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">analyzer:</span><br><span class="line">  errors:</span><br><span class="line">    todo: ignore</span><br></pre></td></tr></table></figure>
+<p>更改规则的严重性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">analyzer:</span><br><span class="line">  errors:</span><br><span class="line">    invalid_assignment: warning</span><br><span class="line">    missing_return: error</span><br><span class="line">    dead_code: info</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-4-进行代码规范检查-dart-analyzer-命令"><a href="#2-2-4-进行代码规范检查-dart-analyzer-命令" class="headerlink" title="2.2.4 进行代码规范检查 - dart analyzer 命令"></a>2.2.4 进行代码规范检查 - dart analyzer 命令</h3><p>万事具备只欠东风 通过 dart analyze</p>
+<p><img src="https://img-blog.csdnimg.cn/20210318180736278.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zNzczNzkxNQ==,size_16,color_FFFFFF,t_70" alt="通过命令行进行代码静态分析"></p>
+<p>挑出其中两条.  </p>
+<h5 id="1-第一条-info-级别的"><a href="#1-第一条-info-级别的" class="headerlink" title="1).第一条 info 级别的."></a>1).第一条 info 级别的.</h5><p>触发规则   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">info • Unnecessary new keyword at lib/business/home/home_page.dart:36:40 • (unnecessary_new)</span><br></pre></td></tr></table></figure>
+<p>具体代码 </p>
+<p><img src="https://img-blog.csdnimg.cn/20210318181626757.png" alt="unnecessary_new"></p>
+<p>查看规则文档可知<a href="https://dart-lang.github.io/linter/lints/unnecessary_new.html" target="_blank" rel="noopener">unnecessary_new</a>应避免使用new关键字创建实例。   </p>
+<h5 id="2-第二条-error级别的"><a href="#2-第二条-error级别的" class="headerlink" title="2).第二条 error级别的"></a>2).第二条 error级别的</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">error • Missing return type for &apos;saveStringList&apos; at lib/core/storage/shared_preferences_storage.dart:25:3 • (implicit_dynamic_return)</span><br></pre></td></tr></table></figure>
+<p>具体代码   </p>
+<p><img src="https://img-blog.csdnimg.cn/20210318182447903.png" alt="implicit_dynamic_return"></p>
+<p>查看所给的提示可知没有添加函数的返回值，找了规则文档没有找到这条implicit_dynamic_return规则。<br>原来我启用了更为严格的类型检查，所以才会触发这个error级别的错误。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210318183934894.png" alt="严格类型检查"></p>
+<p>上文说过这里就不多解释了。</p>
+<p>可以使用查看全部命令<br>dart analyzer –help</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Global options:</span><br><span class="line">-h, --help                 Print this usage information.</span><br><span class="line">-v, --verbose              Show additional command output.</span><br><span class="line">    --version              Print the Dart SDK version.</span><br><span class="line">    --enable-analytics     Enable anonymous analytics.</span><br><span class="line">    --disable-analytics    Disable anonymous analytics.</span><br><span class="line"></span><br><span class="line">Available commands:</span><br><span class="line">  analyze   Analyze the project&apos;s Dart code.</span><br><span class="line">  compile   Compile Dart to various formats.</span><br><span class="line">  create    Create a new project.</span><br><span class="line">  format    Idiomatically format Dart source code.</span><br><span class="line">  pub       Work with packages.</span><br><span class="line">  run       Run a Dart program.</span><br><span class="line">  test      Run tests in this package.</span><br></pre></td></tr></table></figure>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    
+    <a class="pull-right" href="/2019/08/16/国外APP交互调研/">
+        国外APP交互调研 →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By YueChao An. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/anyuechao" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+</body>
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>国外APP交互调研 | 安跃超</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="安跃超">
+    <meta name="author" content="YueChao An">
+    <meta name="description" content="安跃超的博客" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="安跃超" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/xcode.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/Nginx-br/" class="animsition-link">Nginx&lt;br&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Swift-br/" class="animsition-link">Swift &lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/UNIX-br/" class="animsition-link">UNIX &lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/github-br/" class="animsition-link">github&lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/go-br/" class="animsition-link">go&lt;br&gt;<small>(4)</small></a></li>
+				    
+				    <li><a href="/categories/go基础/" class="animsition-link">go基础<small>(5)</small></a></li>
+				    
+				    <li><a href="/categories/hexo-br/" class="animsition-link">hexo&lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/iOS/" class="animsition-link">iOS<small>(7)</small></a></li>
+				    
+				    <li><a href="/categories/iOS-br/" class="animsition-link">iOS &lt;br/&gt;<small>(3)</small></a></li>
+				    
+				    <li><a href="/categories/iOS-dart/" class="animsition-link">iOS, dart<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/iOS-br/" class="animsition-link">iOS&lt;/br&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/iOS-br/" class="animsition-link">iOS&lt;br/&gt;<small>(8)</small></a></li>
+				    
+				    <li><a href="/categories/iOS-br/" class="animsition-link">iOS&lt;br&gt;<small>(12)</small></a></li>
+				    
+				    <li><a href="/categories/iOS可视化-br/" class="animsition-link">iOS可视化 &lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/python/" class="animsition-link">python<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/swift/" class="animsition-link">swift<small>(3)</small></a></li>
+				    
+				    <li><a href="/categories/swift-br/" class="animsition-link">swift &lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/技术篇-br/" class="animsition-link">技术篇 &lt;br/&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/技术篇-br/" class="animsition-link">技术篇&lt;br/&gt;<small>(3)</small></a></li>
+				    
+				    <li><a href="/categories/编辑工具/" class="animsition-link">编辑工具<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/编辑工具-br/" class="animsition-link">编辑工具 &lt;br&gt;<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/编辑工具-br/" class="animsition-link">编辑工具&lt;br&gt;<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/设计-交互-调研/" class="animsition-link">设计,交互,调研<small>(1)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://zhangtianqi.net/" class="animsition-link">zhangtianqi</a></li>
+                    
+                    <li><a href="http://www.ilakeyc.gift/" class="animsition-link">ilakeyc</a></li>
+                    
+                    <li><a href="https://github.com/wangshiyu13" class="animsition-link">wangshiyu13</a></li>
+                    
+                    <li><a href="http://www.lidaze.com/" class="animsition-link">lidaze</a></li>
+                    
+                    <li><a href="http://liushuang.win/" class="animsition-link">feelShuang</a></li>
+                    
+                    <li><a href="https://github.com/EmyWong" class="animsition-link">EmyWong</a></li>
+                    
+                    <li><a href="http://jenko.cc/" class="animsition-link">jenko</a></li>
+                    
+                    <li><a href="http://liuyanwei.jumppo.com/" class="animsition-link">liuyanwei</a></li>
+                    
+                    <li><a href="https://github.com/casatwy" class="animsition-link">casatwy</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">安跃超</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/anyuechao" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2019-08-16T10:12:09.000Z" itemprop="datePublished">
+          2019-08-16
+      </time>
+    
+    
+    | 
+    <a href='/tags/调研/'>调研</a>
+    
+    
+</span>
+                <h1>国外APP交互调研</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<p>#国外APP交互调研<br><code>由于新项目主要面向海外用户，在部门内部的商讨下，决定对海外的app进行一次调研，调研范围主要针对用户量比较大的海外app。</code></p>
+<p>#目录<br>1.调研范围<br>2.调研结果涉及到的方面<br>(1).设计方面<br>(2).移动端技术方面<br>(3).服务端技术方面 </p>
+<p>##1.调研范围（排名不分先后）<br>1.Facebook （美国的一个社交网络服务平台）<br>2.Twitter  （美国社交网络及微博客服务平台）<br>3.KakaoTalk （韩国的由中国腾讯担任第二大股东的免费聊天软件，类似于QQ微信的聊天软件）<br>4.Pinterest （Pinterest是世界上最大的图片社交分享网站。）<br>5.Line（日本著名搜索引擎公司Naver旗下公司开发的一款聊天应用）<br>6.Linkedin（领英 是全球职场社交平台）<br>7.Flickr （雅虎旗下图片分享网站。也提供网络社群服务的平台）<br>8.Tumblr （目前全球最大的轻博客网站，也是轻博客网站的始祖）<br>9.Instagram （运行在移动端上的社交应用）<br>10.Whatsapp （用于智能手机之间通讯的应用程序。本应用程序借助推送通知服务，可以即刻接收亲友和同事发送的信息。可免费从发送手机短信转为使用WhatsApp程序，以发送和接收信息、图片、音频文件和视频信息。）<br>11.Google+ （社交网络平台，iOS appstore 名称为Currents）<br>12.Pocket （离线阅读服务软件）<br>13.vkontakte （俄罗斯最大的社交网站）<br>14.FaceBookMessenger （窗口聊天客户端）<br>15.dropbox （通过云计算实现互联网上的文件同步，用户可以存储并共享文件和文件夹的云服务平台）<br>16.Reddit 美国第五大网站，娱乐、社交及新聞<br>17.Quora是一个在线问答网站<br>18.youtube 是源自美国的视频分享网站，目前全球最大的视频搜索和分享平台</p>
+<p>##2.调研结果涉及到的方面</p>
+<p>###(1).设计方面</p>
+<p>####1.1).关于权限问题的处理<br><code>涉及到的app: Periscope; instagram;</code><br>对于权限处理这块，iOS和安卓有着不同的处理思路，iOS这块可以自定义系统权限弹框。而安卓是不能自定义的。<br>对于一些业务场景需要多个权限的时候，目前app的处理思路是不断的弹出弹窗让用户进行选择，这样既繁琐又不易于权限的管理。国外的app对于多个权限的处理在设计上有着新的思路。<br><code>直播功能模块的权限处理</code><br><img src="https://s1.ax1x.com/2020/08/16/dVk2es.png" alt="Periscope" width="20%" height="20%/"><br><img src="https://s1.ax1x.com/2020/08/16/dVkcLj.png" alt="instagram" width="20%" height="20%"></p>
+<p>####1.2).网络加载时候的默认样式<br><code>涉及到的app：facebook; youtube; pocket;</code><br>对于内容列表之前的处理方式是这样的<br><img src="https://s1.ax1x.com/2020/08/16/dVAfnH.png" alt="中国好故事数据库" width="20%" height="20%" align="bottom"></p>
+<p>而部分海外的app处理方式是这样的<br><img src="https://s1.ax1x.com/2020/08/16/dVV5fP.png" alt="facebook" width="20%" height="20%/"><br><img src="https://s1.ax1x.com/2020/08/16/dVV4Yt.png" alt="youtube" width="20%" height="20%"></p>
+<p>####1.3).图片排版方面<br><img src="https://s1.ax1x.com/2020/08/16/dVY2nA.jpg" alt="facebook" width="20%" height="20%/"><br><img src="https://s1.ax1x.com/2020/08/16/dVYcXd.jpg" alt="youtube" width="20%" height="20%"></p>
+<hr>
+<p>###(2).移动端技术方面</p>
+<p>####2.1).iOS跳转应用内跳转appstore方式<br>iOS跳转appstore有两种方式：<br>1.跳转appstore应用（最低要求iOS10）<br>2.应用内跳转appstore应用 通过 StoreKit 中的 SKStoreProductViewController 进行跳转<br><img src="https://s1.ax1x.com/2020/08/16/dVrsaQ.png" alt="facebook" width="20%" height="20%/"></p>
+<p>####2.2).对于列表页列表向下滑动隐藏导航栏目，向上滑动显示导航栏。感觉内容展示区域被扩大了，更能体现内容。（facebook youtube）<br><img src="https://s1.ax1x.com/2020/08/16/dVsGLT.png" alt="facebook" width="20%" height="20%/"><br><img src="https://s1.ax1x.com/2020/08/16/dVslzq.png" alt="youtube" width="20%" height="20%"></p>
+<p>####2.3).模态动画效果，弹出相机模态动画。</p>
+<p>####2.4).iOS评分控件<br><img src="https://s1.ax1x.com/2020/08/16/dVkhF0.png" alt="youtube" width="20%" height="20%"></p>
+<p>####2.5).切换tab，下拉刷新，点赞，收藏，关注触感震动效果。（pinterest）<br><code>安卓无法实现</code></p>
+<p>####2.6).3Dtouch，主屏交互，预览和跳转<br><img src="https://s1.ax1x.com/2020/08/16/dVTFr4.png" alt="facebook" width="20%" height="20%/"><br><img src="https://s1.ax1x.com/2020/08/16/dVTEZ9.png" alt="youtube" width="20%" height="20%"></p>
+<p>####2.7).iOS 系统分享 facebook，twitter。。。<br><img src="https://s1.ax1x.com/2020/08/17/dZa0mQ.png" alt="youtube" width="20%" height="20%"></p>
+<p>####2.8).无痕模式(youtube)<br><img src="https://s1.ax1x.com/2020/08/17/dZrMOf.png" alt="youtube" width="20%" height="20%"></p>
+<p>####2.9)youtube观看时长<br><img src="https://s1.ax1x.com/2020/08/17/dZDaZD.png" alt="youtube" width="20%" height="20%"></p>
+<p>####2.10).app视频加载问题优化<br><img src="https://s1.ax1x.com/2020/08/17/de1Z9g.gif" alt=""></p>
+<p>####2.11).app侧滑，网络加载时候的默认样式</p>
+<p><code>1.App侧滑流畅iOS安卓需要调研实现方式
+2.网络加载时候的默认样式,项目组件进行封装把这种默认样式封装到组件内部</code><br><img src="https://s1.ax1x.com/2020/08/17/dmZia4.gif" alt=""></p>
+<p>####2.12).图片选择，视频播放列表页面的页面滑动效果<br><img src="https://s1.ax1x.com/2020/08/17/dmQJAK.gif" alt=""></p>
+<hr>
+<p>###(3).服务端技术方面</p>
+<p>####3.1)视频自适应高度参考（facebook）<br>需要服务端接口返回视频附上视频宽高字段。<br><img src="https://s1.ax1x.com/2020/08/17/dZdw36.png" alt="facebook" width="20%" height="20%/"><br><img src="https://s1.ax1x.com/2020/08/17/dZdd9x.png" alt="youtube" width="20%" height="20%"></p>
+<p>####3.2)内容订阅（linkedin，youtube）<br>    1).youtube的订阅类似于关注有专门的订阅频道可以观看。（推送）<br>    2).linkedin职位订阅（推送和邮件通知）<br><img src="https://s1.ax1x.com/2020/08/17/dZwSrF.png" alt="facebook" width="20%" height="20%/"><br><img src="https://s1.ax1x.com/2020/08/17/dZwVxK.png" alt="youtube" width="20%" height="20%"></p>
+<p>####3.3).最新动态/最新推文（linkedin，推特，quora）<br><img src="https://s1.ax1x.com/2020/08/17/dZwszV.png" alt="facebook" width="20%" height="20%/"><br><img src="https://s1.ax1x.com/2020/08/17/dZwIRx.png" alt="youtube" width="20%" height="20%"></p>
+<p>####3.4).移动蜂窝网络加载媒体资源<br>1.需要服务端配置渐进式服务<br>2.或者返回多个不同画质的图片或者视频<br><img src="https://s1.ax1x.com/2020/08/17/dZ0a6K.png" alt="facebook" width="20%" height="20%/"></p>
+<p>####3.5).内容显示频率控制/对这条推文不感兴趣（推荐算法）<br><img src="https://s1.ax1x.com/2020/08/17/dZBzKf.png" alt="facebook" width="20%" height="20%/"><br><img src="https://s1.ax1x.com/2020/08/17/dZBj2t.png" alt="youtube" width="20%" height="20%"><br><img src="https://s1.ax1x.com/2020/08/17/dZBvxP.png" alt="facebook" width="20%" height="20%/"></p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2020/11/15/swift:dart代码规范/" style="float: left;">
+        ← swift/dart代码规范检查工具介绍
+    </a>
+    
+    
+    <a class="pull-right" href="/2018/12/12/Nginx/">
+        Nginx <br> →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By YueChao An. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/anyuechao" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+</body>
+</html>
