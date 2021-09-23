@@ -96,7 +96,7 @@
 				    
 				    <li><a href="/categories/hexo-br/" class="animsition-link">hexo&lt;br/&gt;<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/iOS/" class="animsition-link">iOS<small>(7)</small></a></li>
+				    <li><a href="/categories/iOS/" class="animsition-link">iOS<small>(8)</small></a></li>
 				    
 				    <li><a href="/categories/iOS-br/" class="animsition-link">iOS &lt;br/&gt;<small>(3)</small></a></li>
 				    
@@ -257,47 +257,10 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
-                    <h3><a href="/2018/06/05/第三章总结 go内建容器/">第三章总结 go内建容器 <br></a></h3>
+                    <h3><a href="/2018/06/05/iOS 内存优化之-序章·启动时间内存优化/">iOS 内存优化之-序章·启动时间内存优化<br></a></h3>
                     <span>
                         <span class="post-meta">
-      <time datetime="2018-06-05T03:37:35.000Z" itemprop="datePublished">
-          2018-06-05
-      </time>
-    
-    
-    | 
-    <a href='/tags/go/'>go</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        第三章.内建容器一.数组1.Range：1).Range 意义明确，美观2).c++ 没有类似能力3).java／python 只能for each value 不能同时获取i，v   
-2.数组是值类型1).[10]int和[20]int是不同类型2).调用func f(arr [10]int)会 拷贝 数组3).在go语言中一般不直接使用数组   
-二.切片(Slice)1).切片arr := […]int{0,1,2,3,4,5,
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2018/06/05/第三章总结 go内建容器/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2018/06/05/ iOS 内存优化&性能优化/">iOS 内存优化&性能优化 <br></a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2018-06-05T03:37:35.000Z" itemprop="datePublished">
+      <time datetime="2018-06-05T03:42:12.000Z" itemprop="datePublished">
           2018-06-05
       </time>
     
@@ -312,13 +275,14 @@
                 <div class="col-md-8">
                     <p>
                       
-                        <p><strong>1. 用ARC管理内存</strong></p>
-<p>ARC(Automatic ReferenceCounting, 自动引用计数)，它避免了最常见的由于我们忘记释放内存所造成的内存泄露。它自动为你管理retain和release的过程，所以你就不必去手动管理了。编写代码的时候很容易忘掉结尾的release。而ARC会自动在底层为你做这些工作。除了帮你避免内存泄露，ARC还可以帮你提高性能，它能保证释放掉不再需要的对象的内存。<br>
+                        <p>#一.序章·<font color="red" face="楷体">检测启动时间</font></p>
+<h3 id="1-1-配置环境"><a href="#1-1-配置环境" class="headerlink" title="1.1.配置环境"></a>1.1.配置环境</h3><p><img src="https://upload-images.jianshu.io/upload_images/1060239-2ad59acfe864cc51.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="DYLD_PRINT_STATISTICS"></p>
+<h3 id="1-2-main函数"><a href="#1-2-main函数" class="headerlink" title="1.2.main函数"></a>1.2.main函数</h3>
                       
                     </p>
                     
                     <p class="pull-right readMore">
-                        <a href="/2018/06/05/ iOS 内存优化&性能优化/">Read More...</a>
+                        <a href="/2018/06/05/iOS 内存优化之-序章·启动时间内存优化/">Read More...</a>
                     </p>
                     
                 </div>
@@ -367,6 +331,42 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
+                    <h3><a href="/2018/06/05/ iOS 内存优化&性能优化/">iOS 内存优化&性能优化 <br></a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2018-06-05T03:37:35.000Z" itemprop="datePublished">
+          2018-06-05
+      </time>
+    
+    
+    | 
+    <a href='/tags/Mou-Xcode-Error/'>Mou,Xcode,Error</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        <p><strong>1. 用ARC管理内存</strong></p>
+<p>ARC(Automatic ReferenceCounting, 自动引用计数)，它避免了最常见的由于我们忘记释放内存所造成的内存泄露。它自动为你管理retain和release的过程，所以你就不必去手动管理了。编写代码的时候很容易忘掉结尾的release。而ARC会自动在底层为你做这些工作。除了帮你避免内存泄露，ARC还可以帮你提高性能，它能保证释放掉不再需要的对象的内存。<br>
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2018/06/05/ iOS 内存优化&性能优化/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
                     <h3><a href="/2018/06/05/第一章总结 go语言特点 /">第一章总结 go语言特点 <br></a></h3>
                     <span>
                         <span class="post-meta">
@@ -393,6 +393,43 @@
                     
                     <p class="pull-right readMore">
                         <a href="/2018/06/05/第一章总结 go语言特点 /">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2018/06/05/第三章总结 go内建容器/">第三章总结 go内建容器 <br></a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2018-06-05T03:37:35.000Z" itemprop="datePublished">
+          2018-06-05
+      </time>
+    
+    
+    | 
+    <a href='/tags/go/'>go</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        第三章.内建容器一.数组1.Range：1).Range 意义明确，美观2).c++ 没有类似能力3).java／python 只能for each value 不能同时获取i，v   
+2.数组是值类型1).[10]int和[20]int是不同类型2).调用func f(arr [10]int)会 拷贝 数组3).在go语言中一般不直接使用数组   
+二.切片(Slice)1).切片arr := […]int{0,1,2,3,4,5,
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2018/06/05/第三章总结 go内建容器/">Read More...</a>
                     </p>
                     
                 </div>
@@ -581,48 +618,6 @@
                     
                     <p class="pull-right readMore">
                         <a href="/2017/01/11/快速集成极光推送/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2017/01/10/runtime/">runtime学习笔记 <br/></a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2017-01-10T06:13:00.000Z" itemprop="datePublished">
-          2017-01-10
-      </time>
-    
-    
-    | 
-    <a href='/tags/iOS-runtime/'>iOS,runtime</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        <p>####一、runtime简介</p>
-<ul>
-<li>RunTime简称运行时。OC就是运行时机制，也就是在运行时候的一些机制，其中最主要的是消息机制。</li>
-<li>对于C语言，函数的调用在编译的时候会决定调用哪个函数。</li>
-<li>对于OC的函数，属于动态调用过程，在编译的时候并不能决定真正调用哪个函数，只有在真正运行的时候才会根据函数的名称找到对应的函数来调用。</li>
-<li>事实证明：<ul>
-<li>在编译阶段，OC可以调用任何函数，即使这个函数并未实现，只要声明过就不会报错。</li>
-<li>在编译阶段，C语言调用未实现的函数就会报错。
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2017/01/10/runtime/">Read More...</a>
                     </p>
                     
                 </div>
