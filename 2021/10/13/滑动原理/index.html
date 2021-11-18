@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>go初探-类型 | 安跃超</title>
+  <title>安跃超</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -225,61 +225,43 @@
         <div class="row col-md-offset-2">
             <div class="col-md-8">
     			<span class="post-meta">
-      <time datetime="2018-07-26T08:24:09.000Z" itemprop="datePublished">
-          2018-07-26
+      <time datetime="2021-10-13T01:11:31.495Z" itemprop="datePublished">
+          2021-10-13
       </time>
     
-    
-    | 
-    <a href='/tags/go/'>go</a>
-    
-    
 </span>
-                <h1>go初探-类型</h1>
+                <h1></h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<blockquote>
-<p>下面是 Go 支持的基本类型：     </p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">bool</span><br><span class="line">数字类型</span><br><span class="line">		int8, int16, int32, int64, int</span><br><span class="line">		uint8, uint16, uint32, uint64, uint</span><br><span class="line">		float32, float64</span><br><span class="line">		complex64, complex128</span><br><span class="line">		byte</span><br><span class="line">		rune</span><br><span class="line">string</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h1 id="bool"><a href="#bool" class="headerlink" title="bool"></a>bool</h1><p> bool 类型表示一个布尔值，值为 true 或者 false。</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package main </span><br><span class="line">import(</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">	&quot;unsafe&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	a := true</span><br><span class="line">	b := false</span><br><span class="line">	fmt.Println(&quot;a&quot;,a,&quot;b&quot;,b)</span><br><span class="line">	c := a &amp;&amp; b</span><br><span class="line">	fmt.Println(&quot;c&quot;,c)</span><br><span class="line">	d := a || b</span><br><span class="line">	fmt.Println(&quot;d&quot;,d) </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>在上面的程序中，a 赋值为 true，b 赋值为 false。</p>
-<p>c 赋值为 a &amp;&amp; b。仅当 a 和 b 都为 true 时，操作符 &amp;&amp; 才返回 true。因此，在这里 c 为 false。</p>
-<p>当 a 或者 b 为 true 时，操作符 || 返回 true。在这里，由于 a 为 true，因此 d 也为 true。我们将得到程序的输出如下。</p>
-<p>运行结果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a: true b: false  </span><br><span class="line">c: false  </span><br><span class="line">d: true</span><br></pre></td></tr></table></figure>
-<h1 id="有符号整型"><a href="#有符号整型" class="headerlink" title="有符号整型"></a>有符号整型</h1><blockquote>
-</blockquote>
-<p>int8：表示 8 位有符号整型<br>大小：8 位<br>范围：-128～127<br>int16：表示 16 位有符号整型<br>大小：16 位<br>范围：-32768～32767<br>int32：表示 32 位有符号整型<br>大小：32 位<br>范围：-2147483648～2147483647<br>int64：表示 64 位有符号整型<br>大小：64 位<br>范围：-9223372036854775808～9223372036854775807<br>int：根据不同的底层平台（Underlying Platform），表示 32 或 64 位整型。除非对整型的大小有特定的需求，否则你通常应该使用 int 表示整型。<br>大小：在 32 位系统下是 32 位，而在 64 位系统下是 64 位。<br>范围：在 32 位系统下是 -2147483648～2147483647，而在 64 位系统是 -9223372036854775808～9223372036854775807。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> func sizeofval() &#123;</span><br><span class="line">	var a int = 89</span><br><span class="line">	b := 95</span><br><span class="line">	fmt.Println(&quot;value of a is&quot;,a,&quot;and b is&quot;,b)</span><br><span class="line">	fmt.Printf(&quot;type of a is %T,size of a is %d&quot;,a ,unsafe.Sizeof(a))</span><br><span class="line">	fmt.Printf(&quot;type of b is %T,size of b is %d&quot;,b ,unsafe.Sizeof(b))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
- <figure class="highlight plain"><figcaption><span>value of a is 89 and b is 95。```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">在上述程序中，a 是 int 类型，而 b 的类型通过赋值（95）推断得出。上面我们提到，int 类型的大小在 32 位系统下是 32 位，而在 64 位系统下是 64 位。接下来我们会证实这种说法。</span><br><span class="line"></span><br><span class="line">在 Printf 方法中，使用 %T 格式说明符（Format Specifier），可以打印出变量的类型。Go 的 unsafe 包提供了一个 Sizeof 函数，该函数接收变量并返回它的字节大小。unsafe 包应该小心使用，因为使用 unsafe 包可能会带来可移植性问题。不过出于本教程的目的，我们是可以使用的。</span><br><span class="line"></span><br><span class="line">下面程序会输出变量 a 和 b 的类型和大小。格式说明符 %T 用于打印类型，而 %d 用于打印字节大小。</span><br><span class="line"></span><br><span class="line"># 无符号整型 </span><br><span class="line">&gt;</span><br><span class="line">uint8：表示 8 位无符号整型</span><br><span class="line">大小：8 位</span><br><span class="line">范围：0～255   </span><br><span class="line">uint16：表示 16 位无符号整型</span><br><span class="line">大小：16 位</span><br><span class="line">范围：0～65535   </span><br><span class="line">uint32：表示 32 位无符号整型</span><br><span class="line">大小：32 位</span><br><span class="line">范围：0～4294967295   </span><br><span class="line">uint64：表示 64 位无符号整型</span><br><span class="line">大小：64 位</span><br><span class="line">范围：0～18446744073709551615   </span><br><span class="line">uint：根据不同的底层平台，表示 32 或 64 位无符号整型。</span><br><span class="line">大小：在 32 位系统下是 32 位，而在 64 位系统下是 64 位。</span><br><span class="line">范围：在 32 位系统下是 0～4294967295，而在 64 位系统是 0～18446744073709551615。</span><br><span class="line"></span><br><span class="line"># 浮点型</span><br><span class="line"></span><br><span class="line">&gt; float32：32 位浮点数  </span><br><span class="line">float64：64 位浮点数</span><br><span class="line"></span><br><span class="line">下面一个简单程序演示了整型和浮点型的运用。</span><br></pre></td></tr></table></figure>
-<p> func floatfunc(){<br>    a,b := 5.67,8.79<br>    fmt.Printf(“type of a %T b %T \n”,a,b)<br>    sum := a+b<br>    dif := a-b<br>    fmt.Println(“sum”,sum,”dif”,dif)</p>
-<pre><code>no1,no2 := 56,89
-fmt.Println(&quot;sum&quot;,no1+no2,&quot;dif&quot;,no1-no2)
-</code></pre><p>}</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> a 和 b 的类型根据赋值推断得出。在这里，a 和 b 的类型为 float64（float64 是浮点数的默认类型）。我们把 a 和 b 的和赋值给变量 sum，把 b 和 a 的差赋值给 diff，接下来打印 sum 和 diff。no1 和 no2 也进行了相同的计算。上述程序将会输出：</span><br><span class="line"> </span><br><span class="line"># 复数类型</span><br><span class="line">&gt; </span><br><span class="line">complex64：实部和虚部都是 float32 类型的的复数。</span><br><span class="line">complex128：实部和虚部都是 float64 类型的的复数。</span><br><span class="line"></span><br><span class="line">内建函数 complex 用于创建一个包含实部和虚部的复数。complex 函数的定义如下：</span><br><span class="line">`func complex(r,i,FloatType) ComplexType`</span><br><span class="line"></span><br><span class="line">该函数的参数分别是实部和虚部，并返回一个复数类型。实部和虚部应该是相同类型，也就是 float32 或 float64。如果实部和虚部都是 float32 类型，则函数会返回一个 complex64 类型的复数。如果实部和虚部都是 float64 类型，则函数会返回一个 complex128 类型的复数。</span><br><span class="line"></span><br><span class="line">还可以使用简短语法来创建复数：</span><br></pre></td></tr></table></figure>
-<p> func complexFunc() {<br>    c1 := complex(5,7)<br>    c2 := 8 + 27i<br>    cadd := c1 + c2<br>    fmt.Println(“c1”,c1)<br>    fmt.Println(“sum”,cadd)<br>    cmul := c1 *c2<br>    fmt.Println(“product”,cmul)<br>}</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"> #其他数字类型</span><br><span class="line">&gt; byte 是 uint8 的别名。  </span><br><span class="line">rune 是 int32 的别名。</span><br><span class="line"></span><br><span class="line">在学习字符串的时候，我们会详细讨论 byte 和 rune。</span><br><span class="line"></span><br><span class="line"># string 类型</span><br><span class="line">在 Golang 中，字符串是字节的集合。如果你现在还不理解这个定义，也没有关系。我们可以暂且认为一个字符串就是由很多字符组成的。我们后面会在一个教程中深入学习字符串。 下面编写一个使用字符串的程序。</span><br></pre></td></tr></table></figure>
-<p>func strFunc() {<br>    first := “Naveen”<br>    last := “Ramanathan”<br>    name := first +” “+ last<br>    fmt.Println(“My name is”,name)<br>}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 类型转换</span><br></pre></td></tr></table></figure>
-<p>func typeChangefunc() {<br>    i := 55      //int<br>    j := 67.8    //float64<br>    // sum := i + j //不允许 int + float64<br>    sum := i + int(j) //j is converted to int<br>    fmt.Println(sum)<br>}<br><code>`</code><br>Go 有着非常严格的强类型特征。Go 没有自动类型提升或类型转换。我们通过一个例子说明这意味着什么<br>上面的代码在 C 语言中是完全合法的，然而在 Go 中，却是行不通的。i 的类型是 int ，而 j 的类型是 float64 ，我们正试图把两个不同类型的数相加，Go 不允许这样的操作。如果运行程序，你会得到 main.go:10: invalid operation: i + j (mismatched types int and float64)。</p>
-<p>要修复这个错误，i 和 j 应该是相同的类型。在这里，我们把 j 转换为 int 类型。把 v 转换为 T 类型的语法是 T(v)。</p>
+      		<p><img src="https://img-blog.csdnimg.cn/34822b03cf5746ccb7d591b4bd00ff53.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAd2VpeGluXzM3NzM3OTE1,size_20,color_FFFFFF,t_70,g_se,x_16" alt="融媒体滑动"></p>
+<p>融媒体滑动属于多层UIScrollView 嵌套滚动，超过2层的UIScrollView 嵌套滚动是很复杂的。 <br></p>
+<h3 id="常见的解决方案"><a href="#常见的解决方案" class="headerlink" title="常见的解决方案 "></a>常见的解决方案 <br></h3><h4 id="1、控制-isScrollEnabled-属性"><a href="#1、控制-isScrollEnabled-属性" class="headerlink" title="1、控制 isScrollEnabled 属性"></a>1、控制 isScrollEnabled 属性</h4><p><br><br>&emsp;&emsp;通过scrollView.contentOffset.y与临界值进行对比从而修改两者scrollView的isScrollEnabled属性值来达到目的。<br>缺点：滑动到临界值会使滚动中断，需要二次滑动才会切换scrollView。这种在交互上是难以接受。</p>
+<h4 id="2、自定义滑动手势"><a href="#2、自定义滑动手势" class="headerlink" title="2、自定义滑动手势"></a>2、自定义滑动手势</h4><p><br><br>通过自定义实现滑动手势。 <br><br>缺点：滑动手势的复杂多样，很难处理的和系统一样。因为是自定义手势，所以很多细节需要自己去处理。</p>
+<h4 id="3、手势穿透-本文滑动方案"><a href="#3、手势穿透-本文滑动方案" class="headerlink" title="3、手势穿透  (本文滑动方案 )"></a>3、手势穿透  (本文滑动方案 )</h4><p><br><br>&emsp;&emsp;首先通过手势穿透，实现双层scrollView的同时滚动。接着通过标志位（临界值）来控制何时允许底层的scrollView滚动，以及何时允许上层的scrollView滚动。<br>注：何时允许哪一层scrollView能滚动，并不是说另外一层scrollView就不能滚动，而是给另外一层scrollView设置了固定的偏移量来达到不能滚动的效果 <br></p>
+<p><img src="https://img-blog.csdnimg.cn/9d0501ee97874c2eac93bf7cc6d3e4f6.gif" alt="滑动展示效果及页面结构"><br><img src="https://img-blog.csdnimg.cn/97234b6a162540cf8b0e7c112d011792.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAd2VpeGluXzM3NzM3OTE1,size_18,color_FFFFFF,t_70,g_se,x_16" width="50%" height="50%"></p>
+<p><br><br><br></p>
+<h2 id="一-具体方案"><a href="#一-具体方案" class="headerlink" title="一.具体方案"></a>一.具体方案</h2><h4 id="1-手势冲突问题"><a href="#1-手势冲突问题" class="headerlink" title="1.手势冲突问题"></a>1.手势冲突问题</h4><p><br><br>&emsp;&emsp;其实嵌套最大的问题就是手势冲突问题，上层的ScrollView会拦截手势，导致手指在上层ScrollView滑动的时候，下层ScrollView不动。所以我们首先要让手势冲突时，两个手势都去响应。这样，我们滑动的时候，两个scrollView都会滑动。</p>
+<p><img src="https://img-blog.csdnimg.cn/43e8a44b49e04faf8b6a5d50764431a8.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAd2VpeGluXzM3NzM3OTE1,size_20,color_FFFFFF,t_70,g_se,x_16" alt="上层tableView不拦截手势"></p>
+<h4 id="2-频繁正反向传值问题"><a href="#2-频繁正反向传值问题" class="headerlink" title="2.频繁正反向传值问题"></a>2.频繁正反向传值问题</h4><p><br><br>&emsp;&emsp;上下两层scrollView滑动时候都需要对方的offset来计算，所以我们创建一个上下文对象，让两个scrollView都持有，避免了频繁正反向传值的问题。</p>
+<p><img src="https://img-blog.csdnimg.cn/34153cea7aa84de587b0ae7d5ac1d031.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAd2VpeGluXzM3NzM3OTE1,size_20,color_FFFFFF,t_70,g_se,x_16" alt="创建上下文对象"></p>
+<h4 id="3-滑动的时候计算滑动优先级"><a href="#3-滑动的时候计算滑动优先级" class="headerlink" title="3.滑动的时候计算滑动优先级"></a>3.滑动的时候计算滑动优先级</h4><p><br></p>
+<p><img src="https://img-blog.csdnimg.cn/54dd5249c66d4447a3cb2cb62ff59e41.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAd2VpeGluXzM3NzM3OTE1,size_20,color_FFFFFF,t_70,g_se,x_16" alt="下层scrollView的contentOffset变化时计算"></p>
+<p><img src="https://img-blog.csdnimg.cn/cf41902bf4b548baa9733824f9ff074e.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAd2VpeGluXzM3NzM3OTE1,size_20,color_FFFFFF,t_70,g_se,x_16" alt="上层tableView的contentOffset变化时计算"></p>
+<h4 id="4-设置下层scrollView的边界属性"><a href="#4-设置下层scrollView的边界属性" class="headerlink" title="4.设置下层scrollView的边界属性"></a>4.设置下层scrollView的边界属性</h4><p><br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bounces = false</span><br><span class="line">bouncesZoom = false</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="5-滚动中断问题"><a href="#5-滚动中断问题" class="headerlink" title="5.滚动中断问题"></a>5.滚动中断问题</h4><p><br></p>
+<p>&emsp;&emsp;此时当下层scrollView偏移量y=0，上层tableView偏移量y=0时，滚动中断，需要二次滑动才会切换tableView。<br><br><br>解决办法：在下层scrollView上添加一个尺寸与上层tableView尺寸大小一致的滑动视图。把上层tableView包裹其中。此滑动问题解决。</p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
     
-    <a class="pull-left" href="/2018/07/27/go初探-常量/" style="float: left;">
-        ← go初探-常量
-    </a>
     
-    
-    <a class="pull-right" href="/2018/07/26/go初探-变量/">
-        go初探-变量 →
+    <a class="pull-right" href="/2021/09/01/调研iPad各个版本分析/">
+        iPad个版本机型调研 →
     </a>
     
 </nav>

@@ -257,6 +257,42 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
+                    <h3><a href="/2018/06/05/iOS减少应用程序安装包大小/">iOS减少应用程序安装包大小<br></a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2018-06-05T05:51:31.000Z" itemprop="datePublished">
+          2018-06-05
+      </time>
+    
+    
+    | 
+    <a href='/tags/iOS-Xcode-优化/'>iOS,Xcode,优化</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        <h4 id="一-怎样才能让我的程序安装包小一点，让程序的下载和安装更快速？"><a href="#一-怎样才能让我的程序安装包小一点，让程序的下载和安装更快速？" class="headerlink" title="一.怎样才能让我的程序安装包小一点，让程序的下载和安装更快速？"></a>一.怎样才能让我的程序安装包小一点，让程序的下载和安装更快速？</h4><pre><code>缩减iOS安装包大小是很多中大型APP都要做的事，一般首先会对资源文件下手，压缩图片/音频，去除不必要的资源。这些资源优化做完后，我们还可以尝试对可执行文件进行瘦身，项目越大，可执行文件占用的体积越大，又因为AppStore会对可执行文件加密，导致可执行文件的压缩率低，压缩后可执行文件占整个APP安装包的体积比例大约有80%~90%，还是挺值得优化的。下面介绍一下在研究可执行文件过程中发现的可以优化的点。
+</code></pre>
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2018/06/05/iOS减少应用程序安装包大小/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
                     <h3><a href="/2018/06/05/iOS 内存优化之-序章·启动时间内存优化/">iOS 内存优化之-序章·启动时间内存优化<br></a></h3>
                     <span>
                         <span class="post-meta">
@@ -283,6 +319,42 @@
                     
                     <p class="pull-right readMore">
                         <a href="/2018/06/05/iOS 内存优化之-序章·启动时间内存优化/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2018/06/05/ iOS 内存优化&性能优化/">iOS 内存优化&性能优化 <br></a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2018-06-05T03:37:35.000Z" itemprop="datePublished">
+          2018-06-05
+      </time>
+    
+    
+    | 
+    <a href='/tags/Mou-Xcode-Error/'>Mou,Xcode,Error</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        <p><strong>1. 用ARC管理内存</strong></p>
+<p>ARC(Automatic ReferenceCounting, 自动引用计数)，它避免了最常见的由于我们忘记释放内存所造成的内存泄露。它自动为你管理retain和release的过程，所以你就不必去手动管理了。编写代码的时候很容易忘掉结尾的release。而ARC会自动在底层为你做这些工作。除了帮你避免内存泄露，ARC还可以帮你提高性能，它能保证释放掉不再需要的对象的内存。<br>
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2018/06/05/ iOS 内存优化&性能优化/">Read More...</a>
                     </p>
                     
                 </div>
@@ -331,7 +403,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
-                    <h3><a href="/2018/06/05/ iOS 内存优化&性能优化/">iOS 内存优化&性能优化 <br></a></h3>
+                    <h3><a href="/2018/06/05/第三章总结 go内建容器/">第三章总结 go内建容器 <br></a></h3>
                     <span>
                         <span class="post-meta">
       <time datetime="2018-06-05T03:37:35.000Z" itemprop="datePublished">
@@ -340,7 +412,7 @@
     
     
     | 
-    <a href='/tags/Mou-Xcode-Error/'>Mou,Xcode,Error</a>
+    <a href='/tags/go/'>go</a>
     
     
 </span>
@@ -349,13 +421,14 @@
                 <div class="col-md-8">
                     <p>
                       
-                        <p><strong>1. 用ARC管理内存</strong></p>
-<p>ARC(Automatic ReferenceCounting, 自动引用计数)，它避免了最常见的由于我们忘记释放内存所造成的内存泄露。它自动为你管理retain和release的过程，所以你就不必去手动管理了。编写代码的时候很容易忘掉结尾的release。而ARC会自动在底层为你做这些工作。除了帮你避免内存泄露，ARC还可以帮你提高性能，它能保证释放掉不再需要的对象的内存。<br>
+                        第三章.内建容器一.数组1.Range：1).Range 意义明确，美观2).c++ 没有类似能力3).java／python 只能for each value 不能同时获取i，v   
+2.数组是值类型1).[10]int和[20]int是不同类型2).调用func f(arr [10]int)会 拷贝 数组3).在go语言中一般不直接使用数组   
+二.切片(Slice)1).切片arr := […]int{0,1,2,3,4,5,
                       
                     </p>
                     
                     <p class="pull-right readMore">
-                        <a href="/2018/06/05/ iOS 内存优化&性能优化/">Read More...</a>
+                        <a href="/2018/06/05/第三章总结 go内建容器/">Read More...</a>
                     </p>
                     
                 </div>
@@ -393,43 +466,6 @@
                     
                     <p class="pull-right readMore">
                         <a href="/2018/06/05/第一章总结 go语言特点 /">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2018/06/05/第三章总结 go内建容器/">第三章总结 go内建容器 <br></a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2018-06-05T03:37:35.000Z" itemprop="datePublished">
-          2018-06-05
-      </time>
-    
-    
-    | 
-    <a href='/tags/go/'>go</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        第三章.内建容器一.数组1.Range：1).Range 意义明确，美观2).c++ 没有类似能力3).java／python 只能for each value 不能同时获取i，v   
-2.数组是值类型1).[10]int和[20]int是不同类型2).调用func f(arr [10]int)会 拷贝 数组3).在go语言中一般不直接使用数组   
-二.切片(Slice)1).切片arr := […]int{0,1,2,3,4,5,
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2018/06/05/第三章总结 go内建容器/">Read More...</a>
                     </p>
                     
                 </div>
@@ -580,44 +616,6 @@
                     
                     <p class="pull-right readMore">
                         <a href="/2017/11/14/HTTP状态码/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2017/01/11/快速集成极光推送/">快速集成极光推送<br></a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2017-01-11T03:03:46.000Z" itemprop="datePublished">
-          2017-01-11
-      </time>
-    
-    
-    | 
-    <a href='/tags/iOS/'>iOS</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        <p><strong> Tips:</strong> <em>不同版本极光推送SDK集成各有差异，各位童鞋在集成时一定要注意版本号，本人集成的是基于 极光SDK JPush SDK-3.0.1的版本.</em></p>
-<p><strong>注意：</strong>极光推送的远程推送是免费的，但相应的用户统计，终端统计等功能是不免费。如果你需要用户统计，终端统计这些功能意味着需要付费才能使用。</p>
-<blockquote>
-<p><a href="http://docs.jiguang.cn/jpush/resources/#ios-sdk" target="_blank" rel="noopener">先祭出极光SDK(内附极光官方Demo)</a><br>
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2017/01/11/快速集成极光推送/">Read More...</a>
                     </p>
                     
                 </div>
